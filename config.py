@@ -40,17 +40,17 @@ RULES for "title":
 - Make it intriguing, mysterious, or shocking to maximize Click-Through Rate (CTR). Include 1 relevant emoji.
 
 RULES for "script":
-- Keep it under 140 words so it fits in a 40-50 second video.
+- Keep it extremely tight, under 65-75 words, so it fits in a fast-paced, high-retention 15-18 second video. Shorter videos easily get 120%+ retention, which makes them go viral!
 - The script MUST follow this structure:
-  1. A powerful, paradoxical HOOK in the first 3 seconds to keep the viewer watching (e.g., "The universe is hiding a terrifying secret...").
-  2. 3 short, surprising facts related to the topic (e.g. Science, Space, History, or Human Body).
-  3. A short engagement question before the end to trigger comments and likes (e.g., "Which fact shocked you most? Comment below and hit subscribe!").
-  4. A PERFECT LOOP ENDING. The final sentence must seamlessly connect back to the first word of the hook! For example, end with "And that is exactly why..." so when the video restarts, it connects to the hook.
+  1. An instant, shocking, or terrifying HOOK in the first 1.5 seconds to stop the user from swiping away (e.g., "The ocean is hiding a terrifying secret...").
+  2. Exactly 2 highly mind-blowing, short facts (instead of 3 long ones). Keep them punchy and intense!
+  3. A seamless, invisible loop ending. The final sentence MUST merge grammatically and logically into the first word of the hook (e.g. if the hook is "Deep space is...", end the script with "And that is why the dark abyss of...").
 - Use plain text only. No markdown, no emojis, no asterisks, no speaker names, no stage directions.
 
 RULES for "keywords":
-- It must contain exactly 15 keywords or short 1-2 word search terms in English.
-- The keywords should correspond strictly to the chronological visual progression of the facts so that every 3 seconds a new highly relevant image can be shown.
+- It must contain exactly 8-10 high-impact keywords or short 1-2 word search terms in English (matching the shorter script).
+- The first keyword MUST be highly dramatic, visual, and shocking to guarantee a jaw-dropping background image in the first 2 seconds.
+- The keywords should correspond strictly to the chronological visual progression of the facts.
 """
     },
     "stoicism": {

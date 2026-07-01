@@ -391,11 +391,12 @@ def generate_script(niche_key, video_dir, topic=None):
             if not isinstance(keywords, list):
                 keywords = []
                 
-            if len(keywords) < 15:
+            target_kw_count = 10 if niche_key == "facts" else 15
+            if len(keywords) < target_kw_count:
                 fallback_kws = random.choice(FALLBACKS[niche_key])["keywords"]
-                keywords += fallback_kws[len(keywords):15]
-            elif len(keywords) > 15:
-                keywords = keywords[:15]
+                keywords += fallback_kws[len(keywords):target_kw_count]
+            elif len(keywords) > target_kw_count:
+                keywords = keywords[:target_kw_count]
                 
             title = str(data.get("title", "")).strip().replace('\\"', '"').replace('\n', ' ')
             if not title:
