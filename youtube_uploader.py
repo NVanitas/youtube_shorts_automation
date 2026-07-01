@@ -8,8 +8,11 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from config import BASE_DIR
 
-# YouTube Upload OAuth Scope
-SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
+# YouTube Upload OAuth Scopes (Upload + Commenting)
+SCOPES = [
+    'https://www.googleapis.com/auth/youtube.upload',
+    'https://www.googleapis.com/auth/youtube.force-ssl'
+]
 
 def get_authenticated_service():
     """Authenticates the user using client_secret.json and returns the YouTube API client."""
@@ -49,7 +52,7 @@ def get_authenticated_service():
             
     return build('youtube', 'v3', credentials=credentials)
 
-def upload_short(video_path, title, description, tags=None, category_id="27", privacy_status="public", hide_likes=True):
+def upload_short(video_path, title, description, tags=None, category_id="27", privacy_status="public", hide_likes=True, comment_text=None):
     """Uploads a video to YouTube as a Short.
     
     Args:
@@ -59,6 +62,7 @@ def upload_short(video_path, title, description, tags=None, category_id="27", pr
         tags (list): List of search keywords/tags
         category_id (str): YouTube Category ID ('27'=Education, '24'=Entertainment, '22'=People & Blogs)
         privacy_status (str): 'public', 'private', or 'unlisted'
+        comment_text (str): Optional text for the first automated comment
     """
     youtube = get_authenticated_service()
     if not youtube:
@@ -120,6 +124,27 @@ def upload_short(video_path, title, description, tags=None, category_id="27", pr
         except Exception as te:
             print(f"Thumbnail upload note: {te}")
             
+    # Post first automated comment
+    if video_id and comment_text:
+        try:
+            print(f"[YOUTUBE UPLOAD] Posting first automated comment: '{comment_text}'...")
+            youtube.commentThreads().insert(
+                part="snippet",
+                body={
+                    "snippet": {
+                        "videoId": video_id,
+                        "topLevelComment": {
+                            "snippet": {
+                                "textOriginal": comment_text
+                            }
+                        }
+                    }
+                }
+            ).execute()
+            print("First comment posted successfully!")
+        except Exception as ce:
+            print(f"Comment post notice (note: requires re-authenticating scopes): {ce}")
+
     print("\n" + "="*60)
     print("[SUCCESS] YouTube Short uploaded successfully!")
     print(f"   Video URL: {video_url}")

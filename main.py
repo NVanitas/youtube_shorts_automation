@@ -167,13 +167,17 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
                 
             video_description = f"{script_text}\n\nSubscribe to the channel for daily Shorts!\n\n#shorts #viral #fyp #{niche_key} #motivation #educational"
             
+            # Define first automated comment text
+            comment_text = "Which of these facts surprised you the most? Comment below! 👇" if niche_key == "facts" else "Which lesson do you need most in your life right now? Comment below! 👇"
+
             youtube_uploader.upload_short(
                 video_path=final_video,
                 title=video_title,
                 description=video_description,
                 tags=tags,
                 category_id=cat_id,
-                privacy_status="public"
+                privacy_status="public",
+                comment_text=comment_text
             )
         
         # Actionable tips & Pinned Comment Recommendation
