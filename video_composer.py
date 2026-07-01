@@ -379,19 +379,19 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
                 progress = t / duration
                 eased = ease_out_back(progress)
                 y = 1920 - ((1920 - target_y) * eased)
-                return (760, y)
+                return (860, y) # Shifted right to match wider 600px subscribe button
             elif t > end_t - 0.3:
                 dt = (t - (end_t - 0.3)) / 0.3
                 y = target_y + ((1920 - target_y) * (dt ** 2))
-                return (760, y)
-            return (760, target_y)
+                return (860, y)
+            return (860, target_y)
 
         # LIKE animates first at t=0
         dur_like = max(0.5, min(2.5, duration - cta_time))
         like_clip = (ImageClip(str(like_img_path))
                      .with_start(cta_time)
                      .with_duration(dur_like)
-                     .with_position(lambda t: slide_up(t, 1450, end_t=dur_like)))
+                     .with_position(lambda t: slide_up(t, 1250, end_t=dur_like)))
         
         cta_layers = [video_clip, like_clip]
         
@@ -401,7 +401,7 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
             sub_clip = (ImageClip(str(sub_img_path))
                         .with_start(cta_time + 0.5)
                         .with_duration(dur_sub)
-                        .with_position(lambda t: slide_up(t, 1570, end_t=dur_sub)))
+                        .with_position(lambda t: slide_up(t, 1430, end_t=dur_sub)))
             cta_layers.append(sub_clip)
                     
         # BELL animates at t+1.0 (only if enough time left)
@@ -410,7 +410,7 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
             bell_clip = (ImageClip(str(bell_icon_path))
                          .with_start(cta_time + 1.0)
                          .with_duration(dur_bell)
-                         .with_position(lambda t: slide_up_bell(t, 1570, end_t=dur_bell)))
+                         .with_position(lambda t: slide_up_bell(t, 1430, end_t=dur_bell)))
             cta_layers.append(bell_clip)
             
         # CTA Text Overlay Banner ("SUB FOR MORE WEIRD FACTS" / "SUB FOR DAILY STOIC WISDOM")
@@ -420,7 +420,7 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
             text_banner_clip = (ImageClip(str(cta_text_file))
                                 .with_start(cta_time)
                                 .with_duration(dur_text)
-                                .with_position(lambda t: slide_up(t, 1320, end_t=dur_text)))
+                                .with_position(lambda t: slide_up(t, 1100, end_t=dur_text)))
             cta_layers.append(text_banner_clip)
     # Check if cta_layers is defined, if not, create it with video_clip
     try:

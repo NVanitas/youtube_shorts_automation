@@ -69,17 +69,15 @@ def draw_rounded_rect(draw, xy, rad, fill):
 
 def generate_subscribe_button(filepath):
     print("Generating subscribe button...")
-    width, height = 400, 100
+    width, height = 600, 150
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
     # Draw Red rounded rect
-    draw_rounded_rect(draw, (0, 0, width, height), 20, (204, 0, 0, 255))
+    draw_rounded_rect(draw, (0, 0, width, height), 30, (204, 0, 0, 255))
     
-    # Try to load a bold font, otherwise use default
     try:
-        # On Windows, arialbd.ttf is usually present
-        font = ImageFont.truetype("arialbd.ttf", 50)
+        font = ImageFont.truetype("arialbd.ttf", 75)
     except:
         font = ImageFont.load_default()
         
@@ -90,20 +88,20 @@ def generate_subscribe_button(filepath):
     except AttributeError:
         tw, th = draw.textsize(text, font=font)
         
-    draw.text(((width - tw)//2, (height - th)//2 - 10), text, font=font, fill="white")
+    draw.text(((width - tw)//2, (height - th)//2 - 12), text, font=font, fill="white")
     img.save(filepath)
 
 def generate_like_button(filepath):
     print("Generating like button...")
-    width, height = 200, 100
+    width, height = 300, 150
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
     # Draw Blue rounded rect for LIKE
-    draw_rounded_rect(draw, (0, 0, width, height), 20, (0, 122, 255, 255))
+    draw_rounded_rect(draw, (0, 0, width, height), 30, (0, 122, 255, 255))
     
     try:
-        font = ImageFont.truetype("arialbd.ttf", 50)
+        font = ImageFont.truetype("arialbd.ttf", 75)
     except:
         font = ImageFont.load_default()
         
@@ -114,7 +112,7 @@ def generate_like_button(filepath):
     except AttributeError:
         tw, th = draw.textsize(text, font=font)
         
-    draw.text(((width - tw)//2, (height - th)//2 - 10), text, font=font, fill="white")
+    draw.text(((width - tw)//2, (height - th)//2 - 12), text, font=font, fill="white")
     img.save(filepath)
 
 def generate_click_sound(filepath, duration=1.0, active_duration=0.08, sample_rate=44100):
@@ -154,30 +152,30 @@ def generate_click_sound(filepath, duration=1.0, active_duration=0.08, sample_ra
 
 def generate_bell_icon(filepath):
     print("Generating bell icon...")
-    width, height = 100, 100
+    width, height = 150, 150
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
     fill = (255, 215, 0, 255) # Gold
-    draw.pieslice([25, 10, 75, 60], 180, 360, fill=fill)
-    draw.rectangle([25, 35, 75, 70], fill=fill)
-    draw_rounded_rect(draw, (15, 70, 85, 85), 5, fill)
-    draw.pieslice([40, 85, 60, 100], 0, 180, fill=fill)
+    draw.pieslice([37, 15, 112, 90], 180, 360, fill=fill)
+    draw.rectangle([37, 52, 112, 105], fill=fill)
+    draw_rounded_rect(draw, (22, 105, 127, 127), 7, fill)
+    draw.pieslice([60, 127, 90, 150], 0, 180, fill=fill)
     
     img.save(filepath)
 
 def generate_cta_text_banner(filepath, text):
     print(f"Generating CTA text banner: {text}...")
-    width, height = 600, 70
+    width, height = 850, 110
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
     # Dark semi-transparent pill background with gold border
-    draw_rounded_rect(draw, (0, 0, width, height), 15, (15, 15, 20, 220))
-    draw.rounded_rectangle([2, 2, width-2, height-2], radius=15, outline=(255, 215, 0, 255), width=3)
+    draw_rounded_rect(draw, (0, 0, width, height), 25, (15, 15, 20, 220))
+    draw.rounded_rectangle([2, 2, width-2, height-2], radius=25, outline=(255, 215, 0, 255), width=4)
     
     try:
-        font = ImageFont.truetype("arialbd.ttf", 32)
+        font = ImageFont.truetype("arialbd.ttf", 44)
     except:
         font = ImageFont.load_default()
         
@@ -187,7 +185,7 @@ def generate_cta_text_banner(filepath, text):
     except AttributeError:
         tw, th = draw.textsize(text, font=font)
         
-    draw.text(((width - tw)//2, (height - th)//2 - 4), text, font=font, fill=(255, 255, 255, 255))
+    draw.text(((width - tw)//2, (height - th)//2 - 6), text, font=font, fill=(255, 255, 255, 255))
     img.save(filepath)
 
 def generate_cta_assets(assets_dir):
