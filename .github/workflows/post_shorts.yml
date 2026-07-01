@@ -39,9 +39,9 @@ jobs:
           TOKEN_B64: ${{ secrets.YOUTUBE_TOKEN_BASE64 }}
           SECRET_B64: ${{ secrets.CLIENT_SECRET_BASE64 }}
         run: |
-          # Recreates the authentication files from GitHub Secrets safely via env variables
-          echo "$TOKEN_B64" | base64 -d > token.pickle
-          echo "$SECRET_B64" | base64 -d > client_secret.json
+          # Recreates the authentication files from GitHub Secrets safely via env variables, ignoring garbage characters (spaces, hidden characters, etc.)
+          echo "$TOKEN_B64" | base64 -d -i > token.pickle
+          echo "$SECRET_B64" | base64 -d -i > client_secret.json
 
       - name: Run Pipeline
         env:
