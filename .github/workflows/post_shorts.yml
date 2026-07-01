@@ -2,8 +2,9 @@ name: Generate and Post YouTube Short
 
 on:
   schedule:
-    # Runs at 18:00 UTC (15:00 BRT - Brasília time, a prime time for posting Shorts)
-    - cron: '0 18 * * *'
+    - cron: '0 12 * * *' # 7:00 AM EST / 8:00 BRT (US Morning)
+    - cron: '0 17 * * *' # 12:00 PM EST / 14:00 BRT (US Lunch)
+    - cron: '0 23 * * *' # 6:00 PM EST / 20:00 BRT (US Evening)
   workflow_dispatch: # Allows you to trigger this manually from the GitHub website whenever you want!
 
 permissions:
