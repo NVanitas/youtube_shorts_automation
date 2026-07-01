@@ -207,25 +207,7 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
                 
             processed_clips.append(clip)
             
-    # Check if a custom thumbnail exists to bake it as the start, middle, and final frames of the video (YouTube Shorts cover selector standard workaround)
-    thumb_path = video_dir / "thumbnail.jpg"
-    if thumb_path.exists():
-        print("Baking custom high-CTR thumbnail as first, middle, and final frames (0.15s each)...")
-        try:
-            # 1. Start frame (0.15s)
-            thumb_start = ImageClip(str(thumb_path)).with_duration(0.15).resized((1080, 1920))
-            processed_clips.insert(0, thumb_start)
-            
-            # 2. Mid frame (0.15s)
-            thumb_mid = ImageClip(str(thumb_path)).with_duration(0.15).resized((1080, 1920))
-            mid_idx = len(processed_clips) // 2
-            processed_clips.insert(mid_idx, thumb_mid)
-            
-            # 3. End frame (0.15s)
-            thumb_end = ImageClip(str(thumb_path)).with_duration(0.15).resized((1080, 1920))
-            processed_clips.append(thumb_end)
-        except Exception as e:
-            print(f"Notice: Could not bake thumbnail clips: {e}")
+
 
     # Concatenate all scenes into the final background slideshow
     # Clean cuts + our 4-variant transition SFX library is the professional standard for Shorts
