@@ -1,0 +1,20 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local Settings / Secrets
+.env
+token.pickle
+client_secret.json
+
+# Build Outputs & Renders
+output/
+temp/
+*.mp4

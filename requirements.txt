@@ -1,0 +1,13 @@
+google-generativeai
+python-dotenv
+edge-tts
+stable-ts
+moviepy
+pysubs2
+static-ffmpeg
+requests
+tqdm
+aiohttp
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
