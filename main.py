@@ -170,7 +170,7 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
             # Define first automated comment text
             comment_text = "Which of these facts surprised you the most? Comment below! 👇" if niche_key == "facts" else "Which lesson do you need most in your life right now? Comment below! 👇"
 
-            youtube_uploader.upload_short(
+            uploaded_url = youtube_uploader.upload_short(
                 video_path=final_video,
                 title=video_title,
                 description=video_description,
@@ -179,6 +179,19 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
                 privacy_status="public",
                 comment_text=comment_text
             )
+
+            # Clean up local project directory to save space if upload was successful
+            if uploaded_url and video_dir.exists():
+                print(f"\n[CLEANUP] Deleting local video files to save disk space: {video_dir.name}")
+                try:
+                    import shutil
+                    # Close video reader resources before deleting directory
+                    import gc
+                    gc.collect()
+                    shutil.rmtree(str(video_dir))
+                    print("[CLEANUP] Local files cleaned up successfully!")
+                except Exception as ce:
+                    print(f"[CLEANUP] Notice: Could not delete local folder: {ce}")
         
         # Actionable tips & Pinned Comment Recommendation
         print("\nNext steps for growth and monetization:")
