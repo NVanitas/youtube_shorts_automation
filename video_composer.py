@@ -66,6 +66,10 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
     except Exception as e:
         print(f"Error parsing ASS for CTA: {e}")
         
+    if cta_time is None:
+        cta_time = max(0.0, duration - 3.5)
+        print(f"No CTA keyword found in script. Defaulting CTA timestamp to {cta_time:.2f}s (3.5s before end).")
+        
     bell_path = BASE_DIR / "assets" / "bell.wav"
     click_path = BASE_DIR / "assets" / "click.wav"
     sub_img_path = BASE_DIR / "assets" / "subscribe.png"

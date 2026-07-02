@@ -22,7 +22,7 @@ NICHES = {
         "primary_color": "FFFFFF",   # White (RGB Hex)
         "highlight_color": "FFFF00", # Bright Yellow (RGB Hex)
         "outline_color": "000000",   # Black (RGB Hex)
-        "font_size": 100,            # Increased from 65 for maximum readability on mobile screens
+        "font_size": 80,             # Decreased from 100 to prevent mobile screen overflow
         "alignment": 2,              # Centered bottom in ASS
         "margin_v": 350,             # Vertical margin to position subtitles higher (out of player UI)
         "prompt_template": """
@@ -62,7 +62,7 @@ RULES for "keywords":
         "primary_color": "F0F0F0",   # Off-white (RGB Hex)
         "highlight_color": "FFD700", # Deep Gold (RGB Hex)
         "outline_color": "0F0F0F",   # Dark outline
-        "font_size": 100,            # Increased from 65 for maximum readability on mobile screens
+        "font_size": 80,             # Decreased from 100 to prevent mobile screen overflow
         "alignment": 2,              # Centered bottom in ASS
         "margin_v": 350,             # Vertical margin to position subtitles higher (out of player UI)
         "prompt_template": """
