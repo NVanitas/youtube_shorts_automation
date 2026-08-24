@@ -1,11 +1,16 @@
 """
-generate_reactions.py - Generates pre-made Rexy reaction PNG stickers with transparent backgrounds.
+generate_reactions.py - Generates cute comic chibi Rexy reaction PNG stickers with a clean white die-cut border.
 
-Uses a strictly consistent chibi base character prompt and rembg AI segmentation
-to produce flawless transparent PNGs with matching aesthetic across all reactions.
+Aesthetic Style:
+- 2D/Cel-shaded Kawaii Comic Chibi Mascot
+- Crisp comic ink outlines & vibrant pastel palette
+- Cute blushing cheeks & expressive comic faces
+- Isolated with rembg AI segmentation
+- Clean solid white die-cut sticker border around the silhouette
+- 100% transparent background outside the white border
 
-Run this script ONCE to create or refresh the reaction bank in assets/reactions/.
-These PNGs are reused across all future videos without regeneration.
+Run with --force to regenerate all reactions:
+    python generate_reactions.py --force
 """
 import os
 import sys
@@ -13,6 +18,8 @@ import time
 import random
 from pathlib import Path
 from PIL import Image
+import numpy as np
+from scipy.ndimage import binary_dilation
 
 # Reconfigure stdout/stderr to UTF-8 on Windows
 if sys.platform == "win32":
@@ -25,51 +32,80 @@ if sys.platform == "win32":
 from config import BASE_DIR
 from utils import download_ai_image
 
-# Unified Chibi Base Character Description (Identical across all reactions for 100% visual consistency)
+# Unified Comic Chibi Base Character Description (100% consistent across all reactions)
 CHARACTER_BASE_PROMPT = (
-    "cute chibi baby dinosaur character, adorable baby green T-Rex mascot, "
-    "light lime-green smooth skin with soft pale-yellow belly, "
-    "big glossy round black eyes with cute white reflections, friendly cute face, "
-    "wearing a small brown safari explorer hat with dark band, "
-    "small chubby round body, tiny short arms, small feet, cute tail, "
-    "smooth 3D cartoon vinyl toy render, Pixar 3D animation style, Disney chibi aesthetic, "
-    "studio lighting with soft shadows, solid pure white background, "
-    "full body standing pose, centered, isolated, 8k resolution"
+    "kawaii cute baby green T-Rex dinosaur chibi mascot, super cute 2D comic cartoon sticker style, "
+    "clean crisp dark comic ink outlines, cel-shaded vibrant pastel colors, adorable huge sparkly comic eyes, "
+    "cute pink blush on chubby cheeks, wearing a small brown safari explorer hat with dark band, "
+    "soft pale-yellow belly, tiny round chubby body, tiny short arms, small feet and tail, "
+    "flat solid pure white background, cute comic sticker illustration, Japanese line sticker aesthetic, "
+    "2D vector art style, high quality"
 )
 
-# Reaction-specific pose and facial expression definitions
+# Reaction-specific comic poses and facial expressions
 REACTION_DEFINITIONS = {
-    "shocked": "both hands on cheeks, mouth wide open in a big O shape, huge round wide-open eyes, looking completely shocked and stunned, jaw dropped, hilarious cute reaction, facing camera",
-    "scared": "shivering and trembling with fear, knees knocking together, teeth chattering, sweating drop on head, terrified cute wide-eyed expression, facing camera",
-    "thinking": "one tiny arm tapping chin, looking upward and to the side with curious raised eyebrow, thoughtful inquisitive expression, facing camera",
-    "excited": "jumping joyfully in the air with tiny arms raised high, huge happy open-mouth smile, eyes squinted in joy, sparkles, energetic cute celebration pose, facing camera",
-    "mindblown": "eyes wide open with glowing star reflections, both hands holding head in utter disbelief and amazement, mouth wide open in awe, blown away expression, facing camera",
-    "curious": "holding a vintage magnifying glass up to one eye, peering through the glass, leaning slightly forward, curious detective expression, facing camera",
-    "crying": "crying with dramatic cartoon tears streaming down cheeks, sad pouty mouth, hands wiping eyes, dramatically sad cute expression, facing camera",
-    "waving": "waving friendly with one tiny hand, other hand on hip, bright warm welcoming smile, happy friendly greeting pose, facing camera",
+    "shocked": "both hands on cheeks, mouth wide open in a dramatic comic O shape, huge wide-open starry shocked eyes, sweat drop on forehead, jaw dropped, dramatic funny comic shock reaction, facing camera",
+    "scared": "shivering and trembling with fear, knees knocking together, teeth chattering, sweating cartoon drops, terrified cute wide-eyed expression with spiral eyes, funny scared comic pose, facing camera",
+    "thinking": "one tiny arm tapping chin thoughtfully, other hand on hip, looking upward with a cute question mark above head, curious raised comic eyebrow, contemplative adorable expression, facing camera",
+    "excited": "jumping joyfully in the air with tiny arms raised high, huge happy open-mouth smile, eyes squinted in cute happy arcs, sparkles and stars around, energetic kawaii celebration pose, facing camera",
+    "mindblown": "eyes wide open with glowing starburst reflections, hands on head in utter comic disbelief, mouth wide open in awe, comic explosion lines around head, mind blown expression, facing camera",
+    "curious": "holding a vintage magnifying glass up to one eye with an oversized curious eye, leaning slightly forward, cute detective magnifying glass pose, inquisitive expression, facing camera",
+    "crying": "crying with dramatic comic waterfall tears streaming down cheeks, sad cute pouty mouth, tiny hands wiping eyes, dramatically sad adorable comic expression, facing camera",
+    "waving": "waving friendly with one tiny hand, other hand on round tummy, bright warm welcoming smile, happy kawaii greeting pose, facing camera",
 }
 
 REACTIONS_DIR = BASE_DIR / "assets" / "reactions"
 TARGET_SIZE = (400, 500)
+BORDER_THICKNESS = 12  # White sticker die-cut border radius in pixels
+
+
+def add_white_sticker_border(img_rgba, border_radius=BORDER_THICKNESS):
+    """Adds a smooth, crisp, uniform solid white die-cut sticker outline around the character.
+    
+    Args:
+        img_rgba (PIL.Image.Image): RGBA image with transparent background.
+        border_radius (int): Pixel radius of the white outline border.
+        
+    Returns:
+        PIL.Image.Image: RGBA image with the white sticker border and transparent background.
+    """
+    alpha = np.array(img_rgba.split()[-1])
+    mask = alpha > 20
+    
+    # Generate circular structuring element for smooth rounded border
+    radius = border_radius
+    y, x = np.ogrid[-radius:radius+1, -radius:radius+1]
+    struct = x*x + y*y <= radius*radius
+    
+    # Dilate mask outwards
+    dilated_mask = binary_dilation(mask, structure=struct)
+    
+    # Create RGBA output canvas
+    out_arr = np.zeros((*alpha.shape, 4), dtype=np.uint8)
+    
+    # Fill dilated outline with solid white
+    out_arr[dilated_mask] = [255, 255, 255, 255]
+    
+    # Paste original character on top
+    orig_arr = np.array(img_rgba)
+    fg_mask = alpha > 0
+    out_arr[fg_mask] = orig_arr[fg_mask]
+    
+    return Image.fromarray(out_arr)
 
 
 def remove_background_ai(img):
-    """Remove background using rembg deep learning model (U2-Net).
-    
-    Produces clean alpha matting with smooth anti-aliased edges regardless of background color.
-    """
+    """Remove background using rembg deep learning model (U2-Net)."""
     try:
         import rembg
         return rembg.remove(img)
     except Exception as e:
-        print(f"  [rembg fallback] Could not use rembg ({e}), using color flood fill...")
-        # Fallback to white/light background removal
+        print(f"  [rembg fallback] Could not use rembg ({e}), using color threshold...")
         img = img.convert("RGBA")
         datas = img.getdata()
         new_data = []
         for item in datas:
-            # If near white (R>240, G>240, B>240) make transparent
-            if item[0] > 235 and item[1] > 235 and item[2] > 235:
+            if item[0] > 240 and item[1] > 240 and item[2] > 240:
                 new_data.append((255, 255, 255, 0))
             else:
                 new_data.append(item)
@@ -78,7 +114,7 @@ def remove_background_ai(img):
 
 
 def generate_single_reaction(reaction_key, reaction_desc, output_path, retries=3):
-    """Generate a single reaction PNG with transparent background using the unified chibi prompt."""
+    """Generate a single reaction comic sticker with a clean white die-cut border."""
     prompt = f"{CHARACTER_BASE_PROMPT}, {reaction_desc}"
     
     temp_path = output_path.parent / f"_temp_{reaction_key}.jpg"
@@ -94,23 +130,26 @@ def generate_single_reaction(reaction_key, reaction_desc, output_path, retries=3
             # Load raw AI image
             raw_img = Image.open(temp_path).convert("RGB")
             
-            # Apply AI background removal
+            # 1. Apply AI background removal
             transparent_img = remove_background_ai(raw_img)
             
-            # Crop to content (remove empty transparent borders)
+            # 2. Crop to content
             bbox = transparent_img.getbbox()
             if bbox:
-                # Add slight padding inside bbox if possible
                 transparent_img = transparent_img.crop(bbox)
+                
+            # 3. Add clean white die-cut sticker border
+            bordered_img = add_white_sticker_border(transparent_img, border_radius=BORDER_THICKNESS)
             
-            # Resize to fit within target sticker size (maintaining aspect ratio)
-            transparent_img.thumbnail((TARGET_SIZE[0] - 20, TARGET_SIZE[1] - 20), Image.Resampling.LANCZOS)
+            # 4. Resize to fit inside target sticker canvas (leaving a small margin)
+            max_w, max_h = TARGET_SIZE[0] - 24, TARGET_SIZE[1] - 24
+            bordered_img.thumbnail((max_w, max_h), Image.Resampling.LANCZOS)
             
-            # Center on target-sized canvas
+            # 5. Center on target canvas (400x500 RGBA)
             canvas = Image.new("RGBA", TARGET_SIZE, (0, 0, 0, 0))
-            paste_x = (TARGET_SIZE[0] - transparent_img.width) // 2
-            paste_y = (TARGET_SIZE[1] - transparent_img.height) // 2
-            canvas.paste(transparent_img, (paste_x, paste_y), transparent_img)
+            paste_x = (TARGET_SIZE[0] - bordered_img.width) // 2
+            paste_y = (TARGET_SIZE[1] - bordered_img.height) // 2
+            canvas.paste(bordered_img, (paste_x, paste_y), bordered_img)
             
             # Save as PNG with full alpha channel
             canvas.save(output_path, "PNG", optimize=True)
@@ -119,7 +158,7 @@ def generate_single_reaction(reaction_key, reaction_desc, output_path, retries=3
             if temp_path.exists():
                 temp_path.unlink()
             
-            print(f"  [OK] {reaction_key}: saved to {output_path.name} ({canvas.size}, RGBA)")
+            print(f"  [OK] {reaction_key}: saved to {output_path.name} ({canvas.size}, comic chibi with white border)")
             return True
             
         except Exception as e:
@@ -145,7 +184,8 @@ def generate_all_reactions(force=False):
     REACTIONS_DIR.mkdir(parents=True, exist_ok=True)
     
     print("=" * 60)
-    print("  REXY CHIBI REACTION BANK GENERATOR (rembg AI Pipeline)")
+    print("  REXY KAWAII COMIC CHIBI STICKER GENERATOR")
+    print("  Style: 2D Comic Chibi + White Die-Cut Border")
     print("=" * 60)
     
     generated = 0
@@ -165,7 +205,7 @@ def generate_all_reactions(force=False):
             except:
                 pass
         
-        print(f"\nGenerating reaction: '{key}'...")
+        print(f"\nGenerating comic chibi sticker: '{key}'...")
         success = generate_single_reaction(key, desc, output_path)
         
         if success:
