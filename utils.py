@@ -56,8 +56,8 @@ def download_ai_image(keyword, dest_path):
     import time
     search_tag = requests.utils.quote(keyword.strip())
     
-    # Unique seed per call: combines random int + timestamp to guarantee uniqueness
-    unique_seed = int(time.time() * 1000) + random.randint(100000, 99999999)
+    # Unique seed per call: modulo 4294967290 to prevent 32-bit unsigned integer overflow (which causes Pollinations 500 errors)
+    unique_seed = (int(time.time() * 1000) + random.randint(100000, 99999999)) % 4294967290
     
     urls_to_try = [
         f"https://image.pollinations.ai/prompt/{search_tag}%20cinematic%20vertical%20hd?width=1080&height=1920&nologo=true&model=flux&seed={unique_seed}",
@@ -129,8 +129,8 @@ def download_pexels_video(query, dest_path, api_key):
         print(f"Failed to download video from Pexels for '{query}': {e}")
         return None
 
-def prepare_background_assets(niche_key, keywords, video_dir):
-    """Downloads or prepares background assets matching the script keywords.
+def prepare_background_assets(niche_key, scenes, video_dir):
+    """Downloads or prepares background assets matching the script scenes.
     
     Returns:
         list of Path: List of paths to the downloaded media assets
@@ -141,9 +141,13 @@ def prepare_background_assets(niche_key, keywords, video_dir):
     assets_dir = video_dir / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
             
-    print(f"\nPreparing background slideshow assets for {len(keywords)} scenes:")
-    for idx, kw in enumerate(keywords):
-        if pexels_key:
+    print(f"\nPreparing background slideshow assets for {len(scenes)} scenes:")
+    for idx, scene in enumerate(scenes):
+        kw = scene["keyword"]
+        reaction = scene["reaction"]
+        
+        # Bypass Pexels videos for facts niche to guarantee recurring character images
+        if pexels_key and niche_key != "facts":
             # Try to download video first
             video_dest = assets_dir / f"bg_asset_{idx}.mp4"
             downloaded = download_pexels_video(kw, video_dest, pexels_key)
@@ -152,9 +156,16 @@ def prepare_background_assets(niche_key, keywords, video_dir):
                 continue
             print(f"Falling back to Pollinations AI image for '{kw}'...")
             
-        # Generate AI image matching the specific keyword
+        # Build prompt text for AI image generation
+        if niche_key == "facts":
+            character_style = "a cute baby green T-Rex dinosaur wearing a little brown explorer hat"
+            prompt_text = f"3D cartoon render of {character_style}, {reaction}, in a background depicting {kw}, vibrant colors, disney pixar style, detailed 3D illustration, vertical 9:16 aspect ratio"
+        else:
+            prompt_text = f"{kw} cinematic vertical hd"
+            
+        # Generate AI image matching the prompt
         image_dest = assets_dir / f"bg_asset_{idx}.jpg"
-        downloaded = download_ai_image(kw, image_dest)
+        downloaded = download_ai_image(prompt_text, image_dest)
         
         # Verify image integrity
         valid_asset = False

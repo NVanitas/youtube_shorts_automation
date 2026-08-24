@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import re
 import random
@@ -6,6 +7,15 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 import google.generativeai as genai
 from dotenv import load_dotenv
+
+# Reconfigure stdout/stderr to UTF-8 on Windows to support console emojis
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        pass
+
 from config import NICHES
 
 # Load environment variables
@@ -279,13 +289,25 @@ def _extract_fields_regex(raw_text):
     
     return title, script, keywords
 
+
+REXY_REACTIONS = [
+    "looking shocked and wide-eyed",
+    "inspecting with a huge magnifying glass",
+    "shivering in fear in the dark",
+    "jumping with excitement and smiling",
+    "thinking deeply with a tiny hand on its chin",
+    "giggling and pointing at the viewer",
+    "looking amazed with glowing star eyes",
+    "wearing a little explorer outfit and saluting"
+]
+
 def generate_script(niche_key, video_dir, topic=None):
-    """Generates a structured video script, viral title, and keywords using Gemini API.
+    """Generates a structured video script, viral title, and keywords/scenes using Gemini API.
     
     Every generated script is saved to history to guarantee zero repetition.
     
     Returns:
-        dict: {"title": str, "script": str, "keywords": list}
+        dict: {"title": str, "script": str, "scenes": list, "keywords": list}
     """
     if niche_key not in NICHES:
         raise ValueError(f"Niche '{niche_key}' is not configured.")
@@ -317,7 +339,7 @@ def generate_script(niche_key, video_dir, topic=None):
             dir_suffix = random.randint(0, 99999)
         prompt += f"\n(UniqueID: {random.randint(100000, 999999)}-{dir_suffix})"
         
-    print(f"Generating script, viral title and keywords for niche '{niche['name']}' using Gemini...")
+    print(f"Generating script, viral title and keywords/scenes for niche '{niche['name']}' using Gemini...")
     
     # Check if API key is configured
     api_key = os.getenv("GEMINI_API_KEY")
@@ -387,16 +409,46 @@ def generate_script(niche_key, video_dir, topic=None):
         
         # Validate and package
         if data and isinstance(data.get("script"), str) and len(data["script"].strip()) > 30:
-            keywords = data.get("keywords", [])
-            if not isinstance(keywords, list):
-                keywords = []
+            scenes = data.get("scenes", [])
+            if not isinstance(scenes, list):
+                scenes = []
                 
-            target_kw_count = 10 if niche_key == "facts" else 15
-            if len(keywords) < target_kw_count:
-                fallback_kws = random.choice(FALLBACKS[niche_key])["keywords"]
-                keywords += fallback_kws[len(keywords):target_kw_count]
-            elif len(keywords) > target_kw_count:
-                keywords = keywords[:target_kw_count]
+            # If no scenes are present but keywords are (like for Stoicism or regex fallbacks)
+            if not scenes:
+                keywords = data.get("keywords", [])
+                if not isinstance(keywords, list):
+                    keywords = []
+                # Map keywords to scenes
+                for idx, kw in enumerate(keywords):
+                    reaction = REXY_REACTIONS[idx % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                    scenes.append({"keyword": kw, "reaction": reaction})
+            else:
+                # Ensure each scene object is properly formatted
+                for idx, scene in enumerate(scenes):
+                    if not isinstance(scene, dict):
+                        scenes[idx] = {"keyword": str(scene), "reaction": ""}
+                    if "keyword" not in scenes[idx]:
+                        scenes[idx]["keyword"] = ""
+                    if "reaction" not in scenes[idx]:
+                        scenes[idx]["reaction"] = REXY_REACTIONS[idx % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                        
+            # Enforce scene count limit
+            target_kw_count = 7 if niche_key == "facts" else 15
+            if len(scenes) < target_kw_count:
+                # Add default scenes if count is too low
+                fallback_scenes = [
+                    {"keyword": "mind blowing universe", "reaction": "looking completely mindblown"},
+                    {"keyword": "curious science details", "reaction": "inspecting with a magnifying glass"}
+                ]
+                for i in range(target_kw_count - len(scenes)):
+                    fs = fallback_scenes[i % len(fallback_scenes)]
+                    reaction = REXY_REACTIONS[len(scenes) % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                    scenes.append({"keyword": fs["keyword"], "reaction": reaction})
+            elif len(scenes) > target_kw_count:
+                scenes = scenes[:target_kw_count]
+                
+            # Generate keywords list for compatibility with other parts of the pipeline
+            keywords = [s["keyword"].strip() for s in scenes if s.get("keyword")]
                 
             title = str(data.get("title", "")).strip().replace('\\"', '"').replace('\n', ' ')
             if not title:
@@ -437,6 +489,11 @@ def generate_script(niche_key, video_dir, topic=None):
                     script_content = s2
                     if k2 and len(k2) >= 5:
                         keywords = k2[:15]
+                        # Remap scenes for facts niche
+                        scenes = []
+                        for idx, kw in enumerate(keywords):
+                            reaction = REXY_REACTIONS[idx % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                            scenes.append({"keyword": kw, "reaction": reaction})
             
             # Save to history
             used_titles.append(title)
@@ -448,6 +505,7 @@ def generate_script(niche_key, video_dir, topic=None):
             result = {
                 "title": title,
                 "script": script_content,
+                "scenes": scenes,
                 "keywords": [k.strip() for k in keywords]
             }
             

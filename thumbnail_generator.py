@@ -30,7 +30,12 @@ def generate_thumbnail(niche_key, title, keywords, output_path):
     temp_bg_path = output_path.parent / "temp_thumb_bg.jpg"
     
     # 1. Download vertical background image matching primary keyword
-    prompt_kw = f"dramatic cinematic vertical {primary_kw}"
+    if niche_key == "facts":
+        character_style = "a cute baby green T-Rex dinosaur wearing a little brown explorer hat"
+        prompt_kw = f"3D cartoon render of {character_style}, looking completely mindblown, in a background depicting {primary_kw}, vibrant colors, disney pixar style, detailed 3D illustration, vertical 9:16 aspect ratio"
+    else:
+        prompt_kw = f"dramatic cinematic vertical {primary_kw}"
+        
     download_ai_image(prompt_kw, temp_bg_path)
     
     try:

@@ -5,6 +5,14 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 
+# Reconfigure stdout/stderr to UTF-8 on Windows to support console emojis
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        pass
+
 # Load env variables at startup
 load_dotenv()
 
@@ -101,7 +109,7 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
     # Step 4: Asset Selection (Background slideshow assets and music)
     print("\n[4/5] Loading media assets (background slideshow & music)...")
     try:
-        bg_assets = prepare_background_assets(niche_key, keywords, video_dir)
+        bg_assets = prepare_background_assets(niche_key, script_data["scenes"], video_dir)
         bg_music_path = get_background_music(niche_key)
         print(f"Background Assets ({len(bg_assets)} files): {[a.name for a in bg_assets]}")
         print(f"Background Music: {bg_music_path.name}")

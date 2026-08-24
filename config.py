@@ -14,7 +14,7 @@ for directory in [OUTPUT_DIR, BACKGROUNDS_DIR, MUSIC_DIR]:
 # Niches Configuration
 NICHES = {
     "facts": {
-        "name": "Mind-Blowing Facts",
+        "name": "Kids Curiosities",
         "voice": "en-US-GuyNeural",  # Energetic male voice
         "rate": "+10%",              # Slightly faster for high-paced shorts
         "music_theme": "upbeat",
@@ -26,31 +26,37 @@ NICHES = {
         "alignment": 2,              # Centered bottom in ASS
         "margin_v": 350,             # Vertical margin to position subtitles higher (out of player UI)
         "prompt_template": """
-Create a highly engaging YouTube Shorts script in English about mind-blowing, shocking, or extremely interesting facts.
-You MUST respond with a raw JSON object ONLY, containing exactly three keys: "title", "script", and "keywords".
+Create a highly engaging, educational, and fun YouTube Shorts script in English for kids and general audiences about mind-blowing, fun, or mysterious facts.
+You MUST respond with a raw JSON object ONLY, containing exactly three keys: "title", "script", and "scenes".
 
 JSON Format:
-{{
-  "title": "A shocking, viral, high-CTR YouTube Short title in English with 1 emoji (max 65 chars)",
+{
+  "title": "A fun, high-CTR YouTube Short title in English with 1 emoji (max 65 chars)",
   "script": "The full voiceover script text",
-  "keywords": ["keyword1", "keyword2", "keyword3", "keyword4"]
-}}
+  "scenes": [
+    {
+      "keyword": "a short 2-3 word visual theme of the fact scene (e.g. giant glowing jellyfish, boiling underwater geyser)",
+      "reaction": "a short 4-8 word description of the character's reaction and pose in that scene (e.g. looking shocked and sweating, holding a magnifying glass with a giant grin, shivering with fear in the dark)"
+    }
+  ]
+}
 
 RULES for "title":
-- Make it intriguing, mysterious, or shocking to maximize Click-Through Rate (CTR). Include 1 relevant emoji.
+- Make it super interesting, curious, or funny. Include 1 relevant emoji.
 
 RULES for "script":
-- Keep it extremely tight, under 65-75 words, so it fits in a fast-paced, high-retention 15-18 second video. Shorter videos easily get 120%+ retention, which makes them go viral!
+- Keep it under 65-75 words so it fits in a fast-paced 15-18 second video.
 - The script MUST follow this structure:
-  1. An instant, shocking, or terrifying HOOK in the first 1.5 seconds to stop the user from swiping away (e.g., "The ocean is hiding a terrifying secret...").
-  2. Exactly 2 highly mind-blowing, short facts (instead of 3 long ones). Keep them punchy and intense!
-  3. A seamless, invisible loop ending. The final sentence MUST merge grammatically and logically into the first word of the hook (e.g. if the hook is "Deep space is...", end the script with "And that is why the dark abyss of...").
-- Use plain text only. No markdown, no emojis, no asterisks, no speaker names, no stage directions.
+  1. An instant, fun, or mysterious HOOK in the first 2 seconds (e.g. "Did you know there's a place on Earth where...").
+  2. Exactly 2 mind-blowing or funny facts. Keep them very simple, short, and punchy.
+  3. A seamless loop ending: the final sentence must connect back to the first word of the hook.
+- Use plain text only. No markdown, no emojis, no speaker names, no stage directions.
 
-RULES for "keywords":
-- It must contain exactly 8-10 high-impact keywords or short 1-2 word search terms in English (matching the shorter script).
-- The first keyword MUST be highly dramatic, visual, and shocking to guarantee a jaw-dropping background image in the first 2 seconds.
-- The keywords should correspond strictly to the chronological visual progression of the facts.
+RULES for "scenes":
+- You must generate exactly 6-7 scenes to cover the video duration (each scene plays for ~2.5 - 3 seconds).
+- For each scene, specify:
+  - "keyword": what is happening in the background matching the script timeline.
+  - "reaction": how the main character (Rexy, a cute baby green T-Rex dinosaur wearing a little brown explorer hat) is reacting to this specific fact. Make the reactions highly expressive, funny, and child-friendly!
 """
     },
     "stoicism": {
