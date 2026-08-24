@@ -1,7 +1,10 @@
 """
 generate_reactions.py - Generates pre-made Rexy reaction PNG stickers with transparent backgrounds.
 
-Run this script ONCE to create the reaction bank in assets/reactions/.
+Uses a strictly consistent chibi base character prompt and rembg AI segmentation
+to produce flawless transparent PNGs with matching aesthetic across all reactions.
+
+Run this script ONCE to create or refresh the reaction bank in assets/reactions/.
 These PNGs are reused across all future videos without regeneration.
 """
 import os
@@ -10,7 +13,6 @@ import time
 import random
 from pathlib import Path
 from PIL import Image
-import numpy as np
 
 # Reconfigure stdout/stderr to UTF-8 on Windows
 if sys.platform == "win32":
@@ -23,76 +25,62 @@ if sys.platform == "win32":
 from config import BASE_DIR
 from utils import download_ai_image
 
-# Reaction definitions: (filename_suffix, AI prompt description)
-REACTION_DEFINITIONS = {
-    "shocked": "looking extremely shocked with wide open mouth and huge round eyes, hands on cheeks",
-    "scared": "trembling and sweating with a terrified expression, teeth chattering",
-    "thinking": "rubbing chin with a tiny hand, looking upward with a thoughtful curious expression",
-    "excited": "jumping in the air with arms raised, huge smile, eyes sparkling with joy",
-    "mindblown": "head tilted back in total amazement, jaw dropped, stars around head",
-    "curious": "holding a large magnifying glass and leaning forward with one eye squinting",
-    "crying": "crying with big cartoon tears streaming down, sad pouty face",
-    "waving": "smiling warmly and waving at the viewer with one hand, friendly pose",
-}
-
+# Unified Chibi Base Character Description (Identical across all reactions for 100% visual consistency)
 CHARACTER_BASE_PROMPT = (
-    "cute baby green T-Rex dinosaur cartoon character wearing a little brown explorer hat, "
-    "full body, chibi style, sticker art, thick black outline, "
-    "isolated on solid bright green background #00FF00, "
-    "no shadows, no ground, clean vector edges, centered, "
-    "3D cartoon render, disney pixar style"
+    "cute chibi baby dinosaur character, adorable baby green T-Rex mascot, "
+    "light lime-green smooth skin with soft pale-yellow belly, "
+    "big glossy round black eyes with cute white reflections, friendly cute face, "
+    "wearing a small brown safari explorer hat with dark band, "
+    "small chubby round body, tiny short arms, small feet, cute tail, "
+    "smooth 3D cartoon vinyl toy render, Pixar 3D animation style, Disney chibi aesthetic, "
+    "studio lighting with soft shadows, solid pure white background, "
+    "full body standing pose, centered, isolated, 8k resolution"
 )
+
+# Reaction-specific pose and facial expression definitions
+REACTION_DEFINITIONS = {
+    "shocked": "both hands on cheeks, mouth wide open in a big O shape, huge round wide-open eyes, looking completely shocked and stunned, jaw dropped, hilarious cute reaction, facing camera",
+    "scared": "shivering and trembling with fear, knees knocking together, teeth chattering, sweating drop on head, terrified cute wide-eyed expression, facing camera",
+    "thinking": "one tiny arm tapping chin, looking upward and to the side with curious raised eyebrow, thoughtful inquisitive expression, facing camera",
+    "excited": "jumping joyfully in the air with tiny arms raised high, huge happy open-mouth smile, eyes squinted in joy, sparkles, energetic cute celebration pose, facing camera",
+    "mindblown": "eyes wide open with glowing star reflections, both hands holding head in utter disbelief and amazement, mouth wide open in awe, blown away expression, facing camera",
+    "curious": "holding a vintage magnifying glass up to one eye, peering through the glass, leaning slightly forward, curious detective expression, facing camera",
+    "crying": "crying with dramatic cartoon tears streaming down cheeks, sad pouty mouth, hands wiping eyes, dramatically sad cute expression, facing camera",
+    "waving": "waving friendly with one tiny hand, other hand on hip, bright warm welcoming smile, happy friendly greeting pose, facing camera",
+}
 
 REACTIONS_DIR = BASE_DIR / "assets" / "reactions"
 TARGET_SIZE = (400, 500)
 
 
-def chroma_key_green(img, tolerance=80):
-    """Remove bright green (#00FF00) background from an image and replace with transparency.
+def remove_background_ai(img):
+    """Remove background using rembg deep learning model (U2-Net).
     
-    Uses numpy vectorized operations for speed.
+    Produces clean alpha matting with smooth anti-aliased edges regardless of background color.
     """
-    img = img.convert("RGBA")
-    data = np.array(img)
-    
-    # Target green: R=0, G=255, B=0
-    r, g, b, a = data[:, :, 0], data[:, :, 1], data[:, :, 2], data[:, :, 3]
-    
-    # Green-dominant mask: G is high, R and B are relatively low
-    green_mask = (
-        (g > 150) &
-        (g > r + tolerance) &
-        (g > b + tolerance)
-    )
-    
-    # Also catch near-pure-green pixels
-    pure_green_mask = (
-        (g > 200) &
-        (r < 100) &
-        (b < 100)
-    )
-    
-    combined_mask = green_mask | pure_green_mask
-    
-    # Set alpha to 0 for green pixels
-    data[combined_mask, 3] = 0
-    
-    # Soften edges: for pixels adjacent to transparent ones, reduce alpha slightly
     try:
-        from scipy.ndimage import binary_dilation
-        edge_mask = binary_dilation(combined_mask, iterations=1) & ~combined_mask
-        data[edge_mask, 3] = (data[edge_mask, 3] * 0.5).astype(np.uint8)
-    except ImportError:
-        pass  # scipy not available, skip edge softening
-    
-    return Image.fromarray(data)
+        import rembg
+        return rembg.remove(img)
+    except Exception as e:
+        print(f"  [rembg fallback] Could not use rembg ({e}), using color flood fill...")
+        # Fallback to white/light background removal
+        img = img.convert("RGBA")
+        datas = img.getdata()
+        new_data = []
+        for item in datas:
+            # If near white (R>240, G>240, B>240) make transparent
+            if item[0] > 235 and item[1] > 235 and item[2] > 235:
+                new_data.append((255, 255, 255, 0))
+            else:
+                new_data.append(item)
+        img.putdata(new_data)
+        return img
 
 
 def generate_single_reaction(reaction_key, reaction_desc, output_path, retries=3):
-    """Generate a single reaction PNG with transparent background."""
+    """Generate a single reaction PNG with transparent background using the unified chibi prompt."""
     prompt = f"{CHARACTER_BASE_PROMPT}, {reaction_desc}"
     
-    # Temp file for raw AI image
     temp_path = output_path.parent / f"_temp_{reaction_key}.jpg"
     
     for attempt in range(retries):
@@ -103,19 +91,20 @@ def generate_single_reaction(reaction_key, reaction_desc, output_path, retries=3
                 time.sleep(2)
                 continue
             
-            # Load and process with chroma key
-            raw_img = Image.open(temp_path).convert("RGBA")
+            # Load raw AI image
+            raw_img = Image.open(temp_path).convert("RGB")
             
-            # Apply chroma key to remove green background
-            transparent_img = chroma_key_green(raw_img)
+            # Apply AI background removal
+            transparent_img = remove_background_ai(raw_img)
             
             # Crop to content (remove empty transparent borders)
             bbox = transparent_img.getbbox()
             if bbox:
+                # Add slight padding inside bbox if possible
                 transparent_img = transparent_img.crop(bbox)
             
-            # Resize to target sticker size, maintaining aspect ratio
-            transparent_img.thumbnail(TARGET_SIZE, Image.Resampling.LANCZOS)
+            # Resize to fit within target sticker size (maintaining aspect ratio)
+            transparent_img.thumbnail((TARGET_SIZE[0] - 20, TARGET_SIZE[1] - 20), Image.Resampling.LANCZOS)
             
             # Center on target-sized canvas
             canvas = Image.new("RGBA", TARGET_SIZE, (0, 0, 0, 0))
@@ -123,14 +112,14 @@ def generate_single_reaction(reaction_key, reaction_desc, output_path, retries=3
             paste_y = (TARGET_SIZE[1] - transparent_img.height) // 2
             canvas.paste(transparent_img, (paste_x, paste_y), transparent_img)
             
-            # Save as PNG with full alpha
-            canvas.save(output_path, "PNG")
+            # Save as PNG with full alpha channel
+            canvas.save(output_path, "PNG", optimize=True)
             
             # Clean up temp file
             if temp_path.exists():
                 temp_path.unlink()
             
-            print(f"  [OK] {reaction_key}: saved to {output_path.name} ({canvas.size})")
+            print(f"  [OK] {reaction_key}: saved to {output_path.name} ({canvas.size}, RGBA)")
             return True
             
         except Exception as e:
@@ -147,12 +136,16 @@ def generate_single_reaction(reaction_key, reaction_desc, output_path, retries=3
     return False
 
 
-def generate_all_reactions():
-    """Generate all reaction PNGs if they don't already exist."""
+def generate_all_reactions(force=False):
+    """Generate all reaction PNGs.
+    
+    Args:
+        force (bool): If True, regenerates all reaction PNGs even if they already exist.
+    """
     REACTIONS_DIR.mkdir(parents=True, exist_ok=True)
     
     print("=" * 60)
-    print("  REXY REACTION BANK GENERATOR")
+    print("  REXY CHIBI REACTION BANK GENERATOR (rembg AI Pipeline)")
     print("=" * 60)
     
     generated = 0
@@ -162,7 +155,7 @@ def generate_all_reactions():
     for key, desc in REACTION_DEFINITIONS.items():
         output_path = REACTIONS_DIR / f"reaction_{key}.png"
         
-        if output_path.exists():
+        if not force and output_path.exists():
             try:
                 with Image.open(output_path) as img:
                     if img.mode == "RGBA" and img.size == TARGET_SIZE:
@@ -172,7 +165,7 @@ def generate_all_reactions():
             except:
                 pass
         
-        print(f"\nGenerating reaction: '{key}' ({desc[:50]}...)")
+        print(f"\nGenerating reaction: '{key}'...")
         success = generate_single_reaction(key, desc, output_path)
         
         if success:
@@ -211,4 +204,5 @@ def get_available_reactions():
 
 
 if __name__ == "__main__":
-    generate_all_reactions()
+    force_run = "--force" in sys.argv or "-f" in sys.argv
+    generate_all_reactions(force=force_run)
