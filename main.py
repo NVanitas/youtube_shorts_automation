@@ -70,7 +70,14 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
             generate_overlay.generate_light_leak(str(light_leak_path))
         generate_cta.generate_cta_assets(str(BASE_DIR / "assets"))
         generate_transitions.generate_all_transitions(str(BASE_DIR / "assets"))
-        print("Cinematic SFX and overlays generated successfully.")
+        
+        # Verify and generate Rexy character reaction stickers if needed
+        import generate_reactions
+        reactions_dir = BASE_DIR / "assets" / "reactions"
+        if not reactions_dir.exists() or len(list(reactions_dir.glob("reaction_*.png"))) < 4:
+            generate_reactions.generate_all_reactions()
+            
+        print("Cinematic SFX, overlays, and character stickers verified.")
     except Exception as e:
         print(f"Warning: Could not generate SFX or Overlays. {e}")
     
@@ -129,7 +136,7 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
         except Exception as te:
             print(f"Thumbnail generation notice: {te}")
             
-        final_video = compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles_path, video_dir)
+        final_video = compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles_path, video_dir, scenes=script_data.get("scenes"))
         
         # Step 6: Quality Gate
         print("\n[6/6] Running quality analysis...")

@@ -132,6 +132,9 @@ def download_pexels_video(query, dest_path, api_key):
 def prepare_background_assets(niche_key, scenes, video_dir):
     """Downloads or prepares background assets matching the script scenes.
     
+    For 'facts' niche, prioritizes stock VIDEO footage from Pexels
+    (the character is overlaid separately as a PNG sticker).
+    
     Returns:
         list of Path: List of paths to the downloaded media assets
     """
@@ -141,29 +144,21 @@ def prepare_background_assets(niche_key, scenes, video_dir):
     assets_dir = video_dir / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
             
-    print(f"\nPreparing background slideshow assets for {len(scenes)} scenes:")
+    print(f"\nPreparing background assets for {len(scenes)} scenes:")
     for idx, scene in enumerate(scenes):
         kw = scene["keyword"]
-        reaction = scene["reaction"]
         
-        # Bypass Pexels videos for facts niche to guarantee recurring character images
-        if pexels_key and niche_key != "facts":
-            # Try to download video first
+        if pexels_key:
+            # Try to download stock video first (preferred for all niches now)
             video_dest = assets_dir / f"bg_asset_{idx}.mp4"
             downloaded = download_pexels_video(kw, video_dest, pexels_key)
             if downloaded:
                 assets.append(downloaded)
                 continue
-            print(f"Falling back to Pollinations AI image for '{kw}'...")
+            print(f"  No Pexels video for '{kw}', falling back to AI image...")
             
-        # Build prompt text for AI image generation
-        if niche_key == "facts":
-            character_style = "a cute baby green T-Rex dinosaur wearing a little brown explorer hat"
-            prompt_text = f"3D cartoon render of {character_style}, {reaction}, in a background depicting {kw}, vibrant colors, disney pixar style, detailed 3D illustration, vertical 9:16 aspect ratio"
-        else:
-            prompt_text = f"{kw} cinematic vertical hd"
-            
-        # Generate AI image matching the prompt
+        # Fallback: Generate AI image (scenic background only, no character)
+        prompt_text = f"{kw} cinematic vertical hd dramatic lighting"
         image_dest = assets_dir / f"bg_asset_{idx}.jpg"
         downloaded = download_ai_image(prompt_text, image_dest)
         

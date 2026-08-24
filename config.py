@@ -35,8 +35,8 @@ JSON Format:
   "script": "The full voiceover script text",
   "scenes": [
     {
-      "keyword": "a short 2-3 word visual theme of the fact scene (e.g. giant glowing jellyfish, boiling underwater geyser)",
-      "reaction": "a short 4-8 word description of the character's reaction and pose in that scene (e.g. looking shocked and sweating, holding a magnifying glass with a giant grin, shivering with fear in the dark)"
+      "keyword": "a 2-4 word video search term for stock footage (e.g. deep ocean creatures, erupting volcano, outer space nebula)",
+      "reaction": "one of: shocked | scared | thinking | excited | mindblown | curious | crying | waving"
     }
   ]
 }
@@ -55,8 +55,8 @@ RULES for "script":
 RULES for "scenes":
 - You must generate exactly 6-7 scenes to cover the video duration (each scene plays for ~2.5 - 3 seconds).
 - For each scene, specify:
-  - "keyword": what is happening in the background matching the script timeline.
-  - "reaction": how the main character (Rexy, a cute baby green T-Rex dinosaur wearing a little brown explorer hat) is reacting to this specific fact. Make the reactions highly expressive, funny, and child-friendly!
+  - "keyword": a short, specific stock video search term that matches what is being described in the script at that moment. Use real-world visual terms (e.g. "underwater volcano", "giant squid tentacles", "lightning storm") NOT abstract concepts.
+  - "reaction": MUST be exactly one of these 8 values: shocked, scared, thinking, excited, mindblown, curious, crying, waving. Pick the reaction that best matches the emotional tone of that scene.
 """
     },
     "stoicism": {

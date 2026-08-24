@@ -29,13 +29,8 @@ def generate_thumbnail(niche_key, title, keywords, output_path):
     # Temp file for raw background image
     temp_bg_path = output_path.parent / "temp_thumb_bg.jpg"
     
-    # 1. Download vertical background image matching primary keyword
-    if niche_key == "facts":
-        character_style = "a cute baby green T-Rex dinosaur wearing a little brown explorer hat"
-        prompt_kw = f"3D cartoon render of {character_style}, looking completely mindblown, in a background depicting {primary_kw}, vibrant colors, disney pixar style, detailed 3D illustration, vertical 9:16 aspect ratio"
-    else:
-        prompt_kw = f"dramatic cinematic vertical {primary_kw}"
-        
+    # 1. Download vertical background image matching primary keyword (pure scenic background)
+    prompt_kw = f"dramatic cinematic vertical {primary_kw} hd dramatic lighting"
     download_ai_image(prompt_kw, temp_bg_path)
     
     try:
@@ -48,6 +43,22 @@ def generate_thumbnail(niche_key, title, keywords, output_path):
     # 2. Apply contrast and vignette darkening overlay
     enhancer = ImageEnhance.Contrast(img)
     img = enhancer.enhance(1.25) # Boost contrast by 25%
+    
+    # Overlay character sticker for facts niche
+    if niche_key == "facts":
+        try:
+            from generate_reactions import get_reaction_path
+            # Use mindblown or shocked for high CTR thumbnails
+            rexy_path = get_reaction_path("mindblown") or get_reaction_path("shocked")
+            if rexy_path and rexy_path.exists():
+                rexy_img = Image.open(rexy_path).convert("RGBA")
+                # Resize slightly larger for thumbnail prominence (450x550)
+                rexy_img = rexy_img.resize((450, 550), Image.Resampling.LANCZOS)
+                # Paste in bottom-right corner above bottom margin
+                img.paste(rexy_img, (580, 1300), rexy_img)
+                print(f"Added Rexy character sticker overlay to thumbnail ({rexy_path.name})")
+        except Exception as ce:
+            print(f"Notice: Could not overlay character on thumbnail: {ce}")
     
     overlay = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
     draw_overlay = ImageDraw.Draw(overlay)

@@ -10,9 +10,10 @@ from moviepy import VideoFileClip, AudioFileClip, CompositeAudioClip, ImageClip,
 from moviepy.video.fx import Loop
 from moviepy.audio.fx import AudioLoop
 from config import BASE_DIR
+from generate_reactions import get_reaction_path, REACTIONS_DIR
 
-def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles_ass_path, video_dir):
-    """Combines multiple background assets, voiceover, music, and burns subtitles into the final video."""
+def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles_ass_path, video_dir, scenes=None):
+    """Combines multiple background assets, voiceover, music, character overlays, and burns subtitles into the final video."""
     print("Initializing video composition...")
     
     # Paths for intermediate and final outputs
@@ -379,7 +380,69 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
                      .with_duration(dur_like)
                      .with_position(lambda t: slide_up(t, 1250, end_t=dur_like)))
         
-        cta_layers = [video_clip, like_clip]
+        cta_layers = [video_clip]
+        
+        # ============================================================
+        # CHARACTER REACTION OVERLAY (Rexy PNG stickers)
+        # ============================================================
+        if niche_key == "facts" and scenes:
+            import math as _math
+            
+            reaction_clips = []
+            duration_per_scene = 3.0
+            num_scenes = _math.ceil(duration / duration_per_scene)
+            
+            # Character overlay position and animation params
+            char_x = 620   # Bottom-right area (1080 - 400 - 60 margin)
+            char_y_base = 1250  # Above subtitles and progress bar
+            bounce_amplitude = 8  # Pixels of idle breathing bounce
+            slide_in_dur = 0.35  # Slide-in animation duration
+            
+            for i in range(min(num_scenes, len(scenes))):
+                scene = scenes[i % len(scenes)]
+                reaction_key = scene.get("reaction", "curious")
+                reaction_png = get_reaction_path(reaction_key)
+                
+                if not reaction_png:
+                    continue
+                
+                scene_start = i * duration_per_scene
+                scene_dur = min(duration_per_scene, duration - scene_start)
+                
+                if scene_dur <= 0:
+                    break
+                
+                def make_char_position(start_t, dur, x, y_base, amp, slide_dur):
+                    """Create a position function for the character overlay with slide-in + idle bounce."""
+                    def pos_func(t):
+                        # Slide-in from below during first frames
+                        if t < slide_dur:
+                            progress = t / slide_dur
+                            # Ease out cubic
+                            eased = 1 - (1 - progress) ** 3
+                            y = 1920 - ((1920 - y_base) * eased)
+                        else:
+                            # Idle breathing bounce
+                            y = y_base + amp * _math.sin(t * 3.0)
+                        return (x, int(y))
+                    return pos_func
+                
+                pos_fn = make_char_position(scene_start, scene_dur, char_x, char_y_base, bounce_amplitude, slide_in_dur)
+                
+                char_clip = (ImageClip(str(reaction_png))
+                             .with_start(scene_start)
+                             .with_duration(scene_dur)
+                             .with_position(pos_fn))
+                reaction_clips.append(char_clip)
+            
+            if reaction_clips:
+                cta_layers.extend(reaction_clips)
+                print(f"Added {len(reaction_clips)} character reaction overlays")
+        else:
+            pass  # No character overlay for non-facts niches
+        
+        # Add CTA elements
+        cta_layers.append(like_clip)
         
         # SUBSCRIBE animates at t+0.5 (only if enough time left)
         if cta_time + 0.5 < duration - 0.3:

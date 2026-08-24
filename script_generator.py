@@ -289,17 +289,8 @@ def _extract_fields_regex(raw_text):
     
     return title, script, keywords
 
-
-REXY_REACTIONS = [
-    "looking shocked and wide-eyed",
-    "inspecting with a huge magnifying glass",
-    "shivering in fear in the dark",
-    "jumping with excitement and smiling",
-    "thinking deeply with a tiny hand on its chin",
-    "giggling and pointing at the viewer",
-    "looking amazed with glowing star eyes",
-    "wearing a little explorer outfit and saluting"
-]
+# Valid reaction types that map to pre-generated PNG files in assets/reactions/
+VALID_REACTIONS = ["shocked", "scared", "thinking", "excited", "mindblown", "curious", "crying", "waving"]
 
 def generate_script(niche_key, video_dir, topic=None):
     """Generates a structured video script, viral title, and keywords/scenes using Gemini API.
@@ -420,7 +411,7 @@ def generate_script(niche_key, video_dir, topic=None):
                     keywords = []
                 # Map keywords to scenes
                 for idx, kw in enumerate(keywords):
-                    reaction = REXY_REACTIONS[idx % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                    reaction = VALID_REACTIONS[idx % len(VALID_REACTIONS)] if niche_key == "facts" else ""
                     scenes.append({"keyword": kw, "reaction": reaction})
             else:
                 # Ensure each scene object is properly formatted
@@ -429,8 +420,18 @@ def generate_script(niche_key, video_dir, topic=None):
                         scenes[idx] = {"keyword": str(scene), "reaction": ""}
                     if "keyword" not in scenes[idx]:
                         scenes[idx]["keyword"] = ""
-                    if "reaction" not in scenes[idx]:
-                        scenes[idx]["reaction"] = REXY_REACTIONS[idx % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                    reaction_val = scenes[idx].get("reaction", "").strip().lower()
+                    # Validate reaction is one of our pre-made types
+                    if reaction_val not in VALID_REACTIONS:
+                        # Try to infer the closest valid reaction from freeform text
+                        inferred = VALID_REACTIONS[idx % len(VALID_REACTIONS)]
+                        for vr in VALID_REACTIONS:
+                            if vr in reaction_val:
+                                inferred = vr
+                                break
+                        scenes[idx]["reaction"] = inferred
+                    else:
+                        scenes[idx]["reaction"] = reaction_val
                         
             # Enforce scene count limit
             target_kw_count = 7 if niche_key == "facts" else 15
@@ -442,7 +443,7 @@ def generate_script(niche_key, video_dir, topic=None):
                 ]
                 for i in range(target_kw_count - len(scenes)):
                     fs = fallback_scenes[i % len(fallback_scenes)]
-                    reaction = REXY_REACTIONS[len(scenes) % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                    reaction = VALID_REACTIONS[len(scenes) % len(VALID_REACTIONS)] if niche_key == "facts" else ""
                     scenes.append({"keyword": fs["keyword"], "reaction": reaction})
             elif len(scenes) > target_kw_count:
                 scenes = scenes[:target_kw_count]
@@ -492,7 +493,7 @@ def generate_script(niche_key, video_dir, topic=None):
                         # Remap scenes for facts niche
                         scenes = []
                         for idx, kw in enumerate(keywords):
-                            reaction = REXY_REACTIONS[idx % len(REXY_REACTIONS)] if niche_key == "facts" else ""
+                            reaction = VALID_REACTIONS[idx % len(VALID_REACTIONS)] if niche_key == "facts" else ""
                             scenes.append({"keyword": kw, "reaction": reaction})
             
             # Save to history
