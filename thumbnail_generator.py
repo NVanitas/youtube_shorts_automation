@@ -44,22 +44,6 @@ def generate_thumbnail(niche_key, title, keywords, output_path):
     enhancer = ImageEnhance.Contrast(img)
     img = enhancer.enhance(1.25) # Boost contrast by 25%
     
-    # Overlay character sticker for facts niche
-    if niche_key == "facts":
-        try:
-            from generate_reactions import get_reaction_path
-            # Use mindblown or shocked for high CTR thumbnails
-            rexy_path = get_reaction_path("mindblown") or get_reaction_path("shocked")
-            if rexy_path and rexy_path.exists():
-                rexy_img = Image.open(rexy_path).convert("RGBA")
-                # Resize slightly larger for thumbnail prominence (450x550)
-                rexy_img = rexy_img.resize((450, 550), Image.Resampling.LANCZOS)
-                # Paste in bottom-right corner above bottom margin
-                img.paste(rexy_img, (580, 1300), rexy_img)
-                print(f"Added Rexy character sticker overlay to thumbnail ({rexy_path.name})")
-        except Exception as ce:
-            print(f"Notice: Could not overlay character on thumbnail: {ce}")
-    
     overlay = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
     draw_overlay = ImageDraw.Draw(overlay)
     
@@ -73,6 +57,22 @@ def generate_thumbnail(niche_key, title, keywords, output_path):
         draw_overlay.line([(0, y), (1080, y)], fill=(0, 0, 0, alpha))
         
     img = Image.alpha_composite(img, overlay)
+    draw = ImageDraw.Draw(img)
+    
+    # Overlay character sticker on top layer for facts niche (placed above gradients)
+    if niche_key == "facts":
+        try:
+            from generate_reactions import get_reaction_path
+            rexy_path = get_reaction_path("mindblown") or get_reaction_path("shocked")
+            if rexy_path and rexy_path.exists():
+                rexy_img = Image.open(rexy_path).convert("RGBA")
+                # Keep original 400x500 sticker aspect and place safely
+                rexy_img = rexy_img.resize((420, 525), Image.Resampling.LANCZOS)
+                # Position safely at x=600, y=1260 so it never touches the border or screen edge
+                img.paste(rexy_img, (600, 1260), rexy_img)
+                print(f"Added Rexy character sticker overlay to thumbnail on top layer ({rexy_path.name})")
+        except Exception as ce:
+            print(f"Notice: Could not overlay character on thumbnail: {ce}")
     draw = ImageDraw.Draw(img)
     
     # Draw vibrant high-CTR neon border
