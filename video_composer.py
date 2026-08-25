@@ -1,10 +1,15 @@
 import os
 import subprocess
 from pathlib import Path
-import static_ffmpeg
+import shutil
 
-# Initialize static-ffmpeg to guarantee ffmpeg is in PATH
-static_ffmpeg.add_paths()
+# Initialize static-ffmpeg only if ffmpeg is not already available in PATH
+if not shutil.which("ffmpeg"):
+    try:
+        import static_ffmpeg
+        static_ffmpeg.add_paths()
+    except Exception:
+        pass
 
 from moviepy import VideoFileClip, AudioFileClip, CompositeAudioClip, ImageClip, concatenate_videoclips, CompositeVideoClip, VideoClip
 from moviepy.video.fx import Loop
@@ -392,12 +397,9 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
             duration_per_scene = 3.0
             num_scenes = _math.ceil(duration / duration_per_scene)
             
-            # Character overlay position and animation params (Bottom-Left Golden Safe Zone)
-            char_x = 60    # Bottom-left area (safe from YouTube right-side like/comment buttons)
-            char_y_base = 1240  # Safely above bottom channel bar and below subtitles
-            bounce_amplitude = 8  # Pixels of idle breathing bounce
-            slide_in_dur = 0.35  # Slide-in animation duration
-            
+            # ============================================================
+            # DYNAMIC MASCOT MOTION ENGINE (Smart Alternating Placement)
+            # ============================================================
             for i in range(min(num_scenes, len(scenes))):
                 scene = scenes[i % len(scenes)]
                 reaction_key = scene.get("reaction", "curious")
@@ -412,22 +414,52 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
                 if scene_dur <= 0:
                     break
                 
-                def make_char_position(start_t, dur, x, y_base, amp, slide_dur):
-                    """Create a position function for the character overlay with slide-in + idle bounce."""
+                # Dynamic Alternating Placement:
+                # Even scenes on Left (x=60), Odd scenes on Right (x=620)
+                # This creates high viewer engagement and visual rhythm
+                if i % 2 == 0:
+                    char_x_base = 60    # Bottom-Left safe zone
+                    slide_from_x = -150 # Slide from left edge
+                else:
+                    char_x_base = 620   # Bottom-Right safe zone
+                    slide_from_x = 1080 # Slide from right edge
+                
+                char_y_base = 1240
+                slide_in_dur = 0.32
+                
+                def make_dynamic_position(start_t, dur, x_base, y_base, from_x, reaction, slide_dur):
+                    """Create an emotion-aware dynamic motion position function."""
                     def pos_func(t):
-                        # Slide-in from below during first frames
+                        # 1. Entrance animation (ease-out cubic slide & pop)
                         if t < slide_dur:
                             progress = t / slide_dur
-                            # Ease out cubic
                             eased = 1 - (1 - progress) ** 3
+                            x = from_x + (x_base - from_x) * eased
                             y = 1920 - ((1920 - y_base) * eased)
+                            return (int(x), int(y))
+                        
+                        # 2. Emotion-specific idle dynamics
+                        time_in_idle = t - slide_dur
+                        if reaction in ["scared", "shocked"]:
+                            # Trembling / jitter vibration on scared/shocked
+                            jitter_x = 4 * _math.sin(time_in_idle * 24.0)
+                            jitter_y = 3 * _math.cos(time_in_idle * 20.0)
+                            return (int(x_base + jitter_x), int(y_base + jitter_y))
+                        elif reaction in ["excited", "mindblown"]:
+                            # High-energy happy jump bounce
+                            jump_y = -14 * abs(_math.sin(time_in_idle * 5.5))
+                            return (int(x_base), int(y_base + jump_y))
+                        elif reaction in ["crying"]:
+                            # Sorrowful slow drooping sway
+                            sway_y = 6 * _math.sin(time_in_idle * 2.0)
+                            return (int(x_base), int(y_base + sway_y))
                         else:
-                            # Idle breathing bounce
-                            y = y_base + amp * _math.sin(t * 3.0)
-                        return (x, int(y))
+                            # Gentle natural breathing idle bounce
+                            bounce_y = 8 * _math.sin(time_in_idle * 3.2)
+                            return (int(x_base), int(y_base + bounce_y))
                     return pos_func
                 
-                pos_fn = make_char_position(scene_start, scene_dur, char_x, char_y_base, bounce_amplitude, slide_in_dur)
+                pos_fn = make_dynamic_position(scene_start, scene_dur, char_x_base, char_y_base, slide_from_x, reaction_key, slide_in_dur)
                 
                 char_clip = (ImageClip(str(reaction_png))
                              .with_start(scene_start)
@@ -437,7 +469,7 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
             
             if reaction_clips:
                 cta_layers.extend(reaction_clips)
-                print(f"Added {len(reaction_clips)} character reaction overlays")
+                print(f"Added {len(reaction_clips)} dynamic character reaction overlays (Alternating Left/Right with emotion motion)")
         else:
             pass  # No character overlay for non-facts niches
         

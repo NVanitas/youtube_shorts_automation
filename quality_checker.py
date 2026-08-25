@@ -5,11 +5,15 @@ Usa ffprobe (do static-ffmpeg) para extrair metadados reais do arquivo.
 """
 import subprocess
 import json
-import os
 from pathlib import Path
-import static_ffmpeg
+import shutil
 
-static_ffmpeg.add_paths()
+if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+    try:
+        import static_ffmpeg
+        static_ffmpeg.add_paths()
+    except Exception:
+        pass
 
 # Minimum score to approve a video for upload
 MIN_SCORE = 70
