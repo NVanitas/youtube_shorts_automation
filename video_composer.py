@@ -392,9 +392,9 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
             duration_per_scene = 3.0
             num_scenes = _math.ceil(duration / duration_per_scene)
             
-            # Character overlay position and animation params
-            char_x = 620   # Bottom-right area (1080 - 400 - 60 margin)
-            char_y_base = 1250  # Above subtitles and progress bar
+            # Character overlay position and animation params (Bottom-Left Golden Safe Zone)
+            char_x = 60    # Bottom-left area (safe from YouTube right-side like/comment buttons)
+            char_y_base = 1240  # Safely above bottom channel bar and below subtitles
             bounce_amplitude = 8  # Pixels of idle breathing bounce
             slide_in_dur = 0.35  # Slide-in animation duration
             

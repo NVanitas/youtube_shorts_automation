@@ -68,9 +68,9 @@ def generate_thumbnail(niche_key, title, keywords, output_path):
                 rexy_img = Image.open(rexy_path).convert("RGBA")
                 # Keep original 400x500 sticker aspect and place safely
                 rexy_img = rexy_img.resize((420, 525), Image.Resampling.LANCZOS)
-                # Position safely at x=600, y=1260 so it never touches the border or screen edge
-                img.paste(rexy_img, (600, 1260), rexy_img)
-                print(f"Added Rexy character sticker overlay to thumbnail on top layer ({rexy_path.name})")
+                # Position safely in bottom-left safe zone (x=60, y=1260)
+                img.paste(rexy_img, (60, 1260), rexy_img)
+                print(f"Added character sticker overlay to thumbnail on top layer ({rexy_path.name})")
         except Exception as ce:
             print(f"Notice: Could not overlay character on thumbnail: {ce}")
     draw = ImageDraw.Draw(img)

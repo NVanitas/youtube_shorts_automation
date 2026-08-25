@@ -15,8 +15,9 @@ for directory in [OUTPUT_DIR, BACKGROUNDS_DIR, MUSIC_DIR]:
 NICHES = {
     "facts": {
         "name": "Kids Curiosities",
-        "voice": "en-US-GuyNeural",  # Energetic male voice
-        "rate": "+10%",              # Slightly faster for high-paced shorts
+        "voice": "en-US-AnaNeural",  # Cute, youthful kid cartoon voice
+        "rate": "+8%",               # Paced for curious storytelling
+        "pitch": "+0Hz",             # Natural youthful pitch
         "music_theme": "upbeat",
         "font_name": "Impact",       # Bold, punchy font
         "primary_color": "FFFFFF",   # White (RGB Hex)

@@ -3,9 +3,9 @@ import edge_tts
 from pathlib import Path
 from config import NICHES
 
-async def generate_voice_async(text, voice, rate, output_path):
+async def generate_voice_async(text, voice, rate, output_path, pitch="+0Hz"):
     """Asynchronously generates speech using edge-tts."""
-    communicate = edge_tts.Communicate(text, voice, rate=rate)
+    communicate = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch)
     await communicate.save(output_path)
 
 def generate_voice(niche_key, text, video_dir, output_filename=None):
@@ -16,17 +16,18 @@ def generate_voice(niche_key, text, video_dir, output_filename=None):
     niche = NICHES[niche_key]
     voice = niche["voice"]
     rate = niche["rate"]
+    pitch = niche.get("pitch", "+0Hz")
     
     if not output_filename:
         output_filename = f"{niche_key}_voiceover.mp3"
         
     output_path = video_dir / output_filename
     
-    print(f"Generating voiceover using edge-tts voice '{voice}' (rate: {rate})...")
+    print(f"Generating voiceover using edge-tts voice '{voice}' (rate: {rate}, pitch: {pitch})...")
     
     try:
         # Run the async function synchronously
-        asyncio.run(generate_voice_async(text, voice, rate, str(output_path)))
+        asyncio.run(generate_voice_async(text, voice, rate, str(output_path), pitch=pitch))
         print(f"Voiceover saved to: {output_path}")
         return output_path
     except Exception as e:
