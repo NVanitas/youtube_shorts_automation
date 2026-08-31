@@ -28,12 +28,26 @@ if api_key and api_key != "sua_chave_do_gemini_aqui":
 else:
     print("WARNING: GEMINI_API_KEY not found or is default placeholder in environment. Please add it to your .env file.")
 
-# Sub-topics/angles list to ensure variety in prompts
+# High-Engagement Viral Formats & Sub-topics for Nicosaurus (Dinos & Abyss)
 FACTS_SUBTOPICS = [
-    "deep ocean terrifying secrets", "unknown outer space mysteries", 
-    "bizarre and scary nature phenomena", "unexplored regions of earth", 
-    "terrifying astrophysics facts", "mysterious underwater creatures",
-    "the dark universe and black holes", "unexplained archaeological discoveries"
+    # Format 1: Deep Sea Creature Duels (High Debate & Comment Multiplier)
+    "Deep Sea Duel: Colossal Squid vs Sperm Whale (Who survives the abyss battle?)",
+    "Prehistoric Clash: Megalodon vs Mosasaur (Ultimate ocean titans duel)",
+    "Abyss Battle: Giant Pacific Octopus vs Sleeper Shark",
+    "Venom Clash: Blue-Ringed Octopus vs Deadly Box Jellyfish",
+    "Deep Trench Duel: Giant Oarfish vs Prehistoric Coelacanth",
+    
+    # Format 2: Gamified Quiz & Real vs Fake (Forcing Replays & Comments)
+    "Abyss Quiz: 2 Mind-Blowing Real Ocean Facts and 1 Fake Lie (Can you guess the fake?)",
+    "Creature Challenge: Guess the alien monster from its terrifying glowing eyes",
+    "Deep Sea True or False: The freakiest animal superpowers you will not believe",
+    
+    # Format 3: Extreme Biology & Bizarre Earth Mysteries (High Retention & Loop)
+    "Terrifying creatures thriving inside boiling underwater volcanoes",
+    "The immortal shape-shifting monsters hiding in the Mariana Trench",
+    "Alien parasites and zombie worms melting whale skeletons in pitch black",
+    "Super-salty toxic underwater lakes at the bottom of the ocean that pickle animals instantly",
+    "Ultra-black predators that absorb 99% of light as living black holes"
 ]
 STOICISM_SUBTOPICS = [
     "how to deal with difficult people", "overcoming fear of failure", "embracing change and mortality",

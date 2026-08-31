@@ -28,6 +28,35 @@ def _apply_reverb(audio, sample_rate=44100, delay_ms=80, feedback=0.3, mix=0.35)
         result.append(dry * (1.0 - mix) + wet * mix)
     return result
 
+def generate_sonar_hook(filepath, duration=1.2, sample_rate=44100):
+    """Generates a deep, intriguing submarine sonar ping + sub-bass pulse for 0:00 video openings."""
+    print("Generating 0:00 submarine sonar sound hook...")
+    num_samples = int(duration * sample_rate)
+    audio = []
+    
+    # Dual-tone sonar ping (880Hz + 1760Hz) with sub-bass boom (65Hz)
+    for i in range(num_samples):
+        t = i / sample_rate
+        ping_env = math.exp(-3.5 * t) if t >= 0 else 0
+        ping = (0.6 * math.sin(2 * math.pi * 880 * t) + 0.3 * math.sin(2 * math.pi * 1760 * t)) * ping_env
+        
+        sub_env = math.exp(-4.5 * t)
+        sub = 0.5 * math.sin(2 * math.pi * 65 * t) * sub_env
+        
+        val = math.tanh(ping + sub)
+        audio.append(val * 0.5)
+        
+    audio = _apply_reverb(audio, sample_rate, delay_ms=120, feedback=0.4, mix=0.35)
+    
+    with wave.open(filepath, 'w') as wav_file:
+        wav_file.setnchannels(1)
+        wav_file.setsampwidth(2)
+        wav_file.setframerate(sample_rate)
+        for sample in audio:
+            sample = math.tanh(sample)
+            int_sample = max(-32768, min(32767, int(sample * 32767)))
+            wav_file.writeframesraw(struct.pack('<h', int_sample))
+
 def generate_bell_sound(filepath, duration=1.0, sample_rate=44100):
     print("Generating UI notification bell sound...")
     num_samples = int(duration * sample_rate)
@@ -242,6 +271,9 @@ def generate_cta_assets(assets_dir):
     like_path = os.path.join(assets_dir, "like.png")
     bell_icon_path = os.path.join(assets_dir, "bell_icon.png")
     
+    sonar_path = os.path.join(assets_dir, "sonar_hook.wav")
+    
+    generate_sonar_hook(sonar_path)
     generate_bell_sound(bell_path)
     generate_click_sound(click_path)
     generate_subscribe_button(sub_path)

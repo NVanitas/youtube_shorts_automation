@@ -297,7 +297,11 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
         if cta_time + 1.0 < duration:
             audio_tracks.append(AudioFileClip(str(bell_path)).with_volume_scaled(0.35).with_start(cta_time + 1.0))
     
-    if has_impact:
+    # Sound Branding: 0:00 Submarine Sonar Hook / Sub-bass impact
+    sonar_path = BASE_DIR / "assets" / "sonar_hook.wav"
+    if sonar_path.exists() and niche_key == "facts":
+        audio_tracks.append(AudioFileClip(str(sonar_path)).with_volume_scaled(0.45).with_start(0.0))
+    elif has_impact:
         # Add heavy sub-bass impact at the very beginning to retain attention (Hook)
         audio_tracks.append(impact_audio.with_start(0.0))
     
