@@ -53,28 +53,9 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
     duration = voiceover_audio.duration
     print(f"Voiceover duration: {duration:.2f} seconds")
     
-    # CTA Logic: Parse ASS file to find the timestamp of "subscribe" or "like"
-    cta_time = None
-    try:
-        with open(subtitles_ass_path, "r", encoding="utf-8") as f:
-            for line in f:
-                if line.startswith("Dialogue:"):
-                    parts = line.split(",", 9)
-                    if len(parts) == 10:
-                        text = parts[9].lower()
-                        if "subscribe" in text or "like" in text or "channel" in text:
-                            time_str = parts[1].strip()
-                            h, m, s = time_str.split(":")
-                            s, cs = s.split(".")
-                            cta_time = int(h)*3600 + int(m)*60 + int(s) + int(cs)/100.0
-                            print(f"Detected CTA keyword at {time_str} ({cta_time}s)")
-                            break
-    except Exception as e:
-        print(f"Error parsing ASS for CTA: {e}")
-        
-    if cta_time is None:
-        cta_time = max(0.0, duration - 3.5)
-        print(f"No CTA keyword found in script. Defaulting CTA timestamp to {cta_time:.2f}s (3.5s before end).")
+    # CTA Timing: ALWAYS display the Subscribe CTA widget strictly in the final 3.5 seconds of the video (Outro only)
+    cta_time = max(0.0, duration - 3.5)
+    print(f"CTA Outro animation scheduled strictly for the final seconds at: {cta_time:.2f}s (duration: {duration:.2f}s)")
         
     bell_path = BASE_DIR / "assets" / "bell.wav"
     click_path = BASE_DIR / "assets" / "click.wav"
@@ -85,22 +66,17 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
     has_cta = (bell_path.exists() and sub_img_path.exists() and 
                like_img_path.exists() and click_path.exists() and bell_icon_path.exists())
     
-    # Calculate duration for each individual scene clip (2.3s for rapid viral pacing)
+    # 1-to-1 Synchronized Scene Durations: Each background asset corresponds exactly to its spoken scene
     num_assets = len(bg_assets)
-    duration_per_clip = 2.3
-    
-    import math
-    num_scenes = math.ceil(duration / duration_per_clip)
-    print(f"Splitting background into {num_scenes} fast-paced scenes, each playing for ~{duration_per_clip:.2f} seconds.")
+    num_scenes = num_assets
+    duration_per_clip = duration / num_assets
+    print(f"Dividing video into {num_scenes} perfectly synchronized scenes, each playing for ~{duration_per_clip:.2f}s.")
     
     processed_clips = []
     
     for i in range(num_scenes):
-        idx = i % num_assets
-        asset_path = Path(bg_assets[idx])
-        
-        # Last clip might be shorter to exactly match voiceover duration
-        current_clip_duration = duration_per_clip if (i < num_scenes - 1) else (duration - (i * duration_per_clip))
+        asset_path = Path(bg_assets[i])
+        current_clip_duration = duration_per_clip
         print(f"Processing scene {i+1}/{num_scenes}: {asset_path.name} (duration: {current_clip_duration:.2f}s)")
         
         # Calculate max zoom out multiplier so it doesn't go below 1.0
@@ -348,11 +324,11 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
     if niche_key == "facts" and scenes:
         import math as _math
         
-        duration_per_scene = 2.3
-        num_scenes = _math.ceil(duration / duration_per_scene)
+        num_scenes = min(len(bg_assets), len(scenes))
+        duration_per_scene = duration / num_scenes
         
-        for i in range(min(num_scenes, len(scenes))):
-            scene = scenes[i % len(scenes)]
+        for i in range(num_scenes):
+            scene = scenes[i]
             reaction_key = scene.get("reaction", "curious")
             reaction_png = get_reaction_path(reaction_key)
             

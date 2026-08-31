@@ -55,10 +55,10 @@ RULES for "script":
 - Use plain text only. No markdown, no emojis in script, no speaker names, no stage directions.
 
 RULES for "scenes":
-- You must generate exactly 8-9 fast-paced scenes to cover the video duration (each scene plays for ~2.2 - 2.5 seconds for maximum visual retention).
+- You must generate between 7-8 chronological scenes that precisely follow the narration sequence from start to finish.
 - For each scene, specify:
-  - "keyword": a short, specific stock video search term describing the visual action at that moment (e.g. "deep sea hydrothermal vent", "glowing jellyfish tentacles", "dark underwater trench").
-  - "reaction": MUST be exactly one of: shocked, scared, thinking, excited, mindblown, curious, crying, waving.
+  - "keyword": a hyper-literal, specific visual search term depicting EXACTLY what is being described in the voiceover at that specific moment (e.g. if the voiceover describes "crushing a submarine", keyword must be "crushed submarine underwater depth", if it describes "freezing ice", keyword must be "antarctic ice tunnel drilling", if it describes "bioluminescent fish", keyword must be "deep sea glowing anglerfish"). NEVER use generic or unrelated keywords.
+  - "reaction": MUST be exactly one of: shocked, scared, thinking, excited, mindblown, curious, crying, waving. Pick the reaction matching the emotional tone of that sentence.
 """
     },
     "stoicism": {
