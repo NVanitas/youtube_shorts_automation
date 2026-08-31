@@ -27,37 +27,38 @@ NICHES = {
         "alignment": 2,              # Centered bottom in ASS
         "margin_v": 350,             # Vertical margin to position subtitles higher (out of player UI)
         "prompt_template": """
-Create a highly engaging, educational, and fun YouTube Shorts script in English for kids and general audiences about mind-blowing, fun, or mysterious facts.
+Create a viral, highly engaging, educational, and fun YouTube Shorts script in English for curious kids and general audiences about mind-blowing bizarre nature, freaky deep sea creatures, animal superpowers, or strange earth mysteries.
 You MUST respond with a raw JSON object ONLY, containing exactly three keys: "title", "script", and "scenes".
 
 JSON Format:
 {
-  "title": "A fun, high-CTR YouTube Short title in English with 1 emoji (max 65 chars)",
+  "title": "A viral, curiosity-driven YouTube Short title in English with 1 emoji (e.g. The Real Monsters Living Inside Deep Sea Volcanoes! 🌋)",
   "script": "The full voiceover script text",
   "scenes": [
     {
-      "keyword": "a 2-4 word video search term for stock footage (e.g. deep ocean creatures, erupting volcano, outer space nebula)",
+      "keyword": "a 2-4 word visual search term for stock video footage (e.g. deep sea volcanic vent, glowing anglerfish mouth, giant squid eye)",
       "reaction": "one of: shocked | scared | thinking | excited | mindblown | curious | crying | waving"
     }
   ]
 }
 
 RULES for "title":
-- Make it super interesting, curious, or funny. Include 1 relevant emoji.
+- Focus on bizarre, mysterious, or shocking nature facts (deep sea monsters, weird animal biology, strange natural phenomena).
+- Make it impossible to scroll past. Include 1 relevant emoji.
 
 RULES for "script":
-- Keep it under 65-75 words so it fits in a fast-paced 15-18 second video.
-- The script MUST follow this structure:
-  1. An instant, fun, or mysterious HOOK in the first 2 seconds (e.g. "Did you know there's a place on Earth where...").
-  2. Exactly 2 mind-blowing or funny facts. Keep them very simple, short, and punchy.
-  3. A seamless loop ending: the final sentence must connect back to the first word of the hook.
-- Use plain text only. No markdown, no emojis, no speaker names, no stage directions.
+- Keep it under 65-75 words so it fits in a fast-paced 16-20 second video.
+- The script MUST follow this winning structure:
+  1. INSTANT HOOK (0-2s): A shocking question or claim that grabs attention immediately (e.g. "Did you know real-life monsters are swimming right beneath us?").
+  2. 2 PUNCHY BIZARRE FACTS: Vivid analogies (e.g. "pressure like an elephant stepping on your thumb", "shoots pure boiling acid").
+  3. INTERACTIVE QUESTION + SEAMLESS LOOP ENDING: Ask a direct engaging question (e.g. "Which of these bizarre creatures would scare you the most? Drop your answer below and subscribe because...") that flows smoothly back to the first word of the hook!
+- Use plain text only. No markdown, no emojis in script, no speaker names, no stage directions.
 
 RULES for "scenes":
 - You must generate exactly 6-7 scenes to cover the video duration (each scene plays for ~2.5 - 3 seconds).
 - For each scene, specify:
-  - "keyword": a short, specific stock video search term that matches what is being described in the script at that moment. Use real-world visual terms (e.g. "underwater volcano", "giant squid tentacles", "lightning storm") NOT abstract concepts.
-  - "reaction": MUST be exactly one of these 8 values: shocked, scared, thinking, excited, mindblown, curious, crying, waving. Pick the reaction that best matches the emotional tone of that scene.
+  - "keyword": a short, specific stock video search term describing the visual action at that moment (e.g. "deep sea hydrothermal vent", "glowing jellyfish tentacles", "dark underwater trench").
+  - "reaction": MUST be exactly one of: shocked, scared, thinking, excited, mindblown, curious, crying, waving.
 """
     },
     "stoicism": {
