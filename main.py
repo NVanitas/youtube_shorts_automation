@@ -182,8 +182,17 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
                 
             video_description = f"{script_text}\n\nSubscribe to the channel for daily Shorts!\n\n#shorts #viral #fyp #{niche_key} #motivation #educational"
             
-            # Define first automated comment text
-            comment_text = "Which of these facts surprised you the most? Comment below! 👇" if niche_key == "facts" else "Which lesson do you need most in your life right now? Comment below! 👇"
+            # Define first automated high-CTR comment text (Extract question from script if available)
+            if niche_key == "facts":
+                # Find the last sentence in the script if it ends with '?'
+                sentences = re.split(r'(?<=[.!?])\s+', script_text.strip())
+                question_sentences = [s for s in sentences if "?" in s]
+                if question_sentences:
+                    comment_text = f"{question_sentences[-1]} Drop your thoughts below! 👇"
+                else:
+                    comment_text = "Which of these bizarre mysteries shocked you the most? 🤯 Drop your thoughts below! 👇"
+            else:
+                comment_text = "Which lesson do you need most in your life right now? Comment below! 👇"
 
             uploaded_url = youtube_uploader.upload_short(
                 video_path=final_video,

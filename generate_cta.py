@@ -2,8 +2,15 @@ import wave
 import struct
 import math
 import os
+import sys
 import random
 from PIL import Image, ImageDraw, ImageFont
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 def _apply_reverb(audio, sample_rate=44100, delay_ms=80, feedback=0.3, mix=0.35):
     """Applies a simple delay-line reverb to a list of audio samples."""
@@ -58,6 +65,42 @@ def generate_bell_sound(filepath, duration=1.0, sample_rate=44100):
             int_sample = max(-32768, min(32767, int(sample * 32767)))
             wav_file.writeframesraw(struct.pack('<h', int_sample))
             
+def get_best_font(size, preferred="impact"):
+    """Bulletproof font loader that searches Windows system fonts and fallbacks."""
+    candidates = []
+    if preferred == "impact":
+        candidates = [
+            r"C:\Windows\Fonts\impact.ttf",
+            r"C:\Windows\Fonts\arialbd.ttf",
+            r"C:\Windows\Fonts\segoeuib.ttf",
+            r"C:\Windows\Fonts\calibrib.ttf",
+            "impact.ttf",
+            "arialbd.ttf"
+        ]
+    else:
+        candidates = [
+            r"C:\Windows\Fonts\arialbd.ttf",
+            r"C:\Windows\Fonts\segoeuib.ttf",
+            r"C:\Windows\Fonts\impact.ttf",
+            r"C:\Windows\Fonts\calibrib.ttf",
+            "arialbd.ttf",
+            "arial.ttf"
+        ]
+        
+    for fp in candidates:
+        if os.path.exists(fp):
+            try:
+                return ImageFont.truetype(fp, size)
+            except Exception:
+                pass
+    try:
+        return ImageFont.truetype("arial.ttf", size)
+    except Exception:
+        try:
+            return ImageFont.load_default(size=size)
+        except Exception:
+            return ImageFont.load_default()
+
 def draw_rounded_rect(draw, xy, rad, fill):
     x0, y0, x1, y1 = xy
     draw.rectangle([x0+rad, y0, x1-rad, y1], fill=fill)
@@ -68,51 +111,63 @@ def draw_rounded_rect(draw, xy, rad, fill):
     draw.pieslice([x1-rad*2, y1-rad*2, x1, y1], 0, 90, fill=fill)
 
 def generate_subscribe_button(filepath):
-    print("Generating subscribe button...")
-    width, height = 600, 150
+    """Generates a modern, ultra-high-CTR YouTube Subscribe Widget with big readable typography."""
+    print("Generating modern high-CTR subscribe button...")
+    width, height = 750, 150
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
-    # Draw Red rounded rect
-    draw_rounded_rect(draw, (0, 0, width, height), 30, (204, 0, 0, 255))
+    # Outer dark glassmorphism container
+    draw.rounded_rectangle([0, 0, width, height], radius=35, fill=(18, 18, 24, 235), outline=(255, 40, 40, 255), width=4)
     
+    # Inner Red "SUBSCRIBE" button pill on right
+    btn_w = 340
+    btn_x0 = width - btn_w - 20
+    draw.rounded_rectangle([btn_x0, 20, width - 20, height - 20], radius=25, fill=(225, 20, 20, 255))
+    
+    # Fonts
+    font_bold = get_best_font(52, preferred="impact")
+    font_btn = get_best_font(44, preferred="impact")
+    
+    # Left channel prompt text: "JOIN US"
+    text_left = "SUBSCRIBE"
+    draw.text((45, (height - 60)//2), text_left, font=font_bold, fill=(255, 255, 255, 255))
+    
+    # Right pill text: "▶ SUB"
+    text_sub = "▶ CLICK"
     try:
-        font = ImageFont.truetype("arialbd.ttf", 75)
-    except:
-        font = ImageFont.load_default()
-        
-    text = "SUBSCRIBE"
-    try:
-        bbox = draw.textbbox((0,0), text, font=font)
-        tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+        bbox = draw.textbbox((0, 0), text_sub, font=font_btn)
+        tw = bbox[2] - bbox[0]
+        th = bbox[3] - bbox[1]
     except AttributeError:
-        tw, th = draw.textsize(text, font=font)
+        tw, th = draw.textsize(text_sub, font=font_btn)
         
-    draw.text(((width - tw)//2, (height - th)//2 - 12), text, font=font, fill="white")
+    btn_center_x = btn_x0 + (btn_w // 2)
+    draw.text((btn_center_x - (tw // 2), (height - th) // 2 - 6), text_sub, font=font_btn, fill=(255, 255, 255, 255))
+    
     img.save(filepath)
 
 def generate_like_button(filepath):
-    print("Generating like button...")
-    width, height = 300, 150
+    """Generates a modern Like & Bell Pill with big bold text."""
+    print("Generating modern high-CTR like button...")
+    width, height = 400, 140
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
-    # Draw Blue rounded rect for LIKE
-    draw_rounded_rect(draw, (0, 0, width, height), 30, (0, 122, 255, 255))
+    # Modern Blue/Cyan Glow Pill
+    draw.rounded_rectangle([0, 0, width, height], radius=30, fill=(0, 120, 255, 245), outline=(255, 255, 255, 220), width=4)
     
-    try:
-        font = ImageFont.truetype("arialbd.ttf", 75)
-    except:
-        font = ImageFont.load_default()
-        
-    text = "LIKE"
+    font = get_best_font(52, preferred="impact")
+    text = "LIKE 👍"
     try:
         bbox = draw.textbbox((0,0), text, font=font)
         tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
     except AttributeError:
         tw, th = draw.textsize(text, font=font)
         
-    draw.text(((width - tw)//2, (height - th)//2 - 12), text, font=font, fill="white")
+    # Drop shadow + main text
+    draw.text(((width - tw)//2 + 2, (height - th)//2 - 4), text, font=font, fill=(0, 40, 120, 255))
+    draw.text(((width - tw)//2, (height - th)//2 - 6), text, font=font, fill=(255, 255, 255, 255))
     img.save(filepath)
 
 def generate_click_sound(filepath, duration=1.0, active_duration=0.08, sample_rate=44100):
@@ -123,21 +178,12 @@ def generate_click_sound(filepath, duration=1.0, active_duration=0.08, sample_ra
     for i in range(num_samples):
         t = i / sample_rate
         if t < active_duration:
-            # Layer 1: Quick frequency sweep (the 'click')
             freq = 1500 - (1000 * (t / active_duration))
-            val = math.sin(2 * math.pi * freq * t)
-            env = math.exp(-40.0 * t)
-            val *= env
-            
-            # Layer 2: Tonal 'bloop' underneath (iOS-style resonance)
-            bloop_freq = 600
-            bloop = math.sin(2 * math.pi * bloop_freq * t) * math.exp(-25.0 * t) * 0.5
-            
+            val = math.sin(2 * math.pi * freq * t) * math.exp(-40.0 * t)
+            bloop = math.sin(2 * math.pi * 600 * t) * math.exp(-25.0 * t) * 0.5
             audio.append((val + bloop) * 0.7)
         elif t < 0.25:
-            # Tiny reverb tail — the bloop rings out softly
-            bloop_freq = 600
-            bloop = math.sin(2 * math.pi * bloop_freq * t) * math.exp(-15.0 * t) * 0.15
+            bloop = math.sin(2 * math.pi * 600 * t) * math.exp(-15.0 * t) * 0.15
             audio.append(bloop)
         else:
             audio.append(0.0)
@@ -165,19 +211,16 @@ def generate_bell_icon(filepath):
     img.save(filepath)
 
 def generate_cta_text_banner(filepath, text):
+    """Generates large, high-contrast, crystal-clear CTA banner."""
     print(f"Generating CTA text banner: {text}...")
-    width, height = 850, 110
+    width, height = 920, 130
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
-    # Dark semi-transparent pill background with gold border
-    draw_rounded_rect(draw, (0, 0, width, height), 25, (15, 15, 20, 220))
-    draw.rounded_rectangle([2, 2, width-2, height-2], radius=25, outline=(255, 215, 0, 255), width=4)
+    # Dark semi-transparent pill background with gold neon border
+    draw.rounded_rectangle([0, 0, width, height], radius=30, fill=(12, 12, 18, 235), outline=(255, 215, 0, 255), width=5)
     
-    try:
-        font = ImageFont.truetype("arialbd.ttf", 44)
-    except:
-        font = ImageFont.load_default()
+    font = get_best_font(48, preferred="impact")
         
     try:
         bbox = draw.textbbox((0,0), text, font=font)
@@ -185,6 +228,9 @@ def generate_cta_text_banner(filepath, text):
     except AttributeError:
         tw, th = draw.textsize(text, font=font)
         
+    # Drop shadow
+    draw.text(((width - tw)//2 + 2, (height - th)//2 - 4), text, font=font, fill=(0, 0, 0, 255))
+    # Crisp white main text
     draw.text(((width - tw)//2, (height - th)//2 - 6), text, font=font, fill=(255, 255, 255, 255))
     img.save(filepath)
 

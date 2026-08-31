@@ -85,13 +85,13 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
     has_cta = (bell_path.exists() and sub_img_path.exists() and 
                like_img_path.exists() and click_path.exists() and bell_icon_path.exists())
     
-    # Calculate duration for each individual scene clip
+    # Calculate duration for each individual scene clip (2.3s for rapid viral pacing)
     num_assets = len(bg_assets)
-    duration_per_clip = 3.0
+    duration_per_clip = 2.3
     
     import math
     num_scenes = math.ceil(duration / duration_per_clip)
-    print(f"Splitting background into {num_scenes} scenes, each playing for ~{duration_per_clip:.2f} seconds.")
+    print(f"Splitting background into {num_scenes} fast-paced scenes, each playing for ~{duration_per_clip:.2f} seconds.")
     
     processed_clips = []
     
@@ -341,11 +341,107 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
                 # Start slightly before the cut so the audio leads the visual
                 audio_tracks.append(variant.with_start(transition_time - 0.08))
     
-    # Mix audio tracks (voiceover + background music + whooshes)
+    # ============================================================
+    # CHARACTER REACTION OVERLAY (Rexy PNG stickers) & Dynamic SFX
+    # ============================================================
+    reaction_clips = []
+    if niche_key == "facts" and scenes:
+        import math as _math
+        
+        duration_per_scene = 2.3
+        num_scenes = _math.ceil(duration / duration_per_scene)
+        
+        for i in range(min(num_scenes, len(scenes))):
+            scene = scenes[i % len(scenes)]
+            reaction_key = scene.get("reaction", "curious")
+            reaction_png = get_reaction_path(reaction_key)
+            
+            if not reaction_png:
+                continue
+            
+            scene_start = i * duration_per_scene
+            scene_dur = min(duration_per_scene, duration - scene_start)
+            
+            if scene_dur <= 0:
+                break
+            
+            # Dynamic Alternating Placement:
+            # Even scenes on Left (x=60), Odd scenes on Right (x=620)
+            if i % 2 == 0:
+                char_x_base = 60    # Bottom-Left safe zone
+                slide_from_x = -150 # Slide from left edge
+            else:
+                char_x_base = 620   # Bottom-Right safe zone
+                slide_from_x = 1080 # Slide from right edge
+            
+            char_y_base = 1240
+            slide_in_dur = 0.30
+            
+            def make_dynamic_position(start_t, dur, x_base, y_base, from_x, reaction, slide_dur):
+                """Create an emotion-aware dynamic motion position function."""
+                def pos_func(t):
+                    if t < slide_dur:
+                        progress = t / slide_dur
+                        eased = 1 - (1 - progress) ** 3
+                        x = from_x + (x_base - from_x) * eased
+                        y = 1920 - ((1920 - y_base) * eased)
+                        return (int(x), int(y))
+                    
+                    time_in_idle = t - slide_dur
+                    if reaction in ["scared", "shocked"]:
+                        jitter_x = 4 * _math.sin(time_in_idle * 24.0)
+                        jitter_y = 3 * _math.cos(time_in_idle * 20.0)
+                        return (int(x_base + jitter_x), int(y_base + jitter_y))
+                    elif reaction in ["excited", "mindblown"]:
+                        jump_y = -14 * abs(_math.sin(time_in_idle * 5.5))
+                        return (int(x_base), int(y_base + jump_y))
+                    elif reaction in ["crying"]:
+                        sway_y = 6 * _math.sin(time_in_idle * 2.0)
+                        return (int(x_base), int(y_base + sway_y))
+                    else:
+                        bounce_y = 8 * _math.sin(time_in_idle * 3.2)
+                        return (int(x_base), int(y_base + bounce_y))
+                return pos_func
+            
+            pos_fn = make_dynamic_position(scene_start, scene_dur, char_x_base, char_y_base, slide_from_x, reaction_key, slide_in_dur)
+            
+            char_clip = (ImageClip(str(reaction_png))
+                         .with_start(scene_start)
+                         .with_duration(scene_dur)
+                         .with_position(pos_fn))
+            reaction_clips.append(char_clip)
+            
+            # Play subtle matching SFX on reaction entrance
+            if scene_start > 0.5:
+                sfx_to_play = None
+                if reaction_key in ["shocked", "scared"]:
+                    sfx_p = BASE_DIR / "assets" / "whoosh_downer.wav"
+                    if sfx_p.exists():
+                        sfx_to_play = AudioFileClip(str(sfx_p)).with_start(scene_start).with_volume_scaled(0.28)
+                elif reaction_key in ["excited", "mindblown"]:
+                    sfx_p = BASE_DIR / "assets" / "whoosh_riser.wav"
+                    if sfx_p.exists():
+                        sfx_to_play = AudioFileClip(str(sfx_p)).with_start(scene_start).with_volume_scaled(0.28)
+                elif reaction_key in ["curious", "thinking"]:
+                    sfx_p = BASE_DIR / "assets" / "click.wav"
+                    if sfx_p.exists():
+                        sfx_to_play = AudioFileClip(str(sfx_p)).with_start(scene_start).with_volume_scaled(0.22)
+                
+                if sfx_to_play:
+                    audio_tracks.append(sfx_to_play)
+        
+        if reaction_clips:
+            print(f"Added {len(reaction_clips)} dynamic character reaction overlays (Alternating Left/Right with emotion motion)")
+
+    # Mix audio tracks (voiceover + background music + whooshes + reaction SFX)
     combined_audio = CompositeAudioClip(audio_tracks)
     video_clip = video_clip.with_audio(combined_audio)
     
     # Apply Visual CTA overlays (Animated & Sequential)
+    cta_layers = [video_clip]
+    if reaction_clips:
+        cta_layers.extend(reaction_clips)
+        
     if has_cta and cta_time is not None:
         import math
         
@@ -378,131 +474,34 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
                 return (860, y)
             return (860, target_y)
 
-        # LIKE animates first at t=0
-        dur_like = max(0.5, min(2.5, duration - cta_time))
-        like_clip = (ImageClip(str(like_img_path))
-                     .with_start(cta_time)
-                     .with_duration(dur_like)
-                     .with_position(lambda t: slide_up(t, 1250, end_t=dur_like)))
-        
-        cta_layers = [video_clip]
-        
-        # ============================================================
-        # CHARACTER REACTION OVERLAY (Rexy PNG stickers)
-        # ============================================================
-        if niche_key == "facts" and scenes:
-            import math as _math
-            
-            reaction_clips = []
-            duration_per_scene = 3.0
-            num_scenes = _math.ceil(duration / duration_per_scene)
-            
-            # ============================================================
-            # DYNAMIC MASCOT MOTION ENGINE (Smart Alternating Placement)
-            # ============================================================
-            for i in range(min(num_scenes, len(scenes))):
-                scene = scenes[i % len(scenes)]
-                reaction_key = scene.get("reaction", "curious")
-                reaction_png = get_reaction_path(reaction_key)
-                
-                if not reaction_png:
-                    continue
-                
-                scene_start = i * duration_per_scene
-                scene_dur = min(duration_per_scene, duration - scene_start)
-                
-                if scene_dur <= 0:
-                    break
-                
-                # Dynamic Alternating Placement:
-                # Even scenes on Left (x=60), Odd scenes on Right (x=620)
-                # This creates high viewer engagement and visual rhythm
-                if i % 2 == 0:
-                    char_x_base = 60    # Bottom-Left safe zone
-                    slide_from_x = -150 # Slide from left edge
-                else:
-                    char_x_base = 620   # Bottom-Right safe zone
-                    slide_from_x = 1080 # Slide from right edge
-                
-                char_y_base = 1240
-                slide_in_dur = 0.32
-                
-                def make_dynamic_position(start_t, dur, x_base, y_base, from_x, reaction, slide_dur):
-                    """Create an emotion-aware dynamic motion position function."""
-                    def pos_func(t):
-                        # 1. Entrance animation (ease-out cubic slide & pop)
-                        if t < slide_dur:
-                            progress = t / slide_dur
-                            eased = 1 - (1 - progress) ** 3
-                            x = from_x + (x_base - from_x) * eased
-                            y = 1920 - ((1920 - y_base) * eased)
-                            return (int(x), int(y))
-                        
-                        # 2. Emotion-specific idle dynamics
-                        time_in_idle = t - slide_dur
-                        if reaction in ["scared", "shocked"]:
-                            # Trembling / jitter vibration on scared/shocked
-                            jitter_x = 4 * _math.sin(time_in_idle * 24.0)
-                            jitter_y = 3 * _math.cos(time_in_idle * 20.0)
-                            return (int(x_base + jitter_x), int(y_base + jitter_y))
-                        elif reaction in ["excited", "mindblown"]:
-                            # High-energy happy jump bounce
-                            jump_y = -14 * abs(_math.sin(time_in_idle * 5.5))
-                            return (int(x_base), int(y_base + jump_y))
-                        elif reaction in ["crying"]:
-                            # Sorrowful slow drooping sway
-                            sway_y = 6 * _math.sin(time_in_idle * 2.0)
-                            return (int(x_base), int(y_base + sway_y))
-                        else:
-                            # Gentle natural breathing idle bounce
-                            bounce_y = 8 * _math.sin(time_in_idle * 3.2)
-                            return (int(x_base), int(y_base + bounce_y))
-                    return pos_func
-                
-                pos_fn = make_dynamic_position(scene_start, scene_dur, char_x_base, char_y_base, slide_from_x, reaction_key, slide_in_dur)
-                
-                char_clip = (ImageClip(str(reaction_png))
-                             .with_start(scene_start)
-                             .with_duration(scene_dur)
-                             .with_position(pos_fn))
-                reaction_clips.append(char_clip)
-            
-            if reaction_clips:
-                cta_layers.extend(reaction_clips)
-                print(f"Added {len(reaction_clips)} dynamic character reaction overlays (Alternating Left/Right with emotion motion)")
-        else:
-            pass  # No character overlay for non-facts niches
-        
-        # Add CTA elements
-        cta_layers.append(like_clip)
-        
-        # SUBSCRIBE animates at t+0.5 (only if enough time left)
-        if cta_time + 0.5 < duration - 0.3:
-            dur_sub = max(0.5, min(2.0, duration - (cta_time + 0.5)))
-            sub_clip = (ImageClip(str(sub_img_path))
-                        .with_start(cta_time + 0.5)
-                        .with_duration(dur_sub)
-                        .with_position(lambda t: slide_up(t, 1430, end_t=dur_sub)))
-            cta_layers.append(sub_clip)
-                    
-        # BELL animates at t+1.0 (only if enough time left)
-        if cta_time + 1.0 < duration - 0.3:
-            dur_bell = max(0.5, min(1.5, duration - (cta_time + 1.0)))
-            bell_clip = (ImageClip(str(bell_icon_path))
-                         .with_start(cta_time + 1.0)
-                         .with_duration(dur_bell)
-                         .with_position(lambda t: slide_up_bell(t, 1430, end_t=dur_bell)))
-            cta_layers.append(bell_clip)
-            
-        # CTA Text Overlay Banner ("SUB FOR MORE WEIRD FACTS" / "SUB FOR DAILY STOIC WISDOM")
+        # 1. Top Header Banner ("SUB FOR MORE WEIRD FACTS 🤯") - Placed at Top Safe Zone (y=420)
         cta_text_file = BASE_DIR / "assets" / f"cta_text_{niche_key}.png"
         if cta_text_file.exists():
             dur_text = max(0.5, min(3.0, duration - cta_time))
             text_banner_clip = (ImageClip(str(cta_text_file))
                                 .with_start(cta_time)
                                 .with_duration(dur_text)
-                                .with_position(lambda t: slide_up(t, 1100, end_t=dur_text)))
+                                .with_position(lambda t: slide_up(t, 420, end_t=dur_text)))
             cta_layers.append(text_banner_clip)
+
+        # 2. Modern Subscribe Bar Widget - Placed at Bottom Safe Zone (y=1500, safely below center subtitles)
+        if cta_time < duration - 0.3:
+            dur_sub = max(0.5, min(2.8, duration - cta_time))
+            sub_clip = (ImageClip(str(sub_img_path))
+                        .with_start(cta_time)
+                        .with_duration(dur_sub)
+                        .with_position(lambda t: slide_up(t, 1500, end_t=dur_sub)))
+            cta_layers.append(sub_clip)
+                    
+        # 3. Notification Bell Icon - Placed alongside Subscribe Widget
+        if cta_time + 0.4 < duration - 0.3:
+            dur_bell = max(0.5, min(2.2, duration - (cta_time + 0.4)))
+            bell_clip = (ImageClip(str(bell_icon_path))
+                         .with_start(cta_time + 0.4)
+                         .with_duration(dur_bell)
+                         .with_position(lambda t: slide_up_bell(t, 1500, end_t=dur_bell)))
+            cta_layers.append(bell_clip)
+            
     # Check if cta_layers is defined, if not, create it with video_clip
     try:
         cta_layers

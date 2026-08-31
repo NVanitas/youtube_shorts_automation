@@ -23,9 +23,9 @@ NICHES = {
         "primary_color": "FFFFFF",   # White (RGB Hex)
         "highlight_color": "FFFF00", # Bright Yellow (RGB Hex)
         "outline_color": "000000",   # Black (RGB Hex)
-        "font_size": 80,             # Decreased from 100 to prevent mobile screen overflow
-        "alignment": 2,              # Centered bottom in ASS
-        "margin_v": 350,             # Vertical margin to position subtitles higher (out of player UI)
+        "font_size": 75,             # High-impact legible font size
+        "alignment": 2,              # Centered in ASS
+        "margin_v": 750,             # Perfect center vertical positioning (no collision with top header or bottom CTA)
         "prompt_template": """
 Create a viral, highly engaging, educational, and fun YouTube Shorts script in English for curious kids and general audiences about mind-blowing bizarre nature, freaky deep sea creatures, animal superpowers, or strange earth mysteries.
 You MUST respond with a raw JSON object ONLY, containing exactly three keys: "title", "script", and "scenes".
@@ -55,7 +55,7 @@ RULES for "script":
 - Use plain text only. No markdown, no emojis in script, no speaker names, no stage directions.
 
 RULES for "scenes":
-- You must generate exactly 6-7 scenes to cover the video duration (each scene plays for ~2.5 - 3 seconds).
+- You must generate exactly 8-9 fast-paced scenes to cover the video duration (each scene plays for ~2.2 - 2.5 seconds for maximum visual retention).
 - For each scene, specify:
   - "keyword": a short, specific stock video search term describing the visual action at that moment (e.g. "deep sea hydrothermal vent", "glowing jellyfish tentacles", "dark underwater trench").
   - "reaction": MUST be exactly one of: shocked, scared, thinking, excited, mindblown, curious, crying, waving.
