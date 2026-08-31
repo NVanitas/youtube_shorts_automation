@@ -142,61 +142,88 @@ def draw_rounded_rect(draw, xy, rad, fill):
 def generate_subscribe_button(filepath):
     """Generates a modern, ultra-high-CTR YouTube Subscribe Widget with big readable typography."""
     print("Generating modern high-CTR subscribe button...")
-    width, height = 750, 150
+    width, height = 800, 155
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
-    # Outer dark glassmorphism container
-    draw.rounded_rectangle([0, 0, width, height], radius=35, fill=(18, 18, 24, 235), outline=(255, 40, 40, 255), width=4)
+    # Outer dark glassmorphism container with red neon glow border
+    draw.rounded_rectangle([0, 0, width, height], radius=38,
+                            fill=(14, 14, 22, 240), outline=(220, 30, 30, 255), width=5)
     
-    # Inner Red "SUBSCRIBE" button pill on right
-    btn_w = 340
-    btn_x0 = width - btn_w - 20
-    draw.rounded_rectangle([btn_x0, 20, width - 20, height - 20], radius=25, fill=(225, 20, 20, 255))
+    # Inner Red "SUBSCRIBE" pill button on right side
+    btn_w = 350
+    btn_x0 = width - btn_w - 18
+    draw.rounded_rectangle([btn_x0, 18, width - 18, height - 18], radius=26,
+                            fill=(210, 20, 20, 255))
+    # Highlight gloss at top of red button
+    draw.rounded_rectangle([btn_x0 + 8, 18, width - 26, height // 2], radius=20,
+                            fill=(255, 80, 80, 60))
     
     # Fonts
-    font_bold = get_best_font(52, preferred="impact")
-    font_btn = get_best_font(44, preferred="impact")
+    font_label = get_best_font(54, preferred="impact")  # Left label
+    font_btn   = get_best_font(46, preferred="impact")  # Button text
     
-    # Left channel prompt text: "JOIN US"
-    text_left = "SUBSCRIBE"
-    draw.text((45, (height - 60)//2), text_left, font=font_bold, fill=(255, 255, 255, 255))
-    
-    # Right pill text: "▶ SUB"
-    text_sub = "▶ CLICK"
+    # Left label: channel name / action
+    text_left = "FOLLOW + SUBSCRIBE"
+    # Measure to check width fits, downsize if needed
     try:
-        bbox = draw.textbbox((0, 0), text_sub, font=font_btn)
-        tw = bbox[2] - bbox[0]
-        th = bbox[3] - bbox[1]
+        bbl = draw.textbbox((0, 0), text_left, font=font_label)
+        tlw = bbl[2] - bbl[0]
+    except AttributeError:
+        tlw, _ = draw.textsize(text_left, font=font_label)
+    
+    if tlw > btn_x0 - 30:
+        font_label = get_best_font(40, preferred="impact")
+    
+    draw.text((24, (height - 58) // 2), text_left, font=font_label,
+              fill=(255, 255, 255, 255))
+    
+    # Right pill text
+    text_sub = "CLICK NOW !"
+    try:
+        bbs = draw.textbbox((0, 0), text_sub, font=font_btn)
+        tw, th = bbs[2] - bbs[0], bbs[3] - bbs[1]
     except AttributeError:
         tw, th = draw.textsize(text_sub, font=font_btn)
-        
-    btn_center_x = btn_x0 + (btn_w // 2)
-    draw.text((btn_center_x - (tw // 2), (height - th) // 2 - 6), text_sub, font=font_btn, fill=(255, 255, 255, 255))
+    
+    btn_cx = btn_x0 + btn_w // 2
+    # Drop shadow
+    draw.text((btn_cx - tw // 2 + 2, (height - th) // 2 - 4), text_sub,
+              font=font_btn, fill=(100, 0, 0, 200))
+    # Main bright text
+    draw.text((btn_cx - tw // 2, (height - th) // 2 - 6), text_sub,
+              font=font_btn, fill=(255, 255, 255, 255))
     
     img.save(filepath)
 
 def generate_like_button(filepath):
-    """Generates a modern Like & Bell Pill with big bold text."""
+    """Generates a modern Like Pill with big bold text — NO emoji (renders as square on Impact/Arial)."""
     print("Generating modern high-CTR like button...")
-    width, height = 400, 140
+    width, height = 420, 140
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
-    # Modern Blue/Cyan Glow Pill
-    draw.rounded_rectangle([0, 0, width, height], radius=30, fill=(0, 120, 255, 245), outline=(255, 255, 255, 220), width=4)
+    # Deep blue pill with white glow border
+    draw.rounded_rectangle([0, 0, width, height], radius=30,
+                            fill=(0, 100, 230, 245), outline=(180, 220, 255, 200), width=4)
+    # Gloss highlight
+    draw.rounded_rectangle([10, 8, width - 10, height // 2], radius=22,
+                            fill=(255, 255, 255, 30))
     
-    font = get_best_font(52, preferred="impact")
-    text = "LIKE 👍"
+    font = get_best_font(56, preferred="impact")
+    text = "LIKE  +  SHARE"
     try:
-        bbox = draw.textbbox((0,0), text, font=font)
+        bbox = draw.textbbox((0, 0), text, font=font)
         tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
     except AttributeError:
         tw, th = draw.textsize(text, font=font)
-        
-    # Drop shadow + main text
-    draw.text(((width - tw)//2 + 2, (height - th)//2 - 4), text, font=font, fill=(0, 40, 120, 255))
-    draw.text(((width - tw)//2, (height - th)//2 - 6), text, font=font, fill=(255, 255, 255, 255))
+    
+    cx = (width - tw) // 2
+    cy = (height - th) // 2 - 5
+    # Shadow
+    draw.text((cx + 2, cy + 3), text, font=font, fill=(0, 30, 100, 200))
+    # Main text
+    draw.text((cx, cy), text, font=font, fill=(255, 255, 255, 255))
     img.save(filepath)
 
 def generate_click_sound(filepath, duration=1.0, active_duration=0.08, sample_rate=44100):
@@ -240,27 +267,42 @@ def generate_bell_icon(filepath):
     img.save(filepath)
 
 def generate_cta_text_banner(filepath, text):
-    """Generates large, high-contrast, crystal-clear CTA banner."""
-    print(f"Generating CTA text banner: {text}...")
-    width, height = 920, 130
+    """Generates large, high-contrast, crystal-clear CTA banner.
+    
+    Emojis are intentionally STRIPPED — TrueType fonts (Impact, Arial) render
+    emoji codepoints as empty squares on Windows. The text is kept to clean
+    ASCII uppercase for maximum sharpness and legibility.
+    """
+    import re
+    # Strip all emoji / non-BMP characters that Impact can't render
+    clean_text = re.sub(r'[^\x00-\xFF]', '', text).strip()
+    print(f"Generating CTA text banner: {clean_text}...")
+    
+    width, height = 980, 130
     img = Image.new("RGBA", (width, height), (0,0,0,0))
     draw = ImageDraw.Draw(img)
     
-    # Dark semi-transparent pill background with gold neon border
-    draw.rounded_rectangle([0, 0, width, height], radius=30, fill=(12, 12, 18, 235), outline=(255, 215, 0, 255), width=5)
+    # Vivid gradient-like pill: deep navy → dark, gold neon border
+    draw.rounded_rectangle([0, 0, width, height], radius=32,
+                            fill=(8, 12, 28, 240),
+                            outline=(255, 200, 0, 255), width=5)
+    # Inner accent strip on left
+    draw.rounded_rectangle([0, 0, 12, height], radius=6, fill=(255, 60, 60, 255))
     
-    font = get_best_font(48, preferred="impact")
-        
+    font = get_best_font(50, preferred="impact")
+    
     try:
-        bbox = draw.textbbox((0,0), text, font=font)
+        bbox = draw.textbbox((0, 0), clean_text, font=font)
         tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
     except AttributeError:
-        tw, th = draw.textsize(text, font=font)
-        
-    # Drop shadow
-    draw.text(((width - tw)//2 + 2, (height - th)//2 - 4), text, font=font, fill=(0, 0, 0, 255))
-    # Crisp white main text
-    draw.text(((width - tw)//2, (height - th)//2 - 6), text, font=font, fill=(255, 255, 255, 255))
+        tw, th = draw.textsize(clean_text, font=font)
+
+    cy = (height - th) // 2 - 4
+    cx = (width - tw) // 2 + 8  # slight right offset for left accent strip
+    # Deep shadow for depth
+    draw.text((cx + 3, cy + 3), clean_text, font=font, fill=(0, 0, 0, 200))
+    # Crisp golden-white main text
+    draw.text((cx, cy), clean_text, font=font, fill=(255, 248, 220, 255))
     img.save(filepath)
 
 def generate_cta_assets(assets_dir):

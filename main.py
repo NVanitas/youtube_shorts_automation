@@ -182,17 +182,25 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
                 
             video_description = f"{script_text}\n\nSubscribe to the channel for daily Shorts!\n\n#shorts #viral #fyp #{niche_key} #motivation #educational"
             
-            # Define first automated high-CTR comment text (Extract question from script if available)
+            # Build smart pinned comment based on script content
             if niche_key == "facts":
-                # Find the last sentence in the script if it ends with '?'
                 sentences = re.split(r'(?<=[.!?])\s+', script_text.strip())
-                question_sentences = [s for s in sentences if "?" in s]
-                if question_sentences:
-                    comment_text = f"{question_sentences[-1]} Drop your thoughts below! 👇"
+                question_sentences = [s.strip() for s in sentences if "?" in s]
+                
+                # Detect format type from subtopic/script keywords
+                is_duel = any(w in script_text.lower() for w in ["vs", "versus", "duel", "battle", "fight", "wins", "who would"])
+                is_quiz = any(w in script_text.lower() for w in ["true or false", "guess", "fake", "real or fake", "which one"])
+                
+                if is_duel and question_sentences:
+                    comment_text = f"{question_sentences[-1]} Team A or Team B - drop your answer below! 👇"
+                elif is_quiz:
+                    comment_text = "Did you guess the fake one? Drop your answer below - no cheating! 👇"
+                elif question_sentences:
+                    comment_text = f"{question_sentences[-1]} Drop your answer below! 👇"
                 else:
-                    comment_text = "Which of these bizarre mysteries shocked you the most? 🤯 Drop your thoughts below! 👇"
+                    comment_text = "Which of these bizarre deep-sea facts blew your mind the most? Comment below! 👇"
             else:
-                comment_text = "Which lesson do you need most in your life right now? Comment below! 👇"
+                comment_text = "Which Stoic lesson do you need most right now? Comment below! 👇"
 
             uploaded_url = youtube_uploader.upload_short(
                 video_path=final_video,
