@@ -38,10 +38,27 @@ def get_authenticated_service():
             credentials = pickle.load(token)
             
     if not credentials or not credentials.valid:
+        refreshed = False
         if credentials and credentials.expired and credentials.refresh_token:
             print("Refreshing expired OAuth credentials...")
-            credentials.refresh(Request())
-        else:
+            try:
+                credentials.refresh(Request())
+                refreshed = True
+            except Exception as e:
+                print(f"[!] Warning: Token refresh failed ({e}). Re-authenticating...")
+                credentials = None
+                
+        if not refreshed or not credentials or not credentials.valid:
+            # If running in headless environment (GitHub Actions), fail with clear message
+            if os.getenv("CI") or os.getenv("GITHUB_ACTIONS"):
+                raise RuntimeError(
+                    "\n" + "="*60 +
+                    "\n[CRITICAL] YOUTUBE_TOKEN_BASE64 IN GITHUB SECRETS HAS EXPIRED!" +
+                    "\nIn Google Cloud Console, if the app is in 'Testing' mode, tokens expire every 7 days." +
+                    "\nTo fix: Change OAuth status to 'In Production' in Google Cloud, re-authenticate locally," +
+                    "\nrun 'python encode_tokens.py' and update YOUTUBE_TOKEN_BASE64 in GitHub Secrets." +
+                    "\n" + "="*60
+                )
             print("Opening browser for YouTube OAuth authorization...")
             flow = InstalledAppFlow.from_client_secrets_file(str(client_secret_file), SCOPES)
             credentials = flow.run_local_server(port=0)

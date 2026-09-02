@@ -166,64 +166,69 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
         # Step 7: Automatic YouTube Upload
         if auto_upload:
             print("\n[YOUTUBE AUTOMATION] Initiating upload process...")
-            import youtube_uploader
-            
-            # Extract dynamically generated viral title or use niche fallback
-            generated_title = script_data.get("title", "").strip()
-            
-            if niche_key == "facts":
-                video_title = generated_title if generated_title else "3 Mind-Blowing Facts You Did Not Know 🤯 #shorts"
-                tags = ["shorts", "viral", "fyp", "facts", "mindblowing", "science", "trivia", "didyouknow"]
-                cat_id = "27" # Education
-            else:
-                video_title = generated_title if generated_title else "How to Master Your Mind (Stoic Wisdom) 🏛️ #shorts"
-                tags = ["shorts", "viral", "fyp", "stoicism", "motivation", "ancientwisdom", "discipline", "mindset"]
-                cat_id = "22" # People & Blogs / Motivation
+            try:
+                import youtube_uploader
                 
-            video_description = f"{script_text}\n\nSubscribe to the channel for daily Shorts!\n\n#shorts #viral #fyp #{niche_key} #motivation #educational"
-            
-            # Build smart pinned comment based on script content
-            if niche_key == "facts":
-                sentences = re.split(r'(?<=[.!?])\s+', script_text.strip())
-                question_sentences = [s.strip() for s in sentences if "?" in s]
+                # Extract dynamically generated viral title or use niche fallback
+                generated_title = script_data.get("title", "").strip()
                 
-                # Detect format type from subtopic/script keywords
-                is_duel = any(w in script_text.lower() for w in ["vs", "versus", "duel", "battle", "fight", "wins", "who would"])
-                is_quiz = any(w in script_text.lower() for w in ["true or false", "guess", "fake", "real or fake", "which one"])
-                
-                if is_duel and question_sentences:
-                    comment_text = f"{question_sentences[-1]} Team A or Team B - drop your answer below! 👇"
-                elif is_quiz:
-                    comment_text = "Did you guess the fake one? Drop your answer below - no cheating! 👇"
-                elif question_sentences:
-                    comment_text = f"{question_sentences[-1]} Drop your answer below! 👇"
+                if niche_key == "facts":
+                    video_title = generated_title if generated_title else "3 Mind-Blowing Facts You Did Not Know 🤯 #shorts"
+                    tags = ["shorts", "viral", "fyp", "facts", "mindblowing", "science", "trivia", "didyouknow"]
+                    cat_id = "27" # Education
                 else:
-                    comment_text = "Which of these bizarre deep-sea facts blew your mind the most? Comment below! 👇"
-            else:
-                comment_text = "Which Stoic lesson do you need most right now? Comment below! 👇"
+                    video_title = generated_title if generated_title else "How to Master Your Mind (Stoic Wisdom) 🏛️ #shorts"
+                    tags = ["shorts", "viral", "fyp", "stoicism", "motivation", "ancientwisdom", "discipline", "mindset"]
+                    cat_id = "22" # People & Blogs / Motivation
+                    
+                video_description = f"{script_text}\n\nSubscribe to the channel for daily Shorts!\n\n#shorts #viral #fyp #{niche_key} #motivation #educational"
+                
+                # Build smart pinned comment based on script content
+                if niche_key == "facts":
+                    sentences = re.split(r'(?<=[.!?])\s+', script_text.strip())
+                    question_sentences = [s.strip() for s in sentences if "?" in s]
+                    
+                    # Detect format type from subtopic/script keywords
+                    is_duel = any(w in script_text.lower() for w in ["vs", "versus", "duel", "battle", "fight", "wins", "who would"])
+                    is_quiz = any(w in script_text.lower() for w in ["true or false", "guess", "fake", "real or fake", "which one"])
+                    
+                    if is_duel and question_sentences:
+                        comment_text = f"{question_sentences[-1]} Team A or Team B - drop your answer below! 👇"
+                    elif is_quiz:
+                        comment_text = "Did you guess the fake one? Drop your answer below - no cheating! 👇"
+                    elif question_sentences:
+                        comment_text = f"{question_sentences[-1]} Drop your answer below! 👇"
+                    else:
+                        comment_text = "Which of these bizarre deep-sea facts blew your mind the most? Comment below! 👇"
+                else:
+                    comment_text = "Which Stoic lesson do you need most right now? Comment below! 👇"
 
-            uploaded_url = youtube_uploader.upload_short(
-                video_path=final_video,
-                title=video_title,
-                description=video_description,
-                tags=tags,
-                category_id=cat_id,
-                privacy_status="public",
-                comment_text=comment_text
-            )
+                uploaded_url = youtube_uploader.upload_short(
+                    video_path=final_video,
+                    title=video_title,
+                    description=video_description,
+                    tags=tags,
+                    category_id=cat_id,
+                    privacy_status="public",
+                    comment_text=comment_text
+                )
 
-            # Clean up local project directory to save space if upload was successful
-            if uploaded_url and video_dir.exists():
-                print(f"\n[CLEANUP] Deleting local video files to save disk space: {video_dir.name}")
-                try:
-                    import shutil
-                    # Close video reader resources before deleting directory
-                    import gc
-                    gc.collect()
-                    shutil.rmtree(str(video_dir))
-                    print("[CLEANUP] Local files cleaned up successfully!")
-                except Exception as ce:
-                    print(f"[CLEANUP] Notice: Could not delete local folder: {ce}")
+                # Clean up local project directory to save space if upload was successful
+                if uploaded_url and video_dir.exists():
+                    print(f"\n[CLEANUP] Deleting local video files to save disk space: {video_dir.name}")
+                    try:
+                        import shutil
+                        # Close video reader resources before deleting directory
+                        import gc
+                        gc.collect()
+                        shutil.rmtree(str(video_dir))
+                        print("[CLEANUP] Local files cleaned up successfully!")
+                    except Exception as ce:
+                        print(f"[CLEANUP] Notice: Could not delete local folder: {ce}")
+            except Exception as ue:
+                print(f"\n[YOUTUBE UPLOAD ERROR] Upload failed: {ue}")
+                if os.getenv("CI") or os.getenv("GITHUB_ACTIONS"):
+                    raise ue
         
         # Actionable tips & Pinned Comment Recommendation
         print("\nNext steps for growth and monetization:")
