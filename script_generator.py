@@ -360,7 +360,7 @@ def generate_script(niche_key, video_dir, topic=None):
         if not api_key:
             raise ValueError("GEMINI_API_KEY not found in environment")
             
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key={api_key}"
+        models_to_try = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-flash-latest", "gemini-3.5-flash"]
         headers = {"Content-Type": "application/json"}
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
@@ -370,19 +370,29 @@ def generate_script(niche_key, video_dir, topic=None):
             }
         }
         
-        max_retries = 3
         resp = None
-        for attempt in range(max_retries):
-            resp = requests.post(url, headers=headers, json=payload)
-            if resp.status_code == 200:
+        for model_name in models_to_try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+            for attempt in range(2):
+                try:
+                    resp = requests.post(url, headers=headers, json=payload, timeout=30)
+                    if resp.status_code == 200:
+                        break
+                    elif resp.status_code in (429, 503, 500, 502, 504):
+                        print(f"Model {model_name} returned status {resp.status_code}. Retrying...")
+                        time.sleep(2)
+                except Exception as ex:
+                    print(f"Connection error with {model_name}: {ex}")
+                    time.sleep(2)
+            if resp is not None and resp.status_code == 200:
+                print(f"Successfully generated script using {model_name}!")
                 break
-            elif resp.status_code in (429, 503, 500, 502, 504):
-                print(f"API Error {resp.status_code}. Retrying in 15 seconds (Attempt {attempt+1}/{max_retries})...")
-                time.sleep(15)
-            else:
-                resp.raise_for_status()
                 
-        resp.raise_for_status()
+        if resp is None or resp.status_code != 200:
+            if resp is not None:
+                resp.raise_for_status()
+            else:
+                raise RuntimeError("All Gemini models failed to respond.")
         
         resp_data = resp.json()
         raw_text = resp_data['candidates'][0]['content']['parts'][0]['text'].strip()
