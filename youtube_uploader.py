@@ -42,8 +42,20 @@ def get_authenticated_service():
         
     credentials = None
     if token_file.exists():
-        with open(token_file, 'rb') as token:
-            credentials = pickle.load(token)
+        try:
+            with open(token_file, 'rb') as token:
+                credentials = pickle.load(token)
+        except Exception as pe:
+            print(f"\n[!] Error loading token.pickle: {pe}")
+            try:
+                with open(token_file, 'rb') as f_check:
+                    raw_bytes = f_check.read(20).strip()
+                    if raw_bytes.startswith(b'{'):
+                        print("[CRITICAL] token.pickle contains JSON text starting with '{', NOT credentials pickle!")
+                        print("[CRITICAL] You accidentally pasted CLIENT_SECRET_BASE64 into YOUTUBE_TOKEN_BASE64 in GitHub Secrets!")
+            except Exception:
+                pass
+            credentials = None
             
     if not credentials or not credentials.valid:
         refreshed = False
