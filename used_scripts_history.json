@@ -247,7 +247,9 @@
     "Deep Sea Volcanoes Are TEEMING With Boiling Hot Monsters! \ud83c\udf0b",
     "The Deep Sea's Most UNEXPECTED Duel: Giant Oarfish vs. Prehistoric Coelacanth! \u2694\ufe0f",
     "Immortal Aliens Hiding in the Deep Sea Abyss?! \ud83e\uddec",
-    "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88"
+    "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
+    "Guess This Deep Sea Living Fossil with 300 Teeth! \ud83e\udd2f",
+    "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -497,7 +499,9 @@
     "Ever wondered what survives inside superheated underwater volcanoes? Imagine water so hot it melts lead, yet tube worms grow meters tall, feeding on toxic chemicals! Blind shrimp cling to vents, enduring pressure that would crush a submarine, feasting on bacteria! Which of these extreme survivors blows your mind the most? Tell us below, and subscribe because you'll never guess what survives inside superheated underwater volcanoes!",
     "Imagine a massive ribbon-like monster battling a fish thought extinct for millions of years! The Giant Oarfish, over 50 feet long, drifts like a spectral ribbon, attracting predators with its shimmer. Meanwhile, the Coelacanth, an ancient armored fish thought extinct for 65 million years, uses its limb-like fins to stalk prey like a submarine hunter. Which of these incredible deep-sea survivors would you rather encounter? Tell us below and subscribe because imagine a massive ribbon-like monster...",
     "Ever heard of creatures that literally never die AND can change their bodies? Some deep-sea beings can reverse their aging process, becoming young again and living forever! They can even morph their entire bodies into new forms, like a real-life T-1000 from the abyss. Which bizarre superpower would YOU want most? Tell me below and subscribe because...",
-    "The cookiecutter shark, a mere 50cm long, carves perfect chunks out of creatures as massive as great white sharks and whales! It uses a dark 'collar' to mimic a small fish, luring in much larger predators. Then, with suction-cup lips, it latches on and uses its bandsaw teeth to scoop out a neat plug of flesh. Which ocean superpower blows your mind more than this tiny terror? Drop your answer below and subscribe because the cookiecutter shark..."
+    "The cookiecutter shark, a mere 50cm long, carves perfect chunks out of creatures as massive as great white sharks and whales! It uses a dark 'collar' to mimic a small fish, luring in much larger predators. Then, with suction-cup lips, it latches on and uses its bandsaw teeth to scoop out a neat plug of flesh. Which ocean superpower blows your mind more than this tiny terror? Drop your answer below and subscribe because the cookiecutter shark...",
+    "This deep-sea creature, considered a living fossil, has an eel-like body up to 2 meters long. It ambushes prey by bending and lunging like an eel, swallowing whole cephalopods and even smaller sharks. Its 300 recurved, needle-like teeth ensure nothing escapes its grip! Can you guess this ancient predator? It's the Frilled Shark! Which deep-sea mystery would you want to unravel next? Drop your answer below and subscribe because this deep-sea creature...",
+    "The sea lamprey is a 360-million-year-old living nightmare that predates the dinosaurs. With zero jaws, this ancient predator latches on with a funnel of razor-sharp concentric teeth, boring straight into fish flesh to drink their blood alive. Even weirder, eighteen species hunt like bloodthirsty vampires, while their juvenile larvae burrow in river mud for years! Would you swim near these jawless parasites? Drop your answer below and subscribe because"
   ],
   "used_fallbacks": {
     "facts": [],
@@ -524,7 +528,9 @@
     "the Mariana Trench Challenger Deep",
     "brinicles (ice fingers of death)",
     "underwater volcanoes erupting",
-    "cookiecutter shark"
+    "cookiecutter shark",
+    "frilled shark",
+    "lamprey"
   ],
   "format_weights": {
     "weights": {
@@ -561,6 +567,8 @@
     "date": "2026-10-05"
   },
   "title_formats": {
-    "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive"
+    "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
+    "Guess This Deep Sea Living Fossil with 300 Teeth! \ud83e\udd2f": "guess",
+    "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78": "deep_dive"
   }
 }
