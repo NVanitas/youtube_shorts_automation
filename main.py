@@ -175,7 +175,8 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
             try:
                 import thumbnail_generator
                 gen_title = script_data.get("title", f"{niche_key.capitalize()} Daily Short")
-                thumbnail_generator.generate_thumbnail(niche_key, gen_title, keywords, video_dir / "thumbnail.jpg")
+                thumbnail_generator.generate_thumbnail(niche_key, gen_title, keywords, video_dir / "thumbnail.jpg",
+                                                     background=bg_assets[0] if bg_assets else None)
             except Exception as te:
                 print(f"Thumbnail generation notice: {te}")
         except Exception as e:
@@ -251,6 +252,7 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
         return True
     uploaded_url = upload_video(niche_key, script_data, final_video)
     if uploaded_url:
+        archive_published_short(final_video, script_data, uploaded_url)
         # Clean up local project directories to save space if upload was successful
         print(f"\n[CLEANUP] Deleting local video files to save disk space...")
         import gc
@@ -258,6 +260,35 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
         for d in round_dirs:
             shutil.rmtree(str(d), ignore_errors=True)
     return bool(uploaded_url)
+
+
+def archive_published_short(final_video, script_data, url):
+    """Keeps a copy of every published Short in published/ (uploaded by CI to the 'shorts-archive'
+    GitHub release) for the weekly long-form compilation and for reposting on TikTok/Reels."""
+    import json
+    from config import BASE_DIR
+    published = BASE_DIR / "published"
+    published.mkdir(exist_ok=True)
+    video_id = url.rstrip("/").split("/")[-1]
+    stem = f"{datetime.now():%Y-%m-%d}_{video_id}"
+    shutil.copy(final_video, published / f"{stem}.mp4")
+    subjects = script_data.get("subjects") or []
+    hashtags = [re.sub(r"[^a-z0-9]", "", s.split("(")[0].lower()) for s in subjects]
+    hashtags = [h for h in hashtags if h] + ["deepsea", "ocean", "marinebiology", "animalfacts", "fyp"]
+    meta = {
+        "video_id": video_id,
+        "url": url,
+        "date": f"{datetime.now():%Y-%m-%d}",
+        "title": script_data.get("title", ""),
+        "script": script_data.get("script", ""),
+        "subjects": subjects,
+        # Ready-to-paste caption for TikTok / Instagram Reels
+        "social_caption": f"{script_data.get('title', '')} " + " ".join(f"#{h}" for h in hashtags),
+    }
+    with open(published / f"{stem}.json", "w", encoding="utf-8") as f:
+        json.dump(meta, f, indent=2, ensure_ascii=False)
+    (published / f"{stem}_caption.txt").write_text(meta["social_caption"], encoding="utf-8")
+    print(f"[ARCHIVE] Saved published/{stem}.mp4 for compilations and cross-posting.")
 
 
 def upload_video(niche_key, script_data, final_video):

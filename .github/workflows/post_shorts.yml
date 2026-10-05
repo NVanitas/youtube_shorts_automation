@@ -26,7 +26,7 @@ jobs:
       - name: Install FFmpeg
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
 
       - name: Install Python Dependencies
         run: |
@@ -60,6 +60,17 @@ jobs:
         run: |
           # Automatically generates a new 'facts' video and uploads it
           python main.py --niche facts --upload
+
+      - name: Archive published Short (weekly compilation + TikTok/Reels reposting)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Each published Short (mp4 + json with a ready-to-paste TikTok/Reels caption) goes to the
+          # 'shorts-archive' release: the weekly compilation reads it, and it's easy to download on a phone
+          if ls published/*.mp4 >/dev/null 2>&1; then
+            gh release view shorts-archive >/dev/null 2>&1 || gh release create shorts-archive               --title "Shorts archive"               --notes "Every published Short: .mp4 + .json (social_caption = ready-to-paste TikTok/Reels caption). Used by the weekly compilation."
+            gh release upload shorts-archive published/* --clobber
+          fi
 
       - name: Save used_scripts_history.json
         if: always() # also when the quality gate rejected every render, so rejected topics are not retried

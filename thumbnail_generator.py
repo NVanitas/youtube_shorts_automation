@@ -6,6 +6,21 @@ from PIL import Image, ImageDraw, ImageFont, ImageEnhance
 from utils import download_ai_image
 from config import NICHES
 
+# Bold fonts available on Windows (local runs) and Ubuntu (GitHub Actions runners)
+_FONT_CANDIDATES = ["impact.ttf", "arialbd.ttf",
+                    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+                    "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"]
+
+def load_font(size, bold_sans=False):
+    """Loads a bold display font that exists on this OS; never falls back to the tiny bitmap font."""
+    candidates = _FONT_CANDIDATES[1:] if bold_sans else _FONT_CANDIDATES
+    for name in candidates:
+        try:
+            return ImageFont.truetype(name, size)
+        except Exception:
+            continue
+    return ImageFont.load_default(size=size)
+
 def draw_text_with_stroke(draw, text, position, font, fill_color="yellow", stroke_color="black", stroke_width=6):
     """Draws text with a thick high-contrast outline for max readability on mobile screens."""
     x, y = position
@@ -17,21 +32,33 @@ def draw_text_with_stroke(draw, text, position, font, fill_color="yellow", strok
     # Draw main text
     draw.text((x, y), text, font=font, fill=fill_color)
 
-def generate_thumbnail(niche_key, title, keywords, output_path):
-    """Generates a high-CTR 1080x1920 vertical thumbnail with bold text overlays for YouTube Shorts."""
+def generate_thumbnail(niche_key, title, keywords, output_path, background=None):
+    """Generates a high-CTR 1080x1920 vertical thumbnail with bold text overlays for YouTube Shorts.
+
+    background: the video's own first scene asset (jpg or mp4) - shows the real creature.
+    """
     print(f"\nGenerating high-CTR vertical thumbnail for '{title}'...")
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     niche = NICHES[niche_key]
     primary_kw = keywords[0] if keywords else niche_key
-    
+
     # Temp file for raw background image
     temp_bg_path = output_path.parent / "temp_thumb_bg.jpg"
-    
-    # 1. Download vertical background image matching primary keyword (pure scenic background)
-    prompt_kw = f"dramatic cinematic vertical {primary_kw} hd dramatic lighting"
-    download_ai_image(prompt_kw, temp_bg_path)
+
+    # 1. Background: a frame of the video's own footage; AI image only as a fallback
+    background = Path(background) if background else None
+    if background and background.suffix.lower() == ".mp4":
+        import subprocess
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1", "-i", str(background),
+                        "-frames:v", "1", str(temp_bg_path)])
+    elif background and background.exists():
+        import shutil
+        shutil.copy(background, temp_bg_path)
+    if not temp_bg_path.exists():
+        prompt_kw = f"dramatic cinematic vertical {primary_kw} hd dramatic lighting"
+        download_ai_image(prompt_kw, temp_bg_path)
     
     try:
         img = Image.open(temp_bg_path).convert("RGBA")
@@ -80,16 +107,8 @@ def generate_thumbnail(niche_key, title, keywords, output_path):
     draw.rectangle([10, 10, 1070, 1910], outline=border_color, width=16)
     
     # 3. Add bold, vibrant text overlay
-    try:
-        font_title = ImageFont.truetype("impact.ttf", 100)
-        font_sub = ImageFont.truetype("arialbd.ttf", 65)
-    except Exception:
-        try:
-            font_title = ImageFont.truetype("arialbd.ttf", 90)
-            font_sub = ImageFont.truetype("arialbd.ttf", 60)
-        except Exception:
-            font_title = ImageFont.load_default()
-            font_sub = ImageFont.load_default()
+    font_title = load_font(100)
+    font_sub = load_font(65, bold_sans=True)
             
     # Extract short 2-3 word hook phrase from title
     clean_title = re.sub(r'[^\w\s]', '', title).upper()

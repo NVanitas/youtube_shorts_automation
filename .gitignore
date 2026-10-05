@@ -18,3 +18,7 @@ client_secret.json
 output/
 temp/
 *.mp4
+
+# Published Shorts / compilation inputs (stored in the shorts-archive release instead)
+published/
+archive/
