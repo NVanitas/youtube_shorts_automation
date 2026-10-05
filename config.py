@@ -57,7 +57,7 @@ RULES for "script":
 RULES for "scenes":
 - You must generate between 7-8 chronological scenes that precisely follow the narration sequence from start to finish.
 - For each scene, specify:
-  - "keyword": a hyper-literal, specific visual search term depicting EXACTLY what is being described in the voiceover at that specific moment (e.g. if the voiceover describes "crushing a submarine", keyword must be "crushed submarine underwater depth", if it describes "freezing ice", keyword must be "antarctic ice tunnel drilling", if it describes "bioluminescent fish", keyword must be "deep sea glowing anglerfish"). NEVER use generic or unrelated keywords.
+  - "keyword": a hyper-literal, specific visual search term depicting EXACTLY what is being described in the voiceover at that specific moment (e.g. if the voiceover describes "crushing a submarine", keyword must be "crushed submarine underwater depth", if it describes "freezing ice", keyword must be "antarctic ice tunnel drilling", if it describes "bioluminescent fish", keyword must be "deep sea glowing anglerfish"). NEVER use generic or unrelated keywords. Whenever the scene shows a named creature, the keyword MUST contain its full common name (e.g. "cookiecutter shark belly", never just "tiny shark"), because footage is searched by species name.
   - "reaction": MUST be exactly one of: shocked, scared, thinking, excited, mindblown, curious, crying, waving. Pick the reaction matching the emotional tone of that sentence.
 """
     },

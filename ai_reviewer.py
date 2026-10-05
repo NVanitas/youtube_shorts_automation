@@ -64,7 +64,9 @@ Score each 0-10:
 Respond with JSON only:
 {{"hook": 0, "facts": 0, "clarity": 0, "title": 0, "issues": ["short, concrete, actionable problems; empty if none"]}}"""
     try:
-        data = _parse_json(_call_gemini(prompt, temperature=0.2, json_mode=True))
+        # Text review is easy: use the lite model first to save the main model's daily quota for writing
+        data = _parse_json(_call_gemini(prompt, temperature=0.2, json_mode=True, models=[
+            "gemini-2.5-flash-lite", "gemini-flash-lite-latest", "gemini-2.5-flash", "gemini-3.5-flash"]))
     except Exception as e:
         print(f"[AI REVIEW] Script review unavailable: {e}")
         return None

@@ -117,26 +117,6 @@ def fit_vertical(image_path):
     return image_path
 
 
-def download_wikipedia_lead_image(name, dest_path):
-    """Downloads the lead image of the species' Wikipedia article - almost always a photo of exactly that animal."""
-    try:
-        resp = requests.get(
-            "https://en.wikipedia.org/w/api.php",
-            params={"action": "query", "format": "json", "generator": "search", "gsrsearch": name,
-                    "gsrlimit": 1, "prop": "pageimages", "piprop": "thumbnail", "pithumbsize": 1600},
-            headers=HTTP_HEADERS, timeout=20,
-        )
-        for page in resp.json().get("query", {}).get("pages", {}).values():
-            thumb = page.get("thumbnail", {})
-            if thumb.get("source") and thumb.get("width", 0) >= 500:
-                download_file_with_progress(thumb["source"], dest_path, desc=f"Wikipedia ({name[:15]})")
-                return fit_vertical(dest_path)
-        print(f"No Wikipedia lead image for '{name}'")
-    except Exception as e:
-        print(f"Wikipedia image lookup failed for '{name}': {e}")
-    return None
-
-
 _GENERIC_WORDS = {"close", "deep", "dramatic", "cinematic", "underwater", "ocean", "under", "with", "from",
                   "into", "giant", "huge", "attack", "swimming", "view", "footage", "real", "life"}
 
@@ -158,7 +138,7 @@ def download_wikimedia_image(query, dest_path, must_match=None):
             "https://commons.wikimedia.org/w/api.php",
             params={"action": "query", "format": "json", "generator": "search",
                     "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 12,
-                    "prop": "imageinfo", "iiprop": "url|size|mime", "iiurlwidth": 1600},
+                    "prop": "imageinfo", "iiprop": "url|size|mime", "iiurlwidth": 960},
             headers=HTTP_HEADERS, timeout=20,
         )
         pages = resp.json().get("query", {}).get("pages", {})
@@ -179,7 +159,8 @@ def download_wikimedia_image(query, dest_path, must_match=None):
         if not candidates:
             print(f"No Wikimedia photo found for '{query}'")
             return None
-        download_file_with_progress(random.choice(candidates[:3]), dest_path, desc=f"Wikimedia ({query[:15]})")
+        from media_pool import _download
+        _download(random.choice(candidates[:3]), dest_path, max_mb=25)
         return fit_vertical(dest_path)
     except Exception as e:
         print(f"Wikimedia search failed for '{query}': {e}")
@@ -214,27 +195,30 @@ def _named_species(keyword):
     return None
 
 
-def download_pexels_video(query, dest_path, api_key):
-    """Searches and downloads a vertical video from Pexels API matching the query."""
+def download_pexels_video(query, dest_path, api_key, used=None):
+    """Searches and downloads a vertical video from Pexels API matching the query.
+
+    used: optional set of "pexels:<id>" keys already in this video; those clips are skipped.
+    """
     headers = {"Authorization": api_key}
     params = {
         "query": query,
-        "per_page": 5,
+        "per_page": 15,
         "orientation": "portrait"
     }
     
     try:
-        response = requests.get("https://api.pexels.com/videos/search", headers=headers, params=params)
+        response = requests.get("https://api.pexels.com/videos/search", headers=headers, params=params, timeout=20)
         response.raise_for_status()
         data = response.json()
         
-        videos = data.get("videos", [])
+        videos = [v for v in data.get("videos", []) if used is None or f"pexels:{v['id']}" not in used]
         if not videos:
-            print(f"No videos found on Pexels for query '{query}'")
+            print(f"No (unused) videos found on Pexels for query '{query}'")
             return None
             
-        # Select the first video or a random one from results
-        video_data = random.choice(videos)
+        # Pick among the most relevant results
+        video_data = random.choice(videos[:5])
         video_files = video_data.get("video_files", [])
         
         # Filter for vertical HD
@@ -250,6 +234,8 @@ def download_pexels_video(query, dest_path, api_key):
             
         video_url = selected_file.get("link")
         download_file_with_progress(video_url, dest_path, desc=f"Video ({query[:15]})")
+        if used is not None:
+            used.add(f"pexels:{video_data['id']}")
         return dest_path
     except Exception as e:
         print(f"Failed to download video from Pexels for '{query}': {e}")
@@ -264,46 +250,61 @@ def _valid_image(path):
     except Exception:
         return False
 
-def prepare_background_assets(niche_key, scenes, video_dir):
+def _animal_group(species):
+    """'cookiecutter shark' -> 'shark': a generic term stock sites actually have footage for."""
+    for group in ("jellyfish", "octopus", "squid", "shark", "whale", "crab", "shrimp", "eel", "worm", "turtle",
+                  "fish", "crocodile", "narwhal", "orca", "nautilus", "snail"):
+        if group in species:
+            return group
+    return "deep sea creature"
+
+def prepare_background_assets(niche_key, scenes, video_dir, media=None):
     """Downloads or prepares background assets matching the script scenes.
-
-    Named species (e.g. "yeti crab") are searched as real photos on Wikimedia Commons first,
-    because stock video sites return unrelated footage for them. Generic scenes prefer
-    Pexels stock video. All sources are free.
-
+    
+    Named species (e.g. "yeti crab") get real footage/photos of exactly that animal from a
+    per-video Wikipedia/Wikimedia pool (videos first); generic scenes get Pexels stock video.
+    No media file is used twice in the same video. All sources are free.
+    
+    media: a media_pool.MediaPool shared across calls for the same video (pass it again when
+           replacing scenes so replacements are also distinct).
+    
     Returns:
         list of Path: List of paths to the downloaded media assets
     """
+    from media_pool import MediaPool
     pexels_key = os.getenv("PEXELS_API_KEY")
     assets = []
-
+    
     assets_dir = video_dir / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
-
+    if media is None:
+        media = MediaPool(video_dir / "media_cache")
+    used = media.used_urls
+            
     print(f"\nPreparing background assets for {len(scenes)} scenes:")
     for idx, scene in enumerate(scenes):
         kw = scene["keyword"]
-        video_dest = assets_dir / f"bg_asset_{idx}.mp4"
-        image_dest = assets_dir / f"bg_asset_{idx}.jpg"
+        stem = assets_dir / f"bg_asset_{idx}_{len(used)}"
+        video_dest = Path(f"{stem}.mp4")
+        image_dest = Path(f"{stem}.jpg")
         species = _named_species(kw)
 
         sources = []
         if species:
-            # Alternate between the article photo and other Commons photos so scenes don't all show the same picture
-            if idx % 2 == 0:
-                sources.append(lambda: download_wikipedia_lead_image(species, image_dest))
-            sources.append(lambda: download_wikimedia_image(kw, image_dest, must_match=species))
-            sources.append(lambda: download_wikimedia_image(species, image_dest, must_match=species))
-            sources.append(lambda: download_wikipedia_lead_image(species, image_dest))
-        if pexels_key:
-            sources.append(lambda: download_pexels_video(kw, video_dest, pexels_key))
+            sources.append(lambda: media.next_asset(species, stem))
+            if pexels_key:
+                sources.append(lambda: download_pexels_video(f"{_animal_group(species)} underwater", video_dest, pexels_key, used))
+        elif pexels_key:
+            sources.append(lambda: download_pexels_video(kw, video_dest, pexels_key, used))
             sources.append(lambda: download_pexels_photo(kw, image_dest, pexels_key))
         if not species:
             sources.append(lambda: download_wikimedia_image(kw, image_dest))
         # Last resorts: on-niche generic footage/photos, then any HD photo
         if pexels_key:
-            sources.append(lambda: download_pexels_video("deep ocean underwater", video_dest, pexels_key))
-        generic = random.choice(["underwater ocean", "deep sea fish", "coral reef underwater", "ocean underwater light"])
+            sources.append(lambda: download_pexels_video("deep ocean underwater", video_dest, pexels_key, used))
+        if species:
+            sources.append(lambda: download_wikimedia_image(_animal_group(species), image_dest))
+        generic = random.choice(["underwater ocean", "coral reef underwater", "ocean underwater light", "underwater diver"])
         sources.append(lambda: download_wikimedia_image(generic, image_dest))
         sources.append(lambda: download_file_with_progress(f"https://picsum.photos/seed/{idx+100}/1080/1920", image_dest, desc=f"HD Stock Asset ({idx+1})"))
 

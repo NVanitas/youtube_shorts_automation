@@ -440,7 +440,7 @@ def _extract_fields_regex(raw_text):
 # Valid reaction types that map to pre-generated PNG files in assets/reactions/
 VALID_REACTIONS = ["shocked", "scared", "thinking", "excited", "mindblown", "curious", "crying", "waving"]
 
-def _call_gemini(prompt, temperature=0.9, extra_parts=None, json_mode=False, timeout=30):
+def _call_gemini(prompt, temperature=0.9, extra_parts=None, json_mode=False, timeout=30, models=None):
     """Calls Gemini with a model fallback chain and returns the raw response text.
 
     extra_parts: additional content parts placed before the prompt (e.g. an uploaded video file).
@@ -448,7 +448,8 @@ def _call_gemini(prompt, temperature=0.9, extra_parts=None, json_mode=False, tim
     import requests
     import time
     api_key = os.environ.get("GEMINI_API_KEY", "")
-    models_to_try = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-flash-latest", "gemini-3.5-flash"]
+    # Each model has its own free-tier daily quota, so falling back also spreads the load
+    models_to_try = models or ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-flash-latest", "gemini-3.5-flash"]
     headers = {"Content-Type": "application/json", "x-goog-api-key": api_key}
     payload = {
         "contents": [{"parts": (extra_parts or []) + [{"text": prompt}]}],
@@ -708,7 +709,8 @@ def generate_script(niche_key, video_dir, topic=None):
             "title": title,
             "script": script_content,
             "scenes": scenes,
-            "keywords": [k.strip() for k in keywords]
+            "keywords": [k.strip() for k in keywords],
+            "subjects": subjects
         }
 
         # Save script text to file

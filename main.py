@@ -93,7 +93,7 @@ def learn_from_channel_performance():
         save_history(history)
 
 
-def replace_bad_scenes(niche_key, scenes, bg_assets, bad_scenes, video_dir, render_no):
+def replace_bad_scenes(niche_key, scenes, bg_assets, bad_scenes, video_dir, render_no, media):
     """Downloads new footage for the scenes the AI reviewer flagged as not matching the narration."""
     replaced = 0
     for bad in bad_scenes:
@@ -102,7 +102,7 @@ def replace_bad_scenes(niche_key, scenes, bg_assets, bad_scenes, video_dir, rend
             continue
         scenes[idx]["keyword"] = bad["better_keyword"]
         retry_dir = video_dir / f"retry{render_no}_scene{idx}"
-        new_assets = prepare_background_assets(niche_key, [scenes[idx]], retry_dir)
+        new_assets = prepare_background_assets(niche_key, [scenes[idx]], retry_dir, media=media)
         if new_assets:
             bg_assets[idx] = new_assets[0]
             replaced += 1
@@ -164,7 +164,9 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
 
             # Step 4: Asset Selection (Background slideshow assets and music)
             print("\n[4/6] Loading media assets (background slideshow & music)...")
-            bg_assets = prepare_background_assets(niche_key, scenes, video_dir)
+            from media_pool import MediaPool
+            media = MediaPool(video_dir / "media_cache")
+            bg_assets = prepare_background_assets(niche_key, scenes, video_dir, media=media)
             bg_music_path = get_background_music(niche_key)
             print(f"Background Assets ({len(bg_assets)} files): {[a.name for a in bg_assets]}")
             print(f"Background Music: {bg_music_path.name}")
@@ -220,7 +222,7 @@ def run_pipeline(niche_key, topic=None, whisper_model="base", auto_upload=False)
                 print("[QUALITY LOOP] Script problem (hook/facts). Writing a new script...")
                 break
             if review and review["bad_scenes"] and render_no < MAX_RENDERS_PER_SCRIPT:
-                replace_bad_scenes(niche_key, scenes, bg_assets, review["bad_scenes"], video_dir, render_no)
+                replace_bad_scenes(niche_key, scenes, bg_assets, review["bad_scenes"], video_dir, render_no, media)
                 continue
             break
 
@@ -270,14 +272,21 @@ def upload_video(niche_key, script_data, final_video):
 
         if niche_key == "facts":
             video_title = generated_title if generated_title else "3 Mind-Blowing Facts You Did Not Know 🤯 #shorts"
-            tags = ["shorts", "viral", "fyp", "facts", "mindblowing", "science", "trivia", "didyouknow"]
+            # Specific hashtags tell YouTube which audience to test the Short on; the first 3 show above the title
+            subject_tags = [re.sub(r"[^a-z0-9]", "", s.split("(")[0].lower()) for s in script_data.get("subjects") or []]
+            hashtags = [t for t in subject_tags if t][:2] + ["deepsea", "ocean", "marinebiology", "animals", "shorts"]
+            tags = [s.split("(")[0].strip() for s in script_data.get("subjects") or []] + [
+                "deep sea", "ocean animals", "marine biology", "sea creatures", "animal facts",
+                "prehistoric ocean", "ocean facts", "shorts"]
             cat_id = "27" # Education
+            video_description = (f"{generated_title}\n\n{script_text}\n\n"
+                                 "🌊 New deep sea & prehistoric ocean facts every day - subscribe so you don't miss the next one!\n\n"
+                                 + " ".join(f"#{h}" for h in hashtags))
         else:
             video_title = generated_title if generated_title else "How to Master Your Mind (Stoic Wisdom) 🏛️ #shorts"
             tags = ["shorts", "viral", "fyp", "stoicism", "motivation", "ancientwisdom", "discipline", "mindset"]
             cat_id = "22" # People & Blogs / Motivation
-
-        video_description = f"{script_text}\n\nSubscribe to the channel for daily Shorts!\n\n#shorts #viral #fyp #{niche_key} #motivation #educational"
+            video_description = f"{script_text}\n\nSubscribe to the channel for daily Shorts!\n\n#shorts #stoicism #motivation #ancientwisdom"
 
         # Build smart pinned comment based on script content
         if niche_key == "facts":
