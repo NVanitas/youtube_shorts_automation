@@ -14,7 +14,7 @@ for directory in [OUTPUT_DIR, BACKGROUNDS_DIR, MUSIC_DIR]:
 # Niches Configuration
 NICHES = {
     "facts": {
-        "name": "Kids Curiosities",
+        "name": "Deep Sea & Prehistoric Ocean",
         "voice": "en-US-AnaNeural",  # Cute, youthful kid cartoon voice
         "rate": "+8%",               # Paced for curious storytelling
         "pitch": "+0Hz",             # Natural youthful pitch
@@ -27,7 +27,7 @@ NICHES = {
         "alignment": 2,              # Centered in ASS
         "margin_v": 750,             # Perfect center vertical positioning (no collision with top header or bottom CTA)
         "prompt_template": """
-Create a viral, highly engaging, educational, and fun YouTube Shorts script in English for curious kids and general audiences about mind-blowing bizarre nature, freaky deep sea creatures, animal superpowers, or strange earth mysteries.
+Create a viral, highly engaging, educational YouTube Shorts script in English for a general audience about the sub-category given below (deep sea creatures, prehistoric ocean animals, animal superpowers, or strange ocean mysteries). Every fact MUST be scientifically accurate and specific (real names, real numbers) - no vague or invented claims.
 You MUST respond with a raw JSON object ONLY, containing exactly three keys: "title", "script", and "scenes".
 
 JSON Format:
@@ -49,7 +49,7 @@ RULES for "title":
 RULES for "script":
 - Keep it under 65-75 words so it fits in a fast-paced 16-20 second video.
 - The script MUST follow this winning structure:
-  1. INSTANT HOOK (0-2s): A shocking question or claim that grabs attention immediately (e.g. "Did you know real-life monsters are swimming right beneath us?").
+  1. INSTANT HOOK (0-2s): A specific, concrete, shocking claim in the FIRST sentence, naming the creature or thing (e.g. "This fish can swallow prey twice its own size." or "A sperm whale dives two kilometers down to fight a colossal squid."). NEVER start with "Did you know", "Get ready", "Imagine" or any other generic opener.
   2. 2 PUNCHY BIZARRE FACTS: Vivid analogies (e.g. "pressure like an elephant stepping on your thumb", "shoots pure boiling acid").
   3. INTERACTIVE QUESTION + SEAMLESS LOOP ENDING: Ask a direct engaging question (e.g. "Which of these bizarre creatures would scare you the most? Drop your answer below and subscribe because...") that flows smoothly back to the first word of the hook!
 - Use plain text only. No markdown, no emojis in script, no speaker names, no stage directions.

@@ -3,6 +3,7 @@ import sys
 import json
 import re
 import random
+import difflib
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 import google.generativeai as genai
@@ -28,27 +29,74 @@ if api_key and api_key != "sua_chave_do_gemini_aqui":
 else:
     print("WARNING: GEMINI_API_KEY not found or is default placeholder in environment. Please add it to your .env file.")
 
-# High-Engagement Viral Formats & Sub-topics for Nicosaurus (Dinos & Abyss)
-FACTS_SUBTOPICS = [
-    # Format 1: Deep Sea Creature Duels (High Debate & Comment Multiplier)
-    "Deep Sea Duel: Colossal Squid vs Sperm Whale (Who survives the abyss battle?)",
-    "Prehistoric Clash: Megalodon vs Mosasaur (Ultimate ocean titans duel)",
-    "Abyss Battle: Giant Pacific Octopus vs Sleeper Shark",
-    "Venom Clash: Blue-Ringed Octopus vs Deadly Box Jellyfish",
-    "Deep Trench Duel: Giant Oarfish vs Prehistoric Coelacanth",
-    
-    # Format 2: Gamified Quiz & Real vs Fake (Forcing Replays & Comments)
-    "Abyss Quiz: 2 Mind-Blowing Real Ocean Facts and 1 Fake Lie (Can you guess the fake?)",
-    "Creature Challenge: Guess the alien monster from its terrifying glowing eyes",
-    "Deep Sea True or False: The freakiest animal superpowers you will not believe",
-    
-    # Format 3: Extreme Biology & Bizarre Earth Mysteries (High Retention & Loop)
-    "Terrifying creatures thriving inside boiling underwater volcanoes",
-    "The immortal shape-shifting monsters hiding in the Mariana Trench",
-    "Alien parasites and zombie worms melting whale skeletons in pitch black",
-    "Super-salty toxic underwater lakes at the bottom of the ocean that pickle animals instantly",
-    "Ultra-black predators that absorb 99% of light as living black holes"
+# Large subject pools for Nicosaurus (Dinos & Abyss). Subtopics are built by combining
+# a format with subjects that have NOT appeared recently, so the channel never recycles
+# the same matchup or creature (YouTube suppresses repetitive/inauthentic content).
+FACTS_CREATURES = [
+    "colossal squid", "giant squid", "sperm whale", "megalodon", "mosasaur", "liopleurodon",
+    "dunkleosteus", "helicoprion", "ichthyosaur", "elasmosaurus", "kronosaurus", "basilosaurus",
+    "livyatan", "anomalocaris", "sea scorpion (eurypterid)", "ammonite", "giant pacific octopus",
+    "sleeper shark", "greenland shark", "goblin shark", "frilled shark", "megamouth shark",
+    "cookiecutter shark", "bluntnose sixgill shark", "great white shark", "orca", "box jellyfish",
+    "blue-ringed octopus", "lion's mane jellyfish", "immortal jellyfish", "giant siphonophore",
+    "barreleye fish", "anglerfish", "black swallower", "gulper eel", "fangtooth fish",
+    "viperfish", "dragonfish", "giant isopod", "yeti crab", "pompeii worm", "scaly-foot snail",
+    "vampire squid", "dumbo octopus", "glass octopus", "mimic octopus", "coconut octopus",
+    "giant oarfish", "coelacanth", "hagfish", "lamprey", "mantis shrimp", "pistol shrimp",
+    "japanese spider crab", "bobbit worm", "zombie worm (osedax)", "tardigrade", "sea pig",
+    "chambered nautilus", "blobfish", "sarcastic fringehead", "stonefish", "lionfish",
+    "electric eel", "humboldt squid", "leatherback sea turtle", "narwhal", "beluga whale",
+    "cuvier's beaked whale", "leafy seadragon", "pacific viperfish", "telescope octopus",
+    "christmas tree worm", "portuguese man o' war", "giant tube worm", "sea angel", "comb jelly",
+    "nudibranch", "parrotfish", "moray eel", "saltwater crocodile", "thresher shark",
 ]
+
+FACTS_PHENOMENA = [
+    "underwater brine lakes that pickle animals", "hydrothermal black smoker vents",
+    "underwater waterfalls bigger than Niagara", "milky seas glowing for miles",
+    "the bloop and other unexplained ocean sounds", "rogue waves taller than buildings",
+    "underwater rivers flowing on the seafloor", "brinicles (ice fingers of death)",
+    "whale falls feeding entire ecosystems", "the midnight zone where light never reaches",
+    "bioluminescent bays", "the Mariana Trench Challenger Deep", "underwater volcanoes erupting",
+    "methane ice that burns underwater", "ocean dead zones", "the great Pacific garbage patch",
+    "the Antarctic underwater lake Vostok", "underwater forests of giant kelp",
+    "Lake Nyos and limnic eruptions", "the ocean's daily vertical migration",
+    "submarine landslides and megatsunamis", "underwater crop circles made by pufferfish",
+    "red tides and toxic algae blooms", "the Mid-Atlantic Ridge splitting the planet",
+    "petrified forests under the sea", "underwater cave systems (cenotes)",
+    "the oxygen-producing dark metal nodules", "the snowball earth ice age oceans",
+    "the Cambrian explosion", "the great dying mass extinction", "the asteroid that killed the dinosaurs hitting the ocean",
+]
+
+# (category, subject kind, template). Categories are weighted by real channel views
+# (see performance_tracker.py), so formats that perform better get picked more often.
+FACTS_FORMATS = [
+    # Duels: highest debate & comment multiplier
+    ("duel", "duel", "Ocean Duel: {a} vs {b} (who would win and why? use real biology)"),
+    ("duel", "duel", "Size & Power Showdown: {a} vs {b} (compare weapons, size, speed)"),
+    # Quizzes: force replays & comments
+    ("quiz", "single", "Quiz: 2 real mind-blowing facts and 1 fake lie about the {a} (can you spot the lie?)"),
+    ("guess", "single", "Guess the creature: describe the {a} with 3 clues, reveal it at the end"),
+    # Deep dives: retention & loop
+    ("deep_dive", "single", "The single most bizarre real superpower of the {a}"),
+    ("deep_dive", "single", "Why the {a} is scarier (or weirder) than you think"),
+    ("deep_dive", "phenomenon", "The terrifying truth about {a}"),
+    ("deep_dive", "phenomenon", "What would happen to you inside {a}?"),
+]
+
+def classify_title(title):
+    """Best-effort format category for titles generated before categories were recorded."""
+    t = title.lower()
+    if re.search(r"\bvs\.?\b|versus|who wins|who would win|duel|battle|showdown|brawl|clash", t):
+        return "duel"
+    if re.search(r"\blie\b|fake|quiz|true or false", t):
+        return "quiz"
+    if "guess" in t:
+        return "guess"
+    return "deep_dive"
+
+# How many past videos a subject must wait before it can be reused
+SUBJECT_COOLDOWN = 80
 STOICISM_SUBTOPICS = [
     "how to deal with difficult people", "overcoming fear of failure", "embracing change and mortality",
     "mastering anger and emotions", "finding peace in a chaotic world", "letting go of things you can't control",
@@ -61,14 +109,100 @@ from config import NICHES, BASE_DIR
 # History tracking file to guarantee 0 repetitions
 HISTORY_FILE = BASE_DIR / "used_scripts_history.json"
 
+def _repair_history_text(text):
+    """Strip git conflict markers (keeping both sides) and restore missing list commas."""
+    text = re.sub(r'^(<<<<<<<|=======|>>>>>>>).*\n', '', text, flags=re.M)
+    return re.sub(r'"(\s*\n\s*)"', r'",\1"', text)
+
 def load_history():
-    if HISTORY_FILE.exists():
+    if not HISTORY_FILE.exists():
+        return {"used_titles": [], "used_fallbacks": {"facts": [], "stoicism": []}}
+    with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+        text = f.read()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    # Never silently fall back to an empty history: that disables the anti-repetition guard
+    try:
+        history = json.loads(_repair_history_text(text))
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"{HISTORY_FILE.name} is corrupted and could not be repaired: {e}")
+    print(f"[HISTORY] Repaired corrupted {HISTORY_FILE.name} (git conflict markers removed).")
+    save_history(history)
+    return history
+
+def _recently_used(subject, history):
+    """A subject is 'recent' if it was picked or mentioned in a title within the cooldown window."""
+    recent_subjects = history.get("used_subjects", [])[-SUBJECT_COOLDOWN:]
+    if subject in recent_subjects:
+        return True
+    # Match on the main name (e.g. "zombie worm (osedax)" -> "zombie worm") against recent titles
+    name = subject.split("(")[0].strip().lower()
+    recent_titles = " | ".join(history.get("used_titles", [])[-SUBJECT_COOLDOWN:]).lower()
+    return name in recent_titles
+
+def pick_fresh_facts_subtopic(history, exclude=()):
+    """Builds a subtopic from a random format using only subjects outside the cooldown window.
+
+    Returns:
+        tuple: (subtopic_text, [subjects used], format category)
+    """
+    creatures = [c for c in FACTS_CREATURES if c not in exclude and not _recently_used(c, history)]
+    phenomena = [p for p in FACTS_PHENOMENA if p not in exclude and not _recently_used(p, history)]
+    # If a pool runs dry, fall back to the least-recently-used half instead of repeating the newest
+    if len(creatures) < 2:
+        creatures = [c for c in FACTS_CREATURES if c not in history.get("used_subjects", [])[-SUBJECT_COOLDOWN // 2:]]
+    if not phenomena:
+        phenomena = [p for p in FACTS_PHENOMENA if p not in history.get("used_subjects", [])[-SUBJECT_COOLDOWN // 2:]]
+
+    category_weights = history.get("format_weights", {}).get("weights", {})
+    weights = [category_weights.get(f[0], 1.0) for f in FACTS_FORMATS]
+    category, kind, template = random.choices(FACTS_FORMATS, weights=weights)[0]
+    if kind == "duel":
+        subjects = random.sample(creatures, 2)
+        return template.format(a=subjects[0], b=subjects[1]), subjects, category
+    if kind == "single":
+        subjects = [random.choice(creatures)]
+    else:
+        subjects = [random.choice(phenomena)]
+    return template.format(a=subjects[0]), subjects, category
+
+def fetch_reference_facts(subjects, max_chars=1800):
+    """Fetches the Wikipedia intro for each subject so the script is grounded in real facts.
+
+    Returns:
+        str: "Subject: extract" blocks, or "" if Wikipedia is unreachable.
+    """
+    import requests
+    blocks = []
+    for subject in subjects:
+        name = subject.split("(")[0].strip()
         try:
-            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return {"used_titles": [], "used_fallbacks": {"facts": [], "stoicism": []}}
+            resp = requests.get(
+                "https://en.wikipedia.org/w/api.php",
+                params={"action": "query", "format": "json", "generator": "search", "gsrsearch": name,
+                        "gsrlimit": 1, "prop": "extracts", "exintro": 1, "explaintext": 1, "redirects": 1},
+                headers={"User-Agent": "NicosaurusShortsBot/1.0 (educational YouTube channel)"},
+                timeout=15,
+            )
+            pages = resp.json().get("query", {}).get("pages", {})
+            for page in pages.values():
+                extract = page.get("extract", "").strip()
+                if extract:
+                    blocks.append(f"{page.get('title', name)}: {extract[:max_chars]}")
+        except Exception as e:
+            print(f"[FACTS] Could not fetch Wikipedia reference for '{name}': {e}")
+    return "\n\n".join(blocks)
+
+def is_too_similar(title, past_titles, threshold=0.72):
+    """True when the title is a near-duplicate of any of the last 150 titles."""
+    t = re.sub(r'[^a-z0-9 ]', '', title.lower()).strip()
+    for past in past_titles[-150:]:
+        p = re.sub(r'[^a-z0-9 ]', '', past.lower()).strip()
+        if t and difflib.SequenceMatcher(None, t, p).ratio() >= threshold:
+            return True
+    return False
 
 def save_history(history):
     try:
@@ -306,46 +440,160 @@ def _extract_fields_regex(raw_text):
 # Valid reaction types that map to pre-generated PNG files in assets/reactions/
 VALID_REACTIONS = ["shocked", "scared", "thinking", "excited", "mindblown", "curious", "crying", "waving"]
 
+def _call_gemini(prompt, temperature=0.9, extra_parts=None, json_mode=False, timeout=30):
+    """Calls Gemini with a model fallback chain and returns the raw response text.
+
+    extra_parts: additional content parts placed before the prompt (e.g. an uploaded video file).
+    """
+    import requests
+    import time
+    api_key = os.environ.get("GEMINI_API_KEY", "")
+    models_to_try = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-flash-latest", "gemini-3.5-flash"]
+    headers = {"Content-Type": "application/json", "x-goog-api-key": api_key}
+    payload = {
+        "contents": [{"parts": (extra_parts or []) + [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": temperature,
+            "maxOutputTokens": 8192
+        }
+    }
+    if json_mode:
+        payload["generationConfig"]["responseMimeType"] = "application/json"
+
+    resp = None
+    for model_name in models_to_try:
+        # API key goes in a header, never in the URL, so it cannot leak into error messages/CI logs
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
+        for attempt in range(2):
+            try:
+                resp = requests.post(url, headers=headers, json=payload, timeout=timeout)
+                if resp.status_code == 200:
+                    break
+                elif resp.status_code in (429, 503, 500, 502, 504):
+                    print(f"Model {model_name} returned status {resp.status_code}. Retrying...")
+                    time.sleep(2)
+            except Exception as ex:
+                print(f"Connection error with {model_name}: {ex}")
+                time.sleep(2)
+        if resp is not None and resp.status_code == 200:
+            print(f"Gemini responded using {model_name}.")
+            break
+
+    if resp is None or resp.status_code != 200:
+        if resp is not None:
+            resp.raise_for_status()
+        raise RuntimeError("All Gemini models failed to respond.")
+
+    return resp.json()['candidates'][0]['content']['parts'][0]['text'].strip()
+
+def _parse_response(raw_text, niche_key):
+    """Parses a Gemini response into (title, script, scenes, keywords), or None if unusable."""
+    cleaned_text = clean_json_response(raw_text)
+
+    # Attempt 1: Direct JSON parse
+    data = None
+    try:
+        data = json.loads(cleaned_text)
+    except json.JSONDecodeError:
+        pass
+
+    # Attempt 2: Remove control characters and retry
+    if not data:
+        try:
+            sanitized = re.sub(r'[\x00-\x1F\x7F]', ' ', cleaned_text)
+            data = json.loads(sanitized)
+        except json.JSONDecodeError:
+            pass
+
+    # Attempt 3: Regex field extraction (handles multiline strings, escaped quotes, etc.)
+    if not data or not isinstance(data, dict):
+        print("Extracting script fields via regex parser...")
+        title, script, keywords = _extract_fields_regex(raw_text)
+        if script and len(script) > 30:
+            data = {"title": title, "script": script, "keywords": keywords}
+        else:
+            print(f"REGEX FAILED. Raw response was:\n{raw_text[:800]}\n...")
+
+    if not (data and isinstance(data.get("script"), str) and len(data["script"].strip()) > 30):
+        return None
+
+    scenes = data.get("scenes", [])
+    if not isinstance(scenes, list):
+        scenes = []
+
+    # If no scenes are present but keywords are (like for Stoicism or regex fallbacks)
+    if not scenes:
+        keywords = data.get("keywords", [])
+        if not isinstance(keywords, list):
+            keywords = []
+        # Map keywords to scenes
+        for idx, kw in enumerate(keywords):
+            reaction = VALID_REACTIONS[idx % len(VALID_REACTIONS)] if niche_key == "facts" else ""
+            scenes.append({"keyword": kw, "reaction": reaction})
+    else:
+        # Ensure each scene object is properly formatted
+        for idx, scene in enumerate(scenes):
+            if not isinstance(scene, dict):
+                scenes[idx] = {"keyword": str(scene), "reaction": ""}
+            if "keyword" not in scenes[idx]:
+                scenes[idx]["keyword"] = ""
+            reaction_val = scenes[idx].get("reaction", "").strip().lower()
+            # Validate reaction is one of our pre-made types
+            if reaction_val not in VALID_REACTIONS:
+                # Try to infer the closest valid reaction from freeform text
+                inferred = VALID_REACTIONS[idx % len(VALID_REACTIONS)]
+                for vr in VALID_REACTIONS:
+                    if vr in reaction_val:
+                        inferred = vr
+                        break
+                scenes[idx]["reaction"] = inferred
+            else:
+                scenes[idx]["reaction"] = reaction_val
+
+    # Enforce scene count limit
+    target_kw_count = 7 if niche_key == "facts" else 15
+    if len(scenes) < target_kw_count:
+        # Add default scenes if count is too low
+        fallback_scenes = [
+            {"keyword": "mind blowing universe", "reaction": "looking completely mindblown"},
+            {"keyword": "curious science details", "reaction": "inspecting with a magnifying glass"}
+        ]
+        for i in range(target_kw_count - len(scenes)):
+            fs = fallback_scenes[i % len(fallback_scenes)]
+            reaction = VALID_REACTIONS[len(scenes) % len(VALID_REACTIONS)] if niche_key == "facts" else ""
+            scenes.append({"keyword": fs["keyword"], "reaction": reaction})
+    elif len(scenes) > target_kw_count:
+        scenes = scenes[:target_kw_count]
+
+    # Generate keywords list for compatibility with other parts of the pipeline
+    keywords = [s["keyword"].strip() for s in scenes if s.get("keyword")]
+
+    title = str(data.get("title", "")).strip().replace('\\"', '"').replace('\n', ' ')
+    if not title:
+        title = f"Mind-Blowing {niche_key.capitalize()} You Need To Know 🤯" if niche_key == "facts" else "Stoic Rule To Master Your Life 🏛️"
+
+    script_content = str(data["script"]).strip().replace('\\"', '"').replace('\n', ' ')
+    return title, script_content, scenes, keywords
+
 def generate_script(niche_key, video_dir, topic=None):
     """Generates a structured video script, viral title, and keywords/scenes using Gemini API.
-    
-    Every generated script is saved to history to guarantee zero repetition.
-    
+
+    Subjects rotate through large pools with a cooldown, and near-duplicate titles are
+    regenerated, so the channel does not publish repetitive content.
+
     Returns:
         dict: {"title": str, "script": str, "scenes": list, "keywords": list}
     """
     if niche_key not in NICHES:
         raise ValueError(f"Niche '{niche_key}' is not configured.")
-        
+
     niche = NICHES[niche_key]
-    prompt = niche["prompt_template"]
-    
     history = load_history()
     used_titles = history.get("used_titles", [])
     used_scripts = history.get("used_scripts", [])
-    
-    if topic:
-        prompt += f"\n\nSpecifically, the video should be about this topic/theme: '{topic}'."
-    else:
-        if niche_key == "facts":
-            subtopic = random.choice(FACTS_SUBTOPICS)
-        else:
-            subtopic = random.choice(STOICISM_SUBTOPICS)
-        
-        # Inject past titles AND past script summaries to guarantee zero repeats
-        past_titles_str = ", ".join(used_titles[-20:]) if used_titles else "None"
-        past_scripts_summary = "; ".join([s[:60] for s in used_scripts[-10:]]) if used_scripts else "None"
-        prompt += f"\n\nFocus specifically on this sub-category: '{subtopic}'."
-        prompt += f"\n\nCRITICAL: You MUST generate a completely NEW and UNIQUE script. DO NOT repeat or reuse ideas from these past titles: [{past_titles_str}]."
-        prompt += f"\nAlso avoid these past script openings: [{past_scripts_summary}]."
-        try:
-            dir_suffix = int(os.path.basename(str(video_dir)).split('_')[-1])
-        except (ValueError, IndexError):
-            dir_suffix = random.randint(0, 99999)
-        prompt += f"\n(UniqueID: {random.randint(100000, 999999)}-{dir_suffix})"
-        
+
     print(f"Generating script, viral title and keywords/scenes for niche '{niche['name']}' using Gemini...")
-    
+
     # Check if API key is configured
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key or api_key == "sua_chave_do_gemini_aqui":
@@ -353,204 +601,127 @@ def generate_script(niche_key, video_dir, topic=None):
         print("[!] The pipeline will now abort to guarantee zero duplicate videos.")
         return None
 
+    import ai_reviewer
+
+    rejected_subjects = []
+    retry_with = None  # (subtopic, subjects, category, critique) when a draft is rejected on quality
+    rejections_on_topic = 0
+    reference_cache = {}
+    max_attempts = 3
     try:
-        import requests
-        import time
-        api_key = os.environ.get("GEMINI_API_KEY", "")
-        if not api_key:
-            raise ValueError("GEMINI_API_KEY not found in environment")
-            
-        models_to_try = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-flash-latest", "gemini-3.5-flash"]
-        headers = {"Content-Type": "application/json"}
-        payload = {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "temperature": 0.9,
-                "maxOutputTokens": 8192
-            }
-        }
-        
-        resp = None
-        for model_name in models_to_try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-            for attempt in range(2):
-                try:
-                    resp = requests.post(url, headers=headers, json=payload, timeout=30)
-                    if resp.status_code == 200:
-                        break
-                    elif resp.status_code in (429, 503, 500, 502, 504):
-                        print(f"Model {model_name} returned status {resp.status_code}. Retrying...")
-                        time.sleep(2)
-                except Exception as ex:
-                    print(f"Connection error with {model_name}: {ex}")
-                    time.sleep(2)
-            if resp is not None and resp.status_code == 200:
-                print(f"Successfully generated script using {model_name}!")
-                break
-                
-        if resp is None or resp.status_code != 200:
-            if resp is not None:
-                resp.raise_for_status()
+        for attempt in range(max_attempts):
+            prompt = niche["prompt_template"]
+            subjects = []
+            category = None
+            reference = ""
+            if topic:
+                prompt += f"\n\nSpecifically, the video should be about this topic/theme: '{topic}'."
             else:
-                raise RuntimeError("All Gemini models failed to respond.")
-        
-        resp_data = resp.json()
-        raw_text = resp_data['candidates'][0]['content']['parts'][0]['text'].strip()
-        cleaned_text = clean_json_response(raw_text)
-        
-        # Attempt 1: Direct JSON parse
-        data = None
-        try:
-            data = json.loads(cleaned_text)
-        except json.JSONDecodeError:
-            pass
-            
-        # Attempt 2: Remove control characters and retry
-        if not data:
-            try:
-                sanitized = re.sub(r'[\x00-\x1F\x7F]', ' ', cleaned_text)
-                data = json.loads(sanitized)
-            except json.JSONDecodeError:
-                pass
-        
-        # Attempt 3: Regex field extraction (handles multiline strings, escaped quotes, etc.)
-        if not data or not isinstance(data, dict):
-            print("Extracting script fields via regex parser...")
-            title, script, keywords = _extract_fields_regex(raw_text)
-            if script and len(script) > 30:
-                data = {"title": title, "script": script, "keywords": keywords}
-            else:
-                print(f"REGEX FAILED. Raw response was:\n{raw_text[:800]}\n...")
-        
-        # Validate and package
-        if data and isinstance(data.get("script"), str) and len(data["script"].strip()) > 30:
-            scenes = data.get("scenes", [])
-            if not isinstance(scenes, list):
-                scenes = []
-                
-            # If no scenes are present but keywords are (like for Stoicism or regex fallbacks)
-            if not scenes:
-                keywords = data.get("keywords", [])
-                if not isinstance(keywords, list):
-                    keywords = []
-                # Map keywords to scenes
-                for idx, kw in enumerate(keywords):
-                    reaction = VALID_REACTIONS[idx % len(VALID_REACTIONS)] if niche_key == "facts" else ""
-                    scenes.append({"keyword": kw, "reaction": reaction})
-            else:
-                # Ensure each scene object is properly formatted
-                for idx, scene in enumerate(scenes):
-                    if not isinstance(scene, dict):
-                        scenes[idx] = {"keyword": str(scene), "reaction": ""}
-                    if "keyword" not in scenes[idx]:
-                        scenes[idx]["keyword"] = ""
-                    reaction_val = scenes[idx].get("reaction", "").strip().lower()
-                    # Validate reaction is one of our pre-made types
-                    if reaction_val not in VALID_REACTIONS:
-                        # Try to infer the closest valid reaction from freeform text
-                        inferred = VALID_REACTIONS[idx % len(VALID_REACTIONS)]
-                        for vr in VALID_REACTIONS:
-                            if vr in reaction_val:
-                                inferred = vr
-                                break
-                        scenes[idx]["reaction"] = inferred
-                    else:
-                        scenes[idx]["reaction"] = reaction_val
-                        
-            # Enforce scene count limit
-            target_kw_count = 7 if niche_key == "facts" else 15
-            if len(scenes) < target_kw_count:
-                # Add default scenes if count is too low
-                fallback_scenes = [
-                    {"keyword": "mind blowing universe", "reaction": "looking completely mindblown"},
-                    {"keyword": "curious science details", "reaction": "inspecting with a magnifying glass"}
-                ]
-                for i in range(target_kw_count - len(scenes)):
-                    fs = fallback_scenes[i % len(fallback_scenes)]
-                    reaction = VALID_REACTIONS[len(scenes) % len(VALID_REACTIONS)] if niche_key == "facts" else ""
-                    scenes.append({"keyword": fs["keyword"], "reaction": reaction})
-            elif len(scenes) > target_kw_count:
-                scenes = scenes[:target_kw_count]
-                
-            # Generate keywords list for compatibility with other parts of the pipeline
-            keywords = [s["keyword"].strip() for s in scenes if s.get("keyword")]
-                
-            title = str(data.get("title", "")).strip().replace('\\"', '"').replace('\n', ' ')
-            if not title:
-                title = f"Mind-Blowing {niche_key.capitalize()} You Need To Know 🤯" if niche_key == "facts" else "Stoic Rule To Master Your Life 🏛️"
-            
-            script_content = str(data["script"]).strip().replace('\\"', '"').replace('\n', ' ')
-            
-            # Check if this script is too similar to a past one (first 50 chars match)
+                if retry_with:
+                    subtopic, subjects, category, _ = retry_with
+                elif niche_key == "facts":
+                    subtopic, subjects, category = pick_fresh_facts_subtopic(history, exclude=rejected_subjects)
+                else:
+                    subtopic = random.choice(STOICISM_SUBTOPICS)
+                print(f"[TOPIC] {subtopic}")
+
+                # Ground the script in real sources: Gemini invents facts about obscure animals otherwise
+                if subjects:
+                    key = tuple(subjects)
+                    if key not in reference_cache:
+                        reference_cache[key] = fetch_reference_facts(subjects)
+                    reference = reference_cache[key]
+                if reference:
+                    prompt += ("\n\nREFERENCE FACTS (from Wikipedia). Every factual claim in the script MUST be supported by "
+                               "these references. Do not attribute behaviors of related species to this one. Do not invent "
+                               f"numbers.\n{reference}")
+
+                # Inject past titles AND past script summaries to avoid repeats
+                past_titles_str = ", ".join(used_titles[-40:]) if used_titles else "None"
+                past_scripts_summary = "; ".join([s[:60] for s in used_scripts[-10:]]) if used_scripts else "None"
+                prompt += f"\n\nFocus specifically on this sub-category: '{subtopic}'."
+                prompt += f"\n\nCRITICAL: You MUST generate a completely NEW and UNIQUE script. DO NOT repeat or reuse ideas, title structures or wording from these past titles: [{past_titles_str}]."
+                prompt += f"\nAlso avoid these past script openings: [{past_scripts_summary}]."
+
+            # Learn from what actually got views on the channel (style only, never the topics)
+            top_titles = history.get("format_weights", {}).get("top_titles", [])
+            if top_titles:
+                prompt += f"\n\nThese past titles got the MOST views on this channel. Match their energy and title style, but NOT their topics: [{', '.join(top_titles)}]."
+            if retry_with:
+                prompt += f"\n\nA previous draft on this topic was REJECTED by the editor for these reasons, fix them: {retry_with[3]}"
+
+            temperature = 0.9 + 0.15 * attempt
+            parsed = _parse_response(_call_gemini(prompt, temperature), niche_key)
+            if not parsed:
+                print(f"[!] Gemini response could not be parsed (attempt {attempt + 1}/{max_attempts}).")
+                continue
+
+            title, script_content, scenes, keywords = parsed
             script_start = script_content[:50].lower()
-            if any(script_start == past[:50].lower() for past in used_scripts):
-                print("WARNING: Gemini generated a near-duplicate script! Retrying with higher temperature...")
-                
-                payload2 = {
-                    "contents": [{"parts": [{"text": prompt + "\n\nIMPORTANT: Generate a COMPLETELY DIFFERENT script from anything before. Be creative and surprising!"}]}],
-                    "generationConfig": {
-                        "temperature": 1.2,
-                        "maxOutputTokens": 8192
-                    }
-                }
-                
-                resp2 = None
-                for attempt in range(max_retries):
-                    resp2 = requests.post(url, headers=headers, json=payload2)
-                    if resp2.status_code == 200:
-                        break
-                    elif resp2.status_code in (429, 503, 500, 502, 504):
-                        print(f"API Error {resp2.status_code} during uniqueness retry. Waiting 15s (Attempt {attempt+1}/{max_retries})...")
-                        time.sleep(15)
+            duplicate_opening = any(script_start == past[:50].lower() for past in used_scripts)
+            if (duplicate_opening or is_too_similar(title, used_titles)) and attempt < max_attempts - 1:
+                print(f"WARNING: '{title}' is too similar to a past video. Regenerating with a new topic...")
+                rejected_subjects.extend(subjects)
+                retry_with = None
+                continue
+
+            # Editorial review before spending minutes on rendering
+            review = ai_reviewer.review_script(title, script_content, scenes, reference)
+            if review and not review["passed"]:
+                if attempt < max_attempts - 1:
+                    rejections_on_topic += 1
+                    if topic or rejections_on_topic >= 2:
+                        # Same topic failed twice: the subject is too obscure, try another one
+                        print("WARNING: Script rejected again. Switching to a new topic...")
+                        rejected_subjects.extend(subjects)
+                        retry_with = None
+                        rejections_on_topic = 0
                     else:
-                        resp2.raise_for_status()
-                        
-                resp2.raise_for_status()
-                
-                raw2 = resp2.json()['candidates'][0]['content']['parts'][0]['text'].strip()
-                t2, s2, k2 = _extract_fields_regex(raw2)
-                if s2 and len(s2) > 30:
-                    title = t2 if t2 else title
-                    script_content = s2
-                    if k2 and len(k2) >= 5:
-                        keywords = k2[:15]
-                        # Remap scenes for facts niche
-                        scenes = []
-                        for idx, kw in enumerate(keywords):
-                            reaction = VALID_REACTIONS[idx % len(VALID_REACTIONS)] if niche_key == "facts" else ""
-                            scenes.append({"keyword": kw, "reaction": reaction})
-            
-            # Save to history
-            used_titles.append(title)
-            used_scripts.append(script_content)
-            history["used_titles"] = used_titles
-            history["used_scripts"] = used_scripts
-            save_history(history)
-            
-            result = {
-                "title": title,
-                "script": script_content,
-                "scenes": scenes,
-                "keywords": [k.strip() for k in keywords]
-            }
-            
-            # Save script text to file
-            script_path = video_dir / f"{niche_key}_script.txt"
-            with open(script_path, "w", encoding="utf-8") as f:
-                f.write(result["script"])
-                
-            print(f"Generated Live Title: '{result['title']}'")
-            print("Script and keywords generated successfully via Gemini API!")
-            return result
-            
-        print("\n[!] CRITICAL ERROR: Gemini response could not be parsed.")
-        print("[!] The pipeline will now abort to guarantee zero duplicate videos.")
-        return None
-        
+                        print("WARNING: Script rejected by AI editor. Rewriting with its feedback...")
+                        retry_with = (subtopic, subjects, category, "; ".join(review["issues"]))
+                    continue
+                if review["scores"]["facts"] < ai_reviewer.MIN_FACT_SCORE:
+                    # Never publish a script the editor flagged as factually wrong
+                    print("\n[!] All drafts had factual errors. No script approved for this round.")
+                    if subjects:
+                        history["used_subjects"] = history.get("used_subjects", []) + subjects
+                        save_history(history)
+                    return None
+            break
+        else:
+            print("\n[!] CRITICAL ERROR: Gemini response could not be parsed.")
+            print("[!] The pipeline will now abort to guarantee zero duplicate videos.")
+            return None
+
+        # Save to history
+        used_titles.append(title)
+        used_scripts.append(script_content)
+        history["used_titles"] = used_titles
+        history["used_scripts"] = used_scripts
+        if subjects:
+            history["used_subjects"] = history.get("used_subjects", []) + subjects
+        if category:
+            history.setdefault("title_formats", {})[title] = category
+        save_history(history)
+
+        result = {
+            "title": title,
+            "script": script_content,
+            "scenes": scenes,
+            "keywords": [k.strip() for k in keywords]
+        }
+
+        # Save script text to file
+        script_path = video_dir / f"{niche_key}_script.txt"
+        with open(script_path, "w", encoding="utf-8") as f:
+            f.write(result["script"])
+
+        print(f"Generated Live Title: '{result['title']}'")
+        print("Script and keywords generated successfully via Gemini API!")
+        return result
+
     except Exception as e:
         print(f"\n[!] CRITICAL ERROR: Gemini API failed after multiple retries.")
         print(f"[!] Reason: {e}")
         print("[!] The pipeline will now abort to guarantee zero duplicate videos.")
         return None
-
-

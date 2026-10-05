@@ -88,6 +88,132 @@ def download_ai_image(keyword, dest_path):
             
     return None
 
+HTTP_HEADERS = {"User-Agent": "NicosaurusShortsBot/1.0 (educational YouTube channel)"}
+
+
+def fit_vertical(image_path):
+    """Turns any image into a 1080x1920 frame: the whole image fitted in the middle over a blurred,
+    darkened copy of itself, so landscape photos never get the animal cropped out."""
+    from PIL import Image, ImageFilter, ImageEnhance
+    with Image.open(image_path) as src:
+        img = src.convert("RGB")
+    w, h = img.size
+    if abs(w / h - 9 / 16) < 0.02:
+        img.resize((1080, 1920), Image.Resampling.LANCZOS).save(image_path, "JPEG", quality=92)
+        return image_path
+
+    # Blurred background: cover-crop to 9:16
+    scale = max(1080 / w, 1920 / h)
+    bg = img.resize((int(w * scale) + 1, int(h * scale) + 1), Image.Resampling.LANCZOS)
+    left, top = (bg.width - 1080) // 2, (bg.height - 1920) // 2
+    bg = bg.crop((left, top, left + 1080, top + 1920)).filter(ImageFilter.GaussianBlur(40))
+    bg = ImageEnhance.Brightness(bg).enhance(0.55)
+
+    # Foreground: fit inside, slightly larger than full width so it fills more of the frame
+    fg_scale = min(1180 / w, 1500 / h)
+    fg = img.resize((int(w * fg_scale), int(h * fg_scale)), Image.Resampling.LANCZOS)
+    bg.paste(fg, ((1080 - fg.width) // 2, (1920 - fg.height) // 2))
+    bg.save(image_path, "JPEG", quality=92)
+    return image_path
+
+
+def download_wikipedia_lead_image(name, dest_path):
+    """Downloads the lead image of the species' Wikipedia article - almost always a photo of exactly that animal."""
+    try:
+        resp = requests.get(
+            "https://en.wikipedia.org/w/api.php",
+            params={"action": "query", "format": "json", "generator": "search", "gsrsearch": name,
+                    "gsrlimit": 1, "prop": "pageimages", "piprop": "thumbnail", "pithumbsize": 1600},
+            headers=HTTP_HEADERS, timeout=20,
+        )
+        for page in resp.json().get("query", {}).get("pages", {}).values():
+            thumb = page.get("thumbnail", {})
+            if thumb.get("source") and thumb.get("width", 0) >= 500:
+                download_file_with_progress(thumb["source"], dest_path, desc=f"Wikipedia ({name[:15]})")
+                return fit_vertical(dest_path)
+        print(f"No Wikipedia lead image for '{name}'")
+    except Exception as e:
+        print(f"Wikipedia image lookup failed for '{name}': {e}")
+    return None
+
+
+_GENERIC_WORDS = {"close", "deep", "dramatic", "cinematic", "underwater", "ocean", "under", "with", "from",
+                  "into", "giant", "huge", "attack", "swimming", "view", "footage", "real", "life"}
+
+
+_NON_PHOTO_WORDS = ("map", "diagram", "distribution", "range", "drawing", "illustration", "label", "logo",
+                    "location", "chart", "figure", "fig.", "graph", "plot", "schem", "sketch", "plate", "stamp")
+
+
+def download_wikimedia_image(query, dest_path, must_match=None):
+    """Finds a real photo on Wikimedia Commons (free, no API key).
+
+    must_match: if given, ALL of these words must appear in the file name (used for named species).
+    """
+    # Otherwise the file name must mention a meaningful word of the query
+    tokens = [t for t in re.findall(r"[a-z]+", query.lower()) if len(t) > 3 and t not in _GENERIC_WORDS]
+    required = [t for t in re.findall(r"[a-z]+", (must_match or "").lower()) if len(t) > 2]
+    try:
+        resp = requests.get(
+            "https://commons.wikimedia.org/w/api.php",
+            params={"action": "query", "format": "json", "generator": "search",
+                    "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 12,
+                    "prop": "imageinfo", "iiprop": "url|size|mime", "iiurlwidth": 1600},
+            headers=HTTP_HEADERS, timeout=20,
+        )
+        pages = resp.json().get("query", {}).get("pages", {})
+        candidates = []
+        for page in sorted(pages.values(), key=lambda p: p.get("index", 99)):
+            info = (page.get("imageinfo") or [{}])[0]
+            title = page.get("title", "").lower()
+            if info.get("mime") not in ("image/jpeg", "image/png") or info.get("width", 0) < 700:
+                continue
+            # Skip maps, diagrams, drawings and specimen labels
+            if any(w in title for w in _NON_PHOTO_WORDS):
+                continue
+            if required and not all(t in title for t in required):
+                continue
+            if not required and tokens and not any(t in title for t in tokens):
+                continue
+            candidates.append(info.get("thumburl") or info.get("url"))
+        if not candidates:
+            print(f"No Wikimedia photo found for '{query}'")
+            return None
+        download_file_with_progress(random.choice(candidates[:3]), dest_path, desc=f"Wikimedia ({query[:15]})")
+        return fit_vertical(dest_path)
+    except Exception as e:
+        print(f"Wikimedia search failed for '{query}': {e}")
+        return None
+
+
+def download_pexels_photo(query, dest_path, api_key):
+    """Searches and downloads a portrait photo from Pexels."""
+    try:
+        resp = requests.get("https://api.pexels.com/v1/search", headers={"Authorization": api_key},
+                            params={"query": query, "per_page": 5, "orientation": "portrait"}, timeout=20)
+        resp.raise_for_status()
+        photos = resp.json().get("photos", [])
+        if not photos:
+            return None
+        url = random.choice(photos)["src"].get("portrait") or photos[0]["src"]["original"]
+        download_file_with_progress(url, dest_path, desc=f"Pexels photo ({query[:15]})")
+        return fit_vertical(dest_path)
+    except Exception as e:
+        print(f"Failed to download photo from Pexels for '{query}': {e}")
+        return None
+
+
+def _named_species(keyword):
+    """Returns the creature name if the keyword mentions a specific species (stock video sites rarely have those)."""
+    from script_generator import FACTS_CREATURES
+    kw = keyword.lower()
+    for creature in FACTS_CREATURES:
+        name = creature.split("(")[0].strip()
+        if name in kw:
+            return name
+    return None
+
+
 def download_pexels_video(query, dest_path, api_key):
     """Searches and downloads a vertical video from Pexels API matching the query."""
     headers = {"Authorization": api_key}
@@ -129,71 +255,76 @@ def download_pexels_video(query, dest_path, api_key):
         print(f"Failed to download video from Pexels for '{query}': {e}")
         return None
 
+def _valid_image(path):
+    try:
+        from PIL import Image
+        with Image.open(path) as img:
+            img.verify()
+        return True
+    except Exception:
+        return False
+
 def prepare_background_assets(niche_key, scenes, video_dir):
     """Downloads or prepares background assets matching the script scenes.
-    
-    For 'facts' niche, prioritizes stock VIDEO footage from Pexels
-    (the character is overlaid separately as a PNG sticker).
-    
+
+    Named species (e.g. "yeti crab") are searched as real photos on Wikimedia Commons first,
+    because stock video sites return unrelated footage for them. Generic scenes prefer
+    Pexels stock video. All sources are free.
+
     Returns:
         list of Path: List of paths to the downloaded media assets
     """
     pexels_key = os.getenv("PEXELS_API_KEY")
     assets = []
-    
+
     assets_dir = video_dir / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
-            
+
     print(f"\nPreparing background assets for {len(scenes)} scenes:")
     for idx, scene in enumerate(scenes):
         kw = scene["keyword"]
-        
-        if pexels_key:
-            # Try to download stock video first (preferred for all niches now)
-            video_dest = assets_dir / f"bg_asset_{idx}.mp4"
-            downloaded = download_pexels_video(kw, video_dest, pexels_key)
-            if downloaded:
-                assets.append(downloaded)
-                continue
-            print(f"  No Pexels video for '{kw}', falling back to AI image...")
-            
-        # Fallback: Generate AI image (scenic background only, no character)
-        prompt_text = f"{kw} cinematic vertical hd dramatic lighting"
+        video_dest = assets_dir / f"bg_asset_{idx}.mp4"
         image_dest = assets_dir / f"bg_asset_{idx}.jpg"
-        downloaded = download_ai_image(prompt_text, image_dest)
-        
-        # Verify image integrity
-        valid_asset = False
-        if downloaded and downloaded.exists():
+        species = _named_species(kw)
+
+        sources = []
+        if species:
+            # Alternate between the article photo and other Commons photos so scenes don't all show the same picture
+            if idx % 2 == 0:
+                sources.append(lambda: download_wikipedia_lead_image(species, image_dest))
+            sources.append(lambda: download_wikimedia_image(kw, image_dest, must_match=species))
+            sources.append(lambda: download_wikimedia_image(species, image_dest, must_match=species))
+            sources.append(lambda: download_wikipedia_lead_image(species, image_dest))
+        if pexels_key:
+            sources.append(lambda: download_pexels_video(kw, video_dest, pexels_key))
+            sources.append(lambda: download_pexels_photo(kw, image_dest, pexels_key))
+        if not species:
+            sources.append(lambda: download_wikimedia_image(kw, image_dest))
+        # Last resorts: on-niche generic footage/photos, then any HD photo
+        if pexels_key:
+            sources.append(lambda: download_pexels_video("deep ocean underwater", video_dest, pexels_key))
+        generic = random.choice(["underwater ocean", "deep sea fish", "coral reef underwater", "ocean underwater light"])
+        sources.append(lambda: download_wikimedia_image(generic, image_dest))
+        sources.append(lambda: download_file_with_progress(f"https://picsum.photos/seed/{idx+100}/1080/1920", image_dest, desc=f"HD Stock Asset ({idx+1})"))
+
+        chosen = None
+        for source in sources:
             try:
-                from PIL import Image
-                with Image.open(downloaded) as img:
-                    img.verify()
-                valid_asset = True
-            except Exception:
-                valid_asset = False
-                
-        if valid_asset:
-            assets.append(image_dest)
+                result = source()
+            except Exception as e:
+                print(f"  Asset source failed for '{kw}': {e}")
+                continue
+            if not result:
+                continue
+            result = Path(result)
+            if result.suffix.lower() == ".mp4" or _valid_image(result):
+                chosen = result
+                break
+        if chosen:
+            assets.append(chosen)
         else:
-            # High-quality HD Stock fallback guarantee
-            print(f"Guaranteeing HD Stock asset for '{kw}'...")
-            guaranteed_urls = [
-                f"https://picsum.photos/seed/{idx+100}/1080/1920",
-                f"https://picsum.photos/1080/1920"
-            ]
-            for g_url in guaranteed_urls:
-                try:
-                    download_file_with_progress(g_url, image_dest, desc=f"HD Stock Asset ({idx+1})")
-                    from PIL import Image
-                    with Image.open(image_dest) as img:
-                        img.verify()
-                    assets.append(image_dest)
-                    valid_asset = True
-                    break
-                except Exception:
-                    pass
-                    
+            print(f"  [!] No asset could be downloaded for scene {idx} ('{kw}')")
+
     return assets
 
 def setup_default_assets(niche):

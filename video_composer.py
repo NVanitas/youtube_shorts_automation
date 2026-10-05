@@ -13,7 +13,7 @@ if not shutil.which("ffmpeg"):
 
 from moviepy import VideoFileClip, AudioFileClip, CompositeAudioClip, ImageClip, concatenate_videoclips, CompositeVideoClip, VideoClip
 from moviepy.video.fx import Loop
-from moviepy.audio.fx import AudioLoop
+from moviepy.audio.fx import AudioLoop, AudioFadeOut
 from config import BASE_DIR
 from generate_reactions import get_reaction_path, REACTIONS_DIR
 
@@ -284,7 +284,8 @@ def compose_video(niche_key, bg_assets, voiceover_path, bg_music_path, subtitles
         bg_music_audio = bg_music_audio.subclipped(0, cut_time)
         
     music_vol = 0.04 if niche_key == "stoicism" else 0.06
-    bg_music_audio = bg_music_audio.with_volume_scaled(music_vol)
+    # Short fade instead of a hard cut, so the dramatic silence does not sound like a glitch
+    bg_music_audio = bg_music_audio.with_volume_scaled(music_vol).with_effects([AudioFadeOut(0.6)])
     
     audio_tracks = [voiceover_audio, bg_music_audio]
     

@@ -5,6 +5,7 @@ Usa ffprobe (do static-ffmpeg) para extrair metadados reais do arquivo.
 """
 import subprocess
 import json
+import re
 from pathlib import Path
 import shutil
 
@@ -15,8 +16,69 @@ if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
     except Exception:
         pass
 
-# Minimum score to approve a video for upload
-MIN_SCORE = 70
+# Minimum score to approve a video for upload (out of 120)
+MIN_SCORE = 85
+
+# YouTube normalizes playback to about -14 LUFS; quieter videos sound weak next to others in the feed
+TARGET_LUFS = -14.0
+
+
+def measure_loudness(filepath):
+    """Returns the integrated loudness (LUFS) of the file's audio, or None."""
+    cmd = ["ffmpeg", "-hide_banner", "-i", str(filepath), "-af",
+           f"loudnorm=I={TARGET_LUFS}:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"]
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    match = re.search(r"\{[^{}]*\"input_i\"[^{}]*\}", result.stderr)
+    if not match:
+        return None
+    try:
+        return float(json.loads(match.group(0))["input_i"])
+    except (ValueError, KeyError):
+        return None
+
+
+def normalize_loudness(filepath):
+    """Normalizes the audio track to TARGET_LUFS in place (video stream is copied, not re-encoded)."""
+    filepath = Path(filepath)
+    before = measure_loudness(filepath)
+    if before is None or abs(before - TARGET_LUFS) <= 1.0:
+        return before
+    tmp = filepath.with_name(filepath.stem + "_norm" + filepath.suffix)
+    cmd = ["ffmpeg", "-y", "-hide_banner", "-i", str(filepath), "-c:v", "copy",
+           "-af", f"loudnorm=I={TARGET_LUFS}:TP=-1.5:LRA=11", "-ar", "48000",
+           "-c:a", "aac", "-b:a", "192k", str(tmp)]
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if result.returncode != 0 or not tmp.exists():
+        print(f"[AUDIO] Loudness normalization failed, keeping original. {result.stderr[-300:]}")
+        return before
+    tmp.replace(filepath)
+    after = measure_loudness(filepath)
+    print(f"[AUDIO] Loudness normalized: {before:.1f} LUFS -> {after if after is None else round(after, 1)} LUFS")
+    return after
+
+
+def detect_defects(filepath, duration):
+    """Finds black frames, frozen video and silence gaps.
+
+    Returns:
+        dict: {"black": [(start, dur)], "freeze": [(start, dur)], "silence": [(start, dur)]}
+    """
+    cmd = ["ffmpeg", "-hide_banner", "-i", str(filepath),
+           "-vf", "blackdetect=d=0.4:pix_th=0.10,freezedetect=n=-60dB:d=2.5",
+           "-af", "silencedetect=noise=-45dB:d=1.5", "-f", "null", "-"]
+    err = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace").stderr
+    black = [(float(s), float(d)) for s, d in re.findall(r"black_start:([\d.]+) black_end:[\d.]+ black_duration:([\d.]+)", err)]
+
+    def _pairs(start_key, dur_key):
+        starts = [float(x) for x in re.findall(start_key + r":\s*([\d.]+)", err)]
+        durs = [float(x) for x in re.findall(dur_key + r":\s*([\d.]+)", err)]
+        # An event still open at the end of the file has no duration line
+        durs += [max(0.0, duration - s) for s in starts[len(durs):]]
+        return list(zip(starts, durs))
+
+    return {"black": black,
+            "freeze": _pairs(r"lavfi\.freezedetect\.freeze_start", r"lavfi\.freezedetect\.freeze_duration"),
+            "silence": _pairs("silence_start", "silence_duration")}
 
 
 def _probe(filepath):
@@ -171,11 +233,45 @@ def _analyze_internal(video_path, subtitles_ass_path=None, script_text=None, min
         checks.append({"name": "CTA (Call to Action)", "value": "N/A", "status": "~", "pts": 10})
         total += 10  # Assume present if we can't check
 
-    passed = total >= min_score
+    # --- 7. Loudness check (max 10 pts) ---
+    lufs = measure_loudness(video_path)
+    if lufs is None:
+        checks.append({"name": "Loudness", "value": "N/A", "status": "~", "pts": 5})
+        total += 5
+    elif abs(lufs - TARGET_LUFS) <= 2:
+        checks.append({"name": "Loudness", "value": f"{lufs:.1f} LUFS", "status": "✓", "pts": 10})
+        total += 10
+    else:
+        checks.append({"name": "Loudness", "value": f"{lufs:.1f} LUFS", "status": "✗", "pts": 0})
+        suggestions.append(f"Audio is {lufs:.1f} LUFS; YouTube target is {TARGET_LUFS} LUFS.")
+
+    # --- 8. Defects: black frames, frozen video, silence gaps (max 10 pts) ---
+    hard_fail = False
+    defects = detect_defects(video_path, duration)
+    black_total = sum(d for _, d in defects["black"])
+    # A still frame in the last 2s is the end card, not a defect
+    freezes = [(s, d) for s, d in defects["freeze"] if s < duration - 2.0]
+    problems = []
+    if black_total > 0:
+        problems.append(f"{black_total:.1f}s black")
+        suggestions.append(f"Black frames at {[round(s, 1) for s, _ in defects['black']]}s (missing/corrupt clip).")
+        hard_fail = black_total >= 0.8
+    if freezes:
+        problems.append(f"{len(freezes)} freeze")
+        suggestions.append(f"Frozen video at {[round(s, 1) for s, _ in freezes]}s.")
+    if defects["silence"]:
+        problems.append(f"{len(defects['silence'])} silence")
+        suggestions.append(f"Silence gaps at {[round(s, 1) for s, _ in defects['silence']]}s.")
+    pts = 10 if not problems else (0 if hard_fail else 4)
+    checks.append({"name": "Defects", "value": ", ".join(problems) or "None",
+                   "status": "✓" if not problems else "✗" if hard_fail else "~", "pts": pts})
+    total += pts
+
+    passed = total >= min_score and not hard_fail
 
     return {
         "score": total,
-        "max_score": 100,
+        "max_score": 120,
         "passed": passed,
         "min_score": min_score,
         "checks": checks,

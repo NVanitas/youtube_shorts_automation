@@ -2,9 +2,8 @@ name: Generate and Post YouTube Short
 
 on:
   schedule:
-    - cron: '0 12 * * *' # 7:00 AM EST / 8:00 BRT (US Morning)
+    # 1 post/day: fewer, more distinct videos beat 3 near-duplicates (YouTube suppresses repetitive channels)
     - cron: '0 17 * * *' # 12:00 PM EST / 14:00 BRT (US Lunch)
-    - cron: '0 23 * * *' # 6:00 PM EST / 20:00 BRT (US Evening)
   workflow_dispatch: # Allows you to trigger this manually from the GitHub website whenever you want!
 
 permissions:
@@ -63,10 +62,13 @@ jobs:
           python main.py --niche facts --upload
 
       - name: Save used_scripts_history.json
+        if: always() # also when the quality gate rejected every render, so rejected topics are not retried
         run: |
           # Commits the updated history file back to GitHub so it never repeats the same video next time!
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add used_scripts_history.json
           git commit -m "Auto-update used scripts history [skip ci]" || echo "No changes to commit"
+          git pull --rebase || echo "Rebase failed"
           git push || echo "No changes to push"
+          python -c "import json; json.load(open('used_scripts_history.json', encoding='utf-8'))"

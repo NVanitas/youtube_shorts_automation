@@ -135,19 +135,30 @@ def highlight_ass_keywords(ass_path, niche_key, keywords=None):
         f.writelines(new_lines)
     print(f"Highlighted key words and applied Highlight style in subtitles: {ass_path}")
 
-def generate_subtitles(niche_key, audio_path, video_dir, keywords=None, model_name="base"):
-    """Transcribes audio and generates a styled ASS subtitle file using stable-ts."""
+def generate_subtitles(niche_key, audio_path, video_dir, keywords=None, model_name="base", script_text=None):
+    """Generates a styled ASS subtitle file using stable-ts.
+
+    When script_text is given, the known script is force-aligned to the audio, so rare names
+    (e.g. "Chiasmodon") are spelled exactly as written instead of as Whisper hears them.
+    """
     if niche_key not in NICHES:
         raise ValueError(f"Niche '{niche_key}' is not configured.")
-        
-    print(f"Loading Whisper model '{model_name}' and transcribing voiceover...")
-    
+
+    print(f"Loading Whisper model '{model_name}' and syncing voiceover...")
+
     try:
         # Load stable-whisper model
         model = stable_whisper.load_model(model_name)
-        
-        # Transcribe the audio file
-        result = model.transcribe(str(audio_path), language="en")
+
+        result = None
+        if script_text:
+            try:
+                result = model.align(str(audio_path), script_text, language="en")
+                print("Subtitles force-aligned to the exact script text.")
+            except Exception as ae:
+                print(f"Forced alignment failed ({ae}); falling back to transcription.")
+        if result is None:
+            result = model.transcribe(str(audio_path), language="en")
         
         # Split into short, punchy 2-3 word segments for viral pacing
         result.split_by_length(max_words=2)
