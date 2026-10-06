@@ -249,7 +249,9 @@
     "Immortal Aliens Hiding in the Deep Sea Abyss?! \ud83e\uddec",
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
     "Guess This Deep Sea Living Fossil with 300 Teeth! \ud83e\udd2f",
-    "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78"
+    "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78",
+    "The Ocean's Hidden Avalanches: They'll SWALLOW You Whole! \ud83c\udf0a",
+    "Forget Niagara: The Ocean's REAL Waterfalls Are Monstrous! \ud83c\udf0a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -501,7 +503,9 @@
     "Ever heard of creatures that literally never die AND can change their bodies? Some deep-sea beings can reverse their aging process, becoming young again and living forever! They can even morph their entire bodies into new forms, like a real-life T-1000 from the abyss. Which bizarre superpower would YOU want most? Tell me below and subscribe because...",
     "The cookiecutter shark, a mere 50cm long, carves perfect chunks out of creatures as massive as great white sharks and whales! It uses a dark 'collar' to mimic a small fish, luring in much larger predators. Then, with suction-cup lips, it latches on and uses its bandsaw teeth to scoop out a neat plug of flesh. Which ocean superpower blows your mind more than this tiny terror? Drop your answer below and subscribe because the cookiecutter shark...",
     "This deep-sea creature, considered a living fossil, has an eel-like body up to 2 meters long. It ambushes prey by bending and lunging like an eel, swallowing whole cephalopods and even smaller sharks. Its 300 recurved, needle-like teeth ensure nothing escapes its grip! Can you guess this ancient predator? It's the Frilled Shark! Which deep-sea mystery would you want to unravel next? Drop your answer below and subscribe because this deep-sea creature...",
-    "The sea lamprey is a 360-million-year-old living nightmare that predates the dinosaurs. With zero jaws, this ancient predator latches on with a funnel of razor-sharp concentric teeth, boring straight into fish flesh to drink their blood alive. Even weirder, eighteen species hunt like bloodthirsty vampires, while their juvenile larvae burrow in river mud for years! Would you swim near these jawless parasites? Drop your answer below and subscribe because"
+    "The sea lamprey is a 360-million-year-old living nightmare that predates the dinosaurs. With zero jaws, this ancient predator latches on with a funnel of razor-sharp concentric teeth, boring straight into fish flesh to drink their blood alive. Even weirder, eighteen species hunt like bloodthirsty vampires, while their juvenile larvae burrow in river mud for years! Would you swim near these jawless parasites? Drop your answer below and subscribe because",
+    "A single submarine landslide, even on slopes as low as 1 degree, can trigger devastating megatsunamis. Imagine being caught in an underwater avalanche where gravity pulls sediment so forcefully it exceeds the seafloor's resisting stress. These events reshape the continental shelf, capable of displacing enough water to create waves threatening distant coasts. Which ocean phenomenon terrifies you more? Drop your answer below and subscribe because a single submarine landslide...",
+    "The Denmark Strait Cataract is Earth's largest waterfall, hidden deep beneath the ocean! This underwater giant drops 3.5 kilometers, making it over 60 times taller than Niagara Falls. It flows 3.5 million cubic meters of freezing water every second \u2013 enough to fill 140 Olympic pools! Imagine standing at the edge of this abyssal cascade! Which ocean mystery amazes you most? Subscribe for more deep sea secrets because..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -530,14 +534,16 @@
     "underwater volcanoes erupting",
     "cookiecutter shark",
     "frilled shark",
-    "lamprey"
+    "lamprey",
+    "submarine landslides and megatsunamis",
+    "underwater waterfalls bigger than Niagara"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 1.11,
-      "duel": 1.2,
-      "quiz": 0.48,
-      "guess": 0.61
+      "quiz": 0.51,
+      "deep_dive": 1.01,
+      "duel": 1.31,
+      "guess": 0.62
     },
     "top_titles": [
       "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19",
@@ -547,28 +553,30 @@
       "These Deep Sea Aliens Devour WHALE BONES! \ud83e\udd2f"
     ],
     "stats": {
-      "deep_dive": {
-        "videos": 28,
-        "avg_views": 292
-      },
-      "duel": {
-        "videos": 21,
-        "avg_views": 320
-      },
       "quiz": {
         "videos": 9,
         "avg_views": 79
+      },
+      "deep_dive": {
+        "videos": 28,
+        "avg_views": 234
+      },
+      "duel": {
+        "videos": 21,
+        "avg_views": 314
       },
       "guess": {
         "videos": 2,
         "avg_views": 9
       }
     },
-    "date": "2026-10-05"
+    "date": "2026-10-06"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
     "Guess This Deep Sea Living Fossil with 300 Teeth! \ud83e\udd2f": "guess",
-    "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78": "deep_dive"
+    "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78": "deep_dive",
+    "The Ocean's Hidden Avalanches: They'll SWALLOW You Whole! \ud83c\udf0a": "deep_dive",
+    "Forget Niagara: The Ocean's REAL Waterfalls Are Monstrous! \ud83c\udf0a": "deep_dive"
   }
 }
