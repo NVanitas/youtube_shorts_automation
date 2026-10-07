@@ -251,7 +251,9 @@
     "Guess This Deep Sea Living Fossil with 300 Teeth! \ud83e\udd2f",
     "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78",
     "The Ocean's Hidden Avalanches: They'll SWALLOW You Whole! \ud83c\udf0a",
-    "Forget Niagara: The Ocean's REAL Waterfalls Are Monstrous! \ud83c\udf0a"
+    "Forget Niagara: The Ocean's REAL Waterfalls Are Monstrous! \ud83c\udf0a",
+    "Guess This 1500kg Apex Predator of the Sea! \ud83d\udc0a",
+    "This Fish Literally POOPS Beaches Into Existence! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -505,7 +507,9 @@
     "This deep-sea creature, considered a living fossil, has an eel-like body up to 2 meters long. It ambushes prey by bending and lunging like an eel, swallowing whole cephalopods and even smaller sharks. Its 300 recurved, needle-like teeth ensure nothing escapes its grip! Can you guess this ancient predator? It's the Frilled Shark! Which deep-sea mystery would you want to unravel next? Drop your answer below and subscribe because this deep-sea creature...",
     "The sea lamprey is a 360-million-year-old living nightmare that predates the dinosaurs. With zero jaws, this ancient predator latches on with a funnel of razor-sharp concentric teeth, boring straight into fish flesh to drink their blood alive. Even weirder, eighteen species hunt like bloodthirsty vampires, while their juvenile larvae burrow in river mud for years! Would you swim near these jawless parasites? Drop your answer below and subscribe because",
     "A single submarine landslide, even on slopes as low as 1 degree, can trigger devastating megatsunamis. Imagine being caught in an underwater avalanche where gravity pulls sediment so forcefully it exceeds the seafloor's resisting stress. These events reshape the continental shelf, capable of displacing enough water to create waves threatening distant coasts. Which ocean phenomenon terrifies you more? Drop your answer below and subscribe because a single submarine landslide...",
-    "The Denmark Strait Cataract is Earth's largest waterfall, hidden deep beneath the ocean! This underwater giant drops 3.5 kilometers, making it over 60 times taller than Niagara Falls. It flows 3.5 million cubic meters of freezing water every second \u2013 enough to fill 140 Olympic pools! Imagine standing at the edge of this abyssal cascade! Which ocean mystery amazes you most? Subscribe for more deep sea secrets because..."
+    "The Denmark Strait Cataract is Earth's largest waterfall, hidden deep beneath the ocean! This underwater giant drops 3.5 kilometers, making it over 60 times taller than Niagara Falls. It flows 3.5 million cubic meters of freezing water every second \u2013 enough to fill 140 Olympic pools! Imagine standing at the edge of this abyssal cascade! Which ocean mystery amazes you most? Subscribe for more deep sea secrets because...",
+    "This apex predator can weigh over 1,500 kilograms! It's Earth's largest living reptile, often reaching lengths of 6 meters. This opportunistic hunter ambushes prey, including sharks, and swallows them whole. Found from India to Northern Australia, it's known as the 'saltie'. Can you guess this incredible creature? Drop your answer below and subscribe because this apex predator can weigh over 1,500 kilograms!",
+    "This fish literally poops beaches into existence! The parrotfish, with its powerful beak-like mouth, is a corallivore. It eats away at coral reefs, playing a significant role in bioerosion by grinding down stony corals. This continuous activity, across roughly 95 species, ultimately contributes to enriching the sand content on the surrounding ocean floor. Ever imagined a fish shaping an entire ecosystem? Tell us below and subscribe because this fish literally poops..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -536,47 +540,51 @@
     "frilled shark",
     "lamprey",
     "submarine landslides and megatsunamis",
-    "underwater waterfalls bigger than Niagara"
+    "underwater waterfalls bigger than Niagara",
+    "saltwater crocodile",
+    "parrotfish"
   ],
   "format_weights": {
     "weights": {
+      "deep_dive": 1.06,
+      "duel": 1.23,
       "quiz": 0.51,
-      "deep_dive": 1.01,
-      "duel": 1.31,
-      "guess": 0.62
+      "guess": 0.61
     },
     "top_titles": [
+      "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
       "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19",
       "Meet the Creatures LIVING Inside Boiling Underwater Volcanoes! \ud83d\udd25",
       "Deep Sea's WEIRDEST Battle: The Living Fossil vs. The Sea Serpent! \ud83c\udfa3",
-      "Giant Octopus vs. Sleeper Shark: The Abyssal Fight You Won't Believe! \ud83d\udc19",
-      "These Deep Sea Aliens Devour WHALE BONES! \ud83e\udd2f"
+      "Giant Octopus vs. Sleeper Shark: The Abyssal Fight You Won't Believe! \ud83d\udc19"
     ],
     "stats": {
-      "quiz": {
-        "videos": 9,
-        "avg_views": 79
-      },
       "deep_dive": {
-        "videos": 28,
-        "avg_views": 234
+        "videos": 29,
+        "avg_views": 264
       },
       "duel": {
         "videos": 21,
         "avg_views": 314
+      },
+      "quiz": {
+        "videos": 8,
+        "avg_views": 80
       },
       "guess": {
         "videos": 2,
         "avg_views": 9
       }
     },
-    "date": "2026-10-06"
+    "date": "2026-10-07"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
     "Guess This Deep Sea Living Fossil with 300 Teeth! \ud83e\udd2f": "guess",
     "Meet the 360-Million-Year-Old Vampire Fish With NO Jaws! \ud83e\ude78": "deep_dive",
     "The Ocean's Hidden Avalanches: They'll SWALLOW You Whole! \ud83c\udf0a": "deep_dive",
-    "Forget Niagara: The Ocean's REAL Waterfalls Are Monstrous! \ud83c\udf0a": "deep_dive"
+    "Forget Niagara: The Ocean's REAL Waterfalls Are Monstrous! \ud83c\udf0a": "deep_dive",
+    "Guess This 1500kg Apex Predator of the Sea! \ud83d\udc0a": "guess",
+    "This Fish Literally POOPS Beaches Into Existence! \ud83e\udd2f": "deep_dive"
   }
 }
