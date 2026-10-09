@@ -255,7 +255,9 @@
     "Guess This 1500kg Apex Predator of the Sea! \ud83d\udc0a",
     "This Fish Literally POOPS Beaches Into Existence! \ud83e\udd2f",
     "The Ocean's 'Petrified' Forests Are Hiding a TERRIFYING Truth! \ud83d\ude31",
-    "Who Wins: The INVISIBLE Octopus with Telescope Eyes or the 18-Foot Shark?! \ud83e\udd4a"
+    "Who Wins: The INVISIBLE Octopus with Telescope Eyes or the 18-Foot Shark?! \ud83e\udd4a",
+    "St. Croix's Glowing Water Has a TERRIFYING Truth! \ud83d\ude31",
+    "This Tiny 'Water Bear' Is Earth's Ultimate Survivor! \ud83d\udee1\ufe0f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -513,7 +515,9 @@
     "This apex predator can weigh over 1,500 kilograms! It's Earth's largest living reptile, often reaching lengths of 6 meters. This opportunistic hunter ambushes prey, including sharks, and swallows them whole. Found from India to Northern Australia, it's known as the 'saltie'. Can you guess this incredible creature? Drop your answer below and subscribe because this apex predator can weigh over 1,500 kilograms!",
     "This fish literally poops beaches into existence! The parrotfish, with its powerful beak-like mouth, is a corallivore. It eats away at coral reefs, playing a significant role in bioerosion by grinding down stony corals. This continuous activity, across roughly 95 species, ultimately contributes to enriching the sand content on the surrounding ocean floor. Ever imagined a fish shaping an entire ecosystem? Tell us below and subscribe because this fish literally poops...",
     "You might think the deep ocean hides ancient petrified forests. But true petrified wood, like Arizona's 225-million-year-old Chinle Formation, is incredibly rare beneath the waves. The immense pressure and constant chemical reactions make mineral replacement, crucial for petrification, almost impossible. Instead, we find sunken wood, sometimes preserved for thousands of years by cold, oxygen-poor waters, a graveyard for ancient trees! What other ocean mysteries do you want to uncover? Drop your answer below and subscribe because you might think the deep ocean hides ancient petrified forests.",
-    "The telescope octopus is nearly invisible, a transparent hunter with unique tubular eyes. Meanwhile, the bluntnose sixgill shark can grow to 5.5 meters, longer than a small car! This giant shark, distinguishable by mitochondrial genes, dominates global waters, contrasting with the octopus's delicate, uniform 8 arms. Which deep-sea wonder amazes you more? Let me know below and subscribe because the telescope octopus is nearly invisible..."
+    "The telescope octopus is nearly invisible, a transparent hunter with unique tubular eyes. Meanwhile, the bluntnose sixgill shark can grow to 5.5 meters, longer than a small car! This giant shark, distinguishable by mitochondrial genes, dominates global waters, contrasting with the octopus's delicate, uniform 8 arms. Which deep-sea wonder amazes you more? Let me know below and subscribe because the telescope octopus is nearly invisible...",
+    "St. Croix's glowing Salt River Bay hides a shocking truth: its dazzling light comes from millions of Pyrodinium bahamense dinoflagellates. These microscopic organisms flash brilliant blue-green as a defense, like a tiny distress flare. But Pyrodinium bahamense produce saxitoxins, potent neurotoxins that accumulate in shellfish, making them dangerous to consume. It's a beautiful light show with a venomous secret! Would you swim in water with such a toxic glow? Comment and subscribe because St. Croix's glowing Salt River Bay hides a shocking truth: its dazzling light comes from millions of Pyrodinium bahamense dinoflagellates!",
+    "This tiny creature, known as the tardigrade or 'water bear', is Earth's ultimate survivor! Just 0.5 millimeters long, it endures extreme temperatures, crushing pressures, and even total air deprivation. They've survived the vacuum of outer space, making them miniature astronauts! Originating over 500 million years ago, these \"slow walkers\" are practically unkillable. Which of the tardigrade's superpowers amazes you most? Tell us below, and subscribe because this tiny creature..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -549,13 +553,15 @@
     "parrotfish",
     "petrified forests under the sea",
     "telescope octopus",
-    "bluntnose sixgill shark"
+    "bluntnose sixgill shark",
+    "bioluminescent bays",
+    "tardigrade"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 1.07,
-      "duel": 1.21,
-      "quiz": 0.5,
+      "duel": 1.23,
+      "deep_dive": 1.06,
+      "quiz": 0.51,
       "guess": 0.62
     },
     "top_titles": [
@@ -566,13 +572,13 @@
       "Giant Octopus vs. Sleeper Shark: The Abyssal Fight You Won't Believe! \ud83d\udc19"
     ],
     "stats": {
-      "deep_dive": {
-        "videos": 29,
-        "avg_views": 272
-      },
       "duel": {
         "videos": 21,
         "avg_views": 314
+      },
+      "deep_dive": {
+        "videos": 29,
+        "avg_views": 264
       },
       "quiz": {
         "videos": 8,
@@ -583,7 +589,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-08"
+    "date": "2026-10-09"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -594,6 +600,8 @@
     "Guess This 1500kg Apex Predator of the Sea! \ud83d\udc0a": "guess",
     "This Fish Literally POOPS Beaches Into Existence! \ud83e\udd2f": "deep_dive",
     "The Ocean's 'Petrified' Forests Are Hiding a TERRIFYING Truth! \ud83d\ude31": "deep_dive",
-    "Who Wins: The INVISIBLE Octopus with Telescope Eyes or the 18-Foot Shark?! \ud83e\udd4a": "duel"
+    "Who Wins: The INVISIBLE Octopus with Telescope Eyes or the 18-Foot Shark?! \ud83e\udd4a": "duel",
+    "St. Croix's Glowing Water Has a TERRIFYING Truth! \ud83d\ude31": "deep_dive",
+    "This Tiny 'Water Bear' Is Earth's Ultimate Survivor! \ud83d\udee1\ufe0f": "deep_dive"
   }
 }
