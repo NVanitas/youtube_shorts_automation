@@ -259,7 +259,9 @@
     "St. Croix's Glowing Water Has a TERRIFYING Truth! \ud83d\ude31",
     "This Tiny 'Water Bear' Is Earth's Ultimate Survivor! \ud83d\udee1\ufe0f",
     "The Ocean's Midnight Zone: What Happens To YOU?! \ud83e\udd76",
-    "The Ocean's 50-Meter Living Rope vs. The Arctic Unicorn Whale! \ud83e\udd84"
+    "The Ocean's 50-Meter Living Rope vs. The Arctic Unicorn Whale! \ud83e\udd84",
+    "Ocean's Ultimate Bite: This Ancient Whale Had FANGS Like No Other! \ud83e\uddb7",
+    "The 13-Meter Terror vs. The Tiny Naked Gills! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -521,7 +523,9 @@
     "St. Croix's glowing Salt River Bay hides a shocking truth: its dazzling light comes from millions of Pyrodinium bahamense dinoflagellates. These microscopic organisms flash brilliant blue-green as a defense, like a tiny distress flare. But Pyrodinium bahamense produce saxitoxins, potent neurotoxins that accumulate in shellfish, making them dangerous to consume. It's a beautiful light show with a venomous secret! Would you swim in water with such a toxic glow? Comment and subscribe because St. Croix's glowing Salt River Bay hides a shocking truth: its dazzling light comes from millions of Pyrodinium bahamense dinoflagellates!",
     "This tiny creature, known as the tardigrade or 'water bear', is Earth's ultimate survivor! Just 0.5 millimeters long, it endures extreme temperatures, crushing pressures, and even total air deprivation. They've survived the vacuum of outer space, making them miniature astronauts! Originating over 500 million years ago, these \"slow walkers\" are practically unkillable. Which of the tardigrade's superpowers amazes you most? Tell us below, and subscribe because this tiny creature...",
     "Drop into the ocean's Midnight Zone, below 1,000 meters, and your vision would vanish instantly! No sunlight means perpetual night, with temperatures near freezing at 2 to 4 degrees Celsius. The pressure exceeds 100 atmospheres, enough to flatten a non-specialized steel submarine. Air spaces in your body would dramatically compress, risking severe barotrauma. Could you survive Earth's most alien environment? Drop your answer and subscribe because...",
-    "Imagine a creature longer than a blue whale, but thin as a broomstick! That's the Giant Siphonophore, reaching 50 meters. It\u2019s not one animal, but thousands of specialized zooids working together, each unable to survive alone. Now picture a Narwhal, a whale with a 3-meter tusk, diving 2,370 meters deep into the Arctic abyss. If this deep-diving Narwhal met the fragile 50-meter Siphonophore, who wins? Probably the narwhal, tearing through the colony with its tusk! Which bizarre ocean creature amazes you more? Tell us below and subscribe because..."
+    "Imagine a creature longer than a blue whale, but thin as a broomstick! That's the Giant Siphonophore, reaching 50 meters. It\u2019s not one animal, but thousands of specialized zooids working together, each unable to survive alone. Now picture a Narwhal, a whale with a 3-meter tusk, diving 2,370 meters deep into the Arctic abyss. If this deep-diving Narwhal met the fragile 50-meter Siphonophore, who wins? Probably the narwhal, tearing through the colony with its tusk! Which bizarre ocean creature amazes you more? Tell us below and subscribe because...",
+    "Livyatan melvillei, an ancient whale from 9 million years ago, sported the largest biting teeth ever discovered, each reaching 36.2 centimeters! This 17.5-meter Miocene predator could rival modern sperm whales in size. While Ichthyosaurs were sleek marine reptiles up to 21 meters, ruling millions of years earlier, Livyatan's jaws were built for crushing. Which of these ancient sea giants fascinates you more? Drop your answer below and subscribe because Livyatan melvillei...",
+    "Kronosaurus, a 13-meter ancient pliosaur, was a terror; nudibranchs are its vibrant opposite! This \"lizard of Kronos\" dominated the Early Cretaceous, hunting with powerful jaws. Imagine a school bus with razor teeth. Over 3,000 nudibranch species are soft-bodied molluscs. They shed shells, boasting extraordinary, vibrant colors! Which ocean extreme amazes you more? Drop your answer and subscribe because Kronosaurus, a 13-meter ancient pliosaur..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -562,13 +566,17 @@
     "tardigrade",
     "the midnight zone where light never reaches",
     "giant siphonophore",
-    "narwhal"
+    "narwhal",
+    "livyatan",
+    "ichthyosaur",
+    "kronosaurus",
+    "nudibranch"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 1.07,
-      "duel": 1.23,
-      "quiz": 0.5,
+      "duel": 1.29,
+      "deep_dive": 1.02,
+      "quiz": 0.52,
       "guess": 0.62
     },
     "top_titles": [
@@ -579,13 +587,13 @@
       "Giant Octopus vs. Sleeper Shark: The Abyssal Fight You Won't Believe! \ud83d\udc19"
     ],
     "stats": {
-      "deep_dive": {
-        "videos": 30,
-        "avg_views": 271
-      },
       "duel": {
         "videos": 20,
         "avg_views": 319
+      },
+      "deep_dive": {
+        "videos": 30,
+        "avg_views": 246
       },
       "quiz": {
         "videos": 8,
@@ -596,7 +604,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-10"
+    "date": "2026-10-11"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -611,7 +619,9 @@
     "St. Croix's Glowing Water Has a TERRIFYING Truth! \ud83d\ude31": "deep_dive",
     "This Tiny 'Water Bear' Is Earth's Ultimate Survivor! \ud83d\udee1\ufe0f": "deep_dive",
     "The Ocean's Midnight Zone: What Happens To YOU?! \ud83e\udd76": "deep_dive",
-    "The Ocean's 50-Meter Living Rope vs. The Arctic Unicorn Whale! \ud83e\udd84": "duel"
+    "The Ocean's 50-Meter Living Rope vs. The Arctic Unicorn Whale! \ud83e\udd84": "duel",
+    "Ocean's Ultimate Bite: This Ancient Whale Had FANGS Like No Other! \ud83e\uddb7": "duel",
+    "The 13-Meter Terror vs. The Tiny Naked Gills! \ud83e\udd2f": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
