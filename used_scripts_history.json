@@ -263,7 +263,9 @@
     "Ocean's Ultimate Bite: This Ancient Whale Had FANGS Like No Other! \ud83e\uddb7",
     "The 13-Meter Terror vs. The Tiny Naked Gills! \ud83e\udd2f",
     "The Ocean's Most Bizarre Animal BIRTH: 538 Million Years Ago! \ud83e\udd2f",
-    "This Deep Sea Fish Can ROTATE Its Own EYES! \ud83e\udd2f"
+    "This Deep Sea Fish Can ROTATE Its Own EYES! \ud83e\udd2f",
+    "The Ocean's 1.5-Meter Red Devil vs. The Shapeshifting Master! \ud83e\udd2f",
+    "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -529,7 +531,9 @@
     "Livyatan melvillei, an ancient whale from 9 million years ago, sported the largest biting teeth ever discovered, each reaching 36.2 centimeters! This 17.5-meter Miocene predator could rival modern sperm whales in size. While Ichthyosaurs were sleek marine reptiles up to 21 meters, ruling millions of years earlier, Livyatan's jaws were built for crushing. Which of these ancient sea giants fascinates you more? Drop your answer below and subscribe because Livyatan melvillei...",
     "Kronosaurus, a 13-meter ancient pliosaur, was a terror; nudibranchs are its vibrant opposite! This \"lizard of Kronos\" dominated the Early Cretaceous, hunting with powerful jaws. Imagine a school bus with razor teeth. Over 3,000 nudibranch species are soft-bodied molluscs. They shed shells, boasting extraordinary, vibrant colors! Which ocean extreme amazes you more? Drop your answer and subscribe because Kronosaurus, a 13-meter ancient pliosaur...",
     "The Cambrian Explosion, 538.8 million years ago, was when almost ALL animal life on Earth suddenly appeared! Before this 13 to 25 million year 'explosion', the oceans were mostly simple cells. But then, it was like nature hit fast-forward, giving us every animal phylum, including our earliest chordate ancestors! Which ancient creature would you most want to see from this period? Drop your answer below and subscribe because the Cambrian Explosion, 538.8 million years ago...",
-    "The Barreleye fish has barrel-shaped, tubular eyes that usually point UPWARDS but can rotate to look FORWARD! These spookfish are named for their unique eyes, constantly scanning for prey silhouettes above them. When it spots prey, its eyes swiftly rotate to face forward, giving it a direct view for the attack. Which bizarre deep-sea adaptation amazes you most? Subscribe for more ocean mysteries because the Barreleye fish has barrel-shaped, tubular eyes that usually point UPWARDS but can rotate to look FORWARD!"
+    "The Barreleye fish has barrel-shaped, tubular eyes that usually point UPWARDS but can rotate to look FORWARD! These spookfish are named for their unique eyes, constantly scanning for prey silhouettes above them. When it spots prey, its eyes swiftly rotate to face forward, giving it a direct view for the attack. Which bizarre deep-sea adaptation amazes you most? Subscribe for more ocean mysteries because the Barreleye fish has barrel-shaped, tubular eyes that usually point UPWARDS but can rotate to look FORWARD!",
+    "The Humboldt squid, a terrifying 1.5-meter giant, flashes red to white right before attacking prey! Living at 700 meters deep, this red devil is known for aggressive encounters with humans. In contrast, the mimic octopus, a master of disguise, impersonates multiple animals, like a flatfish, to escape predators. Which of these ocean shapeshifters would you rather face? Tell us below and subscribe because the Humboldt squid...",
+    "The Pacific viperfish, a deep-sea predator, is the largest of its nine species, reaching up to one foot long! Found in the North Pacific, these formidable hunters perform diel vertical migration, ascending from extreme depths to hunt prey in shallower waters. Females are typically longer and heavier, embodying deep-sea gigantism in the mesopelagic zone. Which deep-sea titan, the Pacific viperfish or a dragonfish, rules the abyss? Drop your answer below and subscribe because the Pacific viperfish, a deep-sea predator, is..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -576,13 +580,17 @@
     "kronosaurus",
     "nudibranch",
     "the Cambrian explosion",
-    "barreleye fish"
+    "barreleye fish",
+    "humboldt squid",
+    "mimic octopus",
+    "dragonfish",
+    "pacific viperfish"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 0.99,
-      "quiz": 0.52,
-      "duel": 1.34,
+      "deep_dive": 0.98,
+      "duel": 1.3,
+      "quiz": 0.56,
       "guess": 0.62
     },
     "top_titles": [
@@ -595,22 +603,22 @@
     "stats": {
       "deep_dive": {
         "videos": 31,
-        "avg_views": 240
-      },
-      "quiz": {
-        "videos": 8,
-        "avg_views": 80
+        "avg_views": 237
       },
       "duel": {
-        "videos": 19,
-        "avg_views": 336
+        "videos": 20,
+        "avg_views": 327
+      },
+      "quiz": {
+        "videos": 7,
+        "avg_views": 90
       },
       "guess": {
         "videos": 2,
         "avg_views": 10
       }
     },
-    "date": "2026-10-12"
+    "date": "2026-10-13"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -629,7 +637,9 @@
     "Ocean's Ultimate Bite: This Ancient Whale Had FANGS Like No Other! \ud83e\uddb7": "duel",
     "The 13-Meter Terror vs. The Tiny Naked Gills! \ud83e\udd2f": "duel",
     "The Ocean's Most Bizarre Animal BIRTH: 538 Million Years Ago! \ud83e\udd2f": "deep_dive",
-    "This Deep Sea Fish Can ROTATE Its Own EYES! \ud83e\udd2f": "deep_dive"
+    "This Deep Sea Fish Can ROTATE Its Own EYES! \ud83e\udd2f": "deep_dive",
+    "The Ocean's 1.5-Meter Red Devil vs. The Shapeshifting Master! \ud83e\udd2f": "duel",
+    "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
