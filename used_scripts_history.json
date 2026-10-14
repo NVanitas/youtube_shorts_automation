@@ -265,7 +265,9 @@
     "The Ocean's Most Bizarre Animal BIRTH: 538 Million Years Ago! \ud83e\udd2f",
     "This Deep Sea Fish Can ROTATE Its Own EYES! \ud83e\udd2f",
     "The Ocean's 1.5-Meter Red Devil vs. The Shapeshifting Master! \ud83e\udd2f",
-    "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a"
+    "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a",
+    "Guess the Bizarre Deep-Sea Filter Feeder with a MONSTER Mouth! \ud83e\udd2f",
+    "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -533,7 +535,9 @@
     "The Cambrian Explosion, 538.8 million years ago, was when almost ALL animal life on Earth suddenly appeared! Before this 13 to 25 million year 'explosion', the oceans were mostly simple cells. But then, it was like nature hit fast-forward, giving us every animal phylum, including our earliest chordate ancestors! Which ancient creature would you most want to see from this period? Drop your answer below and subscribe because the Cambrian Explosion, 538.8 million years ago...",
     "The Barreleye fish has barrel-shaped, tubular eyes that usually point UPWARDS but can rotate to look FORWARD! These spookfish are named for their unique eyes, constantly scanning for prey silhouettes above them. When it spots prey, its eyes swiftly rotate to face forward, giving it a direct view for the attack. Which bizarre deep-sea adaptation amazes you most? Subscribe for more ocean mysteries because the Barreleye fish has barrel-shaped, tubular eyes that usually point UPWARDS but can rotate to look FORWARD!",
     "The Humboldt squid, a terrifying 1.5-meter giant, flashes red to white right before attacking prey! Living at 700 meters deep, this red devil is known for aggressive encounters with humans. In contrast, the mimic octopus, a master of disguise, impersonates multiple animals, like a flatfish, to escape predators. Which of these ocean shapeshifters would you rather face? Tell us below and subscribe because the Humboldt squid...",
-    "The Pacific viperfish, a deep-sea predator, is the largest of its nine species, reaching up to one foot long! Found in the North Pacific, these formidable hunters perform diel vertical migration, ascending from extreme depths to hunt prey in shallower waters. Females are typically longer and heavier, embodying deep-sea gigantism in the mesopelagic zone. Which deep-sea titan, the Pacific viperfish or a dragonfish, rules the abyss? Drop your answer below and subscribe because the Pacific viperfish, a deep-sea predator, is..."
+    "The Pacific viperfish, a deep-sea predator, is the largest of its nine species, reaching up to one foot long! Found in the North Pacific, these formidable hunters perform diel vertical migration, ascending from extreme depths to hunt prey in shallower waters. Females are typically longer and heavier, embodying deep-sea gigantism in the mesopelagic zone. Which deep-sea titan, the Pacific viperfish or a dragonfish, rules the abyss? Drop your answer below and subscribe because the Pacific viperfish, a deep-sea predator, is...",
+    "A mysterious deep-sea creature, rarely seen with only 296 specimens ever recorded, has a mouth that's almost as wide as its head! This filter feeder, growing up to 5.5 meters, glides through the abyss with its massive jaws wide open, hoovering up krill and jellyfish. It's the smallest of the three filter-feeding sharks, yet its unique rubbery lips make it the only species in its entire family. Can you guess this bizarre deep-sea wonder? It's the Megamouth Shark! What other ocean mysteries amaze you? Tell us below and subscribe because...",
+    "Ocean dead zones are rapidly expanding areas where oxygen levels drop so low, they cause mass mortality. At less than 2 milligrams of oxygen per liter, most marine life flees. Below 0.5 mg, nothing survives; it's like a watery ghost town. First noted in the 1970s, there are now over 400 such zones globally, with the largest covering 70,000 square kilometers. What ocean mystery scares you most? Tell us below and subscribe because..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -584,7 +588,9 @@
     "humboldt squid",
     "mimic octopus",
     "dragonfish",
-    "pacific viperfish"
+    "pacific viperfish",
+    "megamouth shark",
+    "ocean dead zones"
   ],
   "format_weights": {
     "weights": {
@@ -618,7 +624,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-13"
+    "date": "2026-10-14"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -639,7 +645,9 @@
     "The Ocean's Most Bizarre Animal BIRTH: 538 Million Years Ago! \ud83e\udd2f": "deep_dive",
     "This Deep Sea Fish Can ROTATE Its Own EYES! \ud83e\udd2f": "deep_dive",
     "The Ocean's 1.5-Meter Red Devil vs. The Shapeshifting Master! \ud83e\udd2f": "duel",
-    "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a": "duel"
+    "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a": "duel",
+    "Guess the Bizarre Deep-Sea Filter Feeder with a MONSTER Mouth! \ud83e\udd2f": "guess",
+    "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
