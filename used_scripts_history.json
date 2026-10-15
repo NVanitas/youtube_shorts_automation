@@ -267,7 +267,9 @@
     "The Ocean's 1.5-Meter Red Devil vs. The Shapeshifting Master! \ud83e\udd2f",
     "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a",
     "Guess the Bizarre Deep-Sea Filter Feeder with a MONSTER Mouth! \ud83e\udd2f",
-    "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80"
+    "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80",
+    "The Ocean's 12-Foot Spider Crab vs. The 1100lb Turtle Titan! \ud83d\udc22",
+    "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -537,7 +539,9 @@
     "The Humboldt squid, a terrifying 1.5-meter giant, flashes red to white right before attacking prey! Living at 700 meters deep, this red devil is known for aggressive encounters with humans. In contrast, the mimic octopus, a master of disguise, impersonates multiple animals, like a flatfish, to escape predators. Which of these ocean shapeshifters would you rather face? Tell us below and subscribe because the Humboldt squid...",
     "The Pacific viperfish, a deep-sea predator, is the largest of its nine species, reaching up to one foot long! Found in the North Pacific, these formidable hunters perform diel vertical migration, ascending from extreme depths to hunt prey in shallower waters. Females are typically longer and heavier, embodying deep-sea gigantism in the mesopelagic zone. Which deep-sea titan, the Pacific viperfish or a dragonfish, rules the abyss? Drop your answer below and subscribe because the Pacific viperfish, a deep-sea predator, is...",
     "A mysterious deep-sea creature, rarely seen with only 296 specimens ever recorded, has a mouth that's almost as wide as its head! This filter feeder, growing up to 5.5 meters, glides through the abyss with its massive jaws wide open, hoovering up krill and jellyfish. It's the smallest of the three filter-feeding sharks, yet its unique rubbery lips make it the only species in its entire family. Can you guess this bizarre deep-sea wonder? It's the Megamouth Shark! What other ocean mysteries amaze you? Tell us below and subscribe because...",
-    "Ocean dead zones are rapidly expanding areas where oxygen levels drop so low, they cause mass mortality. At less than 2 milligrams of oxygen per liter, most marine life flees. Below 0.5 mg, nothing survives; it's like a watery ghost town. First noted in the 1970s, there are now over 400 such zones globally, with the largest covering 70,000 square kilometers. What ocean mystery scares you most? Tell us below and subscribe because..."
+    "Ocean dead zones are rapidly expanding areas where oxygen levels drop so low, they cause mass mortality. At less than 2 milligrams of oxygen per liter, most marine life flees. Below 0.5 mg, nothing survives; it's like a watery ghost town. First noted in the 1970s, there are now over 400 such zones globally, with the largest covering 70,000 square kilometers. What ocean mystery scares you most? Tell us below and subscribe because...",
+    "The Japanese spider crab has a monstrous 3.75-meter leg span, making it the biggest arthropod on Earth! That's wider than a small car, contrasting with the leatherback sea turtle, which weighs over 500 kilograms, like a small car itself! The leatherback, at 2.7 meters long, lacks a bony shell, relying on its flexible, leather-like skin for defense against such a giant crab. Which of these deep-sea titans would win a fight? Tell us below, and subscribe because the Japanese spider crab has a monstrous 3.75-meter leg span, making it the biggest arthropod on Earth!",
+    "Dropping into Antarctica's Lake Vostok would be instantly fatal! You'd be crushed under the immense pressure of 3,700 meters of ice, equivalent to 370 atmospheres. This massive subglacial lake, isolated for millions of years, also contains oxygen levels 50 times higher than normal freshwater, creating a toxic environment. Yet, unique bacteria thrive there! Could you survive this alien world? Drop your answer below and subscribe because dropping into Antarctica's Lake Vostok..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -590,7 +594,10 @@
     "dragonfish",
     "pacific viperfish",
     "megamouth shark",
-    "ocean dead zones"
+    "ocean dead zones",
+    "japanese spider crab",
+    "leatherback sea turtle",
+    "the Antarctic underwater lake Vostok"
   ],
   "format_weights": {
     "weights": {
@@ -624,7 +631,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-14"
+    "date": "2026-10-15"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -647,7 +654,9 @@
     "The Ocean's 1.5-Meter Red Devil vs. The Shapeshifting Master! \ud83e\udd2f": "duel",
     "This ONE-FOOT Abyss Predator HUNTS From The Depths To The Shallows! \ud83c\udf0a": "duel",
     "Guess the Bizarre Deep-Sea Filter Feeder with a MONSTER Mouth! \ud83e\udd2f": "guess",
-    "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80": "deep_dive"
+    "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80": "deep_dive",
+    "The Ocean's 12-Foot Spider Crab vs. The 1100lb Turtle Titan! \ud83d\udc22": "duel",
+    "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
