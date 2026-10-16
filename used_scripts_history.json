@@ -269,7 +269,9 @@
     "Guess the Bizarre Deep-Sea Filter Feeder with a MONSTER Mouth! \ud83e\udd2f",
     "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80",
     "The Ocean's 12-Foot Spider Crab vs. The 1100lb Turtle Titan! \ud83d\udc22",
-    "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca"
+    "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca",
+    "Who Wins: Venomous Spines vs. Razor Teeth in the Deep?! \ud83e\udd2f",
+    "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -541,7 +543,9 @@
     "A mysterious deep-sea creature, rarely seen with only 296 specimens ever recorded, has a mouth that's almost as wide as its head! This filter feeder, growing up to 5.5 meters, glides through the abyss with its massive jaws wide open, hoovering up krill and jellyfish. It's the smallest of the three filter-feeding sharks, yet its unique rubbery lips make it the only species in its entire family. Can you guess this bizarre deep-sea wonder? It's the Megamouth Shark! What other ocean mysteries amaze you? Tell us below and subscribe because...",
     "Ocean dead zones are rapidly expanding areas where oxygen levels drop so low, they cause mass mortality. At less than 2 milligrams of oxygen per liter, most marine life flees. Below 0.5 mg, nothing survives; it's like a watery ghost town. First noted in the 1970s, there are now over 400 such zones globally, with the largest covering 70,000 square kilometers. What ocean mystery scares you most? Tell us below and subscribe because...",
     "The Japanese spider crab has a monstrous 3.75-meter leg span, making it the biggest arthropod on Earth! That's wider than a small car, contrasting with the leatherback sea turtle, which weighs over 500 kilograms, like a small car itself! The leatherback, at 2.7 meters long, lacks a bony shell, relying on its flexible, leather-like skin for defense against such a giant crab. Which of these deep-sea titans would win a fight? Tell us below, and subscribe because the Japanese spider crab has a monstrous 3.75-meter leg span, making it the biggest arthropod on Earth!",
-    "Dropping into Antarctica's Lake Vostok would be instantly fatal! You'd be crushed under the immense pressure of 3,700 meters of ice, equivalent to 370 atmospheres. This massive subglacial lake, isolated for millions of years, also contains oxygen levels 50 times higher than normal freshwater, creating a toxic environment. Yet, unique bacteria thrive there! Could you survive this alien world? Drop your answer below and subscribe because dropping into Antarctica's Lake Vostok..."
+    "Dropping into Antarctica's Lake Vostok would be instantly fatal! You'd be crushed under the immense pressure of 3,700 meters of ice, equivalent to 370 atmospheres. This massive subglacial lake, isolated for millions of years, also contains oxygen levels 50 times higher than normal freshwater, creating a toxic environment. Yet, unique bacteria thrive there! Could you survive this alien world? Drop your answer below and subscribe because dropping into Antarctica's Lake Vostok...",
+    "The venomous Lionfish clashes with the terrifying, dagger-toothed Viperfish in a bizarre ocean duel! Lionfish (Pterois volitans) wield up to 18 venomous dorsal spines, delivering excruciating pain. Meanwhile, the Viperfish (Chauliodus sloani) hunts in total darkness with needle-like teeth so long, some exceeding 2.5 centimeters, it can\u2019t even close its mouth! While they don't naturally meet, if forced, the Viperfish's ambush predator style might lose to the Lionfish's potent Pterois venom. Which bizarre ocean hunter wins this hypothetical showdown for you? Comment below and subscribe because the venomous Lionfish...",
+    "The Dumbo octopus glides through pitch-black abyssal depths using bizarre ear-like fins, not jet propulsion! This gelatinous octopod conserves precious energy in its extreme environment, unlike its squid-like cousins. It stalks tiny crustaceans, bivalves, and worms, feeding in a way no other octopus does. Which of its alien traits freaks you out the most? Drop your answer below and subscribe because..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -597,7 +601,10 @@
     "ocean dead zones",
     "japanese spider crab",
     "leatherback sea turtle",
-    "the Antarctic underwater lake Vostok"
+    "the Antarctic underwater lake Vostok",
+    "lionfish",
+    "viperfish",
+    "dumbo octopus"
   ],
   "format_weights": {
     "weights": {
@@ -616,7 +623,7 @@
     "stats": {
       "deep_dive": {
         "videos": 31,
-        "avg_views": 237
+        "avg_views": 238
       },
       "duel": {
         "videos": 20,
@@ -631,7 +638,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-15"
+    "date": "2026-10-16"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -656,7 +663,9 @@
     "Guess the Bizarre Deep-Sea Filter Feeder with a MONSTER Mouth! \ud83e\udd2f": "guess",
     "These Ocean Zones Will Suffocate EVERYTHING Alive! \ud83d\udc80": "deep_dive",
     "The Ocean's 12-Foot Spider Crab vs. The 1100lb Turtle Titan! \ud83d\udc22": "duel",
-    "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca": "deep_dive"
+    "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca": "deep_dive",
+    "Who Wins: Venomous Spines vs. Razor Teeth in the Deep?! \ud83e\udd2f": "duel",
+    "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
