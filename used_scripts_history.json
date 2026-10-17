@@ -271,7 +271,9 @@
     "The Ocean's 12-Foot Spider Crab vs. The 1100lb Turtle Titan! \ud83d\udc22",
     "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca",
     "Who Wins: Venomous Spines vs. Razor Teeth in the Deep?! \ud83e\udd2f",
-    "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d"
+    "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d",
+    "The Pistol Shrimp's Claw Can JAM Naval Sonar! \ud83e\udd2f",
+    "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -545,7 +547,9 @@
     "The Japanese spider crab has a monstrous 3.75-meter leg span, making it the biggest arthropod on Earth! That's wider than a small car, contrasting with the leatherback sea turtle, which weighs over 500 kilograms, like a small car itself! The leatherback, at 2.7 meters long, lacks a bony shell, relying on its flexible, leather-like skin for defense against such a giant crab. Which of these deep-sea titans would win a fight? Tell us below, and subscribe because the Japanese spider crab has a monstrous 3.75-meter leg span, making it the biggest arthropod on Earth!",
     "Dropping into Antarctica's Lake Vostok would be instantly fatal! You'd be crushed under the immense pressure of 3,700 meters of ice, equivalent to 370 atmospheres. This massive subglacial lake, isolated for millions of years, also contains oxygen levels 50 times higher than normal freshwater, creating a toxic environment. Yet, unique bacteria thrive there! Could you survive this alien world? Drop your answer below and subscribe because dropping into Antarctica's Lake Vostok...",
     "The venomous Lionfish clashes with the terrifying, dagger-toothed Viperfish in a bizarre ocean duel! Lionfish (Pterois volitans) wield up to 18 venomous dorsal spines, delivering excruciating pain. Meanwhile, the Viperfish (Chauliodus sloani) hunts in total darkness with needle-like teeth so long, some exceeding 2.5 centimeters, it can\u2019t even close its mouth! While they don't naturally meet, if forced, the Viperfish's ambush predator style might lose to the Lionfish's potent Pterois venom. Which bizarre ocean hunter wins this hypothetical showdown for you? Comment below and subscribe because the venomous Lionfish...",
-    "The Dumbo octopus glides through pitch-black abyssal depths using bizarre ear-like fins, not jet propulsion! This gelatinous octopod conserves precious energy in its extreme environment, unlike its squid-like cousins. It stalks tiny crustaceans, bivalves, and worms, feeding in a way no other octopus does. Which of its alien traits freaks you out the most? Drop your answer below and subscribe because..."
+    "The Dumbo octopus glides through pitch-black abyssal depths using bizarre ear-like fins, not jet propulsion! This gelatinous octopod conserves precious energy in its extreme environment, unlike its squid-like cousins. It stalks tiny crustaceans, bivalves, and worms, feeding in a way no other octopus does. Which of its alien traits freaks you out the most? Drop your answer below and subscribe because...",
+    "The tiny pistol shrimp's massive, modified claw fires a sonic blast that can jam naval sonar systems! This unique 'chelae' on one leg is found across its 1,119 known species, used for far more than just defense. Their colonies create so much noise, they are considered a major source of sound, dominating entire ocean soundscapes. Could you survive that noise? Which ocean sound surprises you most? Drop it below and subscribe because the tiny pistol shrimp's massive, modified claw...",
+    "The Elasmosaurus, a 10.3-meter marine reptile, was so bizarre, early scientists once put its head on its tail! Its neck alone stretched 7.1 meters, packed with 72 vertebrae\u2014one of the longest ever! This 'thin-plate reptile' had a small, triangular head, but don't be fooled; it sported large, fang-like teeth. Imagine encountering this ancient oddity! Which prehistoric creature do you think looks the weirdest? Tell us below and subscribe because..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -604,7 +608,9 @@
     "the Antarctic underwater lake Vostok",
     "lionfish",
     "viperfish",
-    "dumbo octopus"
+    "dumbo octopus",
+    "pistol shrimp",
+    "elasmosaurus"
   ],
   "format_weights": {
     "weights": {
@@ -638,7 +644,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-16"
+    "date": "2026-10-17"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -665,7 +671,9 @@
     "The Ocean's 12-Foot Spider Crab vs. The 1100lb Turtle Titan! \ud83d\udc22": "duel",
     "Lake Vostok: Antarctica's Hidden Death Trap! \ud83e\uddca": "deep_dive",
     "Who Wins: Venomous Spines vs. Razor Teeth in the Deep?! \ud83e\udd2f": "duel",
-    "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d": "deep_dive"
+    "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d": "deep_dive",
+    "The Pistol Shrimp's Claw Can JAM Naval Sonar! \ud83e\udd2f": "deep_dive",
+    "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
