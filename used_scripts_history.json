@@ -273,7 +273,9 @@
     "Who Wins: Venomous Spines vs. Razor Teeth in the Deep?! \ud83e\udd2f",
     "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d",
     "The Pistol Shrimp's Claw Can JAM Naval Sonar! \ud83e\udd2f",
-    "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f"
+    "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
+    "The 400-Million-Year-Old Creature That Unlocks EARTH'S TIME MACHINE! \u23f3",
+    "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -549,7 +551,9 @@
     "The venomous Lionfish clashes with the terrifying, dagger-toothed Viperfish in a bizarre ocean duel! Lionfish (Pterois volitans) wield up to 18 venomous dorsal spines, delivering excruciating pain. Meanwhile, the Viperfish (Chauliodus sloani) hunts in total darkness with needle-like teeth so long, some exceeding 2.5 centimeters, it can\u2019t even close its mouth! While they don't naturally meet, if forced, the Viperfish's ambush predator style might lose to the Lionfish's potent Pterois venom. Which bizarre ocean hunter wins this hypothetical showdown for you? Comment below and subscribe because the venomous Lionfish...",
     "The Dumbo octopus glides through pitch-black abyssal depths using bizarre ear-like fins, not jet propulsion! This gelatinous octopod conserves precious energy in its extreme environment, unlike its squid-like cousins. It stalks tiny crustaceans, bivalves, and worms, feeding in a way no other octopus does. Which of its alien traits freaks you out the most? Drop your answer below and subscribe because...",
     "The tiny pistol shrimp's massive, modified claw fires a sonic blast that can jam naval sonar systems! This unique 'chelae' on one leg is found across its 1,119 known species, used for far more than just defense. Their colonies create so much noise, they are considered a major source of sound, dominating entire ocean soundscapes. Could you survive that noise? Which ocean sound surprises you most? Drop it below and subscribe because the tiny pistol shrimp's massive, modified claw...",
-    "The Elasmosaurus, a 10.3-meter marine reptile, was so bizarre, early scientists once put its head on its tail! Its neck alone stretched 7.1 meters, packed with 72 vertebrae\u2014one of the longest ever! This 'thin-plate reptile' had a small, triangular head, but don't be fooled; it sported large, fang-like teeth. Imagine encountering this ancient oddity! Which prehistoric creature do you think looks the weirdest? Tell us below and subscribe because..."
+    "The Elasmosaurus, a 10.3-meter marine reptile, was so bizarre, early scientists once put its head on its tail! Its neck alone stretched 7.1 meters, packed with 72 vertebrae\u2014one of the longest ever! This 'thin-plate reptile' had a small, triangular head, but don't be fooled; it sported large, fang-like teeth. Imagine encountering this ancient oddity! Which prehistoric creature do you think looks the weirdest? Tell us below and subscribe because...",
+    "This ancient ammonite, extinct for 66 million years, is Earth's ultimate time-travel guide! Over 10,000 species emerged 410 million years ago, their distinct coiled shells acting as perfect geological timestamps. Scientists use these specific fossils to precisely map rock layers, effectively unlocking 300 million years of planetary history. Which other prehistoric creature do you think holds a hidden secret? Comment below and subscribe because... this ancient ammonite, extinct for 66 million years, is Earth's ultimate time-travel guide!",
+    "The electric eel delivers a shocking 860-volt jolt, but here's the twist: it's not even a true eel! These South American freshwater fish are actually knifefish. Their incredible power, enough to light up several homes, even inspired the invention of the electric battery in 1800. Plus, they grow throughout their entire lives, constantly adding new vertebrae! Which bizarre fact about the electric eel surprised you most? Drop your answer below and subscribe because the electric eel delivers a shocking..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -610,7 +614,9 @@
     "viperfish",
     "dumbo octopus",
     "pistol shrimp",
-    "elasmosaurus"
+    "elasmosaurus",
+    "ammonite",
+    "electric eel"
   ],
   "format_weights": {
     "weights": {
@@ -633,7 +639,7 @@
       },
       "duel": {
         "videos": 20,
-        "avg_views": 327
+        "avg_views": 328
       },
       "quiz": {
         "videos": 7,
@@ -644,7 +650,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-17"
+    "date": "2026-10-18"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -673,7 +679,9 @@
     "Who Wins: Venomous Spines vs. Razor Teeth in the Deep?! \ud83e\udd2f": "duel",
     "The Dumbo Octopus: Earth's WEIRDEST Alien From the Deep! \ud83d\udc7d": "deep_dive",
     "The Pistol Shrimp's Claw Can JAM Naval Sonar! \ud83e\udd2f": "deep_dive",
-    "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f": "deep_dive"
+    "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f": "deep_dive",
+    "The 400-Million-Year-Old Creature That Unlocks EARTH'S TIME MACHINE! \u23f3": "deep_dive",
+    "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
