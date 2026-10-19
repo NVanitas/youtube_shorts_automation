@@ -275,7 +275,8 @@
     "The Pistol Shrimp's Claw Can JAM Naval Sonar! \ud83e\udd2f",
     "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
     "The 400-Million-Year-Old Creature That Unlocks EARTH'S TIME MACHINE! \u23f3",
-    "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1"
+    "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1",
+    "The Glass Octopus: It Has a Body, But You Can't See It! \ud83d\udc7b"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -553,7 +554,8 @@
     "The tiny pistol shrimp's massive, modified claw fires a sonic blast that can jam naval sonar systems! This unique 'chelae' on one leg is found across its 1,119 known species, used for far more than just defense. Their colonies create so much noise, they are considered a major source of sound, dominating entire ocean soundscapes. Could you survive that noise? Which ocean sound surprises you most? Drop it below and subscribe because the tiny pistol shrimp's massive, modified claw...",
     "The Elasmosaurus, a 10.3-meter marine reptile, was so bizarre, early scientists once put its head on its tail! Its neck alone stretched 7.1 meters, packed with 72 vertebrae\u2014one of the longest ever! This 'thin-plate reptile' had a small, triangular head, but don't be fooled; it sported large, fang-like teeth. Imagine encountering this ancient oddity! Which prehistoric creature do you think looks the weirdest? Tell us below and subscribe because...",
     "This ancient ammonite, extinct for 66 million years, is Earth's ultimate time-travel guide! Over 10,000 species emerged 410 million years ago, their distinct coiled shells acting as perfect geological timestamps. Scientists use these specific fossils to precisely map rock layers, effectively unlocking 300 million years of planetary history. Which other prehistoric creature do you think holds a hidden secret? Comment below and subscribe because... this ancient ammonite, extinct for 66 million years, is Earth's ultimate time-travel guide!",
-    "The electric eel delivers a shocking 860-volt jolt, but here's the twist: it's not even a true eel! These South American freshwater fish are actually knifefish. Their incredible power, enough to light up several homes, even inspired the invention of the electric battery in 1800. Plus, they grow throughout their entire lives, constantly adding new vertebrae! Which bizarre fact about the electric eel surprised you most? Drop your answer below and subscribe because the electric eel delivers a shocking..."
+    "The electric eel delivers a shocking 860-volt jolt, but here's the twist: it's not even a true eel! These South American freshwater fish are actually knifefish. Their incredible power, enough to light up several homes, even inspired the invention of the electric battery in 1800. Plus, they grow throughout their entire lives, constantly adding new vertebrae! Which bizarre fact about the electric eel surprised you most? Drop your answer below and subscribe because the electric eel delivers a shocking...",
+    "The deep sea's glass octopus, Vitreledonella richardi, is almost entirely transparent! Its body is so clear, only its optic nerves, eyeballs, and digestive tract are visible. This extreme camouflage makes it a living ghost, nearly invisible to predators in the ocean's twilight zone. Which bizarre deep-sea creature would you want to be invisible like? Let us know below and subscribe because the deep sea's glass octopus..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -616,30 +618,32 @@
     "pistol shrimp",
     "elasmosaurus",
     "ammonite",
-    "electric eel"
+    "electric eel",
+    "glass octopus",
+    "moray eel"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 0.98,
-      "duel": 1.3,
-      "quiz": 0.56,
-      "guess": 0.62
+      "duel": 1.24,
+      "deep_dive": 1.03,
+      "quiz": 0.55,
+      "guess": 0.61
     },
     "top_titles": [
+      "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
       "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
       "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19",
       "Meet the Creatures LIVING Inside Boiling Underwater Volcanoes! \ud83d\udd25",
-      "Deep Sea's WEIRDEST Battle: The Living Fossil vs. The Sea Serpent! \ud83c\udfa3",
-      "Giant Octopus vs. Sleeper Shark: The Abyssal Fight You Won't Believe! \ud83d\udc19"
+      "Deep Sea's WEIRDEST Battle: The Living Fossil vs. The Sea Serpent! \ud83c\udfa3"
     ],
     "stats": {
-      "deep_dive": {
-        "videos": 31,
-        "avg_views": 238
-      },
       "duel": {
         "videos": 20,
         "avg_views": 328
+      },
+      "deep_dive": {
+        "videos": 31,
+        "avg_views": 265
       },
       "quiz": {
         "videos": 7,
@@ -650,7 +654,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-18"
+    "date": "2026-10-19"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -681,7 +685,8 @@
     "The Pistol Shrimp's Claw Can JAM Naval Sonar! \ud83e\udd2f": "deep_dive",
     "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f": "deep_dive",
     "The 400-Million-Year-Old Creature That Unlocks EARTH'S TIME MACHINE! \u23f3": "deep_dive",
-    "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1": "deep_dive"
+    "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1": "deep_dive",
+    "The Glass Octopus: It Has a Body, But You Can't See It! \ud83d\udc7b": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
