@@ -278,7 +278,9 @@
     "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1",
     "The Glass Octopus: It Has a Body, But You Can't See It! \ud83d\udc7b",
     "Leafy Seadragon vs. Yeti Crab: The Ocean's WEIRDEST Showdown! \ud83e\udd2f",
-    "The Ocean's Majestic Kelp Forests Are HIDING a Dark Secret! \ud83d\ude31"
+    "The Ocean's Majestic Kelp Forests Are HIDING a Dark Secret! \ud83d\ude31",
+    "This Deep Sea Fish Is So WEIRD Its Fangs Don't Fit In Its Mouth! \ud83e\udd2f",
+    "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -559,7 +561,9 @@
     "The electric eel delivers a shocking 860-volt jolt, but here's the twist: it's not even a true eel! These South American freshwater fish are actually knifefish. Their incredible power, enough to light up several homes, even inspired the invention of the electric battery in 1800. Plus, they grow throughout their entire lives, constantly adding new vertebrae! Which bizarre fact about the electric eel surprised you most? Drop your answer below and subscribe because the electric eel delivers a shocking...",
     "The deep sea's glass octopus, Vitreledonella richardi, is almost entirely transparent! Its body is so clear, only its optic nerves, eyeballs, and digestive tract are visible. This extreme camouflage makes it a living ghost, nearly invisible to predators in the ocean's twilight zone. Which bizarre deep-sea creature would you want to be invisible like? Let us know below and subscribe because the deep sea's glass octopus...",
     "The delicate Leafy Seadragon, master of disguise, faces the deep-sea Yeti Crab, a creature that thrives in volcanic vents! Its incredible leaf-like camouflage isn't for swimming; tiny, almost invisible fins propel it, perfectly mimicking floating seaweed. But the Yeti Crab cultivates sulphur-oxidizing bacteria on its hairy claws, effectively farming its own food in extreme heat. Which bizarre specialist would surprise you more in a duel? Drop your pick below and subscribe because the delicate Leafy Seadragon...",
-    "Underwater kelp forests, the ocean's majestic skyscrapers, are on the verge of vanishing. These massive brown macroalgae, providing habitat for countless species, account for 0.9% of global primary productivity from just 0.1% of Earth's surface. Yet, due to overfishing and climate change, entire kelp forests in places like Tasmania and California are rapidly becoming barren wastelands. Can we reverse this terrifying destruction? Tell us what you think below and subscribe because underwater kelp forests..."
+    "Underwater kelp forests, the ocean's majestic skyscrapers, are on the verge of vanishing. These massive brown macroalgae, providing habitat for countless species, account for 0.9% of global primary productivity from just 0.1% of Earth's surface. Yet, due to overfishing and climate change, entire kelp forests in places like Tasmania and California are rapidly becoming barren wastelands. Can we reverse this terrifying destruction? Tell us what you think below and subscribe because underwater kelp forests...",
+    "The fangtooth fish has fangs so disproportionately huge, they don't even fit inside its mouth when closed. These terrifying teeth are the largest of any fish relative to its body size, sliding into special sockets in its skull. Living globally at extreme depths, this predator endures pressures that would crush a submarine, yet its shieldless belly survives. Could you imagine encountering this ancient-looking fish? Tell us below, and subscribe because... The fangtooth fish has fangs so disproportionately huge...",
+    "Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash with a modern orca in an epic duel spanning 155 million years! This ancient predator had teeth like smooth-sided daggers, ambushing fish and marine reptiles from the depths. But the modern orca, a 9-meter apex predator, hunts with incredible intelligence and coordinated pack tactics, like a highly skilled special ops team! Who wins this colossal deep-time confrontation? Drop your answer below and subscribe because Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -627,7 +631,10 @@
     "moray eel",
     "leafy seadragon",
     "yeti crab",
-    "underwater forests of giant kelp"
+    "underwater forests of giant kelp",
+    "fangtooth fish",
+    "liopleurodon",
+    "orca"
   ],
   "format_weights": {
     "weights": {
@@ -661,7 +668,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-20"
+    "date": "2026-10-21"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -695,7 +702,9 @@
     "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1": "deep_dive",
     "The Glass Octopus: It Has a Body, But You Can't See It! \ud83d\udc7b": "deep_dive",
     "Leafy Seadragon vs. Yeti Crab: The Ocean's WEIRDEST Showdown! \ud83e\udd2f": "duel",
-    "The Ocean's Majestic Kelp Forests Are HIDING a Dark Secret! \ud83d\ude31": "deep_dive"
+    "The Ocean's Majestic Kelp Forests Are HIDING a Dark Secret! \ud83d\ude31": "deep_dive",
+    "This Deep Sea Fish Is So WEIRD Its Fangs Don't Fit In Its Mouth! \ud83e\udd2f": "deep_dive",
+    "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
