@@ -280,7 +280,9 @@
     "Leafy Seadragon vs. Yeti Crab: The Ocean's WEIRDEST Showdown! \ud83e\udd2f",
     "The Ocean's Majestic Kelp Forests Are HIDING a Dark Secret! \ud83d\ude31",
     "This Deep Sea Fish Is So WEIRD Its Fangs Don't Fit In Its Mouth! \ud83e\udd2f",
-    "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a"
+    "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a",
+    "The Ocean's Vampire Squid: It Lives Where YOU'D Suffocate! \ud83d\udc80",
+    "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -563,7 +565,9 @@
     "The delicate Leafy Seadragon, master of disguise, faces the deep-sea Yeti Crab, a creature that thrives in volcanic vents! Its incredible leaf-like camouflage isn't for swimming; tiny, almost invisible fins propel it, perfectly mimicking floating seaweed. But the Yeti Crab cultivates sulphur-oxidizing bacteria on its hairy claws, effectively farming its own food in extreme heat. Which bizarre specialist would surprise you more in a duel? Drop your pick below and subscribe because the delicate Leafy Seadragon...",
     "Underwater kelp forests, the ocean's majestic skyscrapers, are on the verge of vanishing. These massive brown macroalgae, providing habitat for countless species, account for 0.9% of global primary productivity from just 0.1% of Earth's surface. Yet, due to overfishing and climate change, entire kelp forests in places like Tasmania and California are rapidly becoming barren wastelands. Can we reverse this terrifying destruction? Tell us what you think below and subscribe because underwater kelp forests...",
     "The fangtooth fish has fangs so disproportionately huge, they don't even fit inside its mouth when closed. These terrifying teeth are the largest of any fish relative to its body size, sliding into special sockets in its skull. Living globally at extreme depths, this predator endures pressures that would crush a submarine, yet its shieldless belly survives. Could you imagine encountering this ancient-looking fish? Tell us below, and subscribe because... The fangtooth fish has fangs so disproportionately huge...",
-    "Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash with a modern orca in an epic duel spanning 155 million years! This ancient predator had teeth like smooth-sided daggers, ambushing fish and marine reptiles from the depths. But the modern orca, a 9-meter apex predator, hunts with incredible intelligence and coordinated pack tactics, like a highly skilled special ops team! Who wins this colossal deep-time confrontation? Drop your answer below and subscribe because Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash..."
+    "Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash with a modern orca in an epic duel spanning 155 million years! This ancient predator had teeth like smooth-sided daggers, ambushing fish and marine reptiles from the depths. But the modern orca, a 9-meter apex predator, hunts with incredible intelligence and coordinated pack tactics, like a highly skilled special ops team! Who wins this colossal deep-time confrontation? Drop your answer below and subscribe because Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash...",
+    "The Vampire Squid, *Vampyroteuthis infernalis*, thrives in ocean zones where oxygen levels are nearly zero. It navigates Oxygen Minimum Zones, depths where most creatures suffocate instantly, surviving with specialized gills and unique metabolism. This 'vampire from hell' also uses bioluminescent organs to find food in these desolate, oxygen-starved waters. Could you survive even a minute in its world? Tell us below, and subscribe because the Vampire Squid...",
+    "The Great White Shark has a liver that can weigh over 200 kilograms! This massive organ acts like a built-in flotation device and energy tank, similar to a submarine's ballast. It's also partially warm-blooded, maintaining its core body temperature like a pelagic heat engine, letting it hunt in icy waters. But here's the lie: Great White Sharks can regrow a completely new set of all 300 teeth in just 24 hours. Which of these incredible facts is actually a complete lie? Drop your guess below and subscribe to learn more secrets of the deep! The Great White Shark has a liver that can weigh over 200 kilograms!"
   ],
   "used_fallbacks": {
     "facts": [],
@@ -634,7 +638,9 @@
     "underwater forests of giant kelp",
     "fangtooth fish",
     "liopleurodon",
-    "orca"
+    "orca",
+    "vampire squid",
+    "great white shark"
   ],
   "format_weights": {
     "weights": {
@@ -668,7 +674,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-21"
+    "date": "2026-10-22"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -704,7 +710,9 @@
     "Leafy Seadragon vs. Yeti Crab: The Ocean's WEIRDEST Showdown! \ud83e\udd2f": "duel",
     "The Ocean's Majestic Kelp Forests Are HIDING a Dark Secret! \ud83d\ude31": "deep_dive",
     "This Deep Sea Fish Is So WEIRD Its Fangs Don't Fit In Its Mouth! \ud83e\udd2f": "deep_dive",
-    "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a": "duel"
+    "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a": "duel",
+    "The Ocean's Vampire Squid: It Lives Where YOU'D Suffocate! \ud83d\udc80": "deep_dive",
+    "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88": "quiz"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
