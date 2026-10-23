@@ -282,7 +282,9 @@
     "This Deep Sea Fish Is So WEIRD Its Fangs Don't Fit In Its Mouth! \ud83e\udd2f",
     "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a",
     "The Ocean's Vampire Squid: It Lives Where YOU'D Suffocate! \ud83d\udc80",
-    "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88"
+    "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88",
+    "The Bizarre Battle: Walking Octopus vs. 1600kg Whale! \ud83d\ude32",
+    "This 'Exploding Lake' Released an Invisible Killer Cloud! \ud83d\udc80"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -567,7 +569,9 @@
     "The fangtooth fish has fangs so disproportionately huge, they don't even fit inside its mouth when closed. These terrifying teeth are the largest of any fish relative to its body size, sliding into special sockets in its skull. Living globally at extreme depths, this predator endures pressures that would crush a submarine, yet its shieldless belly survives. Could you imagine encountering this ancient-looking fish? Tell us below, and subscribe because... The fangtooth fish has fangs so disproportionately huge...",
     "Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash with a modern orca in an epic duel spanning 155 million years! This ancient predator had teeth like smooth-sided daggers, ambushing fish and marine reptiles from the depths. But the modern orca, a 9-meter apex predator, hunts with incredible intelligence and coordinated pack tactics, like a highly skilled special ops team! Who wins this colossal deep-time confrontation? Drop your answer below and subscribe because Liopleurodon, the up to 8-meter Jurassic pliosaur, would clash...",
     "The Vampire Squid, *Vampyroteuthis infernalis*, thrives in ocean zones where oxygen levels are nearly zero. It navigates Oxygen Minimum Zones, depths where most creatures suffocate instantly, surviving with specialized gills and unique metabolism. This 'vampire from hell' also uses bioluminescent organs to find food in these desolate, oxygen-starved waters. Could you survive even a minute in its world? Tell us below, and subscribe because the Vampire Squid...",
-    "The Great White Shark has a liver that can weigh over 200 kilograms! This massive organ acts like a built-in flotation device and energy tank, similar to a submarine's ballast. It's also partially warm-blooded, maintaining its core body temperature like a pelagic heat engine, letting it hunt in icy waters. But here's the lie: Great White Sharks can regrow a completely new set of all 300 teeth in just 24 hours. Which of these incredible facts is actually a complete lie? Drop your guess below and subscribe to learn more secrets of the deep! The Great White Shark has a liver that can weigh over 200 kilograms!"
+    "The Great White Shark has a liver that can weigh over 200 kilograms! This massive organ acts like a built-in flotation device and energy tank, similar to a submarine's ballast. It's also partially warm-blooded, maintaining its core body temperature like a pelagic heat engine, letting it hunt in icy waters. But here's the lie: Great White Sharks can regrow a completely new set of all 300 teeth in just 24 hours. Which of these incredible facts is actually a complete lie? Drop your guess below and subscribe to learn more secrets of the deep! The Great White Shark has a liver that can weigh over 200 kilograms!",
+    "The tiny coconut octopus can collect and use tools, even walking on two legs with shells for shelter! Contrast that with the beluga whale, a colossal Arctic predator reaching 5.5 meters long and weighing 1,600 kilograms. This 'sea canary' can dive to 700 meters, navigating icy depths with its deformable melon and no dorsal fin. Which of these ocean dwellers has the more incredible superpower? Drop your answer below and subscribe because the tiny coconut octopus can collect...",
+    "Lake Nyos in Cameroon isn't just a lake; it's an 'exploding lake' that released an invisible carbon dioxide cloud. This limnic eruption suddenly releases dissolved CO2, creating a suffocating gas cloud capable of asphyxiating humans. It's like a giant soda bottle violently erupting, where immense pressure ejects CO2, often triggered by seismic events. Could you escape an invisible killer? Subscribe because Lake Nyos in Cameroon isn't just a lake..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -640,7 +644,10 @@
     "liopleurodon",
     "orca",
     "vampire squid",
-    "great white shark"
+    "great white shark",
+    "coconut octopus",
+    "beluga whale",
+    "Lake Nyos and limnic eruptions"
   ],
   "format_weights": {
     "weights": {
@@ -674,7 +681,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-22"
+    "date": "2026-10-23"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -712,7 +719,9 @@
     "This Deep Sea Fish Is So WEIRD Its Fangs Don't Fit In Its Mouth! \ud83e\udd2f": "deep_dive",
     "Liopleurodon vs. Orca: The ULTIMATE Ocean Predator Battle?! \ud83e\udd4a": "duel",
     "The Ocean's Vampire Squid: It Lives Where YOU'D Suffocate! \ud83d\udc80": "deep_dive",
-    "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88": "quiz"
+    "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88": "quiz",
+    "The Bizarre Battle: Walking Octopus vs. 1600kg Whale! \ud83d\ude32": "duel",
+    "This 'Exploding Lake' Released an Invisible Killer Cloud! \ud83d\udc80": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
