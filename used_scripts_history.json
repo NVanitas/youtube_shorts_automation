@@ -286,7 +286,8 @@
     "The Bizarre Battle: Walking Octopus vs. 1600kg Whale! \ud83d\ude32",
     "This 'Exploding Lake' Released an Invisible Killer Cloud! \ud83d\udc80",
     "Earth's GIANT Scar: What's Inside the Mid-Atlantic Ridge?! \ud83d\ude31",
-    "This Jawless Eel Suffocates Predators With PURE SLIME! \ud83e\udd22"
+    "This Jawless Eel Suffocates Predators With PURE SLIME! \ud83e\udd22",
+    "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -575,7 +576,8 @@
     "The tiny coconut octopus can collect and use tools, even walking on two legs with shells for shelter! Contrast that with the beluga whale, a colossal Arctic predator reaching 5.5 meters long and weighing 1,600 kilograms. This 'sea canary' can dive to 700 meters, navigating icy depths with its deformable melon and no dorsal fin. Which of these ocean dwellers has the more incredible superpower? Drop your answer below and subscribe because the tiny coconut octopus can collect...",
     "Lake Nyos in Cameroon isn't just a lake; it's an 'exploding lake' that released an invisible carbon dioxide cloud. This limnic eruption suddenly releases dissolved CO2, creating a suffocating gas cloud capable of asphyxiating humans. It's like a giant soda bottle violently erupting, where immense pressure ejects CO2, often triggered by seismic events. Could you escape an invisible killer? Subscribe because Lake Nyos in Cameroon isn't just a lake...",
     "The Mid-Atlantic Ridge is a 16,000 km tear across Earth, but imagine falling into this oceanic abyss. You'd plummet into darkness, past an average depth of almost 4 kilometers found in these basins. The pressure would be immense, like several hundred elephants standing on your body. This vast rift is part of the Atlantic basin, which alone covers 75 million square kilometers, a huge portion of Earth's 97% ocean water. Which ocean mystery fascinates you most? Drop your answer below and subscribe because the Mid-Atlantic Ridge is a 16,000 km tear...",
-    "The hagfish, a jawless eel-shaped fish, can instantly choke predators by unleashing a massive cloud of defensive slime. This creature, with a skull but no true backbone, produces enough mucus to transform a bucket of water into a thick, inescapable gel in seconds! Imagine a predator's gills instantly clogging! Which bizarre ocean creature do you find most unsettling? Tell us below and subscribe because the hagfish..."
+    "The hagfish, a jawless eel-shaped fish, can instantly choke predators by unleashing a massive cloud of defensive slime. This creature, with a skull but no true backbone, produces enough mucus to transform a bucket of water into a thick, inescapable gel in seconds! Imagine a predator's gills instantly clogging! Which bizarre ocean creature do you find most unsettling? Tell us below and subscribe because the hagfish...",
+    "The Black Swallower, found at depths up to 2,745 meters, can swallow prey larger than its own body! But this deep-sea fish would lose a fight against a giant Comb Jelly. Why? While the Swallower\u2019s stomach expands like a balloon, a 1.5 meter Comb Jelly is simply too huge and gelatinous to fit. This squishy predator, the largest animal to swim with cilia, would escape, or even prey on smaller ctenophores! Which bizarre deep-sea creature fascinates you most? Drop your answer below and subscribe because the Black Swallower..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -653,41 +655,43 @@
     "beluga whale",
     "Lake Nyos and limnic eruptions",
     "the Mid-Atlantic Ridge splitting the planet",
-    "hagfish"
+    "hagfish",
+    "black swallower",
+    "comb jelly"
   ],
   "format_weights": {
     "weights": {
-      "duel": 1.21,
-      "deep_dive": 1.06,
-      "quiz": 0.53,
+      "deep_dive": 1.01,
+      "duel": 1.18,
+      "quiz": 0.8,
       "guess": 0.61
     },
     "top_titles": [
       "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
       "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
+      "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88",
       "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19",
-      "Meet the Creatures LIVING Inside Boiling Underwater Volcanoes! \ud83d\udd25",
-      "This 860-Volt River 'Eel' Isn't Actually An Eel! \u26a1"
+      "Meet the Creatures LIVING Inside Boiling Underwater Volcanoes! \ud83d\udd25"
     ],
     "stats": {
-      "duel": {
-        "videos": 19,
-        "avg_views": 338
-      },
       "deep_dive": {
         "videos": 32,
         "avg_views": 289
       },
+      "duel": {
+        "videos": 18,
+        "avg_views": 346
+      },
       "quiz": {
-        "videos": 7,
-        "avg_views": 90
+        "videos": 8,
+        "avg_views": 209
       },
       "guess": {
         "videos": 2,
         "avg_views": 10
       }
     },
-    "date": "2026-10-24"
+    "date": "2026-10-25"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -729,7 +733,8 @@
     "The Bizarre Battle: Walking Octopus vs. 1600kg Whale! \ud83d\ude32": "duel",
     "This 'Exploding Lake' Released an Invisible Killer Cloud! \ud83d\udc80": "deep_dive",
     "Earth's GIANT Scar: What's Inside the Mid-Atlantic Ridge?! \ud83d\ude31": "deep_dive",
-    "This Jawless Eel Suffocates Predators With PURE SLIME! \ud83e\udd22": "deep_dive"
+    "This Jawless Eel Suffocates Predators With PURE SLIME! \ud83e\udd22": "deep_dive",
+    "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
