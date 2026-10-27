@@ -289,7 +289,9 @@
     "This Jawless Eel Suffocates Predators With PURE SLIME! \ud83e\udd22",
     "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a",
     "Earth's Deadliest Extinction Event Killed 81% of All Ocean Life! \ud83e\udd2f",
-    "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0"
+    "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0",
+    "The Anglerfish's TERRIFYING Love Story: FUSION! \ud83e\udd2f",
+    "Spot the Lie: The Ocean's 500-Year-Old 'Sleeper' Shark! \ud83e\udd88"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -581,7 +583,9 @@
     "The hagfish, a jawless eel-shaped fish, can instantly choke predators by unleashing a massive cloud of defensive slime. This creature, with a skull but no true backbone, produces enough mucus to transform a bucket of water into a thick, inescapable gel in seconds! Imagine a predator's gills instantly clogging! Which bizarre ocean creature do you find most unsettling? Tell us below and subscribe because the hagfish...",
     "The Black Swallower, found at depths up to 2,745 meters, can swallow prey larger than its own body! But this deep-sea fish would lose a fight against a giant Comb Jelly. Why? While the Swallower\u2019s stomach expands like a balloon, a 1.5 meter Comb Jelly is simply too huge and gelatinous to fit. This squishy predator, the largest animal to swim with cilia, would escape, or even prey on smaller ctenophores! Which bizarre deep-sea creature fascinates you most? Drop your answer below and subscribe because the Black Swallower...",
     "The Permian-Triassic extinction event, Earth's deadliest, wiped out 81% of all marine species 251.9 million years ago! Imagine 70% of all land vertebrates vanishing, triggered by massive Siberian Traps volcanic eruptions. These spewed thousands of gigatonnes of carbon, making oceans sulfurous and acidic like a giant toxic bath. Could humanity survive such a catastrophic event? Tell us below and subscribe because the Permian-Triassic extinction event...",
-    "This deep-sea creature resembles a gigantic, armored woodlouse, reaching 30cm! A bottom-dwelling scavenger, it's abundant across the Atlantic, Pacific, and Indian oceans. Its 1879 Gulf of Mexico discovery proved the deep ocean wasn't lifeless! This is the Giant Isopod! What's YOUR favorite bizarre deep-sea animal? Tell us below and subscribe because this deep-sea creature resembles..."
+    "This deep-sea creature resembles a gigantic, armored woodlouse, reaching 30cm! A bottom-dwelling scavenger, it's abundant across the Atlantic, Pacific, and Indian oceans. Its 1879 Gulf of Mexico discovery proved the deep ocean wasn't lifeless! This is the Giant Isopod! What's YOUR favorite bizarre deep-sea animal? Tell us below and subscribe because this deep-sea creature resembles...",
+    "The deep-sea anglerfish has a love life so bizarre, the male FUSES permanently to the female! This tiny male, sometimes orders of magnitude smaller, bites onto her, literally dissolving into her body. He shares blood vessels, becoming a lifelong, parasitic sperm donor. It's an extreme example of sexual parasitism! Could you imagine a more terrifying way to find love? Drop your answer below and subscribe because the deep-sea anglerfish has a love life so bizarre...",
+    "This Greenland shark holds the record for the longest-living vertebrate, reaching over 500 years old! It only reaches sexual maturity at 150 years, after a gestation period lasting up to 18 years. And finally, it hunts by ambushing prey from the surface, leaping out of the water like a great white. Can you spot the lie about this incredible deep-sea creature? Drop your answer below and subscribe because this Greenland shark..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -663,30 +667,32 @@
     "black swallower",
     "comb jelly",
     "the great dying mass extinction",
-    "giant isopod"
+    "giant isopod",
+    "anglerfish",
+    "greenland shark"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 1.01,
-      "duel": 1.18,
-      "quiz": 0.8,
+      "duel": 1.25,
+      "deep_dive": 0.97,
+      "quiz": 0.78,
       "guess": 0.61
     },
     "top_titles": [
       "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
       "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
       "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88",
-      "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19",
-      "Meet the Creatures LIVING Inside Boiling Underwater Volcanoes! \ud83d\udd25"
+      "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a",
+      "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19"
     ],
     "stats": {
-      "deep_dive": {
-        "videos": 32,
-        "avg_views": 289
-      },
       "duel": {
-        "videos": 18,
-        "avg_views": 347
+        "videos": 19,
+        "avg_views": 383
+      },
+      "deep_dive": {
+        "videos": 31,
+        "avg_views": 287
       },
       "quiz": {
         "videos": 8,
@@ -697,7 +703,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-26"
+    "date": "2026-10-27"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -742,7 +748,9 @@
     "This Jawless Eel Suffocates Predators With PURE SLIME! \ud83e\udd22": "deep_dive",
     "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a": "duel",
     "Earth's Deadliest Extinction Event Killed 81% of All Ocean Life! \ud83e\udd2f": "deep_dive",
-    "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0": "guess"
+    "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0": "guess",
+    "The Anglerfish's TERRIFYING Love Story: FUSION! \ud83e\udd2f": "deep_dive",
+    "Spot the Lie: The Ocean's 500-Year-Old 'Sleeper' Shark! \ud83e\udd88": "quiz"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
