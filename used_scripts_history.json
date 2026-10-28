@@ -291,7 +291,9 @@
     "Earth's Deadliest Extinction Event Killed 81% of All Ocean Life! \ud83e\udd2f",
     "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0",
     "The Anglerfish's TERRIFYING Love Story: FUSION! \ud83e\udd2f",
-    "Spot the Lie: The Ocean's 500-Year-Old 'Sleeper' Shark! \ud83e\udd88"
+    "Spot the Lie: The Ocean's 500-Year-Old 'Sleeper' Shark! \ud83e\udd88",
+    "The Chicxulub Asteroid: The Ocean Impact That Wiped Out 75% of Life! \ud83e\udd2f",
+    "The Ancient Ocean Monster That Scientists MISIDENTIFIED for Decades! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -585,7 +587,9 @@
     "The Permian-Triassic extinction event, Earth's deadliest, wiped out 81% of all marine species 251.9 million years ago! Imagine 70% of all land vertebrates vanishing, triggered by massive Siberian Traps volcanic eruptions. These spewed thousands of gigatonnes of carbon, making oceans sulfurous and acidic like a giant toxic bath. Could humanity survive such a catastrophic event? Tell us below and subscribe because the Permian-Triassic extinction event...",
     "This deep-sea creature resembles a gigantic, armored woodlouse, reaching 30cm! A bottom-dwelling scavenger, it's abundant across the Atlantic, Pacific, and Indian oceans. Its 1879 Gulf of Mexico discovery proved the deep ocean wasn't lifeless! This is the Giant Isopod! What's YOUR favorite bizarre deep-sea animal? Tell us below and subscribe because this deep-sea creature resembles...",
     "The deep-sea anglerfish has a love life so bizarre, the male FUSES permanently to the female! This tiny male, sometimes orders of magnitude smaller, bites onto her, literally dissolving into her body. He shares blood vessels, becoming a lifelong, parasitic sperm donor. It's an extreme example of sexual parasitism! Could you imagine a more terrifying way to find love? Drop your answer below and subscribe because the deep-sea anglerfish has a love life so bizarre...",
-    "This Greenland shark holds the record for the longest-living vertebrate, reaching over 500 years old! It only reaches sexual maturity at 150 years, after a gestation period lasting up to 18 years. And finally, it hunts by ambushing prey from the surface, leaping out of the water like a great white. Can you spot the lie about this incredible deep-sea creature? Drop your answer below and subscribe because this Greenland shark..."
+    "This Greenland shark holds the record for the longest-living vertebrate, reaching over 500 years old! It only reaches sexual maturity at 150 years, after a gestation period lasting up to 18 years. And finally, it hunts by ambushing prey from the surface, leaping out of the water like a great white. Can you spot the lie about this incredible deep-sea creature? Drop your answer below and subscribe because this Greenland shark...",
+    "Sixty-six million years ago, a 10-kilometer asteroid slammed into Earth's ocean, creating the Chicxulub crater. This impact vaporized rock and water, triggering global tsunamis and climatic chaos. The resulting K-Pg extinction event wiped out 75% of all plant and animal species, including every non-avian dinosaur. What if a similar asteroid hit today? Drop your thoughts below and subscribe because sixty-six million years ago, a 10-kilometer asteroid...",
+    "This ancient apex predator, Anomalocaris, was so alien, scientists initially thought its grasping frontal appendages were the body of a shrimp! Growing up to 37.8 cm, it was one of the largest animals of the Cambrian period, like a colossal armored shrimp dominating the seas. Its huge compound eyes, densely packed with lenses, gave it unparalleled vision, making it an unstoppable hunter over 500 million years ago. Would you survive a swim in the Cambrian ocean with this beast? Tell us below, and subscribe because this ancient apex predator..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -669,7 +673,9 @@
     "the great dying mass extinction",
     "giant isopod",
     "anglerfish",
-    "greenland shark"
+    "greenland shark",
+    "the asteroid that killed the dinosaurs hitting the ocean",
+    "anomalocaris"
   ],
   "format_weights": {
     "weights": {
@@ -703,7 +709,7 @@
         "avg_views": 10
       }
     },
-    "date": "2026-10-27"
+    "date": "2026-10-28"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -750,7 +756,9 @@
     "Earth's Deadliest Extinction Event Killed 81% of All Ocean Life! \ud83e\udd2f": "deep_dive",
     "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0": "guess",
     "The Anglerfish's TERRIFYING Love Story: FUSION! \ud83e\udd2f": "deep_dive",
-    "Spot the Lie: The Ocean's 500-Year-Old 'Sleeper' Shark! \ud83e\udd88": "quiz"
+    "Spot the Lie: The Ocean's 500-Year-Old 'Sleeper' Shark! \ud83e\udd88": "quiz",
+    "The Chicxulub Asteroid: The Ocean Impact That Wiped Out 75% of Life! \ud83e\udd2f": "deep_dive",
+    "The Ancient Ocean Monster That Scientists MISIDENTIFIED for Decades! \ud83e\udd2f": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
