@@ -295,7 +295,9 @@
     "The Chicxulub Asteroid: The Ocean Impact That Wiped Out 75% of Life! \ud83e\udd2f",
     "The Ancient Ocean Monster That Scientists MISIDENTIFIED for Decades! \ud83e\udd2f",
     "Deep Sea Showdown: Monster Mouth vs. Record Diver! \ud83e\udd2f",
-    "The Ocean's Invisible Daily Migration: YOU'D Be Pulled With Billions! \ud83d\ude31"
+    "The Ocean's Invisible Daily Migration: YOU'D Be Pulled With Billions! \ud83d\ude31",
+    "The Ocean's Bizarre Crop Circles Have a SHOCKING Origin! \ud83e\udd2f",
+    "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -593,7 +595,9 @@
     "Sixty-six million years ago, a 10-kilometer asteroid slammed into Earth's ocean, creating the Chicxulub crater. This impact vaporized rock and water, triggering global tsunamis and climatic chaos. The resulting K-Pg extinction event wiped out 75% of all plant and animal species, including every non-avian dinosaur. What if a similar asteroid hit today? Drop your thoughts below and subscribe because sixty-six million years ago, a 10-kilometer asteroid...",
     "This ancient apex predator, Anomalocaris, was so alien, scientists initially thought its grasping frontal appendages were the body of a shrimp! Growing up to 37.8 cm, it was one of the largest animals of the Cambrian period, like a colossal armored shrimp dominating the seas. Its huge compound eyes, densely packed with lenses, gave it unparalleled vision, making it an unstoppable hunter over 500 million years ago. Would you survive a swim in the Cambrian ocean with this beast? Tell us below, and subscribe because this ancient apex predator...",
     "The Pelican Eel's mouth can expand to swallow prey twice its own size! This deep-sea gulper's huge, unhinging jaws are like a giant net, capturing anything edible. Meanwhile, the Cuvier's beaked whale dives 2,992 meters, holding the record for the deepest mammal dive. It can stay submerged for an astonishing 222 minutes! Which extreme ocean superpower amazes you most? Tell us below and subscribe because the Pelican Eel's mouth can expand to swallow prey twice its own size!",
-    "Every single day, trillions of creatures undertake the largest animal migration on Earth by biomass: the Diel Vertical Migration. At dusk, organisms like copepods and squid ascend hundreds of meters to feed in the rich surface waters. At dawn, they plunge back into the dark depths, avoiding predators and sequestering carbon, a synchronized ballet triggered by light. Would you join this daily deep-sea commute? Drop your answer below and subscribe because every single day, trillions of creatures undertake the largest animal migration on Earth by biomass: the Diel Vertical Migration."
+    "Every single day, trillions of creatures undertake the largest animal migration on Earth by biomass: the Diel Vertical Migration. At dusk, organisms like copepods and squid ascend hundreds of meters to feed in the rich surface waters. At dawn, they plunge back into the dark depths, avoiding predators and sequestering carbon, a synchronized ballet triggered by light. Would you join this daily deep-sea commute? Drop your answer below and subscribe because every single day, trillions of creatures undertake the largest animal migration on Earth by biomass: the Diel Vertical Migration.",
+    "The mysterious, seven-foot-wide underwater crop circles in Japan are actually built by a tiny male white-spotted pufferfish! This incredible fish, just 12 centimeters long, painstakingly sculpts these perfect geometric patterns, two meters wide, over seven to nine days using only its flapping fins. These aren't alien signals; they're elaborate mating arenas! The intricate ridges guide currents to protect eggs, attracting females who inspect the nest before laying eggs in the center. What other animal architects astound you? Drop your answer below and subscribe because the mysterious, seven-foot-wide underwater crop circles in Japan are actually built by a tiny male white-spotted pufferfish!",
+    "The Helicoprion, a 12-meter shark from 290 million years ago, had a literal circular saw in its jaw! This terrifying spiral tooth whorl sliced soft-bodied prey like a buzzsaw. In contrast, the Sarcastic Fringehead, only 30cm long, opens its colossal, brightly colored mouth for territorial face-offs. Which bizarre jaw weapon would you rather face? Tell us below, and subscribe because the Helicoprion..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -682,7 +686,10 @@
     "anomalocaris",
     "gulper eel",
     "cuvier's beaked whale",
-    "the ocean's daily vertical migration"
+    "the ocean's daily vertical migration",
+    "underwater crop circles made by pufferfish",
+    "helicoprion",
+    "sarcastic fringehead"
   ],
   "format_weights": {
     "weights": {
@@ -716,7 +723,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-10-29"
+    "date": "2026-10-30"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -767,7 +774,9 @@
     "The Chicxulub Asteroid: The Ocean Impact That Wiped Out 75% of Life! \ud83e\udd2f": "deep_dive",
     "The Ancient Ocean Monster That Scientists MISIDENTIFIED for Decades! \ud83e\udd2f": "deep_dive",
     "Deep Sea Showdown: Monster Mouth vs. Record Diver! \ud83e\udd2f": "duel",
-    "The Ocean's Invisible Daily Migration: YOU'D Be Pulled With Billions! \ud83d\ude31": "deep_dive"
+    "The Ocean's Invisible Daily Migration: YOU'D Be Pulled With Billions! \ud83d\ude31": "deep_dive",
+    "The Ocean's Bizarre Crop Circles Have a SHOCKING Origin! \ud83e\udd2f": "deep_dive",
+    "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
