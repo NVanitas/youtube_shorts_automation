@@ -297,7 +297,9 @@
     "Deep Sea Showdown: Monster Mouth vs. Record Diver! \ud83e\udd2f",
     "The Ocean's Invisible Daily Migration: YOU'D Be Pulled With Billions! \ud83d\ude31",
     "The Ocean's Bizarre Crop Circles Have a SHOCKING Origin! \ud83e\udd2f",
-    "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a"
+    "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a",
+    "Ancient Whale King vs. Tiny Super Puncher! \ud83e\udd4a",
+    "Tiny Terror vs. Giant Stinger: Who Wins This Ocean Showdown?! \ud83e\udd4a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -597,7 +599,9 @@
     "The Pelican Eel's mouth can expand to swallow prey twice its own size! This deep-sea gulper's huge, unhinging jaws are like a giant net, capturing anything edible. Meanwhile, the Cuvier's beaked whale dives 2,992 meters, holding the record for the deepest mammal dive. It can stay submerged for an astonishing 222 minutes! Which extreme ocean superpower amazes you most? Tell us below and subscribe because the Pelican Eel's mouth can expand to swallow prey twice its own size!",
     "Every single day, trillions of creatures undertake the largest animal migration on Earth by biomass: the Diel Vertical Migration. At dusk, organisms like copepods and squid ascend hundreds of meters to feed in the rich surface waters. At dawn, they plunge back into the dark depths, avoiding predators and sequestering carbon, a synchronized ballet triggered by light. Would you join this daily deep-sea commute? Drop your answer below and subscribe because every single day, trillions of creatures undertake the largest animal migration on Earth by biomass: the Diel Vertical Migration.",
     "The mysterious, seven-foot-wide underwater crop circles in Japan are actually built by a tiny male white-spotted pufferfish! This incredible fish, just 12 centimeters long, painstakingly sculpts these perfect geometric patterns, two meters wide, over seven to nine days using only its flapping fins. These aren't alien signals; they're elaborate mating arenas! The intricate ridges guide currents to protect eggs, attracting females who inspect the nest before laying eggs in the center. What other animal architects astound you? Drop your answer below and subscribe because the mysterious, seven-foot-wide underwater crop circles in Japan are actually built by a tiny male white-spotted pufferfish!",
-    "The Helicoprion, a 12-meter shark from 290 million years ago, had a literal circular saw in its jaw! This terrifying spiral tooth whorl sliced soft-bodied prey like a buzzsaw. In contrast, the Sarcastic Fringehead, only 30cm long, opens its colossal, brightly colored mouth for territorial face-offs. Which bizarre jaw weapon would you rather face? Tell us below, and subscribe because the Helicoprion..."
+    "The Helicoprion, a 12-meter shark from 290 million years ago, had a literal circular saw in its jaw! This terrifying spiral tooth whorl sliced soft-bodied prey like a buzzsaw. In contrast, the Sarcastic Fringehead, only 30cm long, opens its colossal, brightly colored mouth for territorial face-offs. Which bizarre jaw weapon would you rather face? Tell us below, and subscribe because the Helicoprion...",
+    "The ancient Basilosaurus, a 20-meter (66-foot) whale, was Earth's top predator 40 million years ago, but its crushing jaws never met the Mantis Shrimp's devastating punch! This 15-metric-ton \"king lizard\" devoured sharks and smaller whales. Yet the Mantis Shrimp's club strikes with the force of a .22 caliber bullet, shattering shells with cavitation bubbles. Which weapon impresses you more? Comment below and subscribe because this ancient Basilosaurus...",
+    "A Lion's Mane Jellyfish, with tentacles up to 36.6 meters long, faces off against a Blue-Ringed Octopus, only 20 centimeters. Imagine tentacles longer than a Blue Whale! But this tiny octopus has a neurotoxin called tetrodotoxin, making it one of Earth's most venomous marine animals. Its flash of blue rings signals lethal danger. So, who wins this bizarre duel of size versus pure venom? Drop your answer below and subscribe because a Lion's Mane Jellyfish, with tentacles up to 36.6 meters long, faces off against..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -689,7 +693,11 @@
     "the ocean's daily vertical migration",
     "underwater crop circles made by pufferfish",
     "helicoprion",
-    "sarcastic fringehead"
+    "sarcastic fringehead",
+    "basilosaurus",
+    "mantis shrimp",
+    "lion's mane jellyfish",
+    "blue-ringed octopus"
   ],
   "format_weights": {
     "weights": {
@@ -723,7 +731,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-10-30"
+    "date": "2026-10-31"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -776,7 +784,9 @@
     "Deep Sea Showdown: Monster Mouth vs. Record Diver! \ud83e\udd2f": "duel",
     "The Ocean's Invisible Daily Migration: YOU'D Be Pulled With Billions! \ud83d\ude31": "deep_dive",
     "The Ocean's Bizarre Crop Circles Have a SHOCKING Origin! \ud83e\udd2f": "deep_dive",
-    "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a": "duel"
+    "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a": "duel",
+    "Ancient Whale King vs. Tiny Super Puncher! \ud83e\udd4a": "duel",
+    "Tiny Terror vs. Giant Stinger: Who Wins This Ocean Showdown?! \ud83e\udd4a": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
