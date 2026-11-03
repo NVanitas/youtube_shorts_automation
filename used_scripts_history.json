@@ -300,7 +300,9 @@
     "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a",
     "Ancient Whale King vs. Tiny Super Puncher! \ud83e\udd4a",
     "Tiny Terror vs. Giant Stinger: Who Wins This Ocean Showdown?! \ud83e\udd4a",
-    "This Giant Squid Hides 33-Foot Attack Arms! \ud83e\udd91"
+    "This Giant Squid Hides 33-Foot Attack Arms! \ud83e\udd91",
+    "Who Wins: Armored Titan Dunkleosteus vs. Modern Thresher Shark?! \ud83e\udd2f",
+    "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -603,7 +605,9 @@
     "The Helicoprion, a 12-meter shark from 290 million years ago, had a literal circular saw in its jaw! This terrifying spiral tooth whorl sliced soft-bodied prey like a buzzsaw. In contrast, the Sarcastic Fringehead, only 30cm long, opens its colossal, brightly colored mouth for territorial face-offs. Which bizarre jaw weapon would you rather face? Tell us below, and subscribe because the Helicoprion...",
     "The ancient Basilosaurus, a 20-meter (66-foot) whale, was Earth's top predator 40 million years ago, but its crushing jaws never met the Mantis Shrimp's devastating punch! This 15-metric-ton \"king lizard\" devoured sharks and smaller whales. Yet the Mantis Shrimp's club strikes with the force of a .22 caliber bullet, shattering shells with cavitation bubbles. Which weapon impresses you more? Comment below and subscribe because this ancient Basilosaurus...",
     "A Lion's Mane Jellyfish, with tentacles up to 36.6 meters long, faces off against a Blue-Ringed Octopus, only 20 centimeters. Imagine tentacles longer than a Blue Whale! But this tiny octopus has a neurotoxin called tetrodotoxin, making it one of Earth's most venomous marine animals. Its flash of blue rings signals lethal danger. So, who wins this bizarre duel of size versus pure venom? Drop your answer below and subscribe because a Lion's Mane Jellyfish, with tentacles up to 36.6 meters long, faces off against...",
-    "Forget super strength: the giant squid has 33-foot feeding tentacles that shoot out to grab prey! These concealed limbs, longer than a typical school bus, extend rapidly, allowing Architeuthis dux to ambush targets from surprising distances. They are 10 meters long, contrasting sharply with its 2-meter mantle, making it longer than a colossal squid but lighter. Imagine hunting with such reach! What animal superpower amazes you most? Tell us below and subscribe because..."
+    "Forget super strength: the giant squid has 33-foot feeding tentacles that shoot out to grab prey! These concealed limbs, longer than a typical school bus, extend rapidly, allowing Architeuthis dux to ambush targets from surprising distances. They are 10 meters long, contrasting sharply with its 2-meter mantle, making it longer than a colossal squid but lighter. Imagine hunting with such reach! What animal superpower amazes you most? Tell us below and subscribe because...",
+    "An up to 4.1-meter Dunkleosteus, an apex predator from 382 million years ago, would dominate any modern Thresher shark! This ancient fish, with bony head armor, was like an unyielding tank. Its bite, estimated to be incredibly powerful, would easily shatter the cartilage skeleton of a modern Thresher shark, which is not a threat to humans. Which ancient ocean monster would YOU rather face? Tell us below, and subscribe because an up to 4.1-meter Dunkleosteus...",
+    "Meet the eurypterid, or sea scorpion, an ancient arthropod that could grow over 2.5 meters long, making it Earth's largest known arthropod predator! These apex predators crushed prey with massive spiny claws, preying on early fish and other invertebrates. They used paddle-like limbs to ambush unsuspecting victims! Imagine a creature this terrifying dominating ancient oceans for over 200 million years. Which of these ancient hunters would you least want to encounter? Drop your answer below and subscribe because meet the eurypterid..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -700,14 +704,17 @@
     "mantis shrimp",
     "lion's mane jellyfish",
     "blue-ringed octopus",
-    "giant squid"
+    "giant squid",
+    "thresher shark",
+    "dunkleosteus",
+    "sea scorpion (eurypterid)"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 0.96,
-      "quiz": 0.78,
-      "duel": 1.16,
-      "guess": 1.08
+      "duel": 1.15,
+      "deep_dive": 0.97,
+      "quiz": 0.7,
+      "guess": 1.09
     },
     "top_titles": [
       "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
@@ -717,24 +724,24 @@
       "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19"
     ],
     "stats": {
+      "duel": {
+        "videos": 20,
+        "avg_views": 344
+      },
       "deep_dive": {
-        "videos": 31,
-        "avg_views": 287
+        "videos": 30,
+        "avg_views": 285
       },
       "quiz": {
-        "videos": 8,
-        "avg_views": 210
-      },
-      "duel": {
-        "videos": 18,
-        "avg_views": 356
+        "videos": 7,
+        "avg_views": 167
       },
       "guess": {
         "videos": 3,
         "avg_views": 349
       }
     },
-    "date": "2026-11-01"
+    "date": "2026-11-02"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -790,7 +797,9 @@
     "Who Wins: Ancient Spiral-Saw Shark vs. Modern Face-Flashing Fish?! \ud83e\udd4a": "duel",
     "Ancient Whale King vs. Tiny Super Puncher! \ud83e\udd4a": "duel",
     "Tiny Terror vs. Giant Stinger: Who Wins This Ocean Showdown?! \ud83e\udd4a": "duel",
-    "This Giant Squid Hides 33-Foot Attack Arms! \ud83e\udd91": "deep_dive"
+    "This Giant Squid Hides 33-Foot Attack Arms! \ud83e\udd91": "deep_dive",
+    "Who Wins: Armored Titan Dunkleosteus vs. Modern Thresher Shark?! \ud83e\udd2f": "duel",
+    "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
