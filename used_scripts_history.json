@@ -302,7 +302,9 @@
     "Tiny Terror vs. Giant Stinger: Who Wins This Ocean Showdown?! \ud83e\udd4a",
     "This Giant Squid Hides 33-Foot Attack Arms! \ud83e\udd91",
     "Who Wins: Armored Titan Dunkleosteus vs. Modern Thresher Shark?! \ud83e\udd2f",
-    "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f"
+    "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f",
+    "The Chambered Nautilus Sees With Pinhole Camera Eyes! \ud83e\udd2f",
+    "This Beautiful Ocean Phenomenon Can SUFFOCATE EVERYTHING! \ud83d\udc80"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -607,7 +609,9 @@
     "A Lion's Mane Jellyfish, with tentacles up to 36.6 meters long, faces off against a Blue-Ringed Octopus, only 20 centimeters. Imagine tentacles longer than a Blue Whale! But this tiny octopus has a neurotoxin called tetrodotoxin, making it one of Earth's most venomous marine animals. Its flash of blue rings signals lethal danger. So, who wins this bizarre duel of size versus pure venom? Drop your answer below and subscribe because a Lion's Mane Jellyfish, with tentacles up to 36.6 meters long, faces off against...",
     "Forget super strength: the giant squid has 33-foot feeding tentacles that shoot out to grab prey! These concealed limbs, longer than a typical school bus, extend rapidly, allowing Architeuthis dux to ambush targets from surprising distances. They are 10 meters long, contrasting sharply with its 2-meter mantle, making it longer than a colossal squid but lighter. Imagine hunting with such reach! What animal superpower amazes you most? Tell us below and subscribe because...",
     "An up to 4.1-meter Dunkleosteus, an apex predator from 382 million years ago, would dominate any modern Thresher shark! This ancient fish, with bony head armor, was like an unyielding tank. Its bite, estimated to be incredibly powerful, would easily shatter the cartilage skeleton of a modern Thresher shark, which is not a threat to humans. Which ancient ocean monster would YOU rather face? Tell us below, and subscribe because an up to 4.1-meter Dunkleosteus...",
-    "Meet the eurypterid, or sea scorpion, an ancient arthropod that could grow over 2.5 meters long, making it Earth's largest known arthropod predator! These apex predators crushed prey with massive spiny claws, preying on early fish and other invertebrates. They used paddle-like limbs to ambush unsuspecting victims! Imagine a creature this terrifying dominating ancient oceans for over 200 million years. Which of these ancient hunters would you least want to encounter? Drop your answer below and subscribe because meet the eurypterid..."
+    "Meet the eurypterid, or sea scorpion, an ancient arthropod that could grow over 2.5 meters long, making it Earth's largest known arthropod predator! These apex predators crushed prey with massive spiny claws, preying on early fish and other invertebrates. They used paddle-like limbs to ambush unsuspecting victims! Imagine a creature this terrifying dominating ancient oceans for over 200 million years. Which of these ancient hunters would you least want to encounter? Drop your answer below and subscribe because meet the eurypterid...",
+    "The chambered nautilus, an ancient deep-sea creature, sees the world through literal pinhole camera eyes! Unlike modern cephalopods, its eyes have no lens, just an open aperture, a living relic. It also hunts with 90 specialized cirri, smelling out food instead of using suckers! Would you want to see with pinhole eyes? Let me know below and subscribe because the chambered nautilus...",
+    "Harmful algal blooms, often called 'red tides,' create massive ocean dead zones that suffocate marine life. These blooms can last for months, producing toxins or consuming oxygen, creating areas where neither fish nor plants survive. Driven by excess nitrogen and phosphate from human activities, these zones are increasing globally due to climate change. What do you think is the biggest threat to our oceans? Share below and follow for more ocean mysteries because harmful algal blooms..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -707,14 +711,16 @@
     "giant squid",
     "thresher shark",
     "dunkleosteus",
-    "sea scorpion (eurypterid)"
+    "sea scorpion (eurypterid)",
+    "chambered nautilus",
+    "red tides and toxic algae blooms"
   ],
   "format_weights": {
     "weights": {
-      "duel": 1.15,
-      "deep_dive": 0.97,
-      "quiz": 0.7,
-      "guess": 1.09
+      "duel": 1.11,
+      "deep_dive": 0.99,
+      "quiz": 0.72,
+      "guess": 1.13
     },
     "top_titles": [
       "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
@@ -725,12 +731,12 @@
     ],
     "stats": {
       "duel": {
-        "videos": 20,
-        "avg_views": 344
+        "videos": 19,
+        "avg_views": 311
       },
       "deep_dive": {
-        "videos": 30,
-        "avg_views": 285
+        "videos": 31,
+        "avg_views": 272
       },
       "quiz": {
         "videos": 7,
@@ -741,7 +747,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-02"
+    "date": "2026-11-03"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -799,7 +805,9 @@
     "Tiny Terror vs. Giant Stinger: Who Wins This Ocean Showdown?! \ud83e\udd4a": "duel",
     "This Giant Squid Hides 33-Foot Attack Arms! \ud83e\udd91": "deep_dive",
     "Who Wins: Armored Titan Dunkleosteus vs. Modern Thresher Shark?! \ud83e\udd2f": "duel",
-    "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f": "deep_dive"
+    "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f": "deep_dive",
+    "The Chambered Nautilus Sees With Pinhole Camera Eyes! \ud83e\udd2f": "deep_dive",
+    "This Beautiful Ocean Phenomenon Can SUFFOCATE EVERYTHING! \ud83d\udc80": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
