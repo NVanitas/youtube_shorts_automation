@@ -304,7 +304,9 @@
     "Who Wins: Armored Titan Dunkleosteus vs. Modern Thresher Shark?! \ud83e\udd2f",
     "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f",
     "The Chambered Nautilus Sees With Pinhole Camera Eyes! \ud83e\udd2f",
-    "This Beautiful Ocean Phenomenon Can SUFFOCATE EVERYTHING! \ud83d\udc80"
+    "This Beautiful Ocean Phenomenon Can SUFFOCATE EVERYTHING! \ud83d\udc80",
+    "Florida's Leon Sinks: The Hidden Alien World That's Dying! \ud83d\udc80",
+    "Guess the 15-Foot Deep Sea Shark With Natural Antifreeze! \ud83e\udd76"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -611,7 +613,9 @@
     "An up to 4.1-meter Dunkleosteus, an apex predator from 382 million years ago, would dominate any modern Thresher shark! This ancient fish, with bony head armor, was like an unyielding tank. Its bite, estimated to be incredibly powerful, would easily shatter the cartilage skeleton of a modern Thresher shark, which is not a threat to humans. Which ancient ocean monster would YOU rather face? Tell us below, and subscribe because an up to 4.1-meter Dunkleosteus...",
     "Meet the eurypterid, or sea scorpion, an ancient arthropod that could grow over 2.5 meters long, making it Earth's largest known arthropod predator! These apex predators crushed prey with massive spiny claws, preying on early fish and other invertebrates. They used paddle-like limbs to ambush unsuspecting victims! Imagine a creature this terrifying dominating ancient oceans for over 200 million years. Which of these ancient hunters would you least want to encounter? Drop your answer below and subscribe because meet the eurypterid...",
     "The chambered nautilus, an ancient deep-sea creature, sees the world through literal pinhole camera eyes! Unlike modern cephalopods, its eyes have no lens, just an open aperture, a living relic. It also hunts with 90 specialized cirri, smelling out food instead of using suckers! Would you want to see with pinhole eyes? Let me know below and subscribe because the chambered nautilus...",
-    "Harmful algal blooms, often called 'red tides,' create massive ocean dead zones that suffocate marine life. These blooms can last for months, producing toxins or consuming oxygen, creating areas where neither fish nor plants survive. Driven by excess nitrogen and phosphate from human activities, these zones are increasing globally due to climate change. What do you think is the biggest threat to our oceans? Share below and follow for more ocean mysteries because harmful algal blooms..."
+    "Harmful algal blooms, often called 'red tides,' create massive ocean dead zones that suffocate marine life. These blooms can last for months, producing toxins or consuming oxygen, creating areas where neither fish nor plants survive. Driven by excess nitrogen and phosphate from human activities, these zones are increasing globally due to climate change. What do you think is the biggest threat to our oceans? Share below and follow for more ocean mysteries because harmful algal blooms...",
+    "Florida's Leon Sinks is an invisible, living labyrinth, hiding creatures found nowhere else on Earth! This massive 150-kilometer underwater cave system is so vulnerable to pollution, a single spill could wipe out species like the Remasellus parvus. Imagine flushing poison directly into Earth's most unique underground aquarium. It's home to rare creatures like the Woodville Karst Plain crayfish, trapped in perpetual darkness for millennia. Living fossils, isolated from the sun like astronauts on a deep-space mission. Which of these unique cave dwellers do you think is strangest? Comment below and subscribe, because Florida's Leon Sinks is...",
+    "Imagine a predatory shark, over 4.65 meters long, that thrives in the crushing pressure of the deep sea! It produces natural antifreeze in its body, allowing it to hunt in near-freezing waters, even in the Antarctic Ocean. Its specialized liver oils and compounds let it survive pressure equivalent to an elephant crushing a submarine! This incredible survivor is the Pacific sleeper shark! Would you want to encounter this sluggish giant? Tell us below and subscribe because imagine a predatory shark, over 4.65 meters long, that thrives in the crushing pressure of the deep sea!"
   ],
   "used_fallbacks": {
     "facts": [],
@@ -713,7 +717,9 @@
     "dunkleosteus",
     "sea scorpion (eurypterid)",
     "chambered nautilus",
-    "red tides and toxic algae blooms"
+    "red tides and toxic algae blooms",
+    "underwater cave systems (cenotes)",
+    "sleeper shark"
   ],
   "format_weights": {
     "weights": {
@@ -736,7 +742,7 @@
       },
       "deep_dive": {
         "videos": 31,
-        "avg_views": 272
+        "avg_views": 273
       },
       "quiz": {
         "videos": 7,
@@ -747,7 +753,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-03"
+    "date": "2026-11-04"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -807,7 +813,9 @@
     "Who Wins: Armored Titan Dunkleosteus vs. Modern Thresher Shark?! \ud83e\udd2f": "duel",
     "Earth's Biggest Bug Was a 2.5-Meter Ocean Predator! \ud83e\udd2f": "deep_dive",
     "The Chambered Nautilus Sees With Pinhole Camera Eyes! \ud83e\udd2f": "deep_dive",
-    "This Beautiful Ocean Phenomenon Can SUFFOCATE EVERYTHING! \ud83d\udc80": "deep_dive"
+    "This Beautiful Ocean Phenomenon Can SUFFOCATE EVERYTHING! \ud83d\udc80": "deep_dive",
+    "Florida's Leon Sinks: The Hidden Alien World That's Dying! \ud83d\udc80": "deep_dive",
+    "Guess the 15-Foot Deep Sea Shark With Natural Antifreeze! \ud83e\udd76": "guess"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
