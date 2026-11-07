@@ -308,7 +308,9 @@
     "Florida's Leon Sinks: The Hidden Alien World That's Dying! \ud83d\udc80",
     "Guess the 15-Foot Deep Sea Shark With Natural Antifreeze! \ud83e\udd76",
     "This 2000-Meter Octopus Has the Ocean's WEIRDEST Territory! \ud83e\udd91",
-    "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f"
+    "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f",
+    "The Great Pacific Garbage Patch is TWICE the Size of Texas, But You Can't See It! \ud83d\ude31",
+    "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -619,7 +621,9 @@
     "Florida's Leon Sinks is an invisible, living labyrinth, hiding creatures found nowhere else on Earth! This massive 150-kilometer underwater cave system is so vulnerable to pollution, a single spill could wipe out species like the Remasellus parvus. Imagine flushing poison directly into Earth's most unique underground aquarium. It's home to rare creatures like the Woodville Karst Plain crayfish, trapped in perpetual darkness for millennia. Living fossils, isolated from the sun like astronauts on a deep-space mission. Which of these unique cave dwellers do you think is strangest? Comment below and subscribe, because Florida's Leon Sinks is...",
     "Imagine a predatory shark, over 4.65 meters long, that thrives in the crushing pressure of the deep sea! It produces natural antifreeze in its body, allowing it to hunt in near-freezing waters, even in the Antarctic Ocean. Its specialized liver oils and compounds let it survive pressure equivalent to an elephant crushing a submarine! This incredible survivor is the Pacific sleeper shark! Would you want to encounter this sluggish giant? Tell us below and subscribe because imagine a predatory shark, over 4.65 meters long, that thrives in the crushing pressure of the deep sea!",
     "The Giant Pacific Octopus, Earth's largest octopus, can live down to 2,000 meters. This incredible creature spans the entire North Pacific, from Baja California to the Russian Far East. It thrives in waters so cold and deep, most life can't survive, acting as a true apex predator. Would you brave a dive to meet this deep-sea giant? Tell us below, and subscribe because the Giant Pacific Octopus, Earth's largest octopus...",
-    "The goblin shark has a shocking hunting superpower: its jaws literally shoot out of its head! This 125-million-year-old 'living fossil' launches its entire jaw structure up to 30 centimeters forward in milliseconds to snatch fish and squid. Its bizarre elongated snout, covered in ampullae of Lorenzini, senses minute electric fields, letting it hunt in the pitch-black deep, even at 2,000 meters depth. Which of these ancient predators has the weirdest hunting strategy? Tell us below, and subscribe because the goblin shark has a shocking hunting superpower!"
+    "The goblin shark has a shocking hunting superpower: its jaws literally shoot out of its head! This 125-million-year-old 'living fossil' launches its entire jaw structure up to 30 centimeters forward in milliseconds to snatch fish and squid. Its bizarre elongated snout, covered in ampullae of Lorenzini, senses minute electric fields, letting it hunt in the pitch-black deep, even at 2,000 meters depth. Which of these ancient predators has the weirdest hunting strategy? Tell us below, and subscribe because the goblin shark has a shocking hunting superpower!",
+    "The Great Pacific Garbage Patch is twice the size of Texas, yet you can't even see it from a boat! It's not a floating island, but a swirling vortex of microscopic plastic, with only about 4 particles per cubic meter \u2013 making it an invisible plastic soup. This 'invisible soup' contains six pounds of plastic for every pound of plankton, accumulating ten-fold each decade since 1945. Did you know about this invisible threat? Tell us what shocked you most, then subscribe to uncover more shocking ocean truths, because the Great Pacific Garbage Patch...",
+    "The Portuguese man o' war isn't one animal, it's a terrifying colony of specialized creatures working as one! Imagine hundreds of genetically identical units, each with a specific job like hunting or digestion, all fused into a single organism. Its underwater tentacles stretch up to 30 meters, longer than a telephone pole, packed with venomous cells that can paralyze prey and even humans! Which of these bizarre parts do you find most shocking? Let us know below, and subscribe because the Portuguese man o' war..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -725,7 +729,9 @@
     "underwater cave systems (cenotes)",
     "sleeper shark",
     "giant pacific octopus",
-    "goblin shark"
+    "goblin shark",
+    "the great Pacific garbage patch",
+    "portuguese man o' war"
   ],
   "format_weights": {
     "weights": {
@@ -759,7 +765,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-06"
+    "date": "2026-11-07"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -823,7 +829,9 @@
     "Florida's Leon Sinks: The Hidden Alien World That's Dying! \ud83d\udc80": "deep_dive",
     "Guess the 15-Foot Deep Sea Shark With Natural Antifreeze! \ud83e\udd76": "guess",
     "This 2000-Meter Octopus Has the Ocean's WEIRDEST Territory! \ud83e\udd91": "deep_dive",
-    "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f": "deep_dive"
+    "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f": "deep_dive",
+    "The Great Pacific Garbage Patch is TWICE the Size of Texas, But You Can't See It! \ud83d\ude31": "deep_dive",
+    "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
