@@ -310,7 +310,9 @@
     "This 2000-Meter Octopus Has the Ocean's WEIRDEST Territory! \ud83e\udd91",
     "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f",
     "The Great Pacific Garbage Patch is TWICE the Size of Texas, But You Can't See It! \ud83d\ude31",
-    "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f"
+    "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f",
+    "This Deep Sea Zombie Worm MELTS Skeletons 2,893 Meters Down! \ud83d\ude31",
+    "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -623,7 +625,9 @@
     "The Giant Pacific Octopus, Earth's largest octopus, can live down to 2,000 meters. This incredible creature spans the entire North Pacific, from Baja California to the Russian Far East. It thrives in waters so cold and deep, most life can't survive, acting as a true apex predator. Would you brave a dive to meet this deep-sea giant? Tell us below, and subscribe because the Giant Pacific Octopus, Earth's largest octopus...",
     "The goblin shark has a shocking hunting superpower: its jaws literally shoot out of its head! This 125-million-year-old 'living fossil' launches its entire jaw structure up to 30 centimeters forward in milliseconds to snatch fish and squid. Its bizarre elongated snout, covered in ampullae of Lorenzini, senses minute electric fields, letting it hunt in the pitch-black deep, even at 2,000 meters depth. Which of these ancient predators has the weirdest hunting strategy? Tell us below, and subscribe because the goblin shark has a shocking hunting superpower!",
     "The Great Pacific Garbage Patch is twice the size of Texas, yet you can't even see it from a boat! It's not a floating island, but a swirling vortex of microscopic plastic, with only about 4 particles per cubic meter \u2013 making it an invisible plastic soup. This 'invisible soup' contains six pounds of plastic for every pound of plankton, accumulating ten-fold each decade since 1945. Did you know about this invisible threat? Tell us what shocked you most, then subscribe to uncover more shocking ocean truths, because the Great Pacific Garbage Patch...",
-    "The Portuguese man o' war isn't one animal, it's a terrifying colony of specialized creatures working as one! Imagine hundreds of genetically identical units, each with a specific job like hunting or digestion, all fused into a single organism. Its underwater tentacles stretch up to 30 meters, longer than a telephone pole, packed with venomous cells that can paralyze prey and even humans! Which of these bizarre parts do you find most shocking? Let us know below, and subscribe because the Portuguese man o' war..."
+    "The Portuguese man o' war isn't one animal, it's a terrifying colony of specialized creatures working as one! Imagine hundreds of genetically identical units, each with a specific job like hunting or digestion, all fused into a single organism. Its underwater tentacles stretch up to 30 meters, longer than a telephone pole, packed with venomous cells that can paralyze prey and even humans! Which of these bizarre parts do you find most shocking? Let us know below, and subscribe because the Portuguese man o' war...",
+    "The zombie worm can dissolve bones 2,893 meters deep in the ocean! These 'snot worms' secrete pure acid from specialized root tissues, literally melting away whale skeletons to access lipids. Named Osedax, Latin for 'bone devourer', they were only discovered in 2002 on a decaying gray whale in Monterey Bay. What other hidden deep-sea destroyers scare you most? Tell me below and subscribe because the zombie worm can dissolve bones...",
+    "The frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth! It moves like an eel, bending and lunging to swallow prey whole in the deep ocean. Its ancient targets are carnivorous lampreys, which bore into other fish for blood using a toothed, funnel-like mouth. This primitive shark, with its flexible jaws, could easily dominate a blood-sucking parasite. Which of these bizarre ancient predators scares you more? Comment below and subscribe because the frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth!"
   ],
   "used_fallbacks": {
     "facts": [],
@@ -731,30 +735,33 @@
     "giant pacific octopus",
     "goblin shark",
     "the great Pacific garbage patch",
-    "portuguese man o' war"
+    "portuguese man o' war",
+    "zombie worm (osedax)",
+    "lamprey",
+    "frilled shark"
   ],
   "format_weights": {
     "weights": {
-      "duel": 1.11,
-      "deep_dive": 0.99,
-      "quiz": 0.72,
-      "guess": 1.13
+      "deep_dive": 1.04,
+      "duel": 1.02,
+      "quiz": 0.74,
+      "guess": 1.16
     },
     "top_titles": [
       "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
       "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
       "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88",
       "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a",
-      "Abyss Showdown: Octopus vs. Shark - Who REALLY Wins?! \ud83d\udc19"
+      "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0"
     ],
     "stats": {
-      "duel": {
-        "videos": 19,
-        "avg_views": 312
-      },
       "deep_dive": {
-        "videos": 31,
-        "avg_views": 273
+        "videos": 32,
+        "avg_views": 276
+      },
+      "duel": {
+        "videos": 18,
+        "avg_views": 272
       },
       "quiz": {
         "videos": 7,
@@ -765,7 +772,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-07"
+    "date": "2026-11-08"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -831,7 +838,9 @@
     "This 2000-Meter Octopus Has the Ocean's WEIRDEST Territory! \ud83e\udd91": "deep_dive",
     "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f": "deep_dive",
     "The Great Pacific Garbage Patch is TWICE the Size of Texas, But You Can't See It! \ud83d\ude31": "deep_dive",
-    "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f": "deep_dive"
+    "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f": "deep_dive",
+    "This Deep Sea Zombie Worm MELTS Skeletons 2,893 Meters Down! \ud83d\ude31": "deep_dive",
+    "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
