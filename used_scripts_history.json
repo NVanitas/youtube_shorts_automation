@@ -312,7 +312,9 @@
     "The Great Pacific Garbage Patch is TWICE the Size of Texas, But You Can't See It! \ud83d\ude31",
     "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f",
     "This Deep Sea Zombie Worm MELTS Skeletons 2,893 Meters Down! \ud83d\ude31",
-    "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88"
+    "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88",
+    "The Ocean's WEIRDEST Shark Leaves Perfect Circular Bites on Whales! \ud83e\udd2f",
+    "Sea Pig vs. The 3-Meter 'Trap-Jaw' Worm! \ud83e\udd4a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -627,7 +629,9 @@
     "The Great Pacific Garbage Patch is twice the size of Texas, yet you can't even see it from a boat! It's not a floating island, but a swirling vortex of microscopic plastic, with only about 4 particles per cubic meter \u2013 making it an invisible plastic soup. This 'invisible soup' contains six pounds of plastic for every pound of plankton, accumulating ten-fold each decade since 1945. Did you know about this invisible threat? Tell us what shocked you most, then subscribe to uncover more shocking ocean truths, because the Great Pacific Garbage Patch...",
     "The Portuguese man o' war isn't one animal, it's a terrifying colony of specialized creatures working as one! Imagine hundreds of genetically identical units, each with a specific job like hunting or digestion, all fused into a single organism. Its underwater tentacles stretch up to 30 meters, longer than a telephone pole, packed with venomous cells that can paralyze prey and even humans! Which of these bizarre parts do you find most shocking? Let us know below, and subscribe because the Portuguese man o' war...",
     "The zombie worm can dissolve bones 2,893 meters deep in the ocean! These 'snot worms' secrete pure acid from specialized root tissues, literally melting away whale skeletons to access lipids. Named Osedax, Latin for 'bone devourer', they were only discovered in 2002 on a decaying gray whale in Monterey Bay. What other hidden deep-sea destroyers scare you most? Tell me below and subscribe because the zombie worm can dissolve bones...",
-    "The frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth! It moves like an eel, bending and lunging to swallow prey whole in the deep ocean. Its ancient targets are carnivorous lampreys, which bore into other fish for blood using a toothed, funnel-like mouth. This primitive shark, with its flexible jaws, could easily dominate a blood-sucking parasite. Which of these bizarre ancient predators scares you more? Comment below and subscribe because the frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth!"
+    "The frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth! It moves like an eel, bending and lunging to swallow prey whole in the deep ocean. Its ancient targets are carnivorous lampreys, which bore into other fish for blood using a toothed, funnel-like mouth. This primitive shark, with its flexible jaws, could easily dominate a blood-sucking parasite. Which of these bizarre ancient predators scares you more? Comment below and subscribe because the frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth!",
+    "The tiny cookiecutter shark, only 56 centimeters long, can take perfect circular bites out of animals as big as a great white shark! This miniature predator uses glowing photophores and a dark 'collar' to mimic a smaller fish, luring in much larger prey. Once close, it latches on with suctorial lips and uses bandsaw-like teeth to carve out a plug of flesh. Which ocean creature has the weirdest superpower? Drop your answer below and subscribe because the tiny cookiecutter shark...",
+    "The Bobbit worm, a terrifying ambush predator, can grow nearly 3 meters (10 feet) long! It burrows in soft sediment, waiting for its antennae to detect unsuspecting prey. Then, it explodes from the seafloor, striking with sharp mandibles. Fossilized burrows date back 20 million years, proving this ancient hunter's deadly efficiency. Which creature would you least want to meet in the deep sea? Let us know and subscribe because The Bobbit worm..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -738,30 +742,33 @@
     "portuguese man o' war",
     "zombie worm (osedax)",
     "lamprey",
-    "frilled shark"
+    "frilled shark",
+    "cookiecutter shark",
+    "sea pig",
+    "bobbit worm"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 1.04,
-      "duel": 1.02,
-      "quiz": 0.74,
-      "guess": 1.16
+      "duel": 0.9,
+      "deep_dive": 1.1,
+      "quiz": 0.75,
+      "guess": 1.17
     },
     "top_titles": [
+      "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f",
       "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
       "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
       "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88",
-      "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a",
-      "The Ocean's GIANT Armored Woodlouse: Can You Guess It?! \ud83e\uddd0"
+      "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a"
     ],
     "stats": {
-      "deep_dive": {
-        "videos": 32,
-        "avg_views": 276
-      },
       "duel": {
-        "videos": 18,
-        "avg_views": 272
+        "videos": 17,
+        "avg_views": 230
+      },
+      "deep_dive": {
+        "videos": 33,
+        "avg_views": 287
       },
       "quiz": {
         "videos": 7,
@@ -772,7 +779,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-08"
+    "date": "2026-11-10"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -840,7 +847,9 @@
     "The Great Pacific Garbage Patch is TWICE the Size of Texas, But You Can't See It! \ud83d\ude31": "deep_dive",
     "This 'Jellyfish' Is Actually HUNDREDS of Animals Fused Together! \ud83e\udd2f": "deep_dive",
     "This Deep Sea Zombie Worm MELTS Skeletons 2,893 Meters Down! \ud83d\ude31": "deep_dive",
-    "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88": "duel"
+    "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88": "duel",
+    "The Ocean's WEIRDEST Shark Leaves Perfect Circular Bites on Whales! \ud83e\udd2f": "deep_dive",
+    "Sea Pig vs. The 3-Meter 'Trap-Jaw' Worm! \ud83e\udd4a": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
