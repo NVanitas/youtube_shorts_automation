@@ -314,7 +314,9 @@
     "This Deep Sea Zombie Worm MELTS Skeletons 2,893 Meters Down! \ud83d\ude31",
     "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88",
     "The Ocean's WEIRDEST Shark Leaves Perfect Circular Bites on Whales! \ud83e\udd2f",
-    "Sea Pig vs. The 3-Meter 'Trap-Jaw' Worm! \ud83e\udd4a"
+    "Sea Pig vs. The 3-Meter 'Trap-Jaw' Worm! \ud83e\udd4a",
+    "This Deep Sea Worm's Armor Is\u2026 Living BACTERIA! \ud83e\udd2f",
+    "The Ocean's Dark Metals Are Secretly MAKING Oxygen! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -631,7 +633,9 @@
     "The zombie worm can dissolve bones 2,893 meters deep in the ocean! These 'snot worms' secrete pure acid from specialized root tissues, literally melting away whale skeletons to access lipids. Named Osedax, Latin for 'bone devourer', they were only discovered in 2002 on a decaying gray whale in Monterey Bay. What other hidden deep-sea destroyers scare you most? Tell me below and subscribe because the zombie worm can dissolve bones...",
     "The frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth! It moves like an eel, bending and lunging to swallow prey whole in the deep ocean. Its ancient targets are carnivorous lampreys, which bore into other fish for blood using a toothed, funnel-like mouth. This primitive shark, with its flexible jaws, could easily dominate a blood-sucking parasite. Which of these bizarre ancient predators scares you more? Comment below and subscribe because the frilled shark, a 2-meter 'living fossil,' hunts with 300 needle-like teeth!",
     "The tiny cookiecutter shark, only 56 centimeters long, can take perfect circular bites out of animals as big as a great white shark! This miniature predator uses glowing photophores and a dark 'collar' to mimic a smaller fish, luring in much larger prey. Once close, it latches on with suctorial lips and uses bandsaw-like teeth to carve out a plug of flesh. Which ocean creature has the weirdest superpower? Drop your answer below and subscribe because the tiny cookiecutter shark...",
-    "The Bobbit worm, a terrifying ambush predator, can grow nearly 3 meters (10 feet) long! It burrows in soft sediment, waiting for its antennae to detect unsuspecting prey. Then, it explodes from the seafloor, striking with sharp mandibles. Fossilized burrows date back 20 million years, proving this ancient hunter's deadly efficiency. Which creature would you least want to meet in the deep sea? Let us know and subscribe because The Bobbit worm..."
+    "The Bobbit worm, a terrifying ambush predator, can grow nearly 3 meters (10 feet) long! It burrows in soft sediment, waiting for its antennae to detect unsuspecting prey. Then, it explodes from the seafloor, striking with sharp mandibles. Fossilized burrows date back 20 million years, proving this ancient hunter's deadly efficiency. Which creature would you least want to meet in the deep sea? Let us know and subscribe because The Bobbit worm...",
+    "The Pompeii worm, an extremophile, survives the deep ocean's scorching hydrothermal vents by wearing a fuzzy coat of living bacteria! These epibiotic bacteria protect its body, allowing it to withstand temperatures that would cook most other creatures alive. Found off the Gal\u00e1pagos Islands, this worm cultivates these chemosynthetic bacteria, which also provide its food! Which deep sea extremophile do you think has the wildest survival strategy? Let us know below and subscribe because the Pompeii worm...",
+    "The deep ocean's dark metallic nodules may be generating oxygen through a controversial process called electrolysis! This 'dark oxygen' occurs without light, unlike most oxygen production, potentially supporting aerobic metabolism in completely dark, anoxic environments. Imagine tiny natural batteries covering vast stretches of the abyssal seafloor, creating vital O2 where photosynthesis is impossible. Which bizarre dark ocean process do you find most surprising? Tell us below and subscribe because the deep ocean's dark metallic nodules may be generating oxygen through a controversial process called electrolysis!"
   ],
   "used_fallbacks": {
     "facts": [],
@@ -745,7 +749,9 @@
     "frilled shark",
     "cookiecutter shark",
     "sea pig",
-    "bobbit worm"
+    "bobbit worm",
+    "pompeii worm",
+    "the oxygen-producing dark metal nodules"
   ],
   "format_weights": {
     "weights": {
@@ -849,7 +855,9 @@
     "This Deep Sea Zombie Worm MELTS Skeletons 2,893 Meters Down! \ud83d\ude31": "deep_dive",
     "The Ocean's 300-Tooth 'Eel' Hunts Ancient Blood-Suckers! \ud83e\udd88": "duel",
     "The Ocean's WEIRDEST Shark Leaves Perfect Circular Bites on Whales! \ud83e\udd2f": "deep_dive",
-    "Sea Pig vs. The 3-Meter 'Trap-Jaw' Worm! \ud83e\udd4a": "duel"
+    "Sea Pig vs. The 3-Meter 'Trap-Jaw' Worm! \ud83e\udd4a": "duel",
+    "This Deep Sea Worm's Armor Is\u2026 Living BACTERIA! \ud83e\udd2f": "deep_dive",
+    "The Ocean's Dark Metals Are Secretly MAKING Oxygen! \ud83e\udd2f": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
