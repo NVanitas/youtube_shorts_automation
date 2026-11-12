@@ -318,7 +318,9 @@
     "This Deep Sea Worm's Armor Is\u2026 Living BACTERIA! \ud83e\udd2f",
     "The Ocean's Dark Metals Are Secretly MAKING Oxygen! \ud83e\udd2f",
     "WHO WINS: 18-Foot Shark vs. TINY Angel?! \ud83e\udd2f",
-    "This Ocean Creature Has a BEAK and Poops Sand! \ud83e\udd2f"
+    "This Ocean Creature Has a BEAK and Poops Sand! \ud83e\udd2f",
+    "The Ocean's 'Immortal' Jellyfish Is Actually TERRIFYING! \ud83d\ude31",
+    "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -639,7 +641,9 @@
     "The Pompeii worm, an extremophile, survives the deep ocean's scorching hydrothermal vents by wearing a fuzzy coat of living bacteria! These epibiotic bacteria protect its body, allowing it to withstand temperatures that would cook most other creatures alive. Found off the Gal\u00e1pagos Islands, this worm cultivates these chemosynthetic bacteria, which also provide its food! Which deep sea extremophile do you think has the wildest survival strategy? Let us know below and subscribe because the Pompeii worm...",
     "The deep ocean's dark metallic nodules may be generating oxygen through a controversial process called electrolysis! This 'dark oxygen' occurs without light, unlike most oxygen production, potentially supporting aerobic metabolism in completely dark, anoxic environments. Imagine tiny natural batteries covering vast stretches of the abyssal seafloor, creating vital O2 where photosynthesis is impossible. Which bizarre dark ocean process do you find most surprising? Tell us below and subscribe because the deep ocean's dark metallic nodules may be generating oxygen through a controversial process called electrolysis!",
     "The bluntnose sixgill shark, growing up to 18 feet, is a deep-sea titan! That's longer than a typical family sedan. This ancient predator uses its massive size to dominate vast ocean depths. Meanwhile, the delicate sea angel, a tiny free-swimming sea slug, uses graceful 'wings' to navigate the open water. Which of these incredible ocean creatures would you rather encounter? Tell us below, and subscribe because the bluntnose sixgill shark, growing up to 18 feet, is a deep-sea titan!",
-    "This vibrant reef dweller has a mouth like a parrot's beak! It's one of 95 species, constantly scraping coral. This underwater bulldozer turns rock into new sand! Its unique bioerosion significantly contributes to beach sand. Its name is a direct clue! Can you guess this incredible creature? It's the PARROTFISH! What other ocean oddities baffle you? Subscribe because this vibrant reef dweller..."
+    "This vibrant reef dweller has a mouth like a parrot's beak! It's one of 95 species, constantly scraping coral. This underwater bulldozer turns rock into new sand! Its unique bioerosion significantly contributes to beach sand. Its name is a direct clue! Can you guess this incredible creature? It's the PARROTFISH! What other ocean oddities baffle you? Subscribe because this vibrant reef dweller...",
+    "This tiny Turritopsis dohrnii jellyfish can literally REVERSE its age when stressed, making it biologically immortal! It's like an old adult reverting to a baby polyp colony, thanks to cell transdifferentiation. This \u2018immortal\u2019 animal also rapidly preys on other jellyfish species as an adult. If you could have an animal superpower, would you choose immortality? Drop your answer below and subscribe because this tiny Turritopsis dohrnii jellyfish can literally...",
+    "A 20-foot saltwater crocodile, Earth's largest living reptile, wouldn't stand a chance against the ocean's longest animal. That's the 50-meter-long Praya dubia, a giant siphonophore that\u2019s not one creature, but a colony of tiny, specialized zooids. This broomstick-thin predator lives 700 meters deep, where the crocodile's body would be crushed by pressure like a thousand elephants! Which of these bizarre ocean giants fascinates you most? Tell us below and subscribe because a 20-foot saltwater crocodile..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -758,14 +762,17 @@
     "the oxygen-producing dark metal nodules",
     "bluntnose sixgill shark",
     "sea angel",
-    "parrotfish"
+    "parrotfish",
+    "immortal jellyfish",
+    "saltwater crocodile",
+    "giant siphonophore"
   ],
   "format_weights": {
     "weights": {
-      "duel": 0.95,
-      "deep_dive": 1.07,
-      "quiz": 0.74,
-      "guess": 1.16
+      "deep_dive": 1.09,
+      "duel": 0.91,
+      "quiz": 0.75,
+      "guess": 1.17
     },
     "top_titles": [
       "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f",
@@ -775,13 +782,13 @@
       "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a"
     ],
     "stats": {
-      "duel": {
-        "videos": 17,
-        "avg_views": 252
-      },
       "deep_dive": {
         "videos": 33,
         "avg_views": 287
+      },
+      "duel": {
+        "videos": 17,
+        "avg_views": 231
       },
       "quiz": {
         "videos": 7,
@@ -792,7 +799,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-11"
+    "date": "2026-11-12"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -866,7 +873,9 @@
     "This Deep Sea Worm's Armor Is\u2026 Living BACTERIA! \ud83e\udd2f": "deep_dive",
     "The Ocean's Dark Metals Are Secretly MAKING Oxygen! \ud83e\udd2f": "deep_dive",
     "WHO WINS: 18-Foot Shark vs. TINY Angel?! \ud83e\udd2f": "duel",
-    "This Ocean Creature Has a BEAK and Poops Sand! \ud83e\udd2f": "guess"
+    "This Ocean Creature Has a BEAK and Poops Sand! \ud83e\udd2f": "guess",
+    "The Ocean's 'Immortal' Jellyfish Is Actually TERRIFYING! \ud83d\ude31": "deep_dive",
+    "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
