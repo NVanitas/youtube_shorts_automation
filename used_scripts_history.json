@@ -320,7 +320,9 @@
     "WHO WINS: 18-Foot Shark vs. TINY Angel?! \ud83e\udd2f",
     "This Ocean Creature Has a BEAK and Poops Sand! \ud83e\udd2f",
     "The Ocean's 'Immortal' Jellyfish Is Actually TERRIFYING! \ud83d\ude31",
-    "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f"
+    "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f",
+    "The Narwhal's Giant Tusk: Not a Horn, But a SENSORY ORGAN?! \ud83e\udd2f",
+    "This Whale's HEAD is a Sonic WEAPON! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -643,7 +645,9 @@
     "The bluntnose sixgill shark, growing up to 18 feet, is a deep-sea titan! That's longer than a typical family sedan. This ancient predator uses its massive size to dominate vast ocean depths. Meanwhile, the delicate sea angel, a tiny free-swimming sea slug, uses graceful 'wings' to navigate the open water. Which of these incredible ocean creatures would you rather encounter? Tell us below, and subscribe because the bluntnose sixgill shark, growing up to 18 feet, is a deep-sea titan!",
     "This vibrant reef dweller has a mouth like a parrot's beak! It's one of 95 species, constantly scraping coral. This underwater bulldozer turns rock into new sand! Its unique bioerosion significantly contributes to beach sand. Its name is a direct clue! Can you guess this incredible creature? It's the PARROTFISH! What other ocean oddities baffle you? Subscribe because this vibrant reef dweller...",
     "This tiny Turritopsis dohrnii jellyfish can literally REVERSE its age when stressed, making it biologically immortal! It's like an old adult reverting to a baby polyp colony, thanks to cell transdifferentiation. This \u2018immortal\u2019 animal also rapidly preys on other jellyfish species as an adult. If you could have an animal superpower, would you choose immortality? Drop your answer below and subscribe because this tiny Turritopsis dohrnii jellyfish can literally...",
-    "A 20-foot saltwater crocodile, Earth's largest living reptile, wouldn't stand a chance against the ocean's longest animal. That's the 50-meter-long Praya dubia, a giant siphonophore that\u2019s not one creature, but a colony of tiny, specialized zooids. This broomstick-thin predator lives 700 meters deep, where the crocodile's body would be crushed by pressure like a thousand elephants! Which of these bizarre ocean giants fascinates you most? Tell us below and subscribe because a 20-foot saltwater crocodile..."
+    "A 20-foot saltwater crocodile, Earth's largest living reptile, wouldn't stand a chance against the ocean's longest animal. That's the 50-meter-long Praya dubia, a giant siphonophore that\u2019s not one creature, but a colony of tiny, specialized zooids. This broomstick-thin predator lives 700 meters deep, where the crocodile's body would be crushed by pressure like a thousand elephants! Which of these bizarre ocean giants fascinates you most? Tell us below and subscribe because a 20-foot saltwater crocodile...",
+    "The narwhal, with its iconic 3-meter tusk, dives over two kilometers deep \u2013 an astounding 2,370 meters! This isn't a horn; it's an elongated left canine tooth, packed with nerve endings, acting as a sensory organ. It helps them navigate and feed on Arctic cod in crushing pressures, like a super-sensitive underwater radar. Imagine surviving that far down! Which ocean creature superpower surprises you most? Tell us below and subscribe because the narwhal, with its iconic 3-meter tusk...",
+    "The sperm whale, Earth's largest toothed predator, uses its head as a sonic cannon. It blasts sounds at 236 decibels, louder than a jet engine at takeoff! This echolocation allows it to hunt two kilometers down, targeting giant squid in darkness. Imagine being hit by that sound! What superpower would YOU want? Tell us below and subscribe because the sperm whale, Earth's largest toothed predator, uses its head."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -765,7 +769,9 @@
     "parrotfish",
     "immortal jellyfish",
     "saltwater crocodile",
-    "giant siphonophore"
+    "giant siphonophore",
+    "narwhal",
+    "sperm whale"
   ],
   "format_weights": {
     "weights": {
@@ -788,7 +794,7 @@
       },
       "duel": {
         "videos": 17,
-        "avg_views": 231
+        "avg_views": 232
       },
       "quiz": {
         "videos": 7,
@@ -799,7 +805,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-12"
+    "date": "2026-11-13"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -875,7 +881,9 @@
     "WHO WINS: 18-Foot Shark vs. TINY Angel?! \ud83e\udd2f": "duel",
     "This Ocean Creature Has a BEAK and Poops Sand! \ud83e\udd2f": "guess",
     "The Ocean's 'Immortal' Jellyfish Is Actually TERRIFYING! \ud83d\ude31": "deep_dive",
-    "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f": "duel"
+    "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f": "duel",
+    "The Narwhal's Giant Tusk: Not a Horn, But a SENSORY ORGAN?! \ud83e\udd2f": "deep_dive",
+    "This Whale's HEAD is a Sonic WEAPON! \ud83e\udd2f": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
