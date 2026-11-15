@@ -323,7 +323,9 @@
     "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f",
     "The Narwhal's Giant Tusk: Not a Horn, But a SENSORY ORGAN?! \ud83e\udd2f",
     "This Whale's HEAD is a Sonic WEAPON! \ud83e\udd2f",
-    "Megalodon vs. Ichthyosaur: Who Was the Ocean's DEADLIEST Ancient Predator?! \ud83e\udd4a"
+    "Megalodon vs. Ichthyosaur: Who Was the Ocean's DEADLIEST Ancient Predator?! \ud83e\udd4a",
+    "Earth's Hidden Waterfalls Are 3,500 Meters Tall! \ud83c\udf0a",
+    "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -649,7 +651,9 @@
     "A 20-foot saltwater crocodile, Earth's largest living reptile, wouldn't stand a chance against the ocean's longest animal. That's the 50-meter-long Praya dubia, a giant siphonophore that\u2019s not one creature, but a colony of tiny, specialized zooids. This broomstick-thin predator lives 700 meters deep, where the crocodile's body would be crushed by pressure like a thousand elephants! Which of these bizarre ocean giants fascinates you most? Tell us below and subscribe because a 20-foot saltwater crocodile...",
     "The narwhal, with its iconic 3-meter tusk, dives over two kilometers deep \u2013 an astounding 2,370 meters! This isn't a horn; it's an elongated left canine tooth, packed with nerve endings, acting as a sensory organ. It helps them navigate and feed on Arctic cod in crushing pressures, like a super-sensitive underwater radar. Imagine surviving that far down! Which ocean creature superpower surprises you most? Tell us below and subscribe because the narwhal, with its iconic 3-meter tusk...",
     "The sperm whale, Earth's largest toothed predator, uses its head as a sonic cannon. It blasts sounds at 236 decibels, louder than a jet engine at takeoff! This echolocation allows it to hunt two kilometers down, targeting giant squid in darkness. Imagine being hit by that sound! What superpower would YOU want? Tell us below and subscribe because the sperm whale, Earth's largest toothed predator, uses its head.",
-    "The Megalodon could bite down with 182,200 Newtons of force, enough to crush a whale's spine! This prehistoric shark, up to 24 meters long, wielded jaws capable of over 40,000 pounds of pressure. While ichthyosaurs were swift marine reptiles, Megalodon preyed on massive whales and sea turtles. Who wins this ancient ocean showdown? Let me know below and subscribe because the Megalodon..."
+    "The Megalodon could bite down with 182,200 Newtons of force, enough to crush a whale's spine! This prehistoric shark, up to 24 meters long, wielded jaws capable of over 40,000 pounds of pressure. While ichthyosaurs were swift marine reptiles, Megalodon preyed on massive whales and sea turtles. Who wins this ancient ocean showdown? Let me know below and subscribe because the Megalodon...",
+    "The Denmark Strait Cataract is an underwater waterfall 3,500 meters tall, making it the largest on Earth. That's over 70 times taller than Niagara Falls, with water plummeting like a colossal river into the deep abyss. It plunges five million cubic meters of freezing water every second, a flow strong enough to influence global ocean currents! Imagine the power of this hidden giant. Which other ocean mystery baffles you most? Drop your answer below and subscribe because the Denmark Strait Cataract is an underwater waterfall...",
+    "The mimic octopus is the only animal on Earth that can instantly transform into multiple different creatures, not just one! It morphs from a venomous lionfish, swaying its 'spines,' to a banded sea snake, burying its head and waving two arms like deadly fangs. Imagine changing your entire identity like an expert spy! No other animal actively imitates multiple species for survival. Which mimic octopus disguise would fool you? Drop your answer below and subscribe because the mimic octopus is..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -777,30 +781,32 @@
     "ichthyosaur",
     "megalodon",
     "christmas tree worm",
-    "nudibranch"
+    "nudibranch",
+    "underwater waterfalls bigger than Niagara",
+    "mimic octopus"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 1.09,
-      "duel": 0.91,
-      "quiz": 0.75,
-      "guess": 1.17
+      "deep_dive": 1.04,
+      "duel": 1.03,
+      "quiz": 0.72,
+      "guess": 1.12
     },
     "top_titles": [
+      "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f",
       "The Goblin Shark: Its Mouth DETACHES To Eat! \ud83e\udd2f",
       "The Ancient Ocean Monster So Weird, Scientists Put Its Head On Its Tail! \ud83e\udd2f",
       "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88",
-      "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88",
-      "Deep Sea Showdown: Black Swallower vs. Giant Comb Jelly! \ud83e\udd4a"
+      "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88"
     ],
     "stats": {
       "deep_dive": {
-        "videos": 33,
-        "avg_views": 287
+        "videos": 32,
+        "avg_views": 294
       },
       "duel": {
-        "videos": 17,
-        "avg_views": 232
+        "videos": 18,
+        "avg_views": 291
       },
       "quiz": {
         "videos": 7,
@@ -811,7 +817,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-14"
+    "date": "2026-11-15"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -890,7 +896,9 @@
     "Who Wins: 20-Foot Crocodile vs. 160-Foot Deep Sea 'Jelly'?! \ud83e\udd2f": "duel",
     "The Narwhal's Giant Tusk: Not a Horn, But a SENSORY ORGAN?! \ud83e\udd2f": "deep_dive",
     "This Whale's HEAD is a Sonic WEAPON! \ud83e\udd2f": "deep_dive",
-    "Megalodon vs. Ichthyosaur: Who Was the Ocean's DEADLIEST Ancient Predator?! \ud83e\udd4a": "duel"
+    "Megalodon vs. Ichthyosaur: Who Was the Ocean's DEADLIEST Ancient Predator?! \ud83e\udd4a": "duel",
+    "Earth's Hidden Waterfalls Are 3,500 Meters Tall! \ud83c\udf0a": "deep_dive",
+    "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
