@@ -325,7 +325,9 @@
     "This Whale's HEAD is a Sonic WEAPON! \ud83e\udd2f",
     "Megalodon vs. Ichthyosaur: Who Was the Ocean's DEADLIEST Ancient Predator?! \ud83e\udd4a",
     "Earth's Hidden Waterfalls Are 3,500 Meters Tall! \ud83c\udf0a",
-    "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d"
+    "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d",
+    "The Ocean's GHOSTLY Glow That Traps Ships For Weeks! \ud83d\udc7b",
+    "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -653,7 +655,9 @@
     "The sperm whale, Earth's largest toothed predator, uses its head as a sonic cannon. It blasts sounds at 236 decibels, louder than a jet engine at takeoff! This echolocation allows it to hunt two kilometers down, targeting giant squid in darkness. Imagine being hit by that sound! What superpower would YOU want? Tell us below and subscribe because the sperm whale, Earth's largest toothed predator, uses its head.",
     "The Megalodon could bite down with 182,200 Newtons of force, enough to crush a whale's spine! This prehistoric shark, up to 24 meters long, wielded jaws capable of over 40,000 pounds of pressure. While ichthyosaurs were swift marine reptiles, Megalodon preyed on massive whales and sea turtles. Who wins this ancient ocean showdown? Let me know below and subscribe because the Megalodon...",
     "The Denmark Strait Cataract is an underwater waterfall 3,500 meters tall, making it the largest on Earth. That's over 70 times taller than Niagara Falls, with water plummeting like a colossal river into the deep abyss. It plunges five million cubic meters of freezing water every second, a flow strong enough to influence global ocean currents! Imagine the power of this hidden giant. Which other ocean mystery baffles you most? Drop your answer below and subscribe because the Denmark Strait Cataract is an underwater waterfall...",
-    "The mimic octopus is the only animal on Earth that can instantly transform into multiple different creatures, not just one! It morphs from a venomous lionfish, swaying its 'spines,' to a banded sea snake, burying its head and waving two arms like deadly fangs. Imagine changing your entire identity like an expert spy! No other animal actively imitates multiple species for survival. Which mimic octopus disguise would fool you? Drop your answer below and subscribe because the mimic octopus is..."
+    "The mimic octopus is the only animal on Earth that can instantly transform into multiple different creatures, not just one! It morphs from a venomous lionfish, swaying its 'spines,' to a banded sea snake, burying its head and waving two arms like deadly fangs. Imagine changing your entire identity like an expert spy! No other animal actively imitates multiple species for survival. Which mimic octopus disguise would fool you? Drop your answer below and subscribe because the mimic octopus is...",
+    "Milky seas are vast glowing ocean patches, 100,000 square kilometers wide, visible even from satellites! This eerie blue light isn't algae; it's billions of luminous bacteria, creating a phenomenon lasting over 40 days. Mariners reported these for centuries, but scientists only got photographic proof of the massive glow in 2005. Would you brave these luminous waters? Comment and subscribe because milky seas are vast glowing ocean patches...",
+    "This creature, presumed extinct for 66 million years, suddenly reappeared in 1938. It\u2019s a lobe-finned fish, more closely related to you than to most fish. Its body plan has remained virtually unchanged for over 400 million years, making it a true living fossil. Can you guess this ancient ocean survivor? It\u2019s the Coelacanth! Which of its facts shocked you most? This creature, presumed extinct for 66 million years..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -783,13 +787,15 @@
     "christmas tree worm",
     "nudibranch",
     "underwater waterfalls bigger than Niagara",
-    "mimic octopus"
+    "mimic octopus",
+    "milky seas glowing for miles",
+    "coelacanth"
   ],
   "format_weights": {
     "weights": {
       "deep_dive": 1.04,
       "duel": 1.03,
-      "quiz": 0.72,
+      "quiz": 0.71,
       "guess": 1.12
     },
     "top_titles": [
@@ -817,7 +823,7 @@
         "avg_views": 349
       }
     },
-    "date": "2026-11-15"
+    "date": "2026-11-17"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -898,7 +904,9 @@
     "This Whale's HEAD is a Sonic WEAPON! \ud83e\udd2f": "deep_dive",
     "Megalodon vs. Ichthyosaur: Who Was the Ocean's DEADLIEST Ancient Predator?! \ud83e\udd4a": "duel",
     "Earth's Hidden Waterfalls Are 3,500 Meters Tall! \ud83c\udf0a": "deep_dive",
-    "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d": "deep_dive"
+    "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d": "deep_dive",
+    "The Ocean's GHOSTLY Glow That Traps Ships For Weeks! \ud83d\udc7b": "deep_dive",
+    "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f": "guess"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
