@@ -328,7 +328,9 @@
     "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d",
     "The Ocean's GHOSTLY Glow That Traps Ships For Weeks! \ud83d\udc7b",
     "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f",
-    "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0"
+    "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0",
+    "Who Wins: The Iron-Armored Snail vs. The 14-Inch-Toothed Whale?! \ud83e\udd2f",
+    "The Colossal Squid: Its 40cm Eyes Are The Largest On Earth! \ud83e\udd2f"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -659,7 +661,9 @@
     "The mimic octopus is the only animal on Earth that can instantly transform into multiple different creatures, not just one! It morphs from a venomous lionfish, swaying its 'spines,' to a banded sea snake, burying its head and waving two arms like deadly fangs. Imagine changing your entire identity like an expert spy! No other animal actively imitates multiple species for survival. Which mimic octopus disguise would fool you? Drop your answer below and subscribe because the mimic octopus is...",
     "Milky seas are vast glowing ocean patches, 100,000 square kilometers wide, visible even from satellites! This eerie blue light isn't algae; it's billions of luminous bacteria, creating a phenomenon lasting over 40 days. Mariners reported these for centuries, but scientists only got photographic proof of the massive glow in 2005. Would you brave these luminous waters? Comment and subscribe because milky seas are vast glowing ocean patches...",
     "This creature, presumed extinct for 66 million years, suddenly reappeared in 1938. It\u2019s a lobe-finned fish, more closely related to you than to most fish. Its body plan has remained virtually unchanged for over 400 million years, making it a true living fossil. Can you guess this ancient ocean survivor? It\u2019s the Coelacanth! Which of its facts shocked you most? This creature, presumed extinct for 66 million years...",
-    "This is the Mosasaur, an apex predator 66 million years ago. Can you spot the lie? Claim 1: Its double-hinged jaw, like a snake's, swallowed huge prey. Claim 2: Mosasaurus hoffmannii reached 17 meters, two school buses long! Claim 3: It laid hard-shelled eggs on beaches. The lie? It's claim three! Mosasaurs gave live birth. Did you get it right? Subscribe to learn more about the Mosasaur, an apex predator..."
+    "This is the Mosasaur, an apex predator 66 million years ago. Can you spot the lie? Claim 1: Its double-hinged jaw, like a snake's, swallowed huge prey. Claim 2: Mosasaurus hoffmannii reached 17 meters, two school buses long! Claim 3: It laid hard-shelled eggs on beaches. The lie? It's claim three! Mosasaurs gave live birth. Did you get it right? Subscribe to learn more about the Mosasaur, an apex predator...",
+    "Livyatan melvillei, the ancient whale, sported 36.2-centimeter teeth, the largest biting teeth of any animal ever! At 17.5 meters, this predator hunted similar prey to Megalodon 9 million years ago. But against it, the Scaly-foot gastropod, living 2,900 meters deep, has a shell and foot armored with iron sulfide, the only animal known to do so. Who wins this impossible duel? Its iron shell or the whale's colossal bite? Comment your pick below and subscribe for more ocean oddities because Livyatan melvillei, the ancient whale...",
+    "The Colossal Squid has eyes up to 40 centimeters wide, making them the largest of any animal on Earth. This deep-sea predator can weigh over 495 kilograms \u2013 heavier than a grand piano! Unlike other squids, it sports razor-sharp hooks on its arms, not just suckers. Its feeding tentacles can extend 10 meters to grab prey. Could you imagine facing this Antarctic monster? Tell us below, and subscribe because the Colossal Squid has eyes..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -793,13 +797,16 @@
     "milky seas glowing for miles",
     "coelacanth",
     "mosasaur",
-    "kronosaurus"
+    "kronosaurus",
+    "scaly-foot snail",
+    "livyatan",
+    "colossal squid"
   ],
   "format_weights": {
     "weights": {
-      "deep_dive": 1.04,
-      "duel": 1.03,
+      "duel": 1.02,
       "quiz": 0.71,
+      "deep_dive": 1.05,
       "guess": 1.12
     },
     "top_titles": [
@@ -810,10 +817,6 @@
       "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88"
     ],
     "stats": {
-      "deep_dive": {
-        "videos": 32,
-        "avg_views": 294
-      },
       "duel": {
         "videos": 18,
         "avg_views": 291
@@ -822,12 +825,16 @@
         "videos": 7,
         "avg_views": 167
       },
+      "deep_dive": {
+        "videos": 32,
+        "avg_views": 298
+      },
       "guess": {
         "videos": 3,
         "avg_views": 349
       }
     },
-    "date": "2026-11-17"
+    "date": "2026-11-18"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -911,7 +918,9 @@
     "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d": "deep_dive",
     "The Ocean's GHOSTLY Glow That Traps Ships For Weeks! \ud83d\udc7b": "deep_dive",
     "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f": "guess",
-    "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0": "quiz"
+    "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0": "quiz",
+    "Who Wins: The Iron-Armored Snail vs. The 14-Inch-Toothed Whale?! \ud83e\udd2f": "duel",
+    "The Colossal Squid: Its 40cm Eyes Are The Largest On Earth! \ud83e\udd2f": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
