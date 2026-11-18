@@ -327,7 +327,8 @@
     "Earth's Hidden Waterfalls Are 3,500 Meters Tall! \ud83c\udf0a",
     "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d",
     "The Ocean's GHOSTLY Glow That Traps Ships For Weeks! \ud83d\udc7b",
-    "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f"
+    "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f",
+    "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -657,7 +658,8 @@
     "The Denmark Strait Cataract is an underwater waterfall 3,500 meters tall, making it the largest on Earth. That's over 70 times taller than Niagara Falls, with water plummeting like a colossal river into the deep abyss. It plunges five million cubic meters of freezing water every second, a flow strong enough to influence global ocean currents! Imagine the power of this hidden giant. Which other ocean mystery baffles you most? Drop your answer below and subscribe because the Denmark Strait Cataract is an underwater waterfall...",
     "The mimic octopus is the only animal on Earth that can instantly transform into multiple different creatures, not just one! It morphs from a venomous lionfish, swaying its 'spines,' to a banded sea snake, burying its head and waving two arms like deadly fangs. Imagine changing your entire identity like an expert spy! No other animal actively imitates multiple species for survival. Which mimic octopus disguise would fool you? Drop your answer below and subscribe because the mimic octopus is...",
     "Milky seas are vast glowing ocean patches, 100,000 square kilometers wide, visible even from satellites! This eerie blue light isn't algae; it's billions of luminous bacteria, creating a phenomenon lasting over 40 days. Mariners reported these for centuries, but scientists only got photographic proof of the massive glow in 2005. Would you brave these luminous waters? Comment and subscribe because milky seas are vast glowing ocean patches...",
-    "This creature, presumed extinct for 66 million years, suddenly reappeared in 1938. It\u2019s a lobe-finned fish, more closely related to you than to most fish. Its body plan has remained virtually unchanged for over 400 million years, making it a true living fossil. Can you guess this ancient ocean survivor? It\u2019s the Coelacanth! Which of its facts shocked you most? This creature, presumed extinct for 66 million years..."
+    "This creature, presumed extinct for 66 million years, suddenly reappeared in 1938. It\u2019s a lobe-finned fish, more closely related to you than to most fish. Its body plan has remained virtually unchanged for over 400 million years, making it a true living fossil. Can you guess this ancient ocean survivor? It\u2019s the Coelacanth! Which of its facts shocked you most? This creature, presumed extinct for 66 million years...",
+    "This is the Mosasaur, an apex predator 66 million years ago. Can you spot the lie? Claim 1: Its double-hinged jaw, like a snake's, swallowed huge prey. Claim 2: Mosasaurus hoffmannii reached 17 meters, two school buses long! Claim 3: It laid hard-shelled eggs on beaches. The lie? It's claim three! Mosasaurs gave live birth. Did you get it right? Subscribe to learn more about the Mosasaur, an apex predator..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -789,7 +791,9 @@
     "underwater waterfalls bigger than Niagara",
     "mimic octopus",
     "milky seas glowing for miles",
-    "coelacanth"
+    "coelacanth",
+    "mosasaur",
+    "kronosaurus"
   ],
   "format_weights": {
     "weights": {
@@ -906,7 +910,8 @@
     "Earth's Hidden Waterfalls Are 3,500 Meters Tall! \ud83c\udf0a": "deep_dive",
     "This Octopus Becomes a VENOMOUS Snake in SECONDS! \ud83d\udc0d": "deep_dive",
     "The Ocean's GHOSTLY Glow That Traps Ships For Weeks! \ud83d\udc7b": "deep_dive",
-    "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f": "guess"
+    "Guess the 'Extinct' Ocean Creature That's More Related To YOU Than Fish! \ud83e\udd2f": "guess",
+    "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0": "quiz"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
