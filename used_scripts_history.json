@@ -331,7 +331,9 @@
     "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0",
     "Who Wins: The Iron-Armored Snail vs. The 14-Inch-Toothed Whale?! \ud83e\udd2f",
     "The Colossal Squid: Its 40cm Eyes Are The Largest On Earth! \ud83e\udd2f",
-    "This Invisible Ocean Zone KILLS You In Seconds! \ud83d\udc80"
+    "This Invisible Ocean Zone KILLS You In Seconds! \ud83d\udc80",
+    "The Ocean's Hidden Rivers Are Made of POISON! \ud83d\udc80",
+    "The Antarctic Lake Hidden Under 2.5 KM of Ice Could Hold ALIEN Life! \ud83d\udc7d"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -665,7 +667,9 @@
     "This is the Mosasaur, an apex predator 66 million years ago. Can you spot the lie? Claim 1: Its double-hinged jaw, like a snake's, swallowed huge prey. Claim 2: Mosasaurus hoffmannii reached 17 meters, two school buses long! Claim 3: It laid hard-shelled eggs on beaches. The lie? It's claim three! Mosasaurs gave live birth. Did you get it right? Subscribe to learn more about the Mosasaur, an apex predator...",
     "Livyatan melvillei, the ancient whale, sported 36.2-centimeter teeth, the largest biting teeth of any animal ever! At 17.5 meters, this predator hunted similar prey to Megalodon 9 million years ago. But against it, the Scaly-foot gastropod, living 2,900 meters deep, has a shell and foot armored with iron sulfide, the only animal known to do so. Who wins this impossible duel? Its iron shell or the whale's colossal bite? Comment your pick below and subscribe for more ocean oddities because Livyatan melvillei, the ancient whale...",
     "The Colossal Squid has eyes up to 40 centimeters wide, making them the largest of any animal on Earth. This deep-sea predator can weigh over 495 kilograms \u2013 heavier than a grand piano! Unlike other squids, it sports razor-sharp hooks on its arms, not just suckers. Its feeding tentacles can extend 10 meters to grab prey. Could you imagine facing this Antarctic monster? Tell us below, and subscribe because the Colossal Squid has eyes...",
-    "Imagine diving into an ocean 'dead zone', an area with less than 2 mg of oxygen per liter. This hypoxia suffocates most marine life, forcing them to flee. Drop below 0.5 mg, and it's a mass graveyard where nothing survives. Over 400 such zones exist globally, some spanning 70,000 square kilometers, fueled by human runoff. Would you risk exploring these deadly, oxygen-depleted areas? Tell us below, and subscribe because imagine diving into an ocean 'dead zone'..."
+    "Imagine diving into an ocean 'dead zone', an area with less than 2 mg of oxygen per liter. This hypoxia suffocates most marine life, forcing them to flee. Drop below 0.5 mg, and it's a mass graveyard where nothing survives. Over 400 such zones exist globally, some spanning 70,000 square kilometers, fueled by human runoff. Would you risk exploring these deadly, oxygen-depleted areas? Tell us below, and subscribe because imagine diving into an ocean 'dead zone'...",
+    "On the abyssal plain, 'underwater rivers' exist, flowing with water up to 8 times saltier than the ocean! If you fell into one, its extreme density would prevent you from sinking, while its hydrogen sulfide gas would instantly poison you. These brine pools trap carbon dioxide and methane, forming unique ecosystems for extremophiles. Would you dare explore these bizarre seabed features? Drop your answer below, and subscribe to discover more ocean mysteries because on the abyssal plain...",
+    "Antarctica hides Lake Vostok, a freshwater lake sealed under 1.6 kilometers of ice for 15 million years. This ice sheet is so massive, it has depressed the continental bedrock over 2.5 kilometers below sea level. Imagine being under a mile of ice, where untouched ecosystems could exist! This isolated lake holds enough water to raise global sea levels by 60 meters if it melted. What ancient life do you think survives in Lake Vostok? Let me know below and subscribe because Antarctica hides Lake Vostok..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -804,12 +808,14 @@
     "livyatan",
     "colossal squid",
     "pacific viperfish",
-    "ocean dead zones"
+    "ocean dead zones",
+    "underwater rivers flowing on the seafloor",
+    "the Antarctic underwater lake Vostok"
   ],
   "format_weights": {
     "weights": {
-      "quiz": 0.7,
       "deep_dive": 1.03,
+      "quiz": 0.7,
       "duel": 1.01,
       "guess": 1.24
     },
@@ -821,13 +827,13 @@
       "Spot the Lie: Great White Shark's WEIRDEST Secrets! \ud83e\udd88"
     ],
     "stats": {
+      "deep_dive": {
+        "videos": 32,
+        "avg_views": 300
+      },
       "quiz": {
         "videos": 7,
         "avg_views": 167
-      },
-      "deep_dive": {
-        "videos": 32,
-        "avg_views": 299
       },
       "duel": {
         "videos": 17,
@@ -838,7 +844,7 @@
         "avg_views": 410
       }
     },
-    "date": "2026-11-19"
+    "date": "2026-11-20"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -925,7 +931,9 @@
     "Spot the Lie: The Mosasaur's Deadly Secrets! \ud83e\uddd0": "quiz",
     "Who Wins: The Iron-Armored Snail vs. The 14-Inch-Toothed Whale?! \ud83e\udd2f": "duel",
     "The Colossal Squid: Its 40cm Eyes Are The Largest On Earth! \ud83e\udd2f": "deep_dive",
-    "This Invisible Ocean Zone KILLS You In Seconds! \ud83d\udc80": "deep_dive"
+    "This Invisible Ocean Zone KILLS You In Seconds! \ud83d\udc80": "deep_dive",
+    "The Ocean's Hidden Rivers Are Made of POISON! \ud83d\udc80": "deep_dive",
+    "The Antarctic Lake Hidden Under 2.5 KM of Ice Could Hold ALIEN Life! \ud83d\udc7d": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
