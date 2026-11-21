@@ -333,7 +333,9 @@
     "The Colossal Squid: Its 40cm Eyes Are The Largest On Earth! \ud83e\udd2f",
     "This Invisible Ocean Zone KILLS You In Seconds! \ud83d\udc80",
     "The Ocean's Hidden Rivers Are Made of POISON! \ud83d\udc80",
-    "The Antarctic Lake Hidden Under 2.5 KM of Ice Could Hold ALIEN Life! \ud83d\udc7d"
+    "The Antarctic Lake Hidden Under 2.5 KM of Ice Could Hold ALIEN Life! \ud83d\udc7d",
+    "The Ocean's 400\u00b0C Vents That Spit Metal! \ud83d\ude31",
+    "The Ocean's Invisible 30-Meter Walls of Water! \ud83c\udf0a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -669,7 +671,9 @@
     "The Colossal Squid has eyes up to 40 centimeters wide, making them the largest of any animal on Earth. This deep-sea predator can weigh over 495 kilograms \u2013 heavier than a grand piano! Unlike other squids, it sports razor-sharp hooks on its arms, not just suckers. Its feeding tentacles can extend 10 meters to grab prey. Could you imagine facing this Antarctic monster? Tell us below, and subscribe because the Colossal Squid has eyes...",
     "Imagine diving into an ocean 'dead zone', an area with less than 2 mg of oxygen per liter. This hypoxia suffocates most marine life, forcing them to flee. Drop below 0.5 mg, and it's a mass graveyard where nothing survives. Over 400 such zones exist globally, some spanning 70,000 square kilometers, fueled by human runoff. Would you risk exploring these deadly, oxygen-depleted areas? Tell us below, and subscribe because imagine diving into an ocean 'dead zone'...",
     "On the abyssal plain, 'underwater rivers' exist, flowing with water up to 8 times saltier than the ocean! If you fell into one, its extreme density would prevent you from sinking, while its hydrogen sulfide gas would instantly poison you. These brine pools trap carbon dioxide and methane, forming unique ecosystems for extremophiles. Would you dare explore these bizarre seabed features? Drop your answer below, and subscribe to discover more ocean mysteries because on the abyssal plain...",
-    "Antarctica hides Lake Vostok, a freshwater lake sealed under 1.6 kilometers of ice for 15 million years. This ice sheet is so massive, it has depressed the continental bedrock over 2.5 kilometers below sea level. Imagine being under a mile of ice, where untouched ecosystems could exist! This isolated lake holds enough water to raise global sea levels by 60 meters if it melted. What ancient life do you think survives in Lake Vostok? Let me know below and subscribe because Antarctica hides Lake Vostok..."
+    "Antarctica hides Lake Vostok, a freshwater lake sealed under 1.6 kilometers of ice for 15 million years. This ice sheet is so massive, it has depressed the continental bedrock over 2.5 kilometers below sea level. Imagine being under a mile of ice, where untouched ecosystems could exist! This isolated lake holds enough water to raise global sea levels by 60 meters if it melted. What ancient life do you think survives in Lake Vostok? Let me know below and subscribe because Antarctica hides Lake Vostok...",
+    "Deep-sea 'black smokers' blast water up to 400 degrees Celsius, hot enough to melt lead! These terrifying vents form near mid-ocean ridges, spewing metal-rich fluid. The extreme pressure, 200 times atmospheric, prevents boiling. Yet, complex ecosystems thrive here, with giant tube worms feeding on chemicals. Could life exist on other planets near similar vents? Tell us below, and subscribe because deep-sea 'black smokers' blast water up to 400 degrees Celsius...",
+    "A rogue wave, an unpredictable wall of water, can smash into ships taller than an 11-story building. Some are measured over 30 meters high, like an 11-story skyscraper suddenly rising from the sea. They hit with colossal force, enough to instantly disable the largest cargo vessels, yet defy standard wave predictions. Which ocean phenomenon scares you the most? Tell us below, and subscribe because a rogue wave, an unpredictable wall of water..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -810,7 +814,9 @@
     "pacific viperfish",
     "ocean dead zones",
     "underwater rivers flowing on the seafloor",
-    "the Antarctic underwater lake Vostok"
+    "the Antarctic underwater lake Vostok",
+    "hydrothermal black smoker vents",
+    "rogue waves taller than buildings"
   ],
   "format_weights": {
     "weights": {
@@ -837,14 +843,14 @@
       },
       "duel": {
         "videos": 17,
-        "avg_views": 293
+        "avg_views": 294
       },
       "guess": {
         "videos": 4,
         "avg_views": 410
       }
     },
-    "date": "2026-11-20"
+    "date": "2026-11-21"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -933,7 +939,9 @@
     "The Colossal Squid: Its 40cm Eyes Are The Largest On Earth! \ud83e\udd2f": "deep_dive",
     "This Invisible Ocean Zone KILLS You In Seconds! \ud83d\udc80": "deep_dive",
     "The Ocean's Hidden Rivers Are Made of POISON! \ud83d\udc80": "deep_dive",
-    "The Antarctic Lake Hidden Under 2.5 KM of Ice Could Hold ALIEN Life! \ud83d\udc7d": "deep_dive"
+    "The Antarctic Lake Hidden Under 2.5 KM of Ice Could Hold ALIEN Life! \ud83d\udc7d": "deep_dive",
+    "The Ocean's 400\u00b0C Vents That Spit Metal! \ud83d\ude31": "deep_dive",
+    "The Ocean's Invisible 30-Meter Walls of Water! \ud83c\udf0a": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
