@@ -337,7 +337,8 @@
     "The Ocean's 400\u00b0C Vents That Spit Metal! \ud83d\ude31",
     "The Ocean's Invisible 30-Meter Walls of Water! \ud83c\udf0a",
     "The Ocean's Only Reptile That Dives 1,200 Meters Deep Into Freezing Waters! \ud83d\udc22",
-    "Hidden Ocean Avalanches Trigger Deadly Megatsunamis! \ud83c\udf0a"
+    "Hidden Ocean Avalanches Trigger Deadly Megatsunamis! \ud83c\udf0a",
+    "WHO WINS: Unkillable Water Bear vs. The Deep Sea Blobfish?! \ud83e\udd4a"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -677,7 +678,8 @@
     "Deep-sea 'black smokers' blast water up to 400 degrees Celsius, hot enough to melt lead! These terrifying vents form near mid-ocean ridges, spewing metal-rich fluid. The extreme pressure, 200 times atmospheric, prevents boiling. Yet, complex ecosystems thrive here, with giant tube worms feeding on chemicals. Could life exist on other planets near similar vents? Tell us below, and subscribe because deep-sea 'black smokers' blast water up to 400 degrees Celsius...",
     "A rogue wave, an unpredictable wall of water, can smash into ships taller than an 11-story building. Some are measured over 30 meters high, like an 11-story skyscraper suddenly rising from the sea. They hit with colossal force, enough to instantly disable the largest cargo vessels, yet defy standard wave predictions. Which ocean phenomenon scares you the most? Tell us below, and subscribe because a rogue wave, an unpredictable wall of water...",
     "The leatherback sea turtle is the only reptile that can dive over 1,200 meters deep into freezing ocean waters! This 500-kilogram giant, the heaviest non-crocodilian reptile, has a flexible, oily shell instead of bone. This incredible adaptation lets it withstand crushing pressure and endure near-freezing temperatures, unlike any other turtle. Imagine enduring that extreme environment! What other creature has such a bizarre superpower? Tell us below, and subscribe because the leatherback sea turtle is...",
-    "A submarine landslide can trigger a megatsunami, capable of causing significant damage! These underwater events displace vast amounts of sediment, moving it across continental shelves into the deep ocean. Imagine being engulfed by a liquid avalanche traveling at immense speeds! They initiate on slopes as low as 1 degree, exerting crushing pressure. You'd be overwhelmed by millions of tons of churning earth and water. Which ocean mystery baffles you most? Tell us below, and subscribe because a submarine landslide..."
+    "A submarine landslide can trigger a megatsunami, capable of causing significant damage! These underwater events displace vast amounts of sediment, moving it across continental shelves into the deep ocean. Imagine being engulfed by a liquid avalanche traveling at immense speeds! They initiate on slopes as low as 1 degree, exerting crushing pressure. You'd be overwhelmed by millions of tons of churning earth and water. Which ocean mystery baffles you most? Tell us below, and subscribe because a submarine landslide...",
+    "A tiny tardigrade, just 0.5 millimeters long, can survive the vacuum of space, crushing pressure, and radiation! It endures pressures 6,000 times atmospheric \u2013 far more than the blobfish's deep-sea home. While the blobfish needs high pressure to maintain its form, the tardigrade just 'pauses' life, becoming an indestructible 'moss piglet' for decades! So, in an ocean duel of resilience, who truly reigns supreme? Drop your answer below and subscribe because a tiny tardigrade..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -822,7 +824,9 @@
     "hydrothermal black smoker vents",
     "rogue waves taller than buildings",
     "leatherback sea turtle",
-    "submarine landslides and megatsunamis"
+    "submarine landslides and megatsunamis",
+    "tardigrade",
+    "blobfish"
   ],
   "format_weights": {
     "weights": {
@@ -856,7 +860,7 @@
         "avg_views": 410
       }
     },
-    "date": "2026-11-22"
+    "date": "2026-11-24"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -949,7 +953,8 @@
     "The Ocean's 400\u00b0C Vents That Spit Metal! \ud83d\ude31": "deep_dive",
     "The Ocean's Invisible 30-Meter Walls of Water! \ud83c\udf0a": "deep_dive",
     "The Ocean's Only Reptile That Dives 1,200 Meters Deep Into Freezing Waters! \ud83d\udc22": "deep_dive",
-    "Hidden Ocean Avalanches Trigger Deadly Megatsunamis! \ud83c\udf0a": "deep_dive"
+    "Hidden Ocean Avalanches Trigger Deadly Megatsunamis! \ud83c\udf0a": "deep_dive",
+    "WHO WINS: Unkillable Water Bear vs. The Deep Sea Blobfish?! \ud83e\udd4a": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
