@@ -339,7 +339,9 @@
     "The Ocean's Only Reptile That Dives 1,200 Meters Deep Into Freezing Waters! \ud83d\udc22",
     "Hidden Ocean Avalanches Trigger Deadly Megatsunamis! \ud83c\udf0a",
     "WHO WINS: Unkillable Water Bear vs. The Deep Sea Blobfish?! \ud83e\udd4a",
-    "This 3-Meter Worm Powers Itself With TOXIC Gas and Has NO MOUTH! \ud83e\udd2f"
+    "This 3-Meter Worm Powers Itself With TOXIC Gas and Has NO MOUTH! \ud83e\udd2f",
+    "The Box Jellyfish: Its Stings Are So Painful, They Can KILL! \ud83d\udc80",
+    "The Mariana Trench's Abyss: Crushing Pressure of 8 Tons Per Square Inch! \ud83d\ude31"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -681,7 +683,9 @@
     "The leatherback sea turtle is the only reptile that can dive over 1,200 meters deep into freezing ocean waters! This 500-kilogram giant, the heaviest non-crocodilian reptile, has a flexible, oily shell instead of bone. This incredible adaptation lets it withstand crushing pressure and endure near-freezing temperatures, unlike any other turtle. Imagine enduring that extreme environment! What other creature has such a bizarre superpower? Tell us below, and subscribe because the leatherback sea turtle is...",
     "A submarine landslide can trigger a megatsunami, capable of causing significant damage! These underwater events displace vast amounts of sediment, moving it across continental shelves into the deep ocean. Imagine being engulfed by a liquid avalanche traveling at immense speeds! They initiate on slopes as low as 1 degree, exerting crushing pressure. You'd be overwhelmed by millions of tons of churning earth and water. Which ocean mystery baffles you most? Tell us below, and subscribe because a submarine landslide...",
     "A tiny tardigrade, just 0.5 millimeters long, can survive the vacuum of space, crushing pressure, and radiation! It endures pressures 6,000 times atmospheric \u2013 far more than the blobfish's deep-sea home. While the blobfish needs high pressure to maintain its form, the tardigrade just 'pauses' life, becoming an indestructible 'moss piglet' for decades! So, in an ocean duel of resilience, who truly reigns supreme? Drop your answer below and subscribe because a tiny tardigrade...",
-    "This 3-meter giant tubeworm has no mouth or digestive system. Living over 2,000 meters deep near scalding hydrothermal vents, it powers itself with bacteria converting toxic hydrogen sulfide. This creature thrives at 30 degrees Celsius, growing to 1.5 meters in under two years\u2014the fastest marine invertebrate growth! What deep-sea superpower shocks you? Drop your answer and subscribe because this 3-meter giant tubeworm..."
+    "This 3-meter giant tubeworm has no mouth or digestive system. Living over 2,000 meters deep near scalding hydrothermal vents, it powers itself with bacteria converting toxic hydrogen sulfide. This creature thrives at 30 degrees Celsius, growing to 1.5 meters in under two years\u2014the fastest marine invertebrate growth! What deep-sea superpower shocks you? Drop your answer and subscribe because this 3-meter giant tubeworm...",
+    "The Box Jellyfish delivers stings so extremely painful, they can be fatal to humans. Species like Chironex fleckeri produce venom so potent, its touch feels like being simultaneously burned and electrocuted. Unlike some cousins, their venom acts fast, often leading to death in severe cases, making them one of Earth's deadliest animals. Which ocean creature's defense mechanism do you find most terrifying? Let us know below and subscribe, because the Box Jellyfish delivers stings so extremely painful...",
+    "The Mariana Trench's Challenger Deep is so extreme, its pressure could crush a submarine like a soda can! At 10,935 meters deep, it's over 2 kilometers farther from sea level than Mount Everest's peak. The pressure here is 111 MPa, or eight tons per square inch, feeling like 1,100 atmospheres! Even single-celled Monothalamea thrive here. What other mysteries could hide in the Mariana Trench's Challenger Deep? Let us know below because the Mariana Trench's Challenger Deep..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -830,7 +834,9 @@
     "tardigrade",
     "blobfish",
     "barreleye fish",
-    "giant tube worm"
+    "giant tube worm",
+    "box jellyfish",
+    "the Mariana Trench Challenger Deep"
   ],
   "format_weights": {
     "weights": {
@@ -864,7 +870,7 @@
         "avg_views": 410
       }
     },
-    "date": "2026-11-25"
+    "date": "2026-11-26"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -959,7 +965,9 @@
     "The Ocean's Only Reptile That Dives 1,200 Meters Deep Into Freezing Waters! \ud83d\udc22": "deep_dive",
     "Hidden Ocean Avalanches Trigger Deadly Megatsunamis! \ud83c\udf0a": "deep_dive",
     "WHO WINS: Unkillable Water Bear vs. The Deep Sea Blobfish?! \ud83e\udd4a": "duel",
-    "This 3-Meter Worm Powers Itself With TOXIC Gas and Has NO MOUTH! \ud83e\udd2f": "deep_dive"
+    "This 3-Meter Worm Powers Itself With TOXIC Gas and Has NO MOUTH! \ud83e\udd2f": "deep_dive",
+    "The Box Jellyfish: Its Stings Are So Painful, They Can KILL! \ud83d\udc80": "deep_dive",
+    "The Mariana Trench's Abyss: Crushing Pressure of 8 Tons Per Square Inch! \ud83d\ude31": "deep_dive"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
