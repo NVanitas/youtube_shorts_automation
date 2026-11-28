@@ -342,7 +342,9 @@
     "This 3-Meter Worm Powers Itself With TOXIC Gas and Has NO MOUTH! \ud83e\udd2f",
     "The Box Jellyfish: Its Stings Are So Painful, They Can KILL! \ud83d\udc80",
     "The Mariana Trench's Abyss: Crushing Pressure of 8 Tons Per Square Inch! \ud83d\ude31",
-    "The Elasmosaurus: Its Head Was Mistaken For Its TAIL! \ud83d\ude31"
+    "The Elasmosaurus: Its Head Was Mistaken For Its TAIL! \ud83d\ude31",
+    "The Terrifying Secret of Saint Croix's Glowing Waters! \ud83d\ude31",
+    "Stonefish Venom: Modern Killer vs. Ammonite's Armored Legacy! \ud83d\udc80"
   ],
   "used_scripts": [
     "Here are three psychological facts that will mess with your head! One, your brain can't create new faces in dreams, every person you dream of is someone you've seen! Two, if you announce your goals to others, you are less likely to succeed. Three, the average person tells four lies a day. Hit subscribe if you didn't lie today!",
@@ -687,7 +689,9 @@
     "This 3-meter giant tubeworm has no mouth or digestive system. Living over 2,000 meters deep near scalding hydrothermal vents, it powers itself with bacteria converting toxic hydrogen sulfide. This creature thrives at 30 degrees Celsius, growing to 1.5 meters in under two years\u2014the fastest marine invertebrate growth! What deep-sea superpower shocks you? Drop your answer and subscribe because this 3-meter giant tubeworm...",
     "The Box Jellyfish delivers stings so extremely painful, they can be fatal to humans. Species like Chironex fleckeri produce venom so potent, its touch feels like being simultaneously burned and electrocuted. Unlike some cousins, their venom acts fast, often leading to death in severe cases, making them one of Earth's deadliest animals. Which ocean creature's defense mechanism do you find most terrifying? Let us know below and subscribe, because the Box Jellyfish delivers stings so extremely painful...",
     "The Mariana Trench's Challenger Deep is so extreme, its pressure could crush a submarine like a soda can! At 10,935 meters deep, it's over 2 kilometers farther from sea level than Mount Everest's peak. The pressure here is 111 MPa, or eight tons per square inch, feeling like 1,100 atmospheres! Even single-celled Monothalamea thrive here. What other mysteries could hide in the Mariana Trench's Challenger Deep? Let us know below because the Mariana Trench's Challenger Deep...",
-    "The Elasmosaurus was so weird, paleontologist Edward Drinker Cope famously attached its head to its TAIL! This 10.3-meter ancient predator had a 7.1-meter neck, longer than an SUV, packed with 72 vertebrae \u2013 nearly double a modern giraffe's. Its slender skull sported large, fang-like front teeth, built for ambushing fish and smaller prey in the Late Cretaceous oceans. Imagine encountering this elongated monster! Which ancient ocean predator scares you most? Tell us below and subscribe because..."
+    "The Elasmosaurus was so weird, paleontologist Edward Drinker Cope famously attached its head to its TAIL! This 10.3-meter ancient predator had a 7.1-meter neck, longer than an SUV, packed with 72 vertebrae \u2013 nearly double a modern giraffe's. Its slender skull sported large, fang-like front teeth, built for ambushing fish and smaller prey in the Late Cretaceous oceans. Imagine encountering this elongated monster! Which ancient ocean predator scares you most? Tell us below and subscribe because...",
+    "Saint Croix's shimmering bioluminescent bay, a wonder on an island with 41,004 residents, faces a terrifying threat. This glowing ecosystem, where light pollution from its two 'Twin City' towns, Frederiksted and Christiansted, can extinguish the natural glow like flipping a switch. Runoff from the island's 355-meter Mount Eagle, like a silent poison, threatens this delicate balance. How long do you think these glowing waters can survive? Drop your guesses below and subscribe because Saint Croix's shimmering...",
+    "The Indo-Pacific Stonefish is the most venomous fish known; its stings are fatal to humans! This camouflaged menace could face an ancient ammonite, a shelled cephalopod that first appeared 410 million years ago. With over 10,000 species, ammonites used coiled shells to thrive for millions of years, vanishing 66 million years ago. Which ocean warrior, ancient or modern, do you prefer? Tell us and subscribe because the Indo-Pacific Stonefish is the most venomous fish known..."
   ],
   "used_fallbacks": {
     "facts": [],
@@ -839,7 +843,10 @@
     "giant tube worm",
     "box jellyfish",
     "the Mariana Trench Challenger Deep",
-    "elasmosaurus"
+    "elasmosaurus",
+    "bioluminescent bays",
+    "stonefish",
+    "ammonite"
   ],
   "format_weights": {
     "weights": {
@@ -873,7 +880,7 @@
         "avg_views": 410
       }
     },
-    "date": "2026-11-27"
+    "date": "2026-11-28"
   },
   "title_formats": {
     "This Tiny Shark Bites HUGE Chunks Out of Great Whites! \ud83e\udd88": "deep_dive",
@@ -971,7 +978,9 @@
     "This 3-Meter Worm Powers Itself With TOXIC Gas and Has NO MOUTH! \ud83e\udd2f": "deep_dive",
     "The Box Jellyfish: Its Stings Are So Painful, They Can KILL! \ud83d\udc80": "deep_dive",
     "The Mariana Trench's Abyss: Crushing Pressure of 8 Tons Per Square Inch! \ud83d\ude31": "deep_dive",
-    "The Elasmosaurus: Its Head Was Mistaken For Its TAIL! \ud83d\ude31": "deep_dive"
+    "The Elasmosaurus: Its Head Was Mistaken For Its TAIL! \ud83d\ude31": "deep_dive",
+    "The Terrifying Secret of Saint Croix's Glowing Waters! \ud83d\ude31": "deep_dive",
+    "Stonefish Venom: Modern Killer vs. Ammonite's Armored Legacy! \ud83d\udc80": "duel"
   },
   "compiled_ids": [
     "8rnIHmScydQ",
